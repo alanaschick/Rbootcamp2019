@@ -1,8 +1,8 @@
 
 
-<div class="wrapper">
-<a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/Schedule.html" class="button button1">Schedule</a>
-</div>
+<!-- <div class="wrapper"> -->
+<!-- <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/Schedule.html" class="button button1">Schedule</a> -->
+<!-- </div> -->
 
 <p class="big"> Welcome to the R bootcamp for biologists course website! </p>
 
@@ -29,9 +29,7 @@ At the end of the workshop you will able to:
 * Import a wide variety of data types into R
 * Understand the basic data types: integer, numeric, logical, character
 * Understand R’s basic data structures: vector, matrix, list, data.frame
-* Understand basic programming concepts: functions, objects, loops, vectorization, conditionals
 * Manipulate data structures by subsetting and indexing
-* Understand key base R functions: seq, apply (and friends)
 * Manipulate data with dplyr and friends
 * Make plots with ggplot
 * Understand some common R errors and how to deal with them

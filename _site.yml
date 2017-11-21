@@ -10,9 +10,9 @@ navbar:
     - text: "Format"
       href: format.html
       icon: ion-clipboard
-    - text: "Schedule"
-      href: Schedule.html
-      icon: ion-calendar
+#    - text: "Schedule"
+#      href: Schedule.html
+#      icon: ion-calendar
 #    - text: "Project"
 #      href: Project.html
 #      icon: ion-settings
