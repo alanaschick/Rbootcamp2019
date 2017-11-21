@@ -13,9 +13,9 @@ navbar:
     - text: "Schedule"
       href: Schedule.html
       icon: ion-calendar
-    - text: "Project"
-      href: Project.html
-      icon: ion-settings
+#    - text: "Project"
+#      href: Project.html
+#      icon: ion-settings
     - text: "Register"
       href: register.html
       icon: ion-android-person-add

@@ -43,4 +43,8 @@ At the end of the workshop you will able to:
 
 The fee for this course is 250 CAD.
 
+## Register
+
+<font color="red"> Attendees will need to spend 4-6 hours on course material each week ( for 3 weeks)  prior to the start of the course.</font> For more details, please read <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/format.html"> Course Format</a> 
+
 <a href="https://docs.google.com/forms/d/e/1FAIpQLScZDvSREzHU6Fzwr-tdPLUp8sA8FTR27wE5O3jigY7OVLdmfQ/viewform" class="button button1">Register</a>

@@ -15,5 +15,4 @@
 Dr Hena R. Ramay | Dr. Matthew Workentine
 ---------------- |-----------------------
 <a href="mailto:hena.ramay@ucalgary.ca" target="_top">hena.ramay@ucalgary.ca</a>|<a href="mailto:matthew.workentine@ucalgary.ca" target="_top">mathew.workentine@ucaglary.ca</a>
-<img src="WCMClogo.png" width="100" height="100" />| <br> <img src="UC-vet_med-rgb.jpg" width="200" height="200" />
 </p>
