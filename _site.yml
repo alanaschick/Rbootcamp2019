@@ -1,0 +1,32 @@
+name: "R bootcamp for Biologists"
+navbar:
+  title: "R bootcamp for Biologists"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Instructors"
+      href: about.html
+      icon: ion-wand
+    - text: "Format"
+      href: format.html
+      icon: ion-clipboard
+    - text: "Schedule"
+      href: Schedule.html
+      icon: ion-calendar
+    - text: "Project"
+      href: Project.html
+      icon: ion-settings
+    - text: "Register"
+      href: register.html
+      icon: ion-android-person-add
+      
+  right:
+    - icon: favicon
+output_dir: "."
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    include:
+      after_body: footer.html
+    css: style.css

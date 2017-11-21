@@ -1,0 +1,46 @@
+
+
+<div class="wrapper">
+<a href="https://wcmcbioinformatics.github.io/Rbootcamp2017/Schedule.html" class="button button1">Schedule</a>
+</div>
+
+<p class="big"> Welcome to the R bootcamp for biologists course website! </p>
+
+<div class="center">
+<h32> (August 28-29 at FootHills Campus) </h32>
+</div>
+
+<br> 
+
+## About this course
+<p>
+
+The purpose of this course is to teach scientists (students, postdocs, PIs) in the biological and medical sciences to use R for typical data analysis tasks they might encounter routinely. This includes sequence analysis and other bioinformatics tasks.
+<i> No prior knowledge of R is expected and workshop attendees can expect to come away with a skill set that is immediately translatable to their respective data tasks.</i></p>
+
+<br>
+
+## What you will learn 
+
+At the end of the workshop you will able to:
+
+* Install and update R
+* Use the Rstudio IDE
+* Import a wide variety of data types into R
+* Understand the basic data types: integer, numeric, logical, character
+* Understand R’s basic data structures: vector, matrix, list, data.frame
+* Understand basic programming concepts: functions, objects, loops, vectorization, conditionals
+* Manipulate data structures by subsetting and indexing
+* Understand key base R functions: seq, apply (and friends)
+* Manipulate data with dplyr and friends
+* Make plots with ggplot
+* Understand some common R errors and how to deal with them
+* Find and evaluate R packages needed for a particular analysis
+
+<br>
+
+##Fees
+
+The fee for this course is 250 CAD.
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfmrz4Fwh-pZMIa6NZF_PVNIviJQ-DaRP8cKNGrKsKs_Uo0yg/viewform" class="button button1">Register</a>

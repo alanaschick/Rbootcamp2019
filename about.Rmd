@@ -1,0 +1,19 @@
+
+
+<br>
+<br> 
+
+<p class="medium">This course is offered jointly by the <b>Western Canadian Microbiome Centre</b> and <b>Faculty of Veterinary Medicine </b> at the University of Calgary.</p>
+
+
+
+<br>
+<br>
+
+<p class="small"> For Questions and concerns, please contact the instructors:
+
+Dr Hena R. Ramay | Dr. Matthew Workentine
+---------------- |-----------------------
+<a href="mailto:hena.ramay@ucalgary.ca" target="_top">hena.ramay@ucalgary.ca</a>|<a href="mailto:matthew.workentine@ucalgary.ca" target="_top">mathew.workentine@ucaglary.ca</a>
+<img src="WCMClogo.png" width="100" height="100" />| <br> <img src="UC-vet_med-rgb.jpg" width="200" height="200" />
+</p>

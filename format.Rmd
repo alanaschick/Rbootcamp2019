@@ -1,0 +1,10 @@
+<br>
+<br>
+<p>
+To maximize the R skills and confidence attendees gain from this workshop, we have chosen to combine online learning materials with actual instruction days. 
+<br>
+<p>
+We will use [datacamp's](https://www.datacamp.com/home) virtual classroom tool to train attendees in basic R. A month prior to the workshop, each attendee will receive a datacamp account with a list of assigned courses and assignments. Progress of each student will be monitored by the instructors and a Q &A session will be organized to review the course material at the end of each week. Attendees will only spend 3-4 hours on course material every week. 
+</p>
+<p>
+On the days of the workshop, the knowledge gained from course work will be used to complete a biologialy relevant project.  </p>

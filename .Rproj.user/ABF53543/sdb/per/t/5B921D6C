@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\n<br>\n<br> \n\n<p class=\"medium\">This course is offered jointly by the <b>Western Canadian Microbiome Centre</b> and <b>Faculty of Veterinary Medicine </b> at the University of Calgary.</p>\n\n\n\n<br>\n<br>\n\n<p class=\"small\"> For Questions and concerns, please contact the instructors:\n\nDr Hena R. Ramay | Dr. Matthew Workentine\n---------------- |-----------------------\n<a href=\"mailto:hena.ramay@ucalgary.ca\" target=\"_top\">hena.ramay@ucalgary.ca</a>|<a href=\"mailto:matthew.workentine@ucalgary.ca\" target=\"_top\">mathew.workentine@ucaglary.ca</a>\n<img src=\"WCMClogo.png\" width=\"100\" height=\"100\" />| <br> <img src=\"UC-vet_med-rgb.jpg\" width=\"200\" height=\"200\" />\n</p>",
+    "created" : 1499233978983.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2694209286",
+    "id" : "5B921D6C",
+    "lastKnownWriteTime" : 1499233988,
+    "last_content_update" : 1499233988214,
+    "path" : "~/projects/Rbootcamp2017/about.Rmd",
+    "project_path" : "about.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

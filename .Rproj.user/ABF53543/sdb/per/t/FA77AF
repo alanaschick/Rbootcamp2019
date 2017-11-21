@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\n<div class=\"wrapper\">\n<a href=\"https://wcmcbioinformatics.github.io/Rbootcamp2017/Schedule.html\" class=\"button button1\">Schedule</a>\n</div>\n\n<p class=\"big\"> Welcome to the R bootcamp for biologists course website! </p>\n\n<div class=\"center\">\n<h32> (August 28-29 at FootHills Campus) </h32>\n</div>\n\n<br> \n\n## About this course\n<p>\n\nThe purpose of this course is to teach scientists (students, postdocs, PIs) in the biological and medical sciences to use R for typical data analysis tasks they might encounter routinely. This includes sequence analysis and other bioinformatics tasks.\n<i> No prior knowledge of R is expected and workshop attendees can expect to come away with a skill set that is immediately translatable to their respective data tasks.</i></p>\n\n<br>\n\n## What you will learn \n\nAt the end of the workshop you will able to:\n\n* Install and update R\n* Use the Rstudio IDE\n* Import a wide variety of data types into R\n* Understand the basic data types: integer, numeric, logical, character\n* Understand R’s basic data structures: vector, matrix, list, data.frame\n* Understand basic programming concepts: functions, objects, loops, vectorization, conditionals\n* Manipulate data structures by subsetting and indexing\n* Understand key base R functions: seq, apply (and friends)\n* Manipulate data with dplyr and friends\n* Make plots with ggplot\n* Understand some common R errors and how to deal with them\n* Find and evaluate R packages needed for a particular analysis\n\n<br>\n\n##Fees\n\nThe fee for this course is 250 CAD.\n\n<a href=\"https://docs.google.com/forms/d/e/1FAIpQLSfmrz4Fwh-pZMIa6NZF_PVNIviJQ-DaRP8cKNGrKsKs_Uo0yg/viewform\" class=\"button button1\">Register</a>",
+    "created" : 1499233418231.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "196473659",
+    "id" : "FA77AF",
+    "lastKnownWriteTime" : 1501172347,
+    "last_content_update" : 1501172347620,
+    "path" : "~/projects/Rbootcamp2017/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

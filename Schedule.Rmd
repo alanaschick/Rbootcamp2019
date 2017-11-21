@@ -1,0 +1,16 @@
+<br>
+<br>
+<p>
+Before the actual course days (28th and 29th August), we have organized <font color="red">optional</font> Q and A sessions on August 4, 11, 18 and 25th. You are welcome to attend if you have quetions. In any case,<b> Please make sure that you finish the assigned courses on DataCamp before the due date</b>. We will be monitoring your progress online. 
+
+<br>
+<p>
+
+Meeting Day | Time | Room | Assignment Due
+------ |----------- | ---------|-------------------------
+August 4th | 10 AM-12 AM | HSC G750 | Orientation
+August 11th | 10 AM-12 AM | HSC G750 |Introduction to R
+August 18th | 10 AM-12 AM | HSC G750 |Intermediate R and Intermediate R-Practice
+August 25th | 10 AM-12 AM | HSC G639| Importing Data in R (Part 1) and Data Visualization with ggplot2 (Part 1)
+August 28th | 10 AM - 4:30 PM| HSC G750|
+August 29th | 10 AM -4:30 PM | HSC G743|

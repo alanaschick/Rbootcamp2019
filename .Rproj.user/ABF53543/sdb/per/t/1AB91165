@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "<br>\n<br>\n<p>\nBefore the actual course days (28th and 29th August), we have organized <font color=\"red\">optional</font> Q and A sessions on August 4, 11, 18 and 25th. You are welcome to attend if you have quetions. In any case,<b> Please make sure that you finish the assigned courses on DataCamp before the due date</b>. We will be monitoring your progress online. \n\n<br>\n<p>\n\nMeeting Day | Time | Room | Assignment Due\n------ |----------- | ---------|-------------------------\nAugust 4th | 10 AM-12 AM | HSC G750 | Orientation\nAugust 11th | 10 AM-12 AM | HSC G750 |Introduction to R\nAugust 18th | 10 AM-12 AM | HSC G750 |Intermediate R and Intermediate R-Practice\nAugust 25th | 10 AM-12 AM | HSC G639| Importing Data in R (Part 1) and Data Visualization with ggplot2 (Part 1)\nAugust 28th | 10 AM - 4:30 PM| HSC G750|\nAugust 29th | 10 AM -4:30 PM | HSC G743|\n",
+    "created" : 1501170773448.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3044693662",
+    "id" : "1AB91165",
+    "lastKnownWriteTime" : 1501172221,
+    "last_content_update" : 1501172221,
+    "path" : "~/projects/Rbootcamp2017/Schedule.Rmd",
+    "project_path" : "Schedule.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

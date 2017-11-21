@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "<br>\n<br>\n<p>\nTo maximize the R skills and confidence attendees gain from this workshop, we have chosen to combine online learning materials with actual instruction days. \n<br>\n<p>\nWe will use [datacamp's](https://www.datacamp.com/home) virtual classroom tool to train attendees in basic R. A month prior to the workshop, each attendee will receive a datacamp account with a list of assigned courses and assignments. Progress of each student will be monitored by the instructors and a Q &A session will be organized to review the course material at the end of each week. Attendees will only spend 3-4 hours on course material every week. \n</p>\n<p>\nOn the days of the workshop, the knowledge gained from course work will be used to complete a biologialy relevant project.  </p>",
+    "created" : 1499268326469.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "966949230",
+    "id" : "A3BD8CE",
+    "lastKnownWriteTime" : 1501172221,
+    "last_content_update" : 1501172221,
+    "path" : "~/projects/Rbootcamp2017/format.Rmd",
+    "project_path" : "format.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

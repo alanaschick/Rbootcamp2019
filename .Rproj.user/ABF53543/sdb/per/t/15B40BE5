@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "name: \"R bootcamp for Biologists\"\nnavbar:\n  title: \"R bootcamp for Biologists\"\n  left:\n    - text: \"Home\"\n      href: index.html\n    - text: \"Instructors\"\n      href: about.html\n      icon: ion-wand\n    - text: \"Format\"\n      href: format.html\n      icon: ion-clipboard\n    - text: \"Schedule\"\n      href: Schedule.html\n      icon: ion-calendar\n    - text: \"Register\"\n      href: register.html\n      icon: ion-android-person-add\n      \n  right:\n    - icon: favicon\noutput_dir: \".\"\noutput:\n  html_document:\n    theme: cosmo\n    highlight: textmate\n    include:\n      after_body: footer.html\n    css: style.css",
+    "created" : 1499234110412.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2329498791",
+    "id" : "15B40BE5",
+    "lastKnownWriteTime" : 1501172221,
+    "last_content_update" : 1501172221,
+    "path" : "~/projects/Rbootcamp2017/_site.yml",
+    "project_path" : "_site.yml",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "yaml"
+}
