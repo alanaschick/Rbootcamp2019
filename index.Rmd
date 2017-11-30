@@ -10,6 +10,10 @@
 <h32> (January 8-10 at FootHills Campus) </h32>
 </div>
 
+
+<h3><font color="blue">This course is offered jointly by the International Microbiome Centre and Faculty of Veterinary Medicine at the University of Calgary.
+</h3></font>
+
 <br> 
 
 ## About this course
