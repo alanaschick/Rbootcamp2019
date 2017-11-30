@@ -1,16 +1,56 @@
 <br>
 <br>
 <p>
-Before the actual course days (28th and 29th August), we have organized <font color="red">optional</font> Q and A sessions on August 4, 11, 18 and 25th. You are welcome to attend if you have quetions. In any case,<b> Please make sure that you finish the assigned courses on DataCamp before the due date</b>. We will be monitoring your progress online. 
+Before the actual course days (8-10 January), we have organized  Q and A sessions on December 8th and 18th. These sessions are mandatory and be very helpful in getting you started and finishing the online courses on time. 
 
 <br>
 <p>
 
-Meeting Day | Time | Room | Assignment Due
------- |----------- | ---------|-------------------------
-August 4th | 10 AM-12 AM | HSC G750 | Orientation
-August 11th | 10 AM-12 AM | HSC G750 |Introduction to R
-August 18th | 10 AM-12 AM | HSC G750 |Intermediate R and Intermediate R-Practice
-August 25th | 10 AM-12 AM | HSC G639| Importing Data in R (Part 1) and Data Visualization with ggplot2 (Part 1)
-August 28th | 10 AM - 4:30 PM| HSC G750|
-August 29th | 10 AM -4:30 PM | HSC G743|
+
+## Outline
+
+* Dec 8: 1/2 day session (10 am - 12:30 pm)
+    + Meet and Greet 
+    + Rstudio IDE intro
+    + project discussion, i.e. what type of project would they like
+
+<br>
+<font color="blue">
+
+* Dec 8 - 18: Datacamp course to be completed before December 18th session
+    + Introduction to the Tidyverse
+
+</font>
+
+<br>
+
+* Dec 18: 1/2 day session (10 am - 12:30 pm)
+    + tidyverse practice session with a dataset
+
+<br>
+
+<font color="blue">
+
+* Dec 18 - Jan 8: Datacamp courses to be completed before January 8th session
+    + Introduction to R 
+    + ggplot part 1
+
+</font>
+
+<br>
+
+* Jan 8: All day session
+    + AM: Review and practice Intro to R
+    + PM: Review and practice ggplot
+
+<br>
+
+* Jan 9: Project day
+    + TBA
+
+<br>
+
+* Jan 10: Project day
+    + TBA
+
+

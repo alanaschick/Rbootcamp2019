@@ -30,7 +30,7 @@ At the end of the workshop you will able to:
 * Understand the basic data types: integer, numeric, logical, character
 * Understand R’s basic data structures: vector, matrix, list, data.frame
 * Manipulate data structures by subsetting and indexing
-* Manipulate data with dplyr and friends
+* Manipulate data with tidyverse
 * Make plots with ggplot
 * Understand some common R errors and how to deal with them
 * Find and evaluate R packages needed for a particular analysis
