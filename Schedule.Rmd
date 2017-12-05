@@ -9,7 +9,7 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 
 ## Outline
 
-* Dec 8: 1/2 day session (10 am - 12:30 pm)
+* Dec 15: 1/2 day session (10 am - 12:30 pm)
     + Meet and Greet 
     + Rstudio IDE intro
     + project discussion, i.e. what type of project would they like
@@ -17,21 +17,21 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 <br>
 <font color="blue">
 
-* Dec 8 - 18: Datacamp course to be completed before December 18th session
+* Dec 15 - 22: Datacamp course to be completed before December 18th session
     + Introduction to the Tidyverse
 
 </font>
 
 <br>
 
-* Dec 18: 1/2 day session (10 am - 12:30 pm)
+* Dec 22: 1/2 day session (10 am - 12:30 pm)
     + tidyverse practice session with a dataset
 
 <br>
 
 <font color="blue">
 
-* Dec 18 - Jan 8: Datacamp courses to be completed before January 8th session
+* Dec 22 - Jan 8: Datacamp courses to be completed before January 8th session
     + Introduction to R 
     + ggplot part 1
 
