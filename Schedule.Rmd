@@ -7,9 +7,9 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 <p>
 
 
-## Outline
+## Schedule
 
-* Dec 15: 1/2 day session (10 am - 12:30 pm)
+*  <b>Dec 15: 1/2 day session (10 am - 12pm, ROOM HSC G382 VC) </b>
     + Meet and Greet 
     + Rstudio IDE intro
     + project discussion, i.e. what type of project would they like
@@ -17,14 +17,14 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 <br>
 <font color="blue">
 
-* Dec 15 - 22: Datacamp course to be completed before December 18th session
+*  Dec 15 - 21: Datacamp course to be completed before December 21st session
     + Introduction to the Tidyverse
 
 </font>
 
 <br>
 
-* Dec 22: 1/2 day session (10 am - 12:30 pm)
+* <b>Dec 21: 1/2 day session (10 am - 12 pm, ROOM HSC G384)</b>
     + tidyverse practice session with a dataset
 
 <br>
@@ -39,18 +39,18 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 
 <br>
 
-* Jan 8: All day session
+* <b>Jan 8: All day session (10 am - 4 pm ,ROOM HSC G382 VC) </b>
     + AM: Review and practice Intro to R
     + PM: Review and practice ggplot
 
 <br>
 
-* Jan 9: Project day
+* <b>Jan 9: Project day (10 am - 4 pm ,ROOM HSC G382 VC)</b>
     + TBA
 
 <br>
 
-* Jan 10: Project day
+* <b>Jan 10: Project day (10 am - 4 pm ,ROOM HSC G382 VC)</b>
     + TBA
 
 
