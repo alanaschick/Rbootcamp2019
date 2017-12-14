@@ -1,0 +1,46 @@
+<br>
+<br>
+
+# Session 1
+
+In this session we will go over RStudio and a few pre-requisites that you will need to communicate and interact with us.
+
+<b> 1. Setup your slack account </b>
+
+I have already sent everyone an invitation to join our Calbug slack workspace. In this workspace we have a channel named <font color="red">RbootCamp2018 </font> which will be used to carry out all communication. This will be the best place to ask us questions or discuss topics as a group. If you have not received the email, please signup using the following link:
+
+ https://calbug.slack.com/signup
+ 
+ 
+ <b> 2. Install RStudio </b>
+ 
+ Please go to the link below and install Rstudio for your operating system:
+ 
+ https://www.rstudio.com/products/rstudio/download/#download
+ 
+ 
+  <b> 3. Familiarize yourself with RStudio interface </b>
+  
+  We will go over this during the session but if you missed the session, here is a useful pdf with the basics.
+  
+  http://dss.princeton.edu/training/RStudio101.pdf
+  
+  
+  
+  <b> 4. Basic Introduction to R </b>
+  
+  We will go over what R is and what are the very basics of it. Things like how to set a working directory, what are the best practices of setting up directory structure for your work and what to avoid.
+    
+  
+  <b> 5. DataCamp Courses </b>
+  
+  You will receive an email from DataCamp to complete the online courses.
+    
+  
+  <b> 5. For Next week </b>
+    
+  Please complete the Tidyverse course before joining us on Thursday. We will go over the course material and answer your 
+    
+    
+ 
+ 

@@ -9,7 +9,7 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 
 ## Schedule
 
-*  <b>Dec 15: 1/2 day session (10 am - 12pm, ROOM HSC G382 VC) </b>
+*  <b>Dec 15: 1/2 day session (10 am - 12pm, ROOM HSC G382 VC) </b> <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/Session1.html">Click here for details </a> 
     + Meet and Greet 
     + Rstudio IDE intro
     + project discussion, i.e. what type of project would they like
