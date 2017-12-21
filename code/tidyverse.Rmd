@@ -1,5 +1,5 @@
 ---
-title: "Session: Tidyverse"
+title: "Session 2: Tidyverse"
 output:
   html_document: 
     css: ../style.css
@@ -12,7 +12,7 @@ opts_chunk$set(warning=FALSE, message=FALSE, cache=FALSE, echo=TRUE, fig.width=5
 
 ## What is Tidyverse?
 
-The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying philosophy and are implemented in a smiliar way.
+The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying philosophy and are implemented in a similar way.
 
 <p> <img src="img/tidypng.png" alt="tidyverse" align="middle" height="300" width="400"> T</p>
 
@@ -21,9 +21,12 @@ The tidyverse is an opinionated collection of R packages designed for data scien
 
 ## Package: dplyr {.tabset}
 
-Improtant verbs/functions that you learned from this pacakge are:
+Important verbs/functions that you learned from this package are:
 
 ### 1. filter
+
+Take a look at the arithmetic and logical operators [here](#ops)
+
 
 ```{r, echo=T}
 library(gapminder)
@@ -80,7 +83,7 @@ gapminder_asia<-gapminder %>%
 
 1. ggplot
 2. aes(x,y,color,size,label)
-3. geom_pioint,geom_bar, geom_hist etc
+3. geom_point,geom_bar, geom_hist etc
 
 
 ### Example {.tabset}
@@ -136,11 +139,14 @@ gapminder %>%
 # Packages to learn
 
 ## Package: readr 
+
 The goal of readr is to provide a fast and friendly way to read rectangular data (like csv, tsv, and fwf). It is designed to flexibly parse many types of data found in the wild, while still cleanly failing when data unexpectedly changes. 
 
 Please look at this link to get to know the functions in readr http://r4ds.had.co.nz/data-import.html
 
+Download the iris.csv  <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/code/data/iris.csv">from here </a> 
 
+Before you proceed, please think about the directory structure [here](#struct)
 
 ### Example
 
@@ -220,7 +226,7 @@ ggplot(iris, aes(x=Petal.Length,fill=Species)) + geom_histogram() + ggtitle("Ans
 ```
 
 
-#### Answer 3 &4
+#### Answer 3 & 4
 
 ```{r, echo=F}
 
@@ -240,8 +246,12 @@ ggplot(iris, aes(x=Petal.Length,fill=Species)) + geom_histogram() + ggtitle("Ans
 
 <br>
 <br>
+<br>
+<br>
 
-### Arithmetic Operators
+## Useful information
+
+### Arithmetic Operators {#ops}
 
 Operator	| Description
 --------|-------
@@ -266,3 +276,26 @@ Operator |	Description
 x | y	|x OR y
 x & y	|x AND y
 isTRUE(x)	|test if X is TRUE
+
+<br>
+<br>
+<br>
+
+
+## Directory Structure {#struct}
+
+| Project_name
+
+              |data
+
+              |code
+
+              |results
+
+              |plots
+              
+              
+## Tidyverse cheatsheet
+
+https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Tidyverse+Cheat+Sheet.pdf
+
