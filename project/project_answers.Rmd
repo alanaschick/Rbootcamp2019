@@ -1,5 +1,4 @@
 ---
-title: "Tidy Genomics"
 author: "Matthew Workentine"
 output: 
   html_document:
@@ -10,7 +9,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
+# Tidy Genomics Answers {.tabset}
 ```{r}
 library(tidyverse)
 ```
@@ -22,7 +21,7 @@ library(tidyverse)
 
 ```{r}
 raw = read_tsv("data/Brauer2008_DataSet1.tds")
-glimpse(raw)
+dim(raw)
 ```
 
 
@@ -102,13 +101,13 @@ clean = raw %>%
 ## Task 3: Plots
 
 
-## Filter your now cleaned data to contain only the gene LEU1.
+### Filter your now cleaned data to contain only the gene LEU1.
 ```{r}
 clean %>% 
   filter(gene_name == "LEU1") 
 ```
 
-## Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients.
+### Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients.
 ```{r}
 clean %>% 
   filter(gene_name == "LEU1") %>% 
@@ -116,21 +115,21 @@ clean %>%
     geom_line(aes(colour = nutrient)) 
 ```
 
-## What are some conclusions you can make from this data?
+### What are some conclusions you can make from this data?
  - When leucine is limiting the expression of LEU1 is higher than when any of the other nutrients are limiting.
  - As growth rate increase the expresison of LEU1 decreases but only in leucine limiting conditions.  In all other conditions it increases as growth rate increases.
 
 
-## What biological process is LEU1 classified as?
+### What biological process is LEU1 classified as?
 leucine biosynthesis
 
-## Filter your cleaned data for all genes that are in the same biological process as LEU1.
+### Filter your cleaned data for all genes that are in the same biological process as LEU1.
 ```{r}
 clean %>% 
   filter(BP == "leucine biosynthesis")
 ```
 
-## Make a plot of these genes, the same as you had for LEU1 but faceted by gene.
+### Make a plot of these genes, the same as you had for LEU1 but faceted by gene.
 ```{r}
 clean %>% 
   filter(BP == "leucine biosynthesis") %>% 
@@ -140,7 +139,7 @@ clean %>%
     facet_wrap(~gene_name)
 ```
 
-## Do any of the other genes follow the same pattern as LEU1?  
+### Do any of the other genes follow the same pattern as LEU1?  
 
 LEU2 seems to but the expression difference in leucine limiting conditions is not quite so high.
 
