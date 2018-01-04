@@ -1,19 +1,9 @@
 ---
-title: "Project Days"
-author: "Matthew Workentine"
-date: '2018-01-02'
-output: html_document
+title: "Tidy Genomics"
+output: 
+  html_document:
+    css: ../style.css
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## Libraries
-
-```{r}
-library(tidyverse)
-```
 
 ## Introduction
 
@@ -42,15 +32,10 @@ Your goal is get the data loaded into R and answer the following questions:
 
 As you look through the data start thinking about what steps you'll need to get it into a workable state.  
 
-```{r}
-
-raw = read_tsv("data/Brauer2008_DataSet1.tds")
-head(raw)
-```
 
 ## Task 2: Data Tidying
 
-Never underestimate the amount of time and effort it will take to tame a wild dataset into something useable.  Even if someone has already processed and "cleaned" the data before you (such as our current dataset) it is likely that you will need to spend some time fiddling with it for your particular needs (or for a particular function you want to use).  
+Never underestimate the amount of time and effort it will take to tame a wild dataset into something usable.  Even if someone has already processed and "cleaned" the data before you (such as our current dataset) it is likely that you will need to spend some time fiddling with it for your particular needs (or for a particular function you want to use).  
 
 You've learned about the tidy data concepts, now it's time to put them into practice. The first and most important step is decide what, if any tidying needs to be done. Recall that:
 
@@ -63,17 +48,24 @@ Questions to answer:
 * Which column contains multiple variables?  Split it up so each column represents a single variable.
 * The `GWEIGHT`, `GID`, and `YORF` columns we also won't need so you can get rid of those.
 * What's wrong with the column names?  How can you fix that?
-* Check again: do you have any columns that have multipe variables?  Be sure to fix any before you move on.
+* Check again: do you have any columns that have multiple variables?  Be sure to fix any before you move on.
 
 Try to code all the cleaning steps as a single pipeline.  The `separate()` and `gather()` functions from the tidyr package are a good place to start to accomplish these tasks.  
 
-**Bonus:** Your cleaning steps may have left some variables with extra whitespace at the end.  Using `dplyr::mutate_each()` and a certain function from the `stringr` package see if you can clean these up.
+**Bonus:** Your cleaning steps may have left some variables with extra white space at the end.  Using `dplyr::mutate_each()` and a certain function from the `stringr` package see if you can clean these up.
 
-```{r}
-raw %>% 
-  separate(NAME, c("gene_name", "BP", "MP", "gene_id", "number"), sep = "\\|\\|") %>% 
-  
 
-```
+## Task 3: Plots
 
+Whew! Alright, that's done, but now you might asking why spend all that time cleaning up the data.  Hopefully you should be able to answer that question by now but moving on to making some plots will help make it even more clear.
+
+In a typical analysis you wouldn't necessarily know which gene(s) to start looking at and would want to start with some more exploratory analysis.  However, to practice our plotting and analysis let's focus on a few pre-picked genes and pathways.
+
+* Filter your now cleaned data to contain only the gene LEU1.
+* Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients.
+* What are some conclusions you can make from this data?
+* What biological process is LEU1 classified as?
+* Filter your cleaned data for all genes that are in the same biological process as LEU!.
+* Make a plot of these genes, the same as you had for LEU1 but faceted by gene.
+* Do any of the other genes follow the same pattern as LEU1?  
 

@@ -1,0 +1,147 @@
+---
+title: "Tidy Genomics"
+author: "Matthew Workentine"
+output: 
+  html_document:
+    css: ../style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+```
+
+
+## Task 1: Data import and examination
+
+### How many rows and columns are there?
+
+```{r}
+raw = read_tsv("data/Brauer2008_DataSet1.tds")
+glimpse(raw)
+```
+
+
+### What do the rows and columns represent?
+
+Rows are genes and columns are a mix of different variables including gene names and expression values
+
+### On first glimpse do the column datatypes look correct?
+
+Yes, it seems that `readr` had guessed correctly on what the values should be.
+
+### What about column names? 
+
+The columns that have the gene expression values don't look right.  Something is up with that period in there.
+
+### Is this data tidy?  Why or why not?  
+
+It's not.  Each observation does not form a row and each variable does not form a column.
+
+
+## Task 2: Data Tidying
+
+
+### Which column contains multiple variables?  Split it up so each column represents a single variable.
+
+We need to tell `separate()` to split on the `||` character using the `sep` argument.  However, the `|` character is actually a special character for something called regular expressions, which we don't need to worry about right now.  That's why we need to use the double backslash, which "escapes" the `|` character and tells `separate()` to interpret it like a normal character. If we used `sep = "||"` this would give us the wrong result.
+
+```{r}
+raw %>% 
+  separate(NAME, c("gene_name", "BP", "MP", "gene_id", "number"), sep = "\\|\\|") 
+```
+
+### The `GWEIGHT`, `GID`, and `YORF` columns we also won't need so you can get rid of those.
+
+That's easy with `select()`.
+
+```{r}
+raw %>% 
+  separate(NAME, c("gene_name", "BP", "MP", "gene_id", "number"), sep = "\\|\\|") %>% 
+  select(-GWEIGHT, -GID, -YORF)
+```
+
+### What's wrong with the column names?  How can you fix that?
+
+They're variables not names and tidy data principles tell us that each variable should be a column.  And these are not just not just 1 variable - both nutrient and growth rate are present.  We can fix this with `gather()`.
+
+```{r}
+raw %>% 
+  separate(NAME, c("gene_name", "BP", "MP", "gene_id", "number"), sep = "\\|\\|") %>% 
+  select(-GWEIGHT, -GID, -YORF) %>% 
+  gather(variable, expression, G0.05:U0.3 )
+```
+
+### Check again: do you have any columns that have multipe variables?  Be sure to fix any before you move on.
+
+Why yes, it seems that our `variable` column is comprised of both nutrient and growth rate.  We'll have to use `separate()` again.  The trick here is how to specify the correct place to split the variable.  We want the first letter in one column (nutrient) and the the remaining part in a second column (growth_rate).  If you read the help for the `separate()` function you'll see that if you provide a number to the `sep` argument it will split at this position.  This works great for us.  There are other ways to split this variable, however, these require a bit more knowledge of regular expressions.  And always go with the simplist soluion you can find.
+
+```{r}
+raw %>% 
+  separate(NAME, c("gene_name", "BP", "MP", "gene_id", "number"), sep = "\\|\\|") %>% 
+  select(-GWEIGHT, -GID, -YORF) %>% 
+  gather(variable, expression, G0.05:U0.3 ) %>% 
+  separate(variable, c("nutrient", "growth_rate"), sep = 1)
+```
+
+**Bonus**
+
+```{r}
+clean = raw %>% 
+  separate(NAME, c("gene_name", "BP", "MP", "gene_id", "number"), sep = "\\|\\|") %>% 
+  select(-GWEIGHT, -GID, -YORF) %>% 
+  gather(variable, expression, G0.05:U0.3 ) %>% 
+  separate(variable, c("nutrient", "growth_rate"), sep = 1, convert = TRUE) %>% 
+  mutate_at(vars(gene_name:gene_id), trimws)
+```
+
+## Task 3: Plots
+
+
+## Filter your now cleaned data to contain only the gene LEU1.
+```{r}
+clean %>% 
+  filter(gene_name == "LEU1") 
+```
+
+## Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients.
+```{r}
+clean %>% 
+  filter(gene_name == "LEU1") %>% 
+  ggplot(aes(x = growth_rate, y = expression)) +
+    geom_line(aes(colour = nutrient)) 
+```
+
+## What are some conclusions you can make from this data?
+ - When leucine is limiting the expression of LEU1 is higher than when any of the other nutrients are limiting.
+ - As growth rate increase the expresison of LEU1 decreases but only in leucine limiting conditions.  In all other conditions it increases as growth rate increases.
+
+
+## What biological process is LEU1 classified as?
+leucine biosynthesis
+
+## Filter your cleaned data for all genes that are in the same biological process as LEU1.
+```{r}
+clean %>% 
+  filter(BP == "leucine biosynthesis")
+```
+
+## Make a plot of these genes, the same as you had for LEU1 but faceted by gene.
+```{r}
+clean %>% 
+  filter(BP == "leucine biosynthesis") %>% 
+  #filter(str_detect(BP, "amino acid transport")) 
+  ggplot(aes(x = growth_rate, y = expression)) +
+    geom_line(aes(colour = nutrient)) +
+    facet_wrap(~gene_name)
+```
+
+## Do any of the other genes follow the same pattern as LEU1?  
+
+LEU2 seems to but the expression difference in leucine limiting conditions is not quite so high.
+
+
