@@ -68,4 +68,21 @@ In a typical analysis you wouldn't necessarily know which gene(s) to start looki
 5. Filter your cleaned data for all genes that are in the same biological process as LEU!.
 6. Make a plot of these genes, the same as you had for LEU1 but faceted by gene.
 7. Do any of the other genes follow the same pattern as LEU1?  
+8. Customize your plot a bit by changing the colour palette to one of the RColorBrewer palettes.  Explore some of the other themes available (`theme_bw()` is particularly nice).  Fix the x-axis and y-axis labels so they look nicer. 
 
+**Bonus:** To increase readability of the plot it can helpful to change those nutrients from letters to full words.  Although there are ways to do this directly in ggplot the easiest is to change it in the original data.  
+
+
+## Task 4: Heatmap
+
+Heatmaps are quite popular but generally useless visualisations used frequently in the genomic sciences.  They can show a large amount of information in a small space, however, this very feature often renders them useless in terms of interpretability.  Yet, for some applications they can be useful and let's face it, your supervisor propbably wants one so it's a good skill to have.
+
+Heatmaps are very straight forward to make with ggplot using `geom_tile()` however, one of the more useful features of heatmap is the row and column ordering usually done with hierarchical clustering.  This is non-trivial (but not impossible) to implement with ggplot so instead we're going to look at a package specifically designed for these types of heatmaps. There are as many heatmap packages for R as there are heatmaps and you may end up using different packages for different purposes.  However, the `pheatmap` package has a nice balance of features, speed, and ease of use and is the one we'll work with today, although you are free to look at others for your own needs.
+
+To this point much of your training has focused on the concepts of tidy data analysis, which are very powerful and you will come to rely on for much of your work.  However, for genomics and other bioinformatics analysis you will often find yourself having to go between the *tidyverse* and other custom formats and datatypes specific to another package or the more traditional R datatypes, particularly the matrix format.  In addition to learning how to make a nice heatmap the other main goal of this task is to help you become familar with moving back and forth between different data structures.  
+
+**Questions:**
+
+1. Start by installing the `pheatmap` package from CRAN.  Have a look at the help page for the `pheatamp()` function.  Which argument specifies the data?  What format does it need?
+2. Using what you learned from the help function get the gene expression data into a format that `pheatmap()` can use.  Think about what you want your heatmap to look like - what are the columns and rows?
+3.  Once you've got data in the correct format start by making a simple heatmap with default parameters.  Do you like it?  Is there anything wrong with it?  What would change from a data interpretation perspective?  What about from aethetics perspective?
