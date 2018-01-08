@@ -228,10 +228,12 @@ $(document).ready(function () {
 
 <div id="installing-packages-from-different-sources." class="section level2">
 <h2>Installing packages from different sources.</h2>
-<ol style="list-style-type: decimal">
-<li><p>CRAN You can do this from tools menu-bar and select install packages.</p></li>
-<li><p>Bioconductor</p></li>
-</ol>
+<div id="cran" class="section level3">
+<h3>1. CRAN</h3>
+<p>You can do this from tools menu-bar and select install packages.</p>
+</div>
+<div id="bioconductor" class="section level3">
+<h3>2. Bioconductor</h3>
 <pre class="r"><code>source(&quot;https://bioconductor.org/biocLite.R&quot;)</code></pre>
 <pre><code>## Bioconductor version 3.5 (BiocInstaller 1.26.1), ?biocLite for help</code></pre>
 <pre><code>## A newer version of Bioconductor is available for this version of R,
@@ -242,7 +244,7 @@ $(document).ready(function () {
 <pre><code>## Installing package(s) &#39;affy&#39;</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T//RtmpQJE3mD/downloaded_packages</code></pre>
+##  /var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T//Rtmpg1ZEsE/downloaded_packages</code></pre>
 <pre><code>## Old packages: &#39;ade4&#39;, &#39;ape&#39;, &#39;backports&#39;, &#39;BiocGenerics&#39;, &#39;blogdown&#39;,
 ##   &#39;broom&#39;, &#39;car&#39;, &#39;checkmate&#39;, &#39;circlize&#39;, &#39;colourpicker&#39;, &#39;commonmark&#39;,
 ##   &#39;cowplot&#39;, &#39;crayon&#39;, &#39;curl&#39;, &#39;cytofkit&#39;, &#39;data.table&#39;, &#39;dendextend&#39;,
@@ -259,9 +261,9 @@ $(document).ready(function () {
 ##   &#39;ShortRead&#39;, &#39;sp&#39;, &#39;stringi&#39;, &#39;SummarizedExperiment&#39;, &#39;survminer&#39;,
 ##   &#39;TCGAbiolinks&#39;, &#39;testthat&#39;, &#39;tibble&#39;, &#39;tidyr&#39;, &#39;tidyverse&#39;, &#39;vcd&#39;,
 ##   &#39;vegan&#39;, &#39;VennDiagram&#39;, &#39;webshot&#39;, &#39;withr&#39;, &#39;xts&#39;, &#39;yaml&#39;</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Github</li>
-</ol>
+</div>
+<div id="github" class="section level3">
+<h3>3. Github</h3>
 <pre class="r"><code>library(devtools)
 install_github(&quot;hadley/dplyr&quot;)</code></pre>
 <pre><code>## Warning in strptime(x, fmt, tz = &quot;GMT&quot;): unknown timezone &#39;default/America/
@@ -271,17 +273,24 @@ install_github(&quot;hadley/dplyr&quot;)</code></pre>
 <pre><code>## Installing dplyr</code></pre>
 <pre><code>## &#39;/Library/Frameworks/R.framework/Resources/bin/R&#39; --no-site-file  \
 ##   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
-##   &#39;/private/var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T/RtmpQJE3mD/devtools1569344d85cf8/tidyverse-dplyr-0ad85cc&#39;  \
+##   &#39;/private/var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T/Rtmpg1ZEsE/devtools157c32ad61a39/tidyverse-dplyr-0ad85cc&#39;  \
 ##   --library=&#39;/Library/Frameworks/R.framework/Versions/3.4/Resources/library&#39;  \
 ##   --install-tests</code></pre>
 <pre><code>## </code></pre>
 <pre><code>## Installation failed: Command failed (1)</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>tar.gz packages Download the R package and use the tools menu bar -&gt; install packages to install it.</li>
-</ol>
+</div>
+<div id="tar.gz-packages" class="section level3">
+<h3>4. tar.gz packages</h3>
+<p>Download the R package and use the tools menu bar -&gt; install packages to install it.</p>
+<p><br></p>
+</div>
+</div>
+<div id="lets-talk-about-saving-code-in-files-and-best-practices-for-coding" class="section level2">
+<h2>Lets talk about saving code in files and best practices for coding</h2>
 </div>
 <div id="data-types-in-r" class="section level2">
 <h2>Data Types in R</h2>
+<p><br></p>
 <div id="vectors" class="section level3">
 <h3>Vectors</h3>
 <p>When you want to create vector with more than one element, you should use c() function which means to combine the elements into a vector.</p>
@@ -311,6 +320,7 @@ a+b</code></pre>
 <pre class="r"><code>c&lt;-c(a,b)
 c</code></pre>
 <pre><code>## [1]   5   5   5   6  15 151  15  61</code></pre>
+<p><br></p>
 </div>
 <div id="matrices" class="section level3">
 <h3>Matrices</h3>
@@ -331,6 +341,7 @@ class()
 str()
 length()
 </pre>
+<p><br></p>
 </div>
 <div id="factors" class="section level3">
 <h3>Factors</h3>
@@ -354,6 +365,7 @@ relevel()
 length()
 as.character()
 </pre>
+<p><br></p>
 </div>
 <div id="data-frames" class="section level3">
 <h3>Data Frames</h3>
@@ -382,6 +394,7 @@ rownames()
 colnames()
 </pre>
 <p>When you create or read in a dataframe from a file, it always reads strings as factors. You can see this by printing print(BMI$gender).</p>
+<p><br></p>
 </div>
 <div id="lists" class="section level3">
 <h3>Lists</h3>
@@ -407,10 +420,12 @@ print(list1)</code></pre>
 ##     2.0     5.0     3.0    21.3     2.0     2.0     1.0   152.0   171.5 
 ## height3 weight1 weight2 weight3    Age1    Age2    Age3 
 ##   165.0    81.0    93.0    78.0    42.0    38.0    26.0</code></pre>
+<p><font color ="red"><b> Lets try to make a list: </font> </b></p>
+<p>Make a list with 2 elements one a vector and second a dataframe.</p>
+<p><br></p>
 </div>
-</div>
-<div id="tibble" class="section level2">
-<h2>Tibble</h2>
+<div id="tibble" class="section level3">
+<h3>Tibble</h3>
 <p>Tibbles are a modern take on data frames. They keep the features that have stood the test of time, and drop the features that used to be convenient but are now frustrating (i.e. converting character vectors to factors).</p>
 <pre class="r"><code> t&lt;-tibble(x = 1:3, y = list(1:5, 1:10, 1:20))
 print(t)</code></pre>
@@ -433,18 +448,19 @@ print(t)</code></pre>
 <pre><code>## [1] 3 2</code></pre>
 <pre class="r"><code>rownames(t)&lt;-c(&quot;3&quot;,&quot;4&quot;,&quot;5&quot;)</code></pre>
 <pre><code>## Warning: Setting row names on a tibble is deprecated.</code></pre>
+<p><br></p>
+</div>
 </div>
 <div id="indexing-vectors-dataframes-and-lists" class="section level2">
 <h2>Indexing Vectors, Dataframes and lists</h2>
 <p>Indexing elements in vectors or dataframe or lists is a very important concept.Lets try out indexing in each of these data types.</p>
-</div>
-<div id="vectors-1" class="section level2">
-<h2>Vectors</h2>
+<div id="vectors-1" class="section level3">
+<h3>Vectors</h3>
 <pre class="r"><code>apple_colors[1]</code></pre>
 <pre><code>## [1] &quot;green&quot;</code></pre>
 </div>
-<div id="dataframe" class="section level2">
-<h2>dataframe</h2>
+<div id="dataframe" class="section level3">
+<h3>dataframe</h3>
 <pre class="r"><code># To access column 1
 BMI[,1]</code></pre>
 <pre><code>## [1] Male   Male   Female
@@ -462,8 +478,8 @@ BMI$gender</code></pre>
 BMI[2,3]</code></pre>
 <pre><code>## [1] 93</code></pre>
 </div>
-<div id="list" class="section level2">
-<h2>list</h2>
+<div id="list" class="section level3">
+<h3>list</h3>
 <pre class="r"><code>list1</code></pre>
 <pre><code>## [[1]]
 ## [1] 2 5 3
@@ -485,12 +501,15 @@ list1[[1]][2]</code></pre>
 <pre class="r"><code># get the Age column out of a dataframe which is the 3rd element of the list
 list1[[3]][,&quot;Age&quot;]</code></pre>
 <pre><code>## [1] 42 38 26</code></pre>
-<p><font color ="red"><b> Lets try to make a list: </font> </b></p>
-<p>Make a list with 2 elements one a vector and second a dataframe.</p>
+<p><br></p>
+</div>
 </div>
 <div id="conditional-statements" class="section level2">
 <h2>Conditional Statements</h2>
-Decision making is an important part of programming. This can be achieved in R programming using the conditional if…else statement. ### if The syntax of if statement is:
+<p>Decision making is an important part of programming. This can be achieved in R programming using the conditional if…else statement.</p>
+<div id="if" class="section level3">
+<h3>if</h3>
+The syntax of if statement is:
 <pre>
 if (test_expression) {
    statement
@@ -501,6 +520,7 @@ if(x &gt; 0){
    print(&quot;Positive number&quot;)
 }</code></pre>
 <pre><code>## [1] &quot;Positive number&quot;</code></pre>
+</div>
 <div id="ifelse-statement" class="section level3">
 <h3>if…else statement</h3>
 The syntax of if…else statement is:
@@ -533,6 +553,7 @@ if (x &lt; 0) {
    print(&quot;Zero&quot;)</code></pre>
 <pre><code>## [1] &quot;Zero&quot;</code></pre>
 <p><font color ="red"><b> Exercise: </font> </b> Write a simple if else statement to check if 5 is an odd number and if it is print(“I am odd”) else print(“I am even”)</p>
+<p><br></p>
 </div>
 </div>
 <div id="loops" class="section level2">
@@ -577,6 +598,7 @@ for( i in year)
 #3. Store these values into square vector
 
 #4. Outside of  the for loop print the square value</code></pre>
+<p><br></p>
 </div>
 <div id="functions-optional" class="section level2">
 <h2>Functions (optional)</h2>
@@ -584,6 +606,7 @@ for( i in year)
 <p><a href="https://campus.datacamp.com/courses/intermediate-r/chapter-3-functions?ex=1" class="uri">https://campus.datacamp.com/courses/intermediate-r/chapter-3-functions?ex=1</a></p>
 <p><font color ="red"><b> Exercise: </font> </b></p>
 <p>Write a function which take two vectors a and b as input and returns a new vector which concatenates the two</p>
+<p><br></p>
 </div>
 <div id="tidyr-functions" class="section level2">
 <h2>Tidyr functions</h2>

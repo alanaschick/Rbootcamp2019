@@ -11,27 +11,35 @@ library(tidyr)
 
 ## Installing packages from different sources.
 
-1. CRAN
+### 1. CRAN
 You can do this from tools menu-bar and select install packages.
 
-2. Bioconductor
+### 2. Bioconductor
 ```{r}
 source("https://bioconductor.org/biocLite.R")
 biocLite("affy")
 
 ```
 
-3. Github
+### 3. Github
 
 ```{r}
 library(devtools)
 install_github("hadley/dplyr")
 ```
 
-4. tar.gz packages
+### 4. tar.gz packages
 Download the R package and use the tools menu bar -> install packages to install it.
 
+<br>
+
+## Lets talk about saving code in files and best practices for coding
+
+
+
 ## Data Types in R
+
+<br>
 
 ### Vectors
 
@@ -67,6 +75,8 @@ c<-c(a,b)
 c
 ```
 
+<br>
+
 ### Matrices
 
 A matrix is a two-dimensional rectangular data set. It can be created using a vector input to the matrix function.
@@ -89,8 +99,10 @@ str()
 length()
 </pre>
 
+<br>
 
 ### Factors
+
 Factors are the r-objects which are created using a vector. It stores the vector along with the distinct values of the elements in the vector as labels. The labels are always character irrespective of whether it is numeric or character or Boolean etc. in the input vector. They are useful in statistical modeling.
 
 Factors are created using the factor() function.The nlevels functions gives the count of levels.
@@ -114,8 +126,10 @@ length()
 as.character()
 </pre>
 
+<br>
 
 ### Data Frames
+
 Data frames are tabular data objects. Unlike a matrix in data frame <b>each column can contain different modes of data</b>. The first column can be numeric while the second column can be character and third column can be logical. It is a list of vectors of equal length.
 
 Data Frames are created using the data.frame() function.
@@ -146,8 +160,10 @@ colnames()
 
 When you create or read in a dataframe from a file, it always reads strings as factors. You can see this by printing print(BMI$gender). 
 
+<br>
 
 ### Lists
+
 A list is an R-object which can contain many different types of elements inside it like vectors, functions and even another list inside it.
 ``` {r, }
 # Create a list.
@@ -158,10 +174,14 @@ print(list1)
 unlist(list1)
 ```
 
+<font color ="red"><b> Lets try to make a list: </font> </b>
+
+Make a list with 2 elements one a vector and second a dataframe.
+
+<br>
 
 
-
-## Tibble
+### Tibble
 
 Tibbles are a modern take on data frames. They keep the features that have stood the test of time, and drop the features that used to be convenient but are now frustrating (i.e. converting character vectors to factors).
 
@@ -175,11 +195,13 @@ rownames(t)<-c("3","4","5")
 
 ```
 
+<br>
+
 ## Indexing Vectors, Dataframes and lists
 
 Indexing elements in vectors or dataframe or lists is a very important concept.Lets try out indexing in each of these data types.
 
-## Vectors
+### Vectors
 
 ```{r}
 
@@ -187,7 +209,8 @@ apple_colors[1]
 
 ```
 
-## dataframe
+### dataframe
+
 ```{r}
 # To access column 1
 BMI[,1]
@@ -201,7 +224,7 @@ BMI[2,3]
 
 ```
 
-## list
+### list
 
 ```{r,}
 list1
@@ -212,12 +235,13 @@ list1[[1]][2]
 # get the Age column out of a dataframe which is the 3rd element of the list
 list1[[3]][,"Age"]
 ```
-<font color ="red"><b> Lets try to make a list: </font> </b>
 
-Make a list with 2 elements one a vector and second a dataframe.
+<br>
 
 ## Conditional Statements
+
 Decision making is an important part of programming. This can be achieved in R programming using the conditional if...else statement.
+
 ### if
 The syntax of if statement is:
 <pre>
@@ -234,6 +258,7 @@ if(x > 0){
 ```
 
 ### if...else statement
+
 The syntax of if...else statement is:
 <pre>
 if (test_expression) {
@@ -279,6 +304,7 @@ if (x < 0) {
 <font color ="red"><b> Exercise: </font> </b>
 Write a simple if else statement to check if 5  is an odd number and if it is print("I am odd") else print("I am even")
 
+<br>
 
 ## Loops
 Conceptually, a loop is a way to repeat a sequence of instructions under certain conditions. They allow you to automate parts of your code that are in need of repetition.
@@ -335,6 +361,8 @@ for( i in year)
 
 ```
 
+<br>
+
 ## Functions (optional)
 
 Watch the video 
@@ -344,6 +372,8 @@ https://campus.datacamp.com/courses/intermediate-r/chapter-3-functions?ex=1
 <font color ="red"><b> Exercise: </font> </b>
 
 Write a function which take two vectors a and b as input and returns a new vector which concatenates the two
+
+<br>
 
 ## Tidyr functions
 tidyr is new package that makes it easy to “tidy” your data. Tidy data is data that’s easy to work with: it’s easy to munge (with dplyr), visualize (with ggplot2 or ggvis) and model (with R’s hundreds of modelling packages). The two most important properties of tidy data are:
