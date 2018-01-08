@@ -9,7 +9,6 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 
-
 ## Filter
 gapminder %>% filter(year=='2007' & continent=="Asia")
 
