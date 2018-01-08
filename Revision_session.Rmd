@@ -12,7 +12,7 @@ library(tidyr)
 ## Installing packages from different sources.
 
 1. CRAN
-You can do this from tools menubar and select install packages.
+You can do this from tools menu-bar and select install packages.
 
 2. Bioconductor
 ```{r}
@@ -29,7 +29,7 @@ install_github("hadley/dplyr")
 ```
 
 4. tar.gz packages
-Download the R package and use the tools menu bar -> install pacakages to install it.
+Download the R package and use the tools menu bar -> install packages to install it.
 
 ## Data Types in R
 
@@ -177,7 +177,7 @@ rownames(t)<-c("3","4","5")
 
 ## Indexing Vectors, Dataframes and lists
 
-Indexing elements in vectors or dataframe or lists is a very improtant concept.Lets try out indexing in each of these data types.
+Indexing elements in vectors or dataframe or lists is a very important concept.Lets try out indexing in each of these data types.
 
 ## Vectors
 
@@ -346,7 +346,7 @@ https://campus.datacamp.com/courses/intermediate-r/chapter-3-functions?ex=1
 Write a function which take two vectors a and b as input and returns a new vector which concatenates the two
 
 ## Tidyr functions
-tidyr is new package that makes it easy to “tidy” your data. Tidy data is data that’s easy to work with: it’s easy to munge (with dplyr), visualise (with ggplot2 or ggvis) and model (with R’s hundreds of modelling packages). The two most important properties of tidy data are:
+tidyr is new package that makes it easy to “tidy” your data. Tidy data is data that’s easy to work with: it’s easy to munge (with dplyr), visualize (with ggplot2 or ggvis) and model (with R’s hundreds of modelling packages). The two most important properties of tidy data are:
 
 Each column is a variable.
 
