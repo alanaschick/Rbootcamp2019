@@ -46,7 +46,8 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 <br>
 
 * <b>Jan 9: Project day (10 am - 4 pm ,ROOM HSC G382 VC)</b>
-    + TBA
+    + [Project Info](https://wcmcbioinformatics.github.io/Rbootcamp2018/project/project.html)
+    + [Data set](https://wcmcbioinformatics.github.io/Rbootcamp2018/project/data/Brauer2008_DatSet1.tds)
 
 <br>
 
