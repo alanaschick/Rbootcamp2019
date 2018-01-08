@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Revision session</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R bootcamp for Biologists</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="ion ion-wand"></span>
+     
+    Instructors
+  </a>
+</li>
+<li>
+  <a href="format.html">
+    <span class="ion ion-clipboard"></span>
+     
+    Format
+  </a>
+</li>
+<li>
+  <a href="Schedule.html">Schedule</a>
+</li>
+<li>
+  <a href="register.html">
+    <span class="ion ion-android-person-add"></span>
+     
+    Register
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a>
+    <span class=" favicon"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Revision session</h1>
+
+</div>
+
+
+<div id="installing-packages-from-different-sources." class="section level2">
+<h2>Installing packages from different sources.</h2>
+<ol style="list-style-type: decimal">
+<li><p>CRAN You can do this from tools menubar and select install packages.</p></li>
+<li><p>Bioconductor</p></li>
+</ol>
+<pre class="r"><code>source(&quot;https://bioconductor.org/biocLite.R&quot;)</code></pre>
+<pre><code>## Bioconductor version 3.5 (BiocInstaller 1.26.1), ?biocLite for help</code></pre>
+<pre><code>## A newer version of Bioconductor is available for this version of R,
+##   ?BiocUpgrade for help</code></pre>
+<pre class="r"><code>biocLite(&quot;affy&quot;)</code></pre>
+<pre><code>## BioC_mirror: https://bioconductor.org</code></pre>
+<pre><code>## Using Bioconductor 3.5 (BiocInstaller 1.26.1), R 3.4.1 (2017-06-30).</code></pre>
+<pre><code>## Installing package(s) &#39;affy&#39;</code></pre>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T//Rtmp1HGIRF/downloaded_packages</code></pre>
+<pre><code>## Old packages: &#39;ade4&#39;, &#39;ape&#39;, &#39;backports&#39;, &#39;BiocGenerics&#39;, &#39;blogdown&#39;,
+##   &#39;broom&#39;, &#39;car&#39;, &#39;checkmate&#39;, &#39;circlize&#39;, &#39;colourpicker&#39;, &#39;commonmark&#39;,
+##   &#39;cowplot&#39;, &#39;crayon&#39;, &#39;curl&#39;, &#39;cytofkit&#39;, &#39;data.table&#39;, &#39;dendextend&#39;,
+##   &#39;destiny&#39;, &#39;devtools&#39;, &#39;digest&#39;, &#39;doParallel&#39;, &#39;dplyr&#39;, &#39;ellipse&#39;,
+##   &#39;flowCore&#39;, &#39;foreach&#39;, &#39;GenomeInfoDb&#39;, &#39;GenomicFeatures&#39;,
+##   &#39;GenomicRanges&#39;, &#39;ggpubr&#39;, &#39;ggrepel&#39;, &#39;ggsci&#39;, &#39;git2r&#39;, &#39;glmnet&#39;,
+##   &#39;gridExtra&#39;, &#39;Hmisc&#39;, &#39;hms&#39;, &#39;htmlTable&#39;, &#39;IRanges&#39;, &#39;irlba&#39;,
+##   &#39;iterators&#39;, &#39;knitr&#39;, &#39;lambda.r&#39;, &#39;lazyeval&#39;, &#39;limma&#39;, &#39;lme4&#39;,
+##   &#39;lubridate&#39;, &#39;MASS&#39;, &#39;Matrix&#39;, &#39;mclust&#39;, &#39;mgcv&#39;, &#39;nor1mix&#39;, &#39;openssl&#39;,
+##   &#39;OrganismDbi&#39;, &#39;pathview&#39;, &#39;pcaPP&#39;, &#39;proxy&#39;, &#39;psych&#39;, &#39;quantreg&#39;,
+##   &#39;R.utils&#39;, &#39;RcppArmadillo&#39;, &#39;RcppEigen&#39;, &#39;RCurl&#39;, &#39;registry&#39;,
+##   &#39;reshape2&#39;, &#39;rJava&#39;, &#39;rmarkdown&#39;, &#39;robustbase&#39;, &#39;rprojroot&#39;,
+##   &#39;rstudioapi&#39;, &#39;rtracklayer&#39;, &#39;Rttf2pt1&#39;, &#39;S4Vectors&#39;, &#39;servr&#39;,
+##   &#39;ShortRead&#39;, &#39;sp&#39;, &#39;stringi&#39;, &#39;SummarizedExperiment&#39;, &#39;survminer&#39;,
+##   &#39;TCGAbiolinks&#39;, &#39;testthat&#39;, &#39;tibble&#39;, &#39;tidyr&#39;, &#39;tidyverse&#39;, &#39;vcd&#39;,
+##   &#39;vegan&#39;, &#39;VennDiagram&#39;, &#39;webshot&#39;, &#39;withr&#39;, &#39;xts&#39;, &#39;yaml&#39;</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Github</li>
+</ol>
+<pre class="r"><code>library(devtools)
+install_github(&quot;hadley/dplyr&quot;)</code></pre>
+<pre><code>## Warning in strptime(x, fmt, tz = &quot;GMT&quot;): unknown timezone &#39;default/America/
+## Edmonton&#39;</code></pre>
+<pre><code>## Downloading GitHub repo hadley/dplyr@master
+## from URL https://api.github.com/repos/hadley/dplyr/zipball/master</code></pre>
+<pre><code>## Installing dplyr</code></pre>
+<pre><code>## &#39;/Library/Frameworks/R.framework/Resources/bin/R&#39; --no-site-file  \
+##   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
+##   &#39;/private/var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T/Rtmp1HGIRF/devtools15372461c7ea2/tidyverse-dplyr-0ad85cc&#39;  \
+##   --library=&#39;/Library/Frameworks/R.framework/Versions/3.4/Resources/library&#39;  \
+##   --install-tests</code></pre>
+<pre><code>## </code></pre>
+<pre><code>## Installation failed: Command failed (1)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>tar.gz packages Download the R package and use the tools menu bar -&gt; install pacakages to install it.</li>
+</ol>
+</div>
+<div id="data-types-in-r" class="section level2">
+<h2>Data Types in R</h2>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
+<p>When you want to create vector with more than one element, you should use c() function which means to combine the elements into a vector.</p>
+<pre class="r"><code># Create a vector.
+apple &lt;- c(&#39;red&#39;,&#39;green&#39;,&quot;yellow&quot;)
+print(apple)</code></pre>
+<pre><code>## [1] &quot;red&quot;    &quot;green&quot;  &quot;yellow&quot;</code></pre>
+<pre class="r"><code># Get the class of the vector.
+print(class(apple))</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<font color ="red"><b> Lets try a few functions:</font> </b>
+<pre>
+length 
+toupper 
+tolower 
+paste0(paste an 'e' at the end of all colors in apple vector)
+grep (grep red from the apple vector)
+</pre>
+<p><br></p>
+<p>Vectors can also be numeric like:</p>
+<pre class="r"><code>a &lt;- c(5,5,5,6)
+b &lt;- c(15,151,15,61)
+a+b</code></pre>
+<pre><code>## [1]  20 156  20  67</code></pre>
+<pre class="r"><code>a-b</code></pre>
+<pre><code>## [1]  -10 -146  -10  -55</code></pre>
+<pre class="r"><code>c&lt;-c(a,b)
+c</code></pre>
+<pre><code>## [1]   5   5   5   6  15 151  15  61</code></pre>
+</div>
+<div id="matrices" class="section level3">
+<h3>Matrices</h3>
+<p>A matrix is a two-dimensional rectangular data set. It can be created using a vector input to the matrix function.</p>
+<pre class="r"><code># Create a matrix.
+m = matrix( c(&#39;a&#39;,&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;b&#39;,&#39;a&#39;), nrow = 2, ncol = 3, byrow = TRUE)
+
+print(m)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,] &quot;a&quot;  &quot;a&quot;  &quot;b&quot; 
+## [2,] &quot;c&quot;  &quot;b&quot;  &quot;a&quot;</code></pre>
+<font color ="red"><b> Lets try a few functions:</font> </b>
+<pre>
+dim()
+ncol()
+nrow()
+class()
+str()
+length()
+</pre>
+</div>
+<div id="factors" class="section level3">
+<h3>Factors</h3>
+<p>Factors are the r-objects which are created using a vector. It stores the vector along with the distinct values of the elements in the vector as labels. The labels are always character irrespective of whether it is numeric or character or Boolean etc. in the input vector. They are useful in statistical modeling.</p>
+<p>Factors are created using the factor() function.The nlevels functions gives the count of levels.</p>
+<pre class="r"><code># Create a vector.
+apple_colors &lt;- c(&#39;green&#39;,&#39;green&#39;,&#39;yellow&#39;,&#39;red&#39;,&#39;red&#39;,&#39;red&#39;,&#39;green&#39;)
+
+# Create a factor object.
+factor_apple &lt;- factor(apple_colors)
+
+# Print the factor.
+print(factor_apple)</code></pre>
+<pre><code>## [1] green  green  yellow red    red    red    green 
+## Levels: green red yellow</code></pre>
+<pre class="r"><code>print(nlevels(factor_apple))</code></pre>
+<pre><code>## [1] 3</code></pre>
+<font color ="red"><b> Lets try a few functions:</font> </b>
+<pre>
+relevel()
+length()
+as.character()
+</pre>
+</div>
+<div id="data-frames" class="section level3">
+<h3>Data Frames</h3>
+<p>Data frames are tabular data objects. Unlike a matrix in data frame <b>each column can contain different modes of data</b>. The first column can be numeric while the second column can be character and third column can be logical. It is a list of vectors of equal length.</p>
+<p>Data Frames are created using the data.frame() function.</p>
+<pre class="r"><code># Create the data frame.
+BMI &lt;-  data.frame(
+   gender = c(&quot;Male&quot;, &quot;Male&quot;,&quot;Female&quot;), 
+   height = c(152, 171.5, 165), 
+   weight = c(81,93, 78),
+   Age = c(42,38,26)
+)
+print(BMI)</code></pre>
+<pre><code>##   gender height weight Age
+## 1   Male  152.0     81  42
+## 2   Male  171.5     93  38
+## 3 Female  165.0     78  26</code></pre>
+<font color ="red"><b> Lets try a few built in functions: </font> </b>
+<pre>
+dim()
+ncol()
+nrow()
+class()
+str()
+rownames()
+colnames()
+</pre>
+<p>When you create or read in a dataframe from a file, it always reads strings as factors. You can see this by printing print(BMI$gender).</p>
+</div>
+<div id="lists" class="section level3">
+<h3>Lists</h3>
+<p>A list is an R-object which can contain many different types of elements inside it like vectors, functions and even another list inside it.</p>
+<pre class="r"><code># Create a list.
+list1 &lt;- list(c(2,5,3),21.3,BMI)
+
+# Print the list.
+print(list1)</code></pre>
+<pre><code>## [[1]]
+## [1] 2 5 3
+## 
+## [[2]]
+## [1] 21.3
+## 
+## [[3]]
+##   gender height weight Age
+## 1   Male  152.0     81  42
+## 2   Male  171.5     93  38
+## 3 Female  165.0     78  26</code></pre>
+<pre class="r"><code>unlist(list1)</code></pre>
+<pre><code>##                                 gender1 gender2 gender3 height1 height2 
+##     2.0     5.0     3.0    21.3     2.0     2.0     1.0   152.0   171.5 
+## height3 weight1 weight2 weight3    Age1    Age2    Age3 
+##   165.0    81.0    93.0    78.0    42.0    38.0    26.0</code></pre>
+</div>
+</div>
+<div id="tibble" class="section level2">
+<h2>Tibble</h2>
+<p>Tibbles are a modern take on data frames. They keep the features that have stood the test of time, and drop the features that used to be convenient but are now frustrating (i.e. converting character vectors to factors).</p>
+<pre class="r"><code> t&lt;-tibble(x = 1:3, y = list(1:5, 1:10, 1:20))
+print(t)</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##       x          y
+##   &lt;int&gt;     &lt;list&gt;
+## 1     1  &lt;int [5]&gt;
+## 2     2 &lt;int [10]&gt;
+## 3     3 &lt;int [20]&gt;</code></pre>
+<pre class="r"><code>print(t$y)</code></pre>
+<pre><code>## [[1]]
+## [1] 1 2 3 4 5
+## 
+## [[2]]
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## [[3]]
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+<pre class="r"><code>dim(t)</code></pre>
+<pre><code>## [1] 3 2</code></pre>
+<pre class="r"><code>rownames(t)&lt;-c(&quot;3&quot;,&quot;4&quot;,&quot;5&quot;)</code></pre>
+<pre><code>## Warning: Setting row names on a tibble is deprecated.</code></pre>
+</div>
+<div id="indexing-vectors-dataframes-and-lists" class="section level2">
+<h2>Indexing Vectors, Dataframes and lists</h2>
+<p>Indexing elements in vectors or dataframe or lists is a very improtant concept.Lets try out indexing in each of these data types.</p>
+</div>
+<div id="vectors-1" class="section level2">
+<h2>Vectors</h2>
+<pre class="r"><code>apple_colors[1]</code></pre>
+<pre><code>## [1] &quot;green&quot;</code></pre>
+</div>
+<div id="dataframe" class="section level2">
+<h2>dataframe</h2>
+<pre class="r"><code># To access column 1
+BMI[,1]</code></pre>
+<pre><code>## [1] Male   Male   Female
+## Levels: Female Male</code></pre>
+<pre class="r"><code># To access row 1
+BMI[,1]</code></pre>
+<pre><code>## [1] Male   Male   Female
+## Levels: Female Male</code></pre>
+<pre class="r"><code># Access columns by using $ notation and column names
+
+BMI$gender</code></pre>
+<pre><code>## [1] Male   Male   Female
+## Levels: Female Male</code></pre>
+<pre class="r"><code># To access a specific element
+BMI[2,3]</code></pre>
+<pre><code>## [1] 93</code></pre>
+</div>
+<div id="list" class="section level2">
+<h2>list</h2>
+<pre class="r"><code>list1</code></pre>
+<pre><code>## [[1]]
+## [1] 2 5 3
+## 
+## [[2]]
+## [1] 21.3
+## 
+## [[3]]
+##   gender height weight Age
+## 1   Male  152.0     81  42
+## 2   Male  171.5     93  38
+## 3 Female  165.0     78  26</code></pre>
+<pre class="r"><code>#get the first element of the list which is a vector
+list1[[1]]</code></pre>
+<pre><code>## [1] 2 5 3</code></pre>
+<pre class="r"><code>#get the second element of the first vector in the list
+list1[[1]][2]</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code># get the Age column out of a dataframe which is the 3rd element of the list
+list1[[3]][,&quot;Age&quot;]</code></pre>
+<pre><code>## [1] 42 38 26</code></pre>
+<p><font color ="red"><b> Lets try to make a list: </font> </b></p>
+<p>Make a list with 2 elements one a vector and second a dataframe.</p>
+</div>
+<div id="conditional-statements" class="section level2">
+<h2>Conditional Statements</h2>
+Decision making is an important part of programming. This can be achieved in R programming using the conditional if…else statement. ### if The syntax of if statement is:
+<pre>
+if (test_expression) {
+   statement
+}
+</pre>
+<pre class="r"><code>x &lt;- 5
+if(x &gt; 0){
+   print(&quot;Positive number&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;Positive number&quot;</code></pre>
+<div id="ifelse-statement" class="section level3">
+<h3>if…else statement</h3>
+The syntax of if…else statement is:
+<pre>
+if (test_expression) {
+   statement1
+} else {
+   statement2
+}
+</pre>
+<p>The else part is optional and is only evaluated if test_expression is FALSE.</p>
+<p>It is important to note that else must be in the same line as the closing braces of the if statement.</p>
+<pre class="r"><code>x&lt;--1
+if(x &gt; 0){
+   print(&quot;Positive number&quot;)
+} else {
+  print(&quot;Negative number&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;Negative number&quot;</code></pre>
+</div>
+<div id="nested-if-else-statements" class="section level3">
+<h3>Nested if else statements</h3>
+<p>if ( test_expression1) { statement1 } else if ( test_expression2) { statement2 } else statement4</p>
+<pre class="r"><code>x &lt;- 0
+if (x &lt; 0) {
+   print(&quot;Negative number&quot;)
+} else if (x &gt; 0) {
+   print(&quot;Positive number&quot;)
+} else
+   print(&quot;Zero&quot;)</code></pre>
+<pre><code>## [1] &quot;Zero&quot;</code></pre>
+<p><font color ="red"><b> Exercise: </font> </b> Write a simple if else statement to check if 5 is an odd number and if it is print(“I am odd”) else print(“I am even”)</p>
+</div>
+</div>
+<div id="loops" class="section level2">
+<h2>Loops</h2>
+<p>Conceptually, a loop is a way to repeat a sequence of instructions under certain conditions. They allow you to automate parts of your code that are in need of repetition.</p>
+<p>The easiest and most frequently used loop in R is <b>for</b> loop. Here is a demonstration of using loops</p>
+<pre class="r"><code>year=c(2015,2016,2017,2018)
+
+for( i in year)
+{
+  print(i)
+  
+}</code></pre>
+<pre><code>## [1] 2015
+## [1] 2016
+## [1] 2017
+## [1] 2018</code></pre>
+<pre class="r"><code>for( i in year)
+{
+  print(paste0(&quot;the year is&quot;,i))
+  
+}</code></pre>
+<pre><code>## [1] &quot;the year is2015&quot;
+## [1] &quot;the year is2016&quot;
+## [1] &quot;the year is2017&quot;
+## [1] &quot;the year is2018&quot;</code></pre>
+<p><font color ="red"><b> Exercises: </font> </b></p>
+<pre class="r"><code>#1. Create a vector &#39;nums&#39; filled with 30 random normal values.hint(use rnom function)
+
+#2. Write a for loop which goes over the vector nums
+
+# for() {
+#3. print the square of each element of nums
+#}</code></pre>
+<pre class="r"><code>#1. write a for loop that calculate the square of the first 10 elements of nums.
+
+#2. In the for loop print the square value</code></pre>
+<pre class="r"><code># 1. initialize a vector &#39;square&#39;
+
+#2. write a for loop that calculate the square of the first 10 elements of nums.
+
+#3. Store these values into square vector
+
+#4. Outside of  the for loop print the square value</code></pre>
+</div>
+<div id="functions-optional" class="section level2">
+<h2>Functions (optional)</h2>
+<p>Watch the video</p>
+<p><a href="https://campus.datacamp.com/courses/intermediate-r/chapter-3-functions?ex=1" class="uri">https://campus.datacamp.com/courses/intermediate-r/chapter-3-functions?ex=1</a></p>
+<p><font color ="red"><b> Exercise: </font> </b></p>
+<p>Write a function which take two vectors a and b as input and returns a new vector which concatenates the two</p>
+</div>
+<div id="tidyr-functions" class="section level2">
+<h2>Tidyr functions</h2>
+<p>tidyr is new package that makes it easy to “tidy” your data. Tidy data is data that’s easy to work with: it’s easy to munge (with dplyr), visualise (with ggplot2 or ggvis) and model (with R’s hundreds of modelling packages). The two most important properties of tidy data are:</p>
+<p>Each column is a variable.</p>
+<p>Each row is an observation.</p>
+<p>Arranging your data in this way makes it easier to work with because you have a consistent way of referring to variables (as column names) and observations (as row indices). When use tidy data and tidy tools, you spend less time worrying about how to feed the output from one function into the input of another, and more time answering your questions about the data.</p>
+<p>To tidy messy data, you first identify the variables in your dataset, then use the tools provided by tidyr to move them into columns. tidyr provides three main functions for tidying your messy data: gather(), separate() and spread().</p>
+<p>gather() takes multiple columns, and gathers them into key-value pairs: it makes “wide” data longer. Other names for gather include melt (reshape2), pivot (spreadsheets) and fold (databases). Here’s an example how you might use gather() on a made-up dataset. In this experiment we’ve given three people two different drugs and recorded their heart rate:</p>
+<pre class="r"><code>library(tidyr)
+library(dplyr)
+
+messy &lt;- data.frame(
+  name = c(&quot;Wilbur&quot;, &quot;Petunia&quot;, &quot;Gregory&quot;),
+  a = c(67, 80, 64),
+  b = c(56, 90, 50)
+)
+messy</code></pre>
+<pre><code>##      name  a  b
+## 1  Wilbur 67 56
+## 2 Petunia 80 90
+## 3 Gregory 64 50</code></pre>
+<p>We have three variables (name, drug and heartrate), but only name is currently in a column. We use gather() to gather the a and b columns into key-value pairs of drug and heartrate:</p>
+<pre>gather(data, key = "key", value = "value", ..., na.rm = FALSE,
+  convert = FALSE, factor_key = FALSE)
+</pre>
+<pre class="r"><code>messy %&gt;%
+  gather(drug, heartrate, a:b)</code></pre>
+<pre><code>##      name drug heartrate
+## 1  Wilbur    a        67
+## 2 Petunia    a        80
+## 3 Gregory    a        64
+## 4  Wilbur    b        56
+## 5 Petunia    b        90
+## 6 Gregory    b        50</code></pre>
+<p>Sometimes two variables are clumped together in one column. separate() allows you to tease them apart (extract() works similarly but uses regexp groups instead of a splitting pattern or position). Take this example from stackoverflow (modified slightly for brevity). We have some measurements of how much time people spend on their phones, measured at two locations (work and home), at two times. Each person has been randomly assigned to either treatment or control.</p>
+<pre class="r"><code>set.seed(10)
+messy &lt;- data.frame(
+  id = 1:4,
+  trt = sample(rep(c(&#39;control&#39;, &#39;treatment&#39;), each = 2)),
+  work.T1 = runif(4),
+  home.T1 = runif(4),
+  work.T2 = runif(4),
+  home.T2 = runif(4)
+)
+head(messy,8)</code></pre>
+<pre><code>##   id       trt    work.T1   home.T1   work.T2    home.T2
+## 1  1 treatment 0.08513597 0.6158293 0.1135090 0.05190332
+## 2  2   control 0.22543662 0.4296715 0.5959253 0.26417767
+## 3  3 treatment 0.27453052 0.6516557 0.3580500 0.39879073
+## 4  4   control 0.27230507 0.5677378 0.4288094 0.83613414</code></pre>
+<p>To tidy this data, we first use gather() to turn columns work.T1, home.T1, work.T2 and home.T2 into a key-value pair of key and time. (Only the first eight rows are shown to save space.)</p>
+<pre class="r"><code>tidier &lt;- messy %&gt;%
+  gather(key, time, -id, -trt)
+tidier %&gt;% head(8)</code></pre>
+<pre><code>##   id       trt     key       time
+## 1  1 treatment work.T1 0.08513597
+## 2  2   control work.T1 0.22543662
+## 3  3 treatment work.T1 0.27453052
+## 4  4   control work.T1 0.27230507
+## 5  1 treatment home.T1 0.61582931
+## 6  2   control home.T1 0.42967153
+## 7  3 treatment home.T1 0.65165567
+## 8  4   control home.T1 0.56773775</code></pre>
+<p>Next we use separate() to split the key into location and time, using a regular expression to describe the character that separates them.</p>
+<pre class="r"><code>tidy &lt;- tidier %&gt;%
+  separate(key, into = c(&quot;location&quot;, &quot;time&quot;), sep = &quot;\\.&quot;)
+tidy %&gt;% head(8)</code></pre>
+<pre><code>##   id       trt location time       time
+## 1  1 treatment     work   T1 0.08513597
+## 2  2   control     work   T1 0.22543662
+## 3  3 treatment     work   T1 0.27453052
+## 4  4   control     work   T1 0.27230507
+## 5  1 treatment     home   T1 0.61582931
+## 6  2   control     home   T1 0.42967153
+## 7  3 treatment     home   T1 0.65165567
+## 8  4   control     home   T1 0.56773775</code></pre>
+<p>The last tool, spread(), takes two columns (a key-value pair) and spreads them in to multiple columns, making “long” data wider. Spread is known by other names in other places: it’s cast in reshape2, unpivot in spreadsheets and unfold in databases. spread() is used when you have variables that form rows instead of columns. You need spread() less frequently than gather() or separate() so to learn more, check out the documentation and the demos.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

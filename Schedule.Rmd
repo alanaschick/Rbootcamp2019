@@ -39,9 +39,9 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 
 <br>
 
-* <b>Jan 8: All day session (10 am - 4 pm ,ROOM HSC G382 VC) </b>
+* <b>Jan 8: All day session (10 am - 4 pm ,ROOM HSC G382 VC) </b> <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/code/Revision_session.html">Click here for details </a>
     + AM: Review and practice Intro to R
-    + PM: Review and practice ggplot
+    + PM: New concepts like statement controls, loops, functions and tidyr functions
 
 <br>
 
