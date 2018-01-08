@@ -244,7 +244,7 @@ $(document).ready(function () {
 <pre><code>## Installing package(s) &#39;affy&#39;</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T//Rtmpg1ZEsE/downloaded_packages</code></pre>
+##  /var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T//RtmpPHY0Qm/downloaded_packages</code></pre>
 <pre><code>## Old packages: &#39;ade4&#39;, &#39;ape&#39;, &#39;backports&#39;, &#39;BiocGenerics&#39;, &#39;blogdown&#39;,
 ##   &#39;broom&#39;, &#39;car&#39;, &#39;checkmate&#39;, &#39;circlize&#39;, &#39;colourpicker&#39;, &#39;commonmark&#39;,
 ##   &#39;cowplot&#39;, &#39;crayon&#39;, &#39;curl&#39;, &#39;cytofkit&#39;, &#39;data.table&#39;, &#39;dendextend&#39;,
@@ -260,7 +260,7 @@ $(document).ready(function () {
 ##   &#39;rstudioapi&#39;, &#39;rtracklayer&#39;, &#39;Rttf2pt1&#39;, &#39;S4Vectors&#39;, &#39;servr&#39;,
 ##   &#39;ShortRead&#39;, &#39;sp&#39;, &#39;stringi&#39;, &#39;SummarizedExperiment&#39;, &#39;survminer&#39;,
 ##   &#39;TCGAbiolinks&#39;, &#39;testthat&#39;, &#39;tibble&#39;, &#39;tidyr&#39;, &#39;tidyverse&#39;, &#39;vcd&#39;,
-##   &#39;vegan&#39;, &#39;VennDiagram&#39;, &#39;webshot&#39;, &#39;withr&#39;, &#39;xts&#39;, &#39;yaml&#39;</code></pre>
+##   &#39;vegan&#39;, &#39;VennDiagram&#39;, &#39;webshot&#39;, &#39;withr&#39;, &#39;xts&#39;, &#39;yaml&#39;, &#39;zoo&#39;</code></pre>
 </div>
 <div id="github" class="section level3">
 <h3>3. Github</h3>
@@ -273,7 +273,7 @@ install_github(&quot;hadley/dplyr&quot;)</code></pre>
 <pre><code>## Installing dplyr</code></pre>
 <pre><code>## &#39;/Library/Frameworks/R.framework/Resources/bin/R&#39; --no-site-file  \
 ##   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
-##   &#39;/private/var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T/Rtmpg1ZEsE/devtools157c32ad61a39/tidyverse-dplyr-0ad85cc&#39;  \
+##   &#39;/private/var/folders/jn/zp890ymn4vn6wb76rf0hpz7c0000gn/T/RtmpPHY0Qm/devtools15a447d3a7b6f/tidyverse-dplyr-e4b34cd&#39;  \
 ##   --library=&#39;/Library/Frameworks/R.framework/Versions/3.4/Resources/library&#39;  \
 ##   --install-tests</code></pre>
 <pre><code>## </code></pre>
@@ -642,7 +642,7 @@ messy</code></pre>
 ## 4  Wilbur    b        56
 ## 5 Petunia    b        90
 ## 6 Gregory    b        50</code></pre>
-<p>Sometimes two variables are clumped together in one column. separate() allows you to tease them apart (extract() works similarly but uses regexp groups instead of a splitting pattern or position). Take this example from stackoverflow (modified slightly for brevity). We have some measurements of how much time people spend on their phones, measured at two locations (work and home), at two times. Each person has been randomly assigned to either treatment or control.</p>
+<p>Sometimes two variables are clumped together in one column. separate() allows you to tease them apart. We have some measurements of how much time people spend on their phones, measured at two locations (work and home), at two times. Each person has been randomly assigned to either treatment or control.</p>
 <pre class="r"><code>set.seed(10)
 messy &lt;- data.frame(
   id = 1:4,
@@ -658,7 +658,7 @@ head(messy,8)</code></pre>
 ## 2  2   control 0.22543662 0.4296715 0.5959253 0.26417767
 ## 3  3 treatment 0.27453052 0.6516557 0.3580500 0.39879073
 ## 4  4   control 0.27230507 0.5677378 0.4288094 0.83613414</code></pre>
-<p>To tidy this data, we first use gather() to turn columns work.T1, home.T1, work.T2 and home.T2 into a key-value pair of key and time. (Only the first eight rows are shown to save space.)</p>
+<p>To tidy this data, we first use gather() to turn columns work.T1, home.T1, work.T2 and home.T2 into a key-value pair of key and time.</p>
 <pre class="r"><code>tidier &lt;- messy %&gt;%
   gather(key, time, -id, -trt)
 tidier %&gt;% head(8)</code></pre>

@@ -9,6 +9,8 @@ library(tibble)
 library(tidyr)
 ```
 
+<br>
+
 ## Installing packages from different sources.
 
 ### 1. CRAN
@@ -35,7 +37,7 @@ Download the R package and use the tools menu bar -> install packages to install
 
 ## Lets talk about saving code in files and best practices for coding
 
-
+<br>
 
 ## Data Types in R
 
@@ -412,7 +414,8 @@ We have three variables (name, drug and heartrate), but only name is currently i
 messy %>%
   gather(drug, heartrate, a:b)
 ```
-Sometimes two variables are clumped together in one column. separate() allows you to tease them apart (extract() works similarly but uses regexp groups instead of a splitting pattern or position). Take this example from stackoverflow (modified slightly for brevity). We have some measurements of how much time people spend on their phones, measured at two locations (work and home), at two times. Each person has been randomly assigned to either treatment or control.
+Sometimes two variables are clumped together in one column. separate() allows you to tease them apart.
+We have some measurements of how much time people spend on their phones, measured at two locations (work and home), at two times. Each person has been randomly assigned to either treatment or control.
 
 ```{r,}
 set.seed(10)
@@ -427,7 +430,7 @@ messy <- data.frame(
 head(messy,8)
 ```
 
-To tidy this data, we first use gather() to turn columns work.T1, home.T1, work.T2 and home.T2 into a key-value pair of key and time. (Only the first eight rows are shown to save space.)
+To tidy this data, we first use gather() to turn columns work.T1, home.T1, work.T2 and home.T2 into a key-value pair of key and time. 
 
 ```{r,tidy}
 tidier <- messy %>%
