@@ -7,7 +7,7 @@ output:
 
 ## Introduction
 
-The data we're going to work with comes from a yeast microarray experiment [(Brauer, 2008)](http://www.molbiolcell.org/content/19/1/352.abstract) where the authors measured gene expression in 36 chemostat cultures where growth was limited by one of six nutrients (glucose, ammonium, sulfate, phosphate, uracil, or leucine) at 3 different growth rates.   
+The data we're going to work with comes from a yeast microarray experiment [(Brauer, 2008)](http://www.molbiolcell.org/content/19/1/352.abstract) where the authors measured gene expression in 36 chemostat cultures where growth was limited by one of six nutrients (glucose, ammonium, sulfate, phosphate, uracil, or leucine) at 6 different growth rates.   
 
 The R world is full of niche tools designed for a specific problem or data type.  This is particularly true for Bioconductor and genomics analysis.  RNA-seq is a good example where all data import, analysis, and even plotting is done with custom packages and functions designed for gene expression data. Analysis of microbiome data with phyloseq is another example.  Now this is not a bad thing and can enable simple, rapid analysis.  Yet the point of learning a programming language like R is so you can take back control of your analysis and put the tools to work for your specific problem.  
 
