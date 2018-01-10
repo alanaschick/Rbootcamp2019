@@ -19,9 +19,13 @@ library(tidyverse)
 
 ### How many rows and columns are there?
 
+
+
+
 ```{r}
 raw = read_tsv("data/Brauer2008_DataSet1.tds")
-dim(raw)
+#raw = read_delim("data/Brauer2008_DataSet1.tds")
+glimpse(raw)
 ```
 
 
@@ -50,6 +54,7 @@ It's not.  Each observation does not form a row and each variable does not form 
 We need to tell `separate()` to split on the `||` character using the `sep` argument.  However, the `|` character is actually a special character for something called regular expressions, which we don't need to worry about right now.  That's why we need to use the double backslash, which "escapes" the `|` character and tells `separate()` to interpret it like a normal character. If we used `sep = "||"` this would give us the wrong result.
 
 ```{r}
+head(raw)
 raw %>% 
   separate(NAME, c("gene_name", "BP", "MP", "gene_id", "number"), sep = "\\|\\|") 
 ```
@@ -80,11 +85,15 @@ raw %>%
 Why yes, it seems that our `variable` column is comprised of both nutrient and growth rate.  We'll have to use `separate()` again.  The trick here is how to specify the correct place to split the variable.  We want the first letter in one column (nutrient) and the the remaining part in a second column (growth_rate).  If you read the help for the `separate()` function you'll see that if you provide a number to the `sep` argument it will split at this position.  This works great for us.  There are other ways to split this variable, however, these require a bit more knowledge of regular expressions.  And always go with the simplist soluion you can find.
 
 ```{r}
-raw %>% 
+clean = raw %>% 
   separate(NAME, c("gene_name", "BP", "MP", "gene_id", "number"), sep = "\\|\\|") %>% 
   select(-GWEIGHT, -GID, -YORF) %>% 
   gather(variable, expression, G0.05:U0.3 ) %>% 
   separate(variable, c("nutrient", "growth_rate"), sep = 1)
+```
+
+```{r}
+head(clean$BP)
 ```
 
 **Bonus**
@@ -95,7 +104,8 @@ clean = raw %>%
   select(-GWEIGHT, -GID, -YORF) %>% 
   gather(variable, expression, G0.05:U0.3 ) %>% 
   separate(variable, c("nutrient", "growth_rate"), sep = 1, convert = TRUE) %>% 
-  mutate_at(vars(gene_name:gene_id), trimws)
+  mutate_at(vars(gene_name:gene_id), str_trim)
+head(clean)
 ```
 
 ## Task 3: Plots
@@ -133,7 +143,6 @@ clean %>%
 ```{r}
 clean %>% 
   filter(BP == "leucine biosynthesis") %>% 
-  #filter(str_detect(BP, "amino acid transport")) 
   ggplot(aes(x = growth_rate, y = expression)) +
     geom_line(aes(colour = nutrient)) +
     facet_wrap(~gene_name)
@@ -170,6 +179,7 @@ nutrient_key = c(
   U = "Uracil",
   L = "Leucine"
 )
+nutrient_key["P"]
 
 clean %>% 
   mutate(nutrient_names = nutrient_key[nutrient]) %>% 
@@ -202,6 +212,7 @@ Looks like `pheatmap()` needs a numeric matix given with the `mat` arguments, wh
 
 Here we're going to go back to our pre-tidied data.  This doesn't negate the work we did to tidy it nor does it mean the the data is now 'dirty' or bad somehow.  Tidy data is standardized but many R tools still don't work with data in this format and so we must adapt.
 ```{r}
+head(raw)
 hm_mat = raw %>% 
   select(-GID, -YORF, -NAME, -GWEIGHT) %>% 
   as.matrix()
@@ -220,9 +231,14 @@ pheatmap(hm_mat)
 Overall this actually looks pretty good.  Because these data have already been normalized and scaled we don't need to do much here but there are few tweaks that may help. 
 * The default is to order both the rows and columns, however, because this is a timecourse experiment we may not want to order the columns.  In fact if we look at the raw data we see that the columns are already ordered by time.  
 * The colours are better than the typical red/green (which you should NEVER use, BTW) but still leave something to be desired.  This could be changed in a final version of the plot.  Note that we have a diverging colour scale with values ranging from -6 to +6.  This is becuase these data are mean-centred.  Blue (negative) values are below the mean for that gene and red values (positive) are above the mean for that gene.  Yellow is the mean expression for that gene.  Mean-centering is a handy way to show fold-changes, but should always be displayed with a diverging colour scale.
+```{r}
+```
 
 ```{r}
-pheatmap(hm_mat, cluster_cols = FALSE, 
+library(RColorBrewer)
+pheatmap(hm_mat, 
+         cluster_cols = FALSE, 
+         color = colorRampPalette(rev(brewer.pal(n = 7, name = "RdBu")))(100),
          breaks = seq(-5, 5, length.out = 101)
 )
 ```
