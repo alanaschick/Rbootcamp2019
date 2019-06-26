@@ -1,17 +1,17 @@
 
 
 <!-- <div class="wrapper"> -->
-<!-- <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/Schedule.html" class="button button1">Schedule</a> -->
+<!-- <a href="https://alanaschick.github.io/Rbootcamp2019/Schedule.html" class="button button1">Schedule</a> -->
 <!-- </div> -->
 
 <p class="big"> Welcome to the R bootcamp for biologists course website! </p>
 
 <div class="center">
-<h32> (January 8-10 at FootHills Campus) </h32>
+<h32> (August 12-14 at FootHills Campus) </h32>
 </div>
 
 
-<h3><font color="blue">This course is offered jointly by the International Microbiome Centre and Faculty of Veterinary Medicine at the University of Calgary.
+<h3><font color="blue">This course is offered by the International Microbiome Centre at the University of Calgary.
 </h3></font>
 
 <br> 
@@ -47,6 +47,6 @@ The fee for this course is 250 CAD.
 
 ## Register
 
-<font color="red"> Attendees will need to spend 4-6 hours on course material each week ( for 3 weeks)  prior to the start of the course.</font> For more details, please read <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/format.html"> Course Format</a> 
+<font color="red"> Attendees will need to spend 4-6 hours on course material each week ( for 3 weeks)  prior to the start of the course.</font> For more details, please read <a href="https://alanaschick.github.io/Rbootcamp2019/format.html"> Course Format</a> 
 
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScZDvSREzHU6Fzwr-tdPLUp8sA8FTR27wE5O3jigY7OVLdmfQ/viewform" class="button button1">Register</a>
+<a href="https://forms.gle/LMjm9g5oc6EwchQq8" class="button button1">Register</a>

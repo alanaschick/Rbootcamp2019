@@ -3,11 +3,11 @@
 <br>
 
 <p>
-Please click on the registeration button below to fill a pre-registeration form. Due to high demand for this course and limited space, we cannot gaurantee a spot to everyone. We will inform you if you have been accepted on Dec 5th.</p>
+Please click on the registeration button below to fill a pre-registeration form. Due to high demand for this course and limited space, we cannot gaurantee a spot to everyone. We will inform you if you have been accepted on July 19.</p>
 
-<font color="red"> Attendees will need to spend 4-6 hours on course material each week  prior to the start of the course.</font> For more details, please read <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/format.html"> Course Format</a> 
+<font color="red"> Attendees will need to spend 4-6 hours on course material each week  prior to the start of the course.</font> For more details, please read <a href="https://alanaschick.github.io/Rbootcamp2019/format.html"> Course Format</a> 
 
 ### The fee for this course is 250 CAD.
 
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScZDvSREzHU6Fzwr-tdPLUp8sA8FTR27wE5O3jigY7OVLdmfQ/viewform" class="button button1">Register</a>
+<a href="https://forms.gle/LMjm9g5oc6EwchQq8" class="button button1">Register</a>
 

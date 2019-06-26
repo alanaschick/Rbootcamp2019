@@ -1,7 +1,7 @@
 <br>
 <br>
 <p>
-Before the actual course days (8-10 January), we have organized  Q and A sessions on December 15th and 21st. These sessions are mandatory and be very helpful in getting you started and finishing the online courses on time. 
+Before the actual course days (August 12-14), we have organized  Q and A sessions on July 24th and 31st. These sessions are mandatory and be very helpful in getting you started and finishing the online courses on time. 
 
 <br>
 <p>
@@ -9,29 +9,29 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 
 ## Schedule
 
-*  <b>Dec 15: 1/2 day session (10 am - 12pm, ROOM HSC G382 VC) </b> <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/Session1.html">Click here for details </a> 
-    + Meet and Greet 
+*  <b>July 24: 1/2 day session (10 am - 12pm, Room TBA) </b> 
+    + Meet and greet 
     + Rstudio IDE intro
-    + project discussion, i.e. what type of project would they like
+    + Project discussion, i.e. what type of project would they like
 
 <br>
 <font color="blue">
 
-*  Dec 15 - 21: Datacamp course to be completed before December 21st session <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/code/tidyverse.html">Click here for details </a> 
+*  July 24 - 31: Datacamp course to be completed before July 31st session  
     + Introduction to the Tidyverse
 
 </font>
 
 <br>
 
-* <b>Dec 21: 1/2 day session (10 am - 12 pm, ROOM HSC G384)</b>
+* <b>July 31: 1/2 day session (10 am - 12 pm, Room TBA)</b>
     + tidyverse practice session with a dataset
 
 <br>
 
 <font color="blue">
 
-* Dec 22 - Jan 8: Datacamp courses to be completed before January 8th session
+* July 31 - August 12: Datacamp courses to be completed before August 12th session
     + Introduction to R 
     + ggplot part 1
 
@@ -39,19 +39,18 @@ Before the actual course days (8-10 January), we have organized  Q and A session
 
 <br>
 
-* <b>Jan 8: All day session (10 am - 4 pm ,ROOM HSC G382 VC) </b> <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/Revision_session.html">Click here for details </a>
+* <b>August 12: All day session (9 am - 3 pm , Room TBA) </b>
     + AM: Review and practice Intro to R
     + PM: New concepts like statement controls, loops, functions and tidyr functions
 
 <br>
 
-* <b>Jan 9: Project day (10 am - 4 pm ,ROOM HSC G382 VC)</b>
-    + [Project Info](https://wcmcbioinformatics.github.io/Rbootcamp2018/project/project.html)
-    + [Data set](https://wcmcbioinformatics.github.io/Rbootcamp2018/project/data/Brauer2008_DatSet1.tds)
+* <b>August 13: Project day (9 am - 3 pm , Room TBA)</b>
+    + TBA
 
 <br>
 
-* <b>Jan 10: Project day (10 am - 4 pm ,ROOM HSC G382 VC)</b>
+* <b>August 14: Project day (9 am - 3 pm , Room TBA)</b>
     + TBA
 
 

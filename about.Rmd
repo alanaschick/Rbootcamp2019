@@ -3,7 +3,7 @@
 <br>
 <br> 
 
-<p class="medium">This course is offered jointly by the <b> International Microbiome Centre</b> and <b>Faculty of Veterinary Medicine </b> at the University of Calgary.</p>
+<p class="medium">This course is offered by the <b> International Microbiome Centre</b> at the University of Calgary.</p>
 
 
 
@@ -12,7 +12,7 @@
 
 <p class="small"> For Questions and concerns, please contact the instructors:
 
-Dr Hena R. Ramay | Dr. Matthew Workentine
+Dr. Alana Schick | Dr. Hena R. Ramay
 ---------------- |-----------------------
-<a href="mailto:hena.ramay@ucalgary.ca" target="_top">hena.ramay@ucalgary.ca</a>|<a href="mailto:matthew.workentine@ucalgary.ca" target="_top">mathew.workentine@ucaglary.ca</a>
+<a href="mailto:a.schick@ucalgary.ca" target="_top">a.schick@ucalgary.ca</a>|<a href="mailto:hena.ramay@ucalgary.ca" target="_top">hena.ramay@ucalgary.ca</a>
 </p>

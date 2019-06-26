@@ -71,9 +71,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -92,8 +90,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -109,7 +113,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -129,6 +132,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -150,19 +190,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -229,22 +335,22 @@ $(document).ready(function () {
 
 <br> <br>
 <p>
-<p>Before the actual course days (8-10 January), we have organized Q and A sessions on December 15th and 21st. These sessions are mandatory and be very helpful in getting you started and finishing the online courses on time.</p>
+<p>Before the actual course days (August 12-14), we have organized Q and A sessions on July 24th and 31st. These sessions are mandatory and be very helpful in getting you started and finishing the online courses on time.</p>
 <br>
 <p>
 <div id="schedule" class="section level2">
 <h2>Schedule</h2>
 <ul>
-<li><b>Dec 15: 1/2 day session (10 am - 12pm, ROOM HSC G382 VC) </b> <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/Session1.html">Click here for details </a>
+<li><b>July 24: 1/2 day session (10 am - 12pm, Room TBA) </b>
 <ul>
-<li>Meet and Greet</li>
+<li>Meet and greet</li>
 <li>Rstudio IDE intro</li>
-<li>project discussion, i.e. what type of project would they like</li>
+<li>Project discussion, i.e. what type of project would they like</li>
 </ul></li>
 </ul>
 <p><br> <font color="blue"></p>
 <ul>
-<li>Dec 15 - 21: Datacamp course to be completed before December 21st session <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/code/tidyverse.html">Click here for details </a>
+<li>July 24 - 31: Datacamp course to be completed before July 31st session
 <ul>
 <li>Introduction to the Tidyverse</li>
 </ul></li>
@@ -252,7 +358,7 @@ $(document).ready(function () {
 <p></font></p>
 <p><br></p>
 <ul>
-<li><b>Dec 21: 1/2 day session (10 am - 12 pm, ROOM HSC G384)</b>
+<li><b>July 31: 1/2 day session (10 am - 12 pm, Room TBA)</b>
 <ul>
 <li>tidyverse practice session with a dataset</li>
 </ul></li>
@@ -260,7 +366,7 @@ $(document).ready(function () {
 <p><br></p>
 <p><font color="blue"></p>
 <ul>
-<li>Dec 22 - Jan 8: Datacamp courses to be completed before January 8th session
+<li>July 31 - August 12: Datacamp courses to be completed before August 12th session
 <ul>
 <li>Introduction to R</li>
 <li>ggplot part 1</li>
@@ -269,7 +375,7 @@ $(document).ready(function () {
 <p></font></p>
 <p><br></p>
 <ul>
-<li><b>Jan 8: All day session (10 am - 4 pm ,ROOM HSC G382 VC) </b> <a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/Revision_session.html">Click here for details </a>
+<li><b>August 12: All day session (9 am - 3 pm , Room TBA) </b>
 <ul>
 <li>AM: Review and practice Intro to R</li>
 <li>PM: New concepts like statement controls, loops, functions and tidyr functions</li>
@@ -277,15 +383,14 @@ $(document).ready(function () {
 </ul>
 <p><br></p>
 <ul>
-<li><b>Jan 9: Project day (10 am - 4 pm ,ROOM HSC G382 VC)</b>
+<li><b>August 13: Project day (9 am - 3 pm , Room TBA)</b>
 <ul>
-<li><a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/project/project.html">Project Info</a></li>
-<li><a href="https://wcmcbioinformatics.github.io/Rbootcamp2018/project/data/Brauer2008_DatSet1.tds">Data set</a></li>
+<li>TBA</li>
 </ul></li>
 </ul>
 <p><br></p>
 <ul>
-<li><b>Jan 10: Project day (10 am - 4 pm ,ROOM HSC G382 VC)</b>
+<li><b>August 14: Project day (9 am - 3 pm , Room TBA)</b>
 <ul>
 <li>TBA</li>
 </ul></li>
