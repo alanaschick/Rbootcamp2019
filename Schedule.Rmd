@@ -1,7 +1,7 @@
 <br>
 <br>
 <p>
-Before the actual course days (August 12-14), we have organized  Q and A sessions on July 24th and 31st. These sessions are mandatory and be very helpful in getting you started and finishing the online courses on time. 
+Before the actual course days (August 12-14), we have organized a Q and A session on July 31st. This session is mandatory and be very helpful in getting you started and finishing the online courses on time. 
 
 <br>
 <p>
@@ -9,33 +9,23 @@ Before the actual course days (August 12-14), we have organized  Q and A session
 
 ## Schedule
 
-*  <b>July 24: 1/2 day session (10 am - 12pm, Room TBA) </b> 
-    + Meet and greet 
-    + Rstudio IDE intro
-    + Project discussion, i.e. what type of project would they like
-
 <br>
 <font color="blue">
 
-*  July 24 - 31: Datacamp course to be completed before July 31st session  
+*  July 24 - 31: Datacamp courses to be completed before August 12th session  
     + Introduction to the Tidyverse
+    + Introduction to R
+    + Data Visualization with ggplot2 (Part 1)
 
 </font>
 
 <br>
 
 * <b>July 31: 1/2 day session (10 am - 12 pm, Room TBA)</b>
-    + Tidyverse practice session with a dataset
-
-<br>
-
-<font color="blue">
-
-* July 31 - August 12: Datacamp courses to be completed before August 12th session
-    + Introduction to R 
-    + Data Visualization with ggplot2 (Part 1)
-
-</font>
+    + Meet and greet
+    + Rstudio IDE intro
+    + Datacamp course overview
+    + Project discussion, i.e. what type of project you would like
 
 <br>
 
