@@ -12,9 +12,9 @@ Before the actual course days (August 12-14), we have organized a Q and A sessio
 <br>
 <font color="blue">
 
-*  July 24 - 31: Datacamp courses to be completed before August 12th session  
-    + Introduction to the Tidyverse
+*  July 24 - Aug 12: Datacamp courses to be completed before August 12th session  
     + Introduction to R
+    + Introduction to the Tidyverse
     + Data Visualization with ggplot2 (Part 1)
 
 </font>
