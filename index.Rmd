@@ -47,6 +47,4 @@ The fee for this course is 250 CAD.
 
 ## Register
 
-<font color="red"> Attendees will need to spend 4-6 hours on course material each week ( for 3 weeks)  prior to the start of the course.</font> For more details, please read <a href="https://alanaschick.github.io/Rbootcamp2019/format.html"> Course Format</a> 
-
-<a href="https://forms.gle/LMjm9g5oc6EwchQq8" class="button button1">Register</a>
+<font color="red"> This course is currently at capacity. If you would like to put your name on a list to be notified if we offer this workshop again in the future, please use</font> <a href="https://forms.gle/f8m7vBjRUgqmiDxE8"> this link.</a>
