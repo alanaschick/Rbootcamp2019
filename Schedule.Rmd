@@ -9,7 +9,6 @@ Before the actual course days (August 12-14), we have organized a Q and A sessio
 
 ## Schedule
 
-<br>
 <font color="blue">
 
 *  July 24 - Aug 12: Datacamp courses to be completed before August 12th session  
@@ -21,12 +20,12 @@ Before the actual course days (August 12-14), we have organized a Q and A sessio
 
 <br>
 
-* <b>July 31: 1/2 day session (10 am - 12 pm, Room TBA)</b>
-    + Meet and greet
-    + Rstudio IDE intro
+* <b>July 31: Pre-workshop session (10:00 - 12:00, HSC G750)</b>
+    + Welcome
+    + Introducing R and R studio
     + Datacamp course overview
-    + Project discussion, i.e. what type of project you would like
-
+    + Project discussion
+    
 <br>
 
 * <b>August 12: All day session (9 am - 3 pm , Room TBA) </b>

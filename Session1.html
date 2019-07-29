@@ -20,8 +20,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -31,10 +31,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -69,9 +71,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -90,8 +90,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -107,7 +113,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -127,6 +132,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -148,19 +190,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -173,7 +281,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">R bootcamp for Biologists</a>
+      <a class="navbar-brand" href="index.html">R bootcamp for Biologists 2019</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -195,7 +303,11 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
-  <a href="Schedule.html">Schedule</a>
+  <a href="Schedule.html">
+    <span class="ion ion-calendar"></span>
+     
+    Schedule
+  </a>
 </li>
 <li>
   <a href="register.html">
@@ -226,24 +338,73 @@ $(document).ready(function () {
 
 
 <p><br> <br></p>
-<div id="session-1" class="section level1">
-<h1>Session 1</h1>
-<p>In this session we will go over RStudio and a few pre-requisites that you will need to communicate and interact with us.</p>
-<p><b> 1. Setup your slack account </b></p>
-<p>I have already sent everyone an invitation to join our Calbug slack workspace. In this workspace we have a channel named <font color="red">RbootCamp2018 </font> which will be used to carry out all communication. This will be the best place to ask us questions or discuss topics as a group. If you have not received the email, please signup using the following link:</p>
-<p><a href="https://calbug.slack.com/signup" class="uri">https://calbug.slack.com/signup</a></p>
-<p><b> 2. Install RStudio </b></p>
-<p>Please go to the link below and install Rstudio for your operating system:</p>
-<p><a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a></p>
-<p><b> 3. Familiarize yourself with RStudio interface </b></p>
+<div id="pre-workshop-session---welcome-to-r" class="section level1">
+<h1>Pre-workshop session - Welcome to R!</h1>
+<p>In this session we will go over some housekeeping details such as communication and installation of R and RStudio. We will introduce the basics of R and RStudio as well as the assigned Datacamp material. Lastly, we will discuss the project you will complete during the workshop. <br> <br></p>
+<div id="setup-your-slack-account" class="section level2">
+<h2><b> 1. Setup your slack account </b></h2>
+<p>For communication during this workshop, we will use Slack. I have sent everyone an invitation to join our Calbug slack workspace. In this workspace we have a channel named <font color="red">rbootcamp2019 </font> which will be used to carry out all communication. This will be the best place to ask us questions or discuss topics as a group. If you have not received the email, please signup using the following link:</p>
+<p><a href="https://calbug.slack.com/signup" class="uri">https://calbug.slack.com/signup</a> <br> <br></p>
+</div>
+<div id="installation" class="section level2">
+<h2><b> 2. Installation </b></h2>
+<p>R and RStudio are separate downloads and installations. R is the underlying statistical computing environment and RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You will need to install R before you install RStudio.</p>
+<p><b> If you already have R and RStudio installed</b>, open RStudio and click on “Help” &gt; “Check for updates”. If a new version is available, quit RStudio and download the latest version of RStudio. To check which version of R you are using, start RStudio and check the top of the console to see which version of R you are running. Alternatively, you can type <code>sessionInfo()</code>, which will also display the version of R you are running. Go on the <a href="https://cran.r-project.org/bin/windows/base/">CRAN website</a> and check whether a more recent version is available. If so, please download and install it.</p>
+<p><b> If you don’t have R and RStudio installed</b>, please follow the instructions for your operating system below.</p>
+<div id="windows" class="section level3">
+<h3>Windows</h3>
+<ul>
+<li>Download R from the <a href="http://cran.r-project.org/bin/windows/base/release.htm">CRAN website</a>.</li>
+<li>Run the <code>.exe</code> file that was just downloaded</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
+<li>Under <em>Installers</em> select RStudio for Windows</li>
+<li>Double click the file to install it</li>
+<li>Once it’s installed, open RStudio to make sure it works and you don’t get any error messages.</li>
+</ul>
+</div>
+<div id="macos" class="section level3">
+<h3>MacOS</h3>
+<ul>
+<li>Download R from the <a href="http://cran.r-project.org/bin/macosx">CRAN website</a>.</li>
+<li>Select the <code>.pkg</code> file for the latest R version</li>
+<li>Double click on the downloaded file to install R</li>
+<li>It is also a good idea to install <a href="https://www.xquartz.org/">XQuartz</a> (needed by some packages)</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
+<li>Under <em>Installers</em> select RStudio for MacOS</li>
+<li>Double click the file to install RStudio</li>
+<li>Once it’s installed, open RStudio to make sure it works and you don’t get any error messages.</li>
+</ul>
+</div>
+<div id="for-everyone" class="section level3">
+<h3>For everyone</h3>
+<p>After installing R and RStudio, you need to install the <code>tidyverse</code> and <code>ggplot2</code> packages.</p>
+<ul>
+<li>After starting RStudio, at the console type: <code>install.packages(c(&quot;tidyverse&quot;, &quot;ggplot2&quot;))</code> <br> <br></li>
+</ul>
+</div>
+</div>
+<div id="familiarize-yourself-with-rstudio-interface" class="section level2">
+<h2><b> 3. Familiarize yourself with RStudio interface </b></h2>
 <p>We will go over this during the session but if you missed the session, here is a useful pdf with the basics.</p>
-<p><a href="http://dss.princeton.edu/training/RStudio101.pdf" class="uri">http://dss.princeton.edu/training/RStudio101.pdf</a></p>
-<p><b> 4. Basic Introduction to R </b></p>
-<p>We will go over what R is and what are the very basics of it. Things like how to set a working directory, what are the best practices of setting up directory structure for your work and what to avoid.</p>
-<p><b> 5. DataCamp Courses </b></p>
-<p>You will receive an email from DataCamp to complete the online courses.</p>
-<p><b> 5. For Next week </b></p>
-<p>Please complete the Tidyverse course before joining us on Thursday. We will go over the course material and answer your</p>
+<p><a href="http://dss.princeton.edu/training/RStudio101.pdf" class="uri">http://dss.princeton.edu/training/RStudio101.pdf</a> <br> <br></p>
+</div>
+<div id="basic-introduction-to-r" class="section level2">
+<h2><b> 4. Basic Introduction to R </b></h2>
+<p>We will go over what R is and what are the very basics of it. Things like how to set a working directory, what are the best practices of setting up directory structure for your work and what to avoid. <br> <br></p>
+</div>
+<div id="datacamp-courses" class="section level2">
+<h2><b> 5. DataCamp Courses </b></h2>
+<p>You have been assigned three Datacamp courses to be completed prior to the workshop:</p>
+<ul>
+<li>Introduction to R</li>
+<li>Introduction to the Tidyverse</li>
+<li>Data Visualization with ggplot2 (part 1)</li>
+</ul>
+<p>Please have these courses completed by the start of the workshop. <br> <br></p>
+</div>
+<div id="workshop-project" class="section level2">
+<h2><b> 6. Workshop Project </b></h2>
+</div>
 </div>
 
 

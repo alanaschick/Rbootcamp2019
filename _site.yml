@@ -12,7 +12,7 @@ navbar:
       icon: ion-clipboard
     - text: "Schedule"
       href: Schedule.html
-#      icon: ion-calendar
+      icon: ion-calendar
 #    - text: "Project"
 #      href: Project.html
 #      icon: ion-settings

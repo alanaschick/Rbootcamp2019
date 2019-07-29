@@ -1,45 +1,88 @@
 <br>
 <br>
 
-# Session 1
+# Pre-workshop session - Welcome to R!
 
-In this session we will go over RStudio and a few pre-requisites that you will need to communicate and interact with us.
+In this session we will go over some housekeeping details such as communication and installation of R and RStudio. We will introduce the basics of R and RStudio as well as the assigned Datacamp material. Lastly, we will discuss the project you will complete during the workshop. 
+<br>
+<br>
 
-<b> 1. Setup your slack account </b>
+## <b> 1. Setup your slack account </b>
 
-I have already sent everyone an invitation to join our Calbug slack workspace. In this workspace we have a channel named <font color="red">RbootCamp2018 </font> which will be used to carry out all communication. This will be the best place to ask us questions or discuss topics as a group. If you have not received the email, please signup using the following link:
+For communication during this workshop, we will use Slack. I have sent everyone an invitation to join our Calbug slack workspace. In this workspace we have a channel named <font color="red">rbootcamp2019 </font> which will be used to carry out all communication. This will be the best place to ask us questions or discuss topics as a group. If you have not received the email, please signup using the following link:
 
- https://calbug.slack.com/signup
+https://calbug.slack.com/signup
+<br>
+<br>
  
+## <b> 2. Installation </b>
  
- <b> 2. Install RStudio </b>
- 
- Please go to the link below and install Rstudio for your operating system:
- 
- https://www.rstudio.com/products/rstudio/download/#download
- 
- 
-  <b> 3. Familiarize yourself with RStudio interface </b>
+R and RStudio are separate downloads and installations. R is the underlying statistical computing environment and RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You will need to install R before you install RStudio.
+
+<b> If you already have R and RStudio installed</b>, open RStudio and click on "Help" > "Check for updates". If a new version is available, quit RStudio and download the latest version of RStudio. To check which version of R you are using, start RStudio and check the top of the console to see which version of R you are running. Alternatively, you can type `sessionInfo()`, which will also display the version of R you are running. Go on the [CRAN website](https://cran.r-project.org/bin/windows/base/) and check whether a more recent version is available. If so, please download and install it.
+
+<b> If you don't have R and RStudio installed</b>, please follow the instructions for your operating system below.
+
+### Windows
+* Download R from
+  the [CRAN website](http://cran.r-project.org/bin/windows/base/release.htm).
+* Run the `.exe` file that was just downloaded
+* Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
+* Under *Installers* select RStudio for Windows
+* Double click the file to install it
+* Once it's installed, open RStudio to make sure it works and you don't get any
+  error messages.
+
+### MacOS
+* Download R from
+  the [CRAN website](http://cran.r-project.org/bin/macosx).
+* Select the `.pkg` file for the latest R version
+* Double click on the downloaded file to install R
+* It is also a good idea to install [XQuartz](https://www.xquartz.org/) (needed
+  by some packages)
+* Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
+* Under *Installers* select RStudio for MacOS
+* Double click the file to install RStudio
+* Once it's installed, open RStudio to make sure it works and you don't get any
+  error messages.
   
-  We will go over this during the session but if you missed the session, here is a useful pdf with the basics.
+### For everyone
+After installing R and RStudio, you need to install the `tidyverse` and `ggplot2` packages.
+
+* After starting RStudio, in the console type:
+  `install.packages(c("tidyverse", "ggplot2"))`
+<br>
+<br> 
+
+## <b> 3. Introducing the RStudio Interface </b>
+
+
   
-  http://dss.princeton.edu/training/RStudio101.pdf
+We will go over this during the session but if you missed the session, here is a useful pdf with the basics.
   
+http://dss.princeton.edu/training/RStudio101.pdf
+<br>
+<br>
+
+## <b> 4. Basic Introduction to R </b>
   
+We will go over what R is and what are the very basics of it. Things like how to set a working directory, what are the best practices of setting up directory structure for your work and what to avoid.
+<br>
+<br>
+
+## <b> 5. DataCamp Courses </b>
   
-  <b> 4. Basic Introduction to R </b>
+You have been assigned three Datacamp courses to be completed prior to the workshop: 
   
-  We will go over what R is and what are the very basics of it. Things like how to set a working directory, what are the best practices of setting up directory structure for your work and what to avoid.
-    
+* Introduction to R
+* Introduction to the Tidyverse
+* Data Visualization with ggplot2 (part 1)
   
-  <b> 5. DataCamp Courses </b>
-  
-  You will receive an email from DataCamp to complete the online courses.
-    
-  
-  <b> 5. For Next week </b>
-    
-  Please complete the Tidyverse course before joining us on Thursday. We will go over the course material and answer your 
+Please have these courses completed by the start of the workshop. 
+<br>
+<br>
+
+## <b> 6. Workshop Project </b>
     
     
  
