@@ -11,35 +11,40 @@ Before the actual course days (August 12-14), we have organized a Q and A sessio
 
 <font color="blue">
 
-*  July 24 - Aug 12: Datacamp courses to be completed before August 12th session  
-    + Introduction to R
-    + Introduction to the Tidyverse
-    + Data Visualization with ggplot2 (Part 1)
+###  July 24 - Aug 12: Datacamp courses to be completed before August 12th session  
+* Introduction to R
+* Introduction to the Tidyverse
+* Data Visualization with ggplot2 (Part 1)
 
 </font>
 
 <br>
 
-* <b>July 31: Pre-workshop session (10:00 - 12:00, HSC G750)</b>
-    + Welcome
-    + Introducing R and R studio
-    + Datacamp course overview
-    + Project discussion
+### <b>July 31: [Pre-workshop session](./Session1.html) (10:00 - 12:00, HSC G750)</b>
+Schedule |                                            
+-------| ----------------------------------
+10:00  | Welcome
+10:05  | Presentation: Introducing R and the RStudio IDE
+10:20  | Installation and setup
+10:40  | Pre-workshop lesson
+11:10  | Questions
     
 <br>
 
-* <b>August 12: All day session (9 am - 3 pm , Room TBA) </b>
-    + AM: Review and practice Intro to R
-    + PM: New concepts like statement controls, loops, functions and tidyr functions
+### <b>August 12: Day 1 (9:00 - 15:00, HSC G382) </b>
+* Introduction to R, review and practice
+* Statement controls, loops, and functions
+* Starting with data
+* Manipulating data with dplyr
 
 <br>
 
-* <b>August 13: Project day (9 am - 3 pm , Room TBA)</b>
-    + TBA
+### <b>August 13: Day 2 (9:00 - 15:00, HSC G743)</b>
+Schedule TBA
 
 <br>
 
-* <b>August 14: Project day (9 am - 3 pm , Room TBA)</b>
-    + TBA
+### <b>August 14: Day 3 (9:00 - 15:00, HSC G382)</b>
+Schedule TBA
 
 

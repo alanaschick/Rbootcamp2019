@@ -1,13 +1,21 @@
 <br>
 <br>
 
-# Pre-workshop session - Welcome to R!
+# <b>Pre-workshop session - Welcome to R!</b>
 
-In this session we will go over some housekeeping details such as communication and installation of R and RStudio. We will introduce the basics of R and RStudio as well as the assigned Datacamp material. Lastly, we will discuss the project you will complete during the workshop. 
+In this session we will go over some housekeeping details such as communication and installation of R and RStudio. We will introduce the basics of R and RStudio as well as the assigned Datacamp material. If you have any issues with installation or questions about the material, please ask. 
 <br>
 <br>
 
-## <b> 1. Setup your slack account </b>
+# <b> 1. Introducing R and the RStudio IDE </b>
+
+Short presentation of RStudio. Slides can be found [here](./handouts/preworkshop.pdf).
+
+The term `R` is used to refer to both the programming language and the software that interprets the scrips written using it. `RStudio` is currently a popular way to write R scrips and also interact with the R software.
+<br>
+<br>
+
+# <b> 2. Setup your slack account </b>
 
 For communication during this workshop, we will use Slack. I have sent everyone an invitation to join our Calbug slack workspace. In this workspace we have a channel named <font color="red">rbootcamp2019 </font> which will be used to carry out all communication. This will be the best place to ask us questions or discuss topics as a group. If you have not received the email, please signup using the following link:
 
@@ -15,15 +23,15 @@ https://calbug.slack.com/signup
 <br>
 <br>
  
-## <b> 2. Installation </b>
+# <b> 3. Installation </b>
  
-R and RStudio are separate downloads and installations. R is the underlying statistical computing environment and RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You will need to install R before you install RStudio.
+<b>R</b> and <b>RStudio</b> are separate downloads and installations. R is the underlying statistical computing environment and RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You will need to install R before you install RStudio.
 
 <b> If you already have R and RStudio installed</b>, open RStudio and click on "Help" > "Check for updates". If a new version is available, quit RStudio and download the latest version of RStudio. To check which version of R you are using, start RStudio and check the top of the console to see which version of R you are running. Alternatively, you can type `sessionInfo()`, which will also display the version of R you are running. Go on the [CRAN website](https://cran.r-project.org/bin/windows/base/) and check whether a more recent version is available. If so, please download and install it.
 
 <b> If you don't have R and RStudio installed</b>, please follow the instructions for your operating system below.
 
-### Windows
+## Windows
 * Download R from
   the [CRAN website](http://cran.r-project.org/bin/windows/base/release.htm).
 * Run the `.exe` file that was just downloaded
@@ -33,7 +41,7 @@ R and RStudio are separate downloads and installations. R is the underlying stat
 * Once it's installed, open RStudio to make sure it works and you don't get any
   error messages.
 
-### MacOS
+## MacOS
 * Download R from
   the [CRAN website](http://cran.r-project.org/bin/macosx).
 * Select the `.pkg` file for the latest R version
@@ -46,31 +54,38 @@ R and RStudio are separate downloads and installations. R is the underlying stat
 * Once it's installed, open RStudio to make sure it works and you don't get any
   error messages.
   
-### For everyone
-After installing R and RStudio, you need to install the `tidyverse` and `ggplot2` packages.
-
-* After starting RStudio, in the console type:
-  `install.packages(c("tidyverse", "ggplot2"))`
+## Linux
+* Follow the instructions for your distribution
+  from [CRAN](https://cloud.r-project.org/bin/linux), they provide information
+  to get the most recent version of R for common distributions. For most
+  distributions, you could use your package manager (e.g., for Debian/Ubuntu run
+  `sudo apt-get install r-base`, and for Fedora `sudo yum install R`), but we
+  don't recommend this approach as the versions provided by this are
+  usually out of date. In any case, make sure you have at least R 3.3.1.
+* Go to the
+  [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
+* Under *Installers* select the version that matches your distribution, and
+  install it with your preferred method (e.g., with Debian/Ubuntu `sudo dpkg -i rstudio-x.yy.zzz-amd64.deb` at the terminal).
+* Once it's installed, open RStudio to make sure it works and you don't get any
+  error messages.
 <br>
-<br> 
+<br>  
 
-## <b> 3. Introducing the RStudio Interface </b>
+# <b> 4. Getting familiar with R and RStudio - Lesson </b>
 
+Work through the pre-workshop lesson found [here](./preworkshop.html).
 
-  
-We will go over this during the session but if you missed the session, here is a useful pdf with the basics.
-  
-http://dss.princeton.edu/training/RStudio101.pdf
+Learning objectives:
+
+* Understand RStudio's components: the Script, Console, Environment, and Plots panes.
+* Create an RStudio project and an R scrpt file
+* Understand how to organize files and directories for a set of analyses as an R Project, and understand the purpose of the working directory.
+* Learn how to use the built-in RStudio help interface to search for more information on R functions.
+* Learn how to troubleshoot and find information elsewhere.
 <br>
 <br>
 
-## <b> 4. Basic Introduction to R </b>
-  
-We will go over what R is and what are the very basics of it. Things like how to set a working directory, what are the best practices of setting up directory structure for your work and what to avoid.
-<br>
-<br>
-
-## <b> 5. DataCamp Courses </b>
+# <b> 5. DataCamp Courses </b>
   
 You have been assigned three Datacamp courses to be completed prior to the workshop: 
   
@@ -82,8 +97,15 @@ Please have these courses completed by the start of the workshop.
 <br>
 <br>
 
-## <b> 6. Workshop Project </b>
-    
+# <b> 6. Workshop Information </b>
+
+The workshop will run over three consecutive days from August 12-14, Monday to Wednesday. Note that the location will not be the same every day. The workshop will run from 9:00-15:00 each day with a short break in the morning and a one hour break for lunch. 
+
+* August 12, 9:00 - 15:00, HSC G382
+* August 13, 9:00 - 15:00, HSC G743
+* August 14, 9:00 - 15:00, HSC G382
+
+
     
  
  
