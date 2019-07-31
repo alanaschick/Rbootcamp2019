@@ -19,7 +19,7 @@ navbar:
     - text: "Register"
       href: register.html
       icon: ion-android-person-add
-    - text: "Session 0"
+    - text: "Preworkshop"
       href: Session1.html
       
   right:
