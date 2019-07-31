@@ -13,14 +13,12 @@ navbar:
     - text: "Schedule"
       href: Schedule.html
       icon: ion-calendar
-#    - text: "Project"
-#      href: Project.html
-#      icon: ion-settings
+    - text: "Preworkshop"
+      href: Session1.html
+      icon: ion-settings
     - text: "Register"
       href: register.html
       icon: ion-android-person-add
-    - text: "Preworkshop"
-      href: Session1.html
       
   right:
     - icon: favicon
