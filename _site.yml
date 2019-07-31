@@ -1,6 +1,6 @@
-name: "R bootcamp for Biologists"
+name: "R Bootcamp for Biologists"
 navbar:
-  title: "R bootcamp for Biologists 2019"
+  title: "R Bootcamp for Biologists 2019"
   left:
     - text: "Home"
       href: index.html
@@ -19,7 +19,9 @@ navbar:
     - text: "Register"
       href: register.html
       icon: ion-android-person-add
-
+    - text: "Session 0"
+      href: Session1.html
+      
   right:
     - icon: favicon
 output_dir: "."
