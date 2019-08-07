@@ -4,17 +4,12 @@
 .center {
   text-align: center;
 }
-
-h3 { 
-    display: block;
-    font-size: 1.17em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+body{ /* Normal  */
+      font-size: 16px;
+  }
+td {  /* Table  */
+  font-size: 14px;
 }
-
 h32 { 
     display: block;
     font-size: 1.17em;
@@ -24,32 +19,57 @@ h32 {
     margin-right: 0;
 }
 
-
-h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 14px;
+}
+h1.title {
+  font-size: 38px;
+  color: Black;
+  font-weight: bold;
+}
+h1 { /* Header 1 */
+  margin-top: 50px;
+  font-size: 32px;
+  color: DarkBlue;
+  font-weight: bold;
+}
+h2 { /* Header 2 */
+  font-size: 28px;
+  color: Black;
+  font-weight: bold;
+}
+h3 { /* Header 3 */
+  font-size: 24px;
+  color: Black;
+  font-weight: bold;
+}
+h4 { /* Header 4 */
+  font-size: 20px;
+  color: Black;
+}
+h5 { /* Header 5 */
+  font-size: 16px;
+  color: Black;
 }
 
 blockquote {
   font-style: italic
 }
 
-p.big {
+.big {
     line-height: 1.2;
      font-size: 32px;
 }
 
-p.medium {
+.medium {
     line-height: 1;
      font-size: 28px;
 }
 
-p.small {
+.small {
     line-height: 1;
      font-size: 32px;
 }
@@ -109,8 +129,6 @@ p  {
     position: relative;
     margin-top: 28px;
     margin-bottom: 0;
-    
-    
 }
 
 /* Change the color of links on hover */
@@ -136,4 +154,34 @@ p  {
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.boxGrey {
+  background-color: #DBDBDB;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 100px 0px;
+  padding: 25px 25px;
+  font-size: 120%;
+}
+
+.box {
+  border: 2px solid black;
+  margin: 60px 0px;
+  padding: 10px 25px;
+}
+
+.boxobj {
+  background-color: #DBDBDB;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 20px 0px;
+  padding: 25px 25px;
+  font-size: 120%;
+}
+
+.boxSmall {
+  border: 2px solid black;
+  margin: 20px 0px;
+  padding: 10px 25px;
 }
