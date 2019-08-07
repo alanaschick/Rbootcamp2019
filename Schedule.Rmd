@@ -1,26 +1,27 @@
-<br>
-<br>
+---
+title: "Schedule"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 <p>
 Before the actual course days (August 12-14), we have organized a Q and A session on July 31st. This session is mandatory and be very helpful in getting you started and finishing the online courses on time. 
 
-<br>
 <p>
 
 
-## Schedule
-
-<font color="blue">
-
-###  July 24 - Aug 12: Datacamp courses to be completed before August 12th session  
+##  July 24 - Aug 12: Datacamp courses to be completed before August 12th session  
 * Introduction to R
 * Introduction to the Tidyverse
 * Data Visualization with ggplot2 (Part 1)
 
-</font>
 
 <br>
 
-### <b>July 31: [Pre-workshop session](./Session1.html) (10:00 - 12:00, HSC G750)</b>
+## <b>July 31: [Pre-workshop session](./Session0.html) (10:00 - 12:00, HSC G750)</b>
 Schedule |                                            
 -------| ----------------------------------
 10:00  | Welcome
@@ -31,20 +32,28 @@ Schedule |
     
 <br>
 
-### <b>August 12: Day 1 (9:00 - 15:00, HSC G382) </b>
-* Introduction to R, review and practice
-* Statement controls, loops, and functions
+## <b>August 12: Day 1 (9:00 - 15:00, HSC G382) </b>
+Schedule |                                            
+-------| ----------------------------------
+09:00  | Spreadsheets - best practices
+09:30  | R basics - review and practice
+10:45  | Break
+11:00  | Statement controls, loops, and functions
+12:30  | Lunch break
+13:30  | Session 3
+15:00  | Finish
+
 * Starting with data
 * Manipulating data with dplyr
 
 <br>
 
-### <b>August 13: Day 2 (9:00 - 15:00, HSC G743)</b>
+## <b>August 13: Day 2 (9:00 - 15:00, HSC G743)</b>
 Schedule TBA
 
 <br>
 
-### <b>August 14: Day 3 (9:00 - 15:00, HSC G382)</b>
+## <b>August 14: Day 3 (9:00 - 15:00, HSC G382)</b>
 Schedule TBA
 
 
