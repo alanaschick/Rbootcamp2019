@@ -3,7 +3,7 @@
 <br>
 <br> 
 
-<p class="medium">This course is offered by the <b> International Microbiome Centre</b> at the University of Calgary.</p>
+<p class="medium">This course is organized and taught by the Bioinformatics Platform of the International Microbiome Centre.</p>
 
 
 
