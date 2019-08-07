@@ -1,0 +1,36 @@
+---
+title: "Workshop - Day 1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+August 12, 2019 
+
+## 1. [Spreadsheets](./01-spreadsheets.html)
+(~30 minutes)
+
+*  Implement best practices in data table formatting  
+*  Identify and address common formatting mistakes
+
+Download the data for the spreadsheet exercise [here](https://ndownloader.figshare.com/files/2252083).
+
+## 2. [R basics](./02-rbasics.html)
+(~60 minutes)
+
+*  Define the following terms as they relate to R: object, assign, call, function, arguments, options.   
+*  Assign values to objects in R.   
+*  Learn how to name objects   
+*  Use comments to inform script.   
+*  Solve simple arithmetic operations in R.   
+*  Call functions and use arguments to change their default options.   
+*  Inspect the content of vectors and manipulate their content.   
+*  Subset and extract values from vectors.   
+*  Analyze vectors with missing data.
+
+
+ 
+## 3. Lesson 3
+(~ time)
