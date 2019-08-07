@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Pre-workshop lesson: Getting familiar with R and RStudio</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R Bootcamp for Biologists 2019</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="ion ion-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="ion ion-wand"></span>
+     
+    Instructors
+  </a>
+</li>
+<li>
+  <a href="Schedule.html">
+    <span class="ion ion-calendar"></span>
+     
+    Schedule
+  </a>
+</li>
+<li>
+  <a href="Session0.html">
+    <span class="ion ion-settings"></span>
+     
+    Preworkshop
+  </a>
+</li>
+<li>
+  <a href="day1.html">
+    <span class="ion ion-create"></span>
+     
+    Day 1
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a>
+    <span class=" favicon"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Pre-workshop lesson: Getting familiar with R and RStudio</h1>
+
+</div>
+
+
+<p><link rel="stylesheet" type="text/css" href="style.css"></p>
+<hr />
+<div class="boxobj">
+<p><strong>Learning Objectives</strong></p>
+<ul>
+<li>Understand RStudio’s components: the Script, Console, Environment, and Plots panes.</li>
+<li>Create an RStudio project and an R scrpt file</li>
+<li>Understand how to organize files and directories for a set of analyses as an R Project, and understand the purpose of the working directory.</li>
+<li>Learn how to use the built-in RStudio help interface to search for more information on R functions.</li>
+<li>Learn how to troubleshoot and find information elsewhere.<br />
+</li>
+</ul>
+</div>
+<hr />
+<div id="why-learn-r" class="section level1">
+<h1>Why learn R?</h1>
+<div id="r-does-not-involve-a-lot-of-pointing-and-clicking---thats-a-good-thing" class="section level3">
+<h3>R does not involve a lot of pointing and clicking - that’s a good thing!</h3>
+<p>With R, the results of your analysis do not depend on remembering a succession of pointing and clicking, but instead on a series of written commands. That means that if (when!) you want to redo your analysis because you collected more data, or you want to run the same analyses on a different dataset, you don’t have to remember which button your clicked to obtain your results, you just have to run the script again.</p>
+<p>Working with scripts makes the steps you used in your analysis clear, and the code you write can be inspected by someone else for their own work, or to give you feedback.</p>
+<p>Working with scripts forces you to have a deeper understanding of what you are doing, and facilitates your learning and comprehension of the methods you use.</p>
+</div>
+<div id="r-code-is-great-for-reproducibility" class="section level3">
+<h3>R code is great for reproducibility</h3>
+<p>Reproducibility is when someone else (including your future self) can obtain the same results from the same dataset when using the same analysis.</p>
+<p><strong>Short-term goals:</strong></p>
+<ul>
+<li>Are the tables and figures reproducible from the code and data?<br />
+</li>
+<li>Does the code actually do what you think it does?<br />
+</li>
+<li>In addition to what was done, is it clear why is was done? (e.g., how were parameter settings chosen?)</li>
+</ul>
+<p><strong>Long-term goals:</strong></p>
+<ul>
+<li>Can the code be used for other data?<br />
+</li>
+<li>Can you extend the code to do other things?</li>
+</ul>
+<p>An increasing number of journals and funding agencies expect analyses to be reproducible, so knowing R will give you an edge with those requirements.</p>
+</div>
+<div id="r-is-interdisciplinary-and-extensible" class="section level3">
+<h3>R is interdisciplinary and extensible</h3>
+<p>With 10,000+ packages that can be installed to extend its capabilities, R provides a framework that allows you to combine statistical approaches from many scientific disciplines to best suit the analytical framework you need to analyze your data. For instance, R has packages for image analysis, GIS, time series, population genetics, bioinformatics and a lot more.</p>
+</div>
+<div id="r-works-on-data-of-all-shapes-and-sizes" class="section level3">
+<h3>R works on data of all shapes and sizes</h3>
+<p>The skills you learn with R scale easily with the size of your dataset. Whether your dataset has hundreds or millions of lines, it won’t make much difference to you.</p>
+<p>R is designed for data analysis. It comes with special data structures and data types that make handling of missing data and statistical factors convenient.</p>
+<p>R can connect to spreadsheets, databases, and many other data formats, on your computer or on the web.</p>
+</div>
+<div id="r-produces-high-quality-graphics" class="section level3">
+<h3>R produces high-quality graphics</h3>
+<p>The plotting functionalities in R are endless, and allow you to adjust any aspect of your graph to convey most effectively the message from your data.</p>
+</div>
+<div id="r-has-a-large-and-welcoming-community" class="section level3">
+<h3>R has a large and welcoming community</h3>
+<p>Thousands of people use R daily. Many of them are willing to help you through mailing lists and websites such as <a href="https://stackoverflow.com">Stack Overflow</a>, or on the <a href="https://community.rstudio.com/">RStudio community</a>.</p>
+<p><br></p>
+</div>
+<div id="interacting-with-r" class="section level3">
+<h3>Interacting with R</h3>
+<p>There are two main ways of interacting with R: using the console or by using script files (plain text files that contain your code).</p>
+<p>The console window (in RStudio, the bottom left panel) is the place where R is waiting for you to tell it what to do, and where it will show the results of a command. You can type commands directly into the console, but they will be forgotten when you close the session. It is better to enter the commands in the script editor, and save the script. This way, you have a complete record of what you did, you can easily show others how you did it and you can do it again later on if needed. You can copy-paste into the R console, but the Rstudio script editor allows you to ‘send’ the current line or the currently selected text to the R console using the <code>Ctrl-Enter</code> shortcut.</p>
+<p>If R is ready to accept commands, the R console shows a <code>&gt;</code> prompt. If it receives a command (by typing, copy-pasting or sent from the script editor using <code>Ctrl-Enter</code>), R will try to execute it, and when ready, show the results andcome back with a new <code>&gt;</code> prompt to wait for new commands.</p>
+<p>If R is still waiting for you to enter more data because it isn’t complete yet, the console will show a <code>+</code> prompt. It means that you haven’t finished entering a complete command. This is because you have not ‘closed’ a parenthesis or quotation. If you’re in Rstudio and this happens, click inside the console window and press <code>Esc</code>; this should help you out of trouble. <br> <br></p>
+</div>
+<div id="finding-your-way-around-rstudio" class="section level3">
+<h3>Finding your way around RStudio</h3>
+<p>We will use RStudio IDE to write code, navigate the files on our computer, inspect the variables we are going to create, and visualize the plots we will generate. RStudio can also be used for other things (e.g., version control, developing packages, writing Shiny apps) that we will not cover during the workshop.</p>
+<p>RStudio is divided into 4 “Panes”: the Source for your scripts and documents (top-left, in the default layout), your Environment/History (top-right), your Files/Plots/Packages/Help/Viewer (bottom-right), and the R Console (bottom-left). The placement of these panes and their content can be customized (see menu, Tools -&gt; Global Options -&gt; Pane Layout).</p>
+<p>One of the advantages of using RStudio is that all the information you need to write code is available in a single window. Additionally, with many shortcuts, auto completion, and highlighting for the major file types you use while developing in R, RStudio will make typing easier and less error-prone.</p>
+<div class="figure">
+<img src="figures/RStudio.png" />
+
+</div>
+<p><br></p>
+</div>
+</div>
+<div id="creating-an-rstudio-project" class="section level1">
+<h1>Creating an RStudio project</h1>
+<p>One of the benefits of RStudio is something called an RStudio Project. An RStudio project allows you to more easily:</p>
+<ul>
+<li>Save data, files, variables, packages, etc. related to a specific analysis project</li>
+<li>Restart work where you left off</li>
+<li>Collaborate, especially if you are using version control such as git.</li>
+</ul>
+<div id="to-create-a-project" class="section level3">
+<h3>To create a project:</h3>
+<ul>
+<li>Click the <code>File</code> menu, click on <code>New project</code>.</li>
+<li>Choose <code>New directory</code>, then <code>New project</code></li>
+<li>For “directory name” enter <code>rbootcamp</code>. For “Create project as subdirectory of”, you may leave the default, which is your home directory “~”.</li>
+<li>Click on <code>Create project</code></li>
+<li>Under the <code>Files</code> tab on the right of the screen, you should see an RStudio project file, <b>rbootcamp.Rproj</b>. All RStudio projects end with the “.Rproj” file extension.</li>
+</ul>
+<p>RStudio’s default preferences generally work well, but saving a workspace to .RData can be cumbersome, especially if you are working with larger datasets. To turn that off, go to <code>Tools</code> –&gt; <code>Global Options</code> and select the <code>Never</code> option for ‘Save workspace to .RData on exit.’ <img src="figures/Rdata.png" /></p>
+</div>
+</div>
+<div id="creating-your-first-r-script" class="section level1">
+<h1>Creating your first R script</h1>
+<p>Now that we are ready to start exploring R, we will want to keep a record of the commands we are using. To do this we can create an R script:</p>
+<div id="to-create-an-r-script" class="section level3">
+<h3>To create an R script:</h3>
+<ul>
+<li>Click the <code>File</code> menu, click on <code>New File</code> and then <code>R Script</code>.</li>
+<li>Save your script by clicking the save icon that is in the bar above the first line in the script editor, or click <code>File</code> then <code>Save</code>.</li>
+<li>In the “Save File” window that opens, name your file<code>rbootcamp_basicscript</code>.</li>
+<li>The new script <b>rbootcamp_basicscript.R</b> should appear under “files” in the output pane. All R scripts end with the “.R” file extension.</li>
+</ul>
+<p>Enter the following code in the script and hit run:</p>
+<pre class="r"><code># Define vectors
+d &lt;- c(1,2,3,4,5,6,7)
+e &lt;- 8:14
+f &lt;- &quot;Myplot&quot;
+
+# Plot example
+plot(d,e,main=f)</code></pre>
+<p><br></p>
+</div>
+</div>
+<div id="organizing-your-working-directory" class="section level1">
+<h1>Organizing your working directory</h1>
+<p>Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you should separate the original data (raw data) from intermediate datasets that you may create for the need of a particular analysis. For instance, you may want to create a <code>data/</code> directory within your working directory that stores the raw data, and have a <code>data_output/</code> directory for intermediate datasets and <code>figure_output/</code> directory for the plots you will generate.</p>
+<p>The working directory is an important concept to understand. It is the place from where R will be looking for and saving the files. When you write code for your project, it should refer to files in relation to the root of your working directory and only need files within this structure.</p>
+<p>Using RStudio projects makes this easy and ensures that your working directory is set properly. If you need to check it, you can use:</p>
+<pre class="r"><code>getwd()</code></pre>
+<p>If for some reason your working directory is not what it should be, you can change it in the RStudio interface by navigating in the file browser where your working directory should be, and clicking on the blue gear icon “More”, and select “Set As Working Directory”. Alternatively you can use:</p>
+<pre class="r"><code>setwd(&quot;/path/to/working/directory&quot;)</code></pre>
+<p>to reset your working directory. However, your scripts should not include this line because it will fail on someone else’s computer. <br> <br></p>
+</div>
+<div id="how-to-learn-more" class="section level1">
+<h1>How to learn more?</h1>
+<p>The material we cover during this workshop will give you an initial taste of how you can use R to analyze data for your own research. However, you will need to learn more to do advanced operations. The best way to become proficient and efficient at R, as with any other tool, is to use it to address your actual research questions. As a beginner, it can feel daunting to have to write a script from scratch, and given that many people make their code available online, modifying existing code to suit your purpose might make it easier for you to get started.</p>
+<p>The following part of this section is from <a href="%22https://moderndive.com/2-getting-started.html%22">“Modern Dive Section 2.2.3”</a></p>
+<p>Learning to code/program is very much like learning a foreign language, it can be very daunting and frustrating at first. Such frustrations are very common and it is very normal to feel discouraged as you learn. However just as with learning a foreign language, if you put in the effort and are not afraid to make mistakes, anybody can learn.</p>
+<p>Here are a few useful tips to keep in mind as you learn to program:</p>
+<ul>
+<li>Remember that computers are not actually that smart</strong>: You may think your computer or smartphone are “smart,” but really people spent a lot of time and energy designing them to appear “smart.” Rather you have to tell a computer everything it needs to do. Furthermore the instructions you give your computer can’t have any mistakes in them, nor can they be ambiguous in any way.</li>
+<li>Take the “copy, paste, and tweak” approach: Especially when learning your first programming language, it is often much easier to taking existing code that you know works and modify it to suit your ends, rather than trying to write new code from scratch. We call this the copy, paste, and tweak approach. So early on, we suggest not trying to write code from memory, but rather take existing examples we have provided you, then copy, paste, and tweak them to suit your goals. Don’t be afraid to play around!</li>
+<li>The best way to learn to code is by doing: Rather than learning to code for its own sake, we feel that learning to code goes much smoother when you have a goal in mind or when you are working on a particular project, like analyzing data that you are interested in.</li>
+<li>Practice is key: Just as the only method to improving your foreign language skills is through practice, practice, and practice; so also the only method to improving your coding is through practice, practice, and practice. <br> <br></li>
+</ul>
+</div>
+<div id="seeking-help" class="section level1">
+<h1>Seeking help</h1>
+<p>One of the fastest ways to get help is to use the RStudio help interface. This panel by default can be found at the lower right hand panel of RStudio. As seen in the screenshot, by typing the word “Mean”, RStudio tries to also give a number of suggestions that you might be interested in. The description is then shown in the display window.</p>
+<p>If you need help with a specific function, let’s say <code>barplot()</code>, you can type:</p>
+<pre class="r"><code>?barplot</code></pre>
+<p>If you just need to remind yourself of the names of the arguments, you can use:</p>
+<pre class="r"><code>args(lm)</code></pre>
+<pre><code>## function (formula, data, subset, weights, na.action, method = &quot;qr&quot;, 
+##     model = TRUE, x = FALSE, y = FALSE, qr = TRUE, singular.ok = TRUE, 
+##     contrasts = NULL, offset, ...) 
+## NULL</code></pre>
+<p>If you are looking for a function to do a particular task, you can use the <code>help.search()</code> function, which is called by the double question mark ??. However, this only looks through the installed packages for help pages with a match to your search request</p>
+<pre class="r"><code>??kruskal</code></pre>
+<p>If you can’t find what you are looking for, you can use the <a href="https://www.rdocumentation.org">rdocumentation.org</a> website that searches through the help files across all packages available.</p>
+<div id="i-am-stuck-i-get-an-error-message-that-i-dont-understand" class="section level3">
+<h3>I am stuck… I get an error message that I don’t understand</h3>
+<p>Start by googling the error message. However, this doesn’t always work very well because often, package developers rely on the error catching provided by R. You end up with general error messages that might not be very helpful to diagnose a problem (e.g. “subscript out of bounds”). If the message is very generic, you might also include the name of the function or package you’re using in your query.</p>
+<p>However, you should check Stack Overflow. Search using the <code>[r]</code> tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: <a href="http://stackoverflow.com/questions/tagged/r"></a></p>
+</div>
+<div id="asking-for-help" class="section level3">
+<h3>Asking for help</h3>
+<p>The key to receiving help from someone is for them to rapidly grasp your problem. You should make it as easy as possible to pinpoint where the issue might be.</p>
+<p>Try to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem.</p>
+<p>If possible, try to reduce what doesn’t work to a simple <em>reproducible example</em>. If you can reproduce the problem using a very small data frame instead of your 50,000 rows and 10,000 columns one, provide the small one with the description of your problem. When appropriate, try to generalize what you are doing so even people who are not in your field can understand the question. For instance instead of using a subset of your real dataset, create a small (3 columns, 5 rows) generic one. For more information on how to write a reproducible example see <a href="%22http://adv-r.had.co.nz/Reproducibility.html%22">this article by Hadley Wickham</a>.</p>
+</div>
+<div id="where-to-ask-for-help" class="section level3">
+<h3>Where to ask for help?</h3>
+<ul>
+<li>Stack Overflow: if your question hasn’t been answered before and is well crafted, chances are you will get an answer in less than 5 min. Remember to follow their guidelines on how to ask a good question. The R-help mailing list: it is read by a lot of people (including most of the R core team), a lot of people post to it, but the tone can be pretty dry, and it is not always very welcoming to new users. If your question is valid, you are likely to get an answer very fast but don’t expect that it will come with smiley faces. Also, here more than anywhere else, be sure to use correct vocabulary (otherwise you might get an answer pointing to the misuse of your words rather than answering your question). You will also have more success if your question is about a base function rather than a specific package.</li>
+<li>The <a href="https://community.rstudio.com/">“RStudio Community”</a></li>
+<li>If your question is about a specific package, see if there is a mailing list for it. Usually it’s included in the DESCRIPTION file of the package that can be accessed using packageDescription(“name-of-package”). You may also want to try to email the author of the package directly, or open an issue on the code repository (e.g., GitHub).</li>
+</ul>
+</div>
+<div id="how-to-ask-for-r-help-useful-guidelines" class="section level3">
+<h3>How to ask for R help useful guidelines</h3>
+<ul>
+<li><a href="https://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html">“How to ask for R help”</a> has useful guidelines</li>
+<li>This <a href="https://codeblog.jonskeet.uk/2010/08/29/writing-the-perfect-question/">blog post by Jon Skeet</a> has quite comprehensive advice on how to ask programming questions.</li>
+<li>The <a href="https://cran.rstudio.com/web/packages/reprex/">“reprex”</a> package is very helpful to create reproducible examples when asking for help.
+<ul>
+<li>The rOpensci blog on <a href="https://ropensci.org/commcalls/2017-03-07/">How to ask questions so they get answered</a> and <a href="https://vimeo.com/208749032">“video recording”</a> includes a presentation of the reprex package and of its philosophy.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
