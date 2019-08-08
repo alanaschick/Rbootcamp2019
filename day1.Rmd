@@ -12,13 +12,19 @@ August 12, 2019
 ## 1. [Spreadsheets](./01-spreadsheets.html)
 (~30 minutes)
 
-*  Implement best practices in data table formatting  
-*  Identify and address common formatting mistakes
+*  Implement best practices in data table formatting.
+*  Identify and address common formatting mistakes.
 
 Download the data for the spreadsheet exercise [here](https://ndownloader.figshare.com/files/2252083).
 
-## 2. [R basics](./02-rbasics.html)
-(~60 minutes)
+## 2. [Installing R packages](./02-packages.html)
+(~15 minutes)
+
+*  Understand what an R package is and how to install and load them.
+*  Install the <b>tidyverse</b> and <b>ggplot2</b> packages.
+ 
+## 3. [R basics](./03-rbasics.html)
+(~45 minutes)
 
 *  Define the following terms as they relate to R: object, assign, call, function, arguments, options.   
 *  Assign values to objects in R.   
@@ -30,7 +36,7 @@ Download the data for the spreadsheet exercise [here](https://ndownloader.figsha
 *  Subset and extract values from vectors.   
 *  Analyze vectors with missing data.
 
+## 4. [
 
- 
-## 3. Lesson 3
-(~ time)
+## 5. [Manipulating data with tidyr](./05-tidyr.html)
+(~90 minutes)
