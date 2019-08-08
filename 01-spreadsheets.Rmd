@@ -135,9 +135,4 @@ Making small changes to the way you format your data in spreadsheets, can have a
 * Record metadata in a separate plain text file.
 </div>
 
-# Attribution
-
-This lesson was created by Alana Schick. It is based largely on material from [The Carpentries](https://carpentries.org/) lesson on [Data Organization in Spreadsheets for Ecologists](https://datacarpentry.org/spreadsheet-ecology-lesson/). Made available under the [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/). [License](https://datacarpentry.org/R-genomics/LICENSE.html).
-
-
 
