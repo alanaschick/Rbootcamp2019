@@ -14,9 +14,9 @@ navbar:
     - text: "Preworkshop"
       href: Session0.html
       icon: ion-settings
-    - text: "Day 1"
-      href: day1.html
-      icon: ion-create
+#    - text: "Day 1"
+#      href: day1.html
+#      icon: ion-create
 #    - text: "Project"
 #      href: project.html
 #      icon: ion-analytics
