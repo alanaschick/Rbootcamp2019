@@ -40,11 +40,8 @@ Schedule |
 10:45  | Break
 11:00  | Statement controls, loops, and functions
 12:30  | Lunch break
-13:30  | Session 3
+13:30  | Starting with data, manipulating data with dplyr
 15:00  | Finish
-
-* Starting with data
-* Manipulating data with dplyr
 
 <br>
 
