@@ -3,8 +3,6 @@ title: "R Basics"
 output: html_document
 ---
 
-<link rel="stylesheet" type="text/css" href="style.css">
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -400,69 +398,3 @@ heights_above_67 <- heights_no_na[heights_no_na > 67]
 length(heights_above_67)
 ```
 
-# What are R packages
-This section is from ["Modern Dive, section 2.3"](https://moderndive.com/2-getting-started.html#)
-
-R packages extend the functionality of R by providing additional functions, data, and documentation. They are written by a world-wide community of R users and can be downloaded for free from the internet. A good analogy for R packages is they are like apps you can download onto a mobile phone
-
-So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn’t have everything. R packages are like the apps you can download onto your phone from Apple’s App Store or Android’s Google Play.
-
-Let’s continue this analogy by considering the Instagram app for editing and sharing pictures. Say you have purchased a new phone and you would like to share a recent photo you have taken on Instagram. You need to:
-1. Install the app: Since your phone is new and does not include the Instagram app, you need to download the app from either the App Store or Google Play. You do this once and you’re set. You might do this again in the future any time there is an update to the app.   
-2. Open the app: After you’ve installed Instagram, you need to open the app.   
-
-Once Instagram is open on your phone, you can then proceed to share your photo with your friends and family. The process is very similar for using an R package. You need to:
-
-1. *Install the package*: This is like installing an app on your phone. Most packages are not installed by default when you install R and RStudio. Thus if you want to use a package for the first time, you need to install it first. Once you’ve installed a package, you likely won’t install it again unless you want to update it to a newer version.   
-2. *“Load” the package*: “Loading” a package is like opening an app on your phone. Packages are not “loaded” by default when you start RStudio on your computer; you need to “load” each package you want to use every time you start RStudio.
-
-Let’s now show you how to perform these two steps for the `tidyverse` metapackage (package of packages).
-
-<div class = "boxGrey">
-There are two ways to install an R package. For example, to install the `tidyverse` package:
-
-1. **Easy way**: In the Files pane of RStudio:
-    a. Click on the “Packages” tab
-    b. Click on “Install”
-    c. Type the name of the package under “Packages (separate multiple with space or comma):” In this case, type `tidyverese`
-    d. Click “Install”
-    
-2. **Slightly harder way**: An alternative way to install a package is by typing `install.packages("tidyverse")` in the Console pane of RStudio and hitting enter. Note you must include the quotation marks.    
-
-Much like an app on your phone, you only have to install a package once. However, if you want to update an already installed package to a newer version, you need to re-install it by repeating the above steps.
-
-</div>
-
-### EXERCISE
-
-Practice what you have just done and install the R package `here`.
-
-</div>
-
-
-### Package loading
-Recall that after you’ve installed a package, you need to “load” it, in other words open it. We do this by using the `library()` command. For example, to load the `tidyverse` package, run the following code in the Console pane. What do we mean by “run the following code”? Either type or copy & paste the following code into the Console pane and then hit the enter key.
-
-```{r}
-library(tidyverse)
-```
-
-If after running the above code, a blinking cursor returns next to the `>` “prompt” sign, it means you were successful and the `tidyverse` package is now loaded and ready to use. If however, you get a red “error message” that reads…
-
-```
-Error in library(tidyverse) : there is no package called ‘tidyverse’
-```
-it means that you didn’t successfully install it. In that case, go back to the previous subsection and trying install it again.
-
-
-### Package use
-One extremely common mistake new R users make when wanting to use particular packages is they forget to “load” them first by using the `library()` command we just saw. Remember: you have to load each package you want to use every time you start RStudio. If you don’t first “load” a package, but attempt to use one of its features, you’ll see an error message similar to:
-
-```
-Error: could not find function
-```
-
-R is telling you that you are trying to use a function in a package that has not yet been “loaded.” Almost all new users forget do this when starting out, and it is a little annoying to get used. to However, you’ll remember with practice.
-
-# Attribution
-This lesson was created by [Aleeza Gerstein](https://microstatslab.ca) at the University of Manitoba. It is sourced from material from [The Carpentries](https://carpentries.org/) [introductory lesson](https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html). Made available under the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/). [License](https://datacarpentry.org/R-genomics/LICENSE.html).
