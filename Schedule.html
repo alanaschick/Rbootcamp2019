@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -246,18 +247,6 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -312,6 +301,9 @@ $(document).ready(function () {
      
     Preworkshop
   </a>
+</li>
+<li>
+  <a href="day1.html">Day 1</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -382,7 +374,7 @@ $(document).ready(function () {
 <p><br></p>
 </div>
 <div id="august-12-day-1-900---1500-hsc-g382" class="section level2">
-<h2><b>August 12: Day 1 (9:00 - 15:00, HSC G382) </b></h2>
+<h2><b>August 12: <a href="./day1.html">Day 1</a> (9:00 - 15:00, HSC G382) </b></h2>
 <table>
 <thead>
 <tr class="header">
@@ -397,15 +389,23 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td>09:30</td>
-<td>R basics - review and practice</td>
+<td>Installing R packages</td>
 </tr>
 <tr class="odd">
+<td>09:45</td>
+<td>R basics</td>
+</tr>
+<tr class="even">
 <td>10:45</td>
 <td>Break</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>11:00</td>
-<td>Statement controls, loops, and functions</td>
+<td>Starting with data</td>
+</tr>
+<tr class="even">
+<td>12:00</td>
+<td>Conditional statements and loops</td>
 </tr>
 <tr class="odd">
 <td>12:30</td>
@@ -413,7 +413,7 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td>13:30</td>
-<td>Starting with data, manipulating data with dplyr</td>
+<td>Manipulating data with tidyr</td>
 </tr>
 <tr class="odd">
 <td>15:00</td>
@@ -425,12 +425,12 @@ $(document).ready(function () {
 </div>
 <div id="august-13-day-2-900---1500-hsc-g743" class="section level2">
 <h2><b>August 13: Day 2 (9:00 - 15:00, HSC G743)</b></h2>
-<p>Schedule TBA</p>
+<p>Project Day - Schedule TBA</p>
 <p><br></p>
 </div>
 <div id="august-14-day-3-900---1500-hsc-g382" class="section level2">
 <h2><b>August 14: Day 3 (9:00 - 15:00, HSC G382)</b></h2>
-<p>Schedule TBA</p>
+<p>Project Day - Schedule TBA</p>
 </div>
 
 
@@ -450,6 +450,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

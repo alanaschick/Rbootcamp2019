@@ -32,25 +32,27 @@ Schedule |
     
 <br>
 
-## <b>August 12: Day 1 (9:00 - 15:00, HSC G382) </b>
+## <b>August 12: [Day 1](./day1.html) (9:00 - 15:00, HSC G382) </b>
 Schedule |                                            
 -------| ----------------------------------
-09:00  | Spreadsheets - best practices
-09:30  | R basics - review and practice
+09:00  | 1. Spreadsheets
+09:30  | 2. Installing R packages
+09:45  | 3. R basics
 10:45  | Break
-11:00  | Statement controls, loops, and functions
+11:00  | 4. Starting with data
+12:00  | 5. Conditional statements and loops
 12:30  | Lunch break
-13:30  | Starting with data, manipulating data with dplyr
+13:30  | 6. Manipulating data with tidyr
 15:00  | Finish
 
 <br>
 
 ## <b>August 13: Day 2 (9:00 - 15:00, HSC G743)</b>
-Schedule TBA
+Project Day - Schedule TBA
 
 <br>
 
 ## <b>August 14: Day 3 (9:00 - 15:00, HSC G382)</b>
-Schedule TBA
+Project Day - Schedule TBA
 
 

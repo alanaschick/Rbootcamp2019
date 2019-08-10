@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -246,18 +247,6 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -313,6 +302,9 @@ $(document).ready(function () {
     Preworkshop
   </a>
 </li>
+<li>
+  <a href="day1.html">Day 1</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -355,10 +347,8 @@ $(document).ready(function () {
 </div>
 <div id="r-basics" class="section level2">
 <h2>3. <a href="./03-rbasics.html">R basics</a></h2>
-<p>(~45 minutes)</p>
+<p>(~60 minutes)</p>
 <ul>
-<li>Define the following terms as they relate to R: object, assign, call, function, arguments, options.<br />
-</li>
 <li>Assign values to objects in R.<br />
 </li>
 <li>Learn how to name objects<br />
@@ -376,12 +366,25 @@ $(document).ready(function () {
 <li>Analyze vectors with missing data.</li>
 </ul>
 </div>
-<div id="section" class="section level2">
-<h2>4. [</h2>
+<div id="starting-with-data" class="section level2">
+<h2>4. <a href="./04-dataframes.html">Starting with data</a></h2>
+<p>(~60 minutes)</p>
+<ul>
+<li>Load external data into R with the <code>read.csv()</code> function.</li>
+<li>Describe what an R data frame is.</li>
+<li>Learn the properties of a factor and how to reorder them.</li>
+<li>Subset values from data frames.</li>
+</ul>
+</div>
+<div id="conditional-statements-and-loops" class="section level2">
+<h2>5. <a href="./05-ifelsefor.html">Conditional statements and loops</a></h2>
+<p>(~15 minutes)</p>
+<p>Objectives</p>
 </div>
 <div id="manipulating-data-with-tidyr" class="section level2">
-<h2>5. <a href="./05-tidyr.html">Manipulating data with tidyr</a></h2>
+<h2>6. <a href="./06-tidyr.html">Manipulating data with tidyr</a></h2>
 <p>(~90 minutes)</p>
+<p>Objectives</p>
 </div>
 
 
@@ -401,6 +404,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

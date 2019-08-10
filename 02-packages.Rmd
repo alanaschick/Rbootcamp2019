@@ -13,36 +13,38 @@ knitr::opts_chunk$set(echo = TRUE)
 <strong>Learning Objectives</strong>
 
 *  Understand what an R package is and how to install and load them.
-*  Install the <b>tidyverse</b> package
+*  Install the <b>tidyverse</b> and <b>ggplot2</b> packages.
 </div>
 
 ---
 
 # What are R packages
-This section is from ["Modern Dive, section 2.3"](https://moderndive.com/2-getting-started.html#)
+This section is from [Modern Dive, section 2.3](https://moderndive.com/2-getting-started.html#).
 
-R packages extend the functionality of R by providing additional functions, data, and documentation. They are written by a world-wide community of R users and can be downloaded for free from the internet. A good analogy for R packages is they are like apps you can download onto a mobile phone
+R packages extend the functionality of R by providing additional functions, data, and documentation for specific tasks. They are written by a world-wide community of R users and can be downloaded for free from the internet. A good analogy for R packages is they are like apps you can download onto a mobile phone.
 
-So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn’t have everything. R packages are like the apps you can download onto your phone from Apple’s App Store or Android’s Google Play.
+So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn’t have everything. R packages are the apps you download onto your phone from Apple’s App Store or Android’s Google Play.
 
 Let’s continue this analogy by considering the Instagram app for editing and sharing pictures. Say you have purchased a new phone and you would like to share a recent photo you have taken on Instagram. You need to:
 1. Install the app: Since your phone is new and does not include the Instagram app, you need to download the app from either the App Store or Google Play. You do this once and you’re set. You might do this again in the future any time there is an update to the app.   
 2. Open the app: After you’ve installed Instagram, you need to open the app.   
 
-Once Instagram is open on your phone, you can then proceed to share your photo with your friends and family. The process is very similar for using an R package. You need to:
+Once Instagram is open on your phone, you can then proceed to share your photo with your friends. The process is very similar for using an R package. You need to:
 
 1. *Install the package*: This is like installing an app on your phone. Most packages are not installed by default when you install R and RStudio. Thus if you want to use a package for the first time, you need to install it first. Once you’ve installed a package, you likely won’t install it again unless you want to update it to a newer version.   
-2. *Load the package*: “Loading” a package is like opening an app on your phone. Packages are not “loaded” by default when you start RStudio on your computer; you need to “load” each package you want to use every time you start RStudio.
+2. *Load the package*: Loading a package is like opening an app on your phone. Packages are not loaded by default when you start RStudio on your computer; you need to load each package you want to use every time you start RStudio.
+
+<br>
 
 # Installing R packages from different sources
 There are multiple sources of R packages.
 
 ## 1. CRAN
 
-CRAN is... 
+CRAN is the "Comprehensive R Archive Network" - the main repository (or collection) of R packages.
 
 <div class = "boxGrey">
-There are two ways to install an R package from CRAN. For example, to install the `tidyverse` metapackage (a package of packages):
+There are three ways to install an R package from CRAN. For example, to install the `tidyverse` metapackage (a package of packages):
 
 1. **Easy way**: In the Files pane of RStudio:
     a. Click on the `Packages` tab
@@ -50,27 +52,41 @@ There are two ways to install an R package from CRAN. For example, to install th
     c. Type the name of the package under “Packages (separate multiple with space or comma):” In this case, type `tidyverese`
     d. Click `Install`
     
-2. **Slightly harder way**: An alternative way to install a package is by typing `install.packages("tidyverse")` in the Console pane of RStudio and hitting enter. Note you must include the quotation marks.    
-
-Much like an app on your phone, you only have to install a package once. However, if you want to update an already installed package to a newer version, you need to re-install it by repeating the above steps.
+2. **Easy way**: In the menu bar of RStudio:
+    a. Click on `Tools` and `Install Packages...`
+    b. Type the name of the package under “Packages (separate multiple with space or comma):” In this case, type `tidyverese`
+    c. Click `Install` 
+    
+3. **Slightly harder way**: An alternative way to install a package is by typing `install.packages("tidyverse")` in the Console pane of RStudio and hitting enter. Note you must include the quotation marks.    
 
 </div>
 
+If you want to update an already installed package to a newer version, you need to re-install it by repeating the above steps.
+
 ## 2. Bioconductor
 
-Some packages
+Bioconductor is a repository for R packages that concern computational biology or bioinformatics. To install the `phyloseq` package from Bioconductor, type the following in the Console of RStudio:
+
+```{r, eval = FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("knitr")
+```
 
 ## 3. Github
 
-Some packages
+Some packages are not hosted on CRAN or Bioconductor, but are instead stored in Github repositories. Sometimes this is because they are very new and have not yet been contributed. To install the `dplyr` package from Github, type the following in the Console of RStudio:
 
-
-
+```{r, eval = FALSE}
+install.packages("devtools")
+library(devtools)
+install_github("hadley/dplyr")
+```
 
 <div class="box">
 ### EXERCISE
 
-Practice what you have just done and install the R package `ggplot2`.
+Practice what you have just learned and install the R package `ggplot2`.
 
 </div>
 
@@ -78,7 +94,7 @@ Practice what you have just done and install the R package `ggplot2`.
 # Loading a package
 Recall that after you’ve installed a package, you need to “load” it, in other words open it. We do this by using the `library()` command. For example, to load the `tidyverse` package, run the following code in the Console pane. What do we mean by “run the following code”? Either type or copy & paste the following code into the Console pane and then hit the enter key.
 
-```{r}
+```{r, eval = FALSE}
 library(tidyverse)
 ```
 
@@ -89,6 +105,12 @@ Error in library(tidyverse) : there is no package called ‘tidyverse’
 ```
 it means that you didn’t successfully install it. In that case, go back to the previous subsection and trying install it again.
 
+<div class="box">
+### EXERCISE
+
+Confirm that you successfully installed the packages `ggplot2`, `dplyr` and `knitr` by loading them.
+
+</div>
 
 ### Package use
 One extremely common mistake new R users make when wanting to use particular packages is they forget to “load” them first by using the `library()` command we just saw. Remember: you have to load each package you want to use every time you start RStudio. If you don’t first “load” a package, but attempt to use one of its features, you’ll see an error message similar to:

@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -246,18 +247,6 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -313,6 +302,9 @@ $(document).ready(function () {
     Preworkshop
   </a>
 </li>
+<li>
+  <a href="day1.html">Day 1</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -340,32 +332,33 @@ $(document).ready(function () {
 <p><strong>Learning Objectives</strong></p>
 <ul>
 <li>Understand what an R package is and how to install and load them.</li>
-<li>Install the <b>tidyverse</b> package</li>
+<li>Install the <b>tidyverse</b> and <b>ggplot2</b> packages.</li>
 </ul>
 </div>
 <hr />
 <div id="what-are-r-packages" class="section level1">
 <h1>What are R packages</h1>
-<p>This section is from <a href="https://moderndive.com/2-getting-started.html#">“Modern Dive, section 2.3”</a></p>
-<p>R packages extend the functionality of R by providing additional functions, data, and documentation. They are written by a world-wide community of R users and can be downloaded for free from the internet. A good analogy for R packages is they are like apps you can download onto a mobile phone</p>
-<p>So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn’t have everything. R packages are like the apps you can download onto your phone from Apple’s App Store or Android’s Google Play.</p>
+<p>This section is from <a href="https://moderndive.com/2-getting-started.html#">Modern Dive, section 2.3</a>.</p>
+<p>R packages extend the functionality of R by providing additional functions, data, and documentation for specific tasks. They are written by a world-wide community of R users and can be downloaded for free from the internet. A good analogy for R packages is they are like apps you can download onto a mobile phone.</p>
+<p>So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn’t have everything. R packages are the apps you download onto your phone from Apple’s App Store or Android’s Google Play.</p>
 <p>Let’s continue this analogy by considering the Instagram app for editing and sharing pictures. Say you have purchased a new phone and you would like to share a recent photo you have taken on Instagram. You need to: 1. Install the app: Since your phone is new and does not include the Instagram app, you need to download the app from either the App Store or Google Play. You do this once and you’re set. You might do this again in the future any time there is an update to the app.<br />
 2. Open the app: After you’ve installed Instagram, you need to open the app.</p>
-<p>Once Instagram is open on your phone, you can then proceed to share your photo with your friends and family. The process is very similar for using an R package. You need to:</p>
+<p>Once Instagram is open on your phone, you can then proceed to share your photo with your friends. The process is very similar for using an R package. You need to:</p>
 <ol style="list-style-type: decimal">
 <li><em>Install the package</em>: This is like installing an app on your phone. Most packages are not installed by default when you install R and RStudio. Thus if you want to use a package for the first time, you need to install it first. Once you’ve installed a package, you likely won’t install it again unless you want to update it to a newer version.<br />
 </li>
-<li><em>Load the package</em>: “Loading” a package is like opening an app on your phone. Packages are not “loaded” by default when you start RStudio on your computer; you need to “load” each package you want to use every time you start RStudio.</li>
+<li><em>Load the package</em>: Loading a package is like opening an app on your phone. Packages are not loaded by default when you start RStudio on your computer; you need to load each package you want to use every time you start RStudio.</li>
 </ol>
+<p><br></p>
 </div>
 <div id="installing-r-packages-from-different-sources" class="section level1">
 <h1>Installing R packages from different sources</h1>
 <p>There are multiple sources of R packages.</p>
 <div id="cran" class="section level2">
 <h2>1. CRAN</h2>
-<p>CRAN is…</p>
+<p>CRAN is the “Comprehensive R Archive Network” - the main repository (or collection) of R packages.</p>
 <div class="boxGrey">
-<p>There are two ways to install an R package from CRAN. For example, to install the <code>tidyverse</code> metapackage (a package of packages):</p>
+<p>There are three ways to install an R package from CRAN. For example, to install the <code>tidyverse</code> metapackage (a package of packages):</p>
 <ol style="list-style-type: decimal">
 <li><strong>Easy way</strong>: In the Files pane of RStudio:
 <ol style="list-style-type: lower-alpha">
@@ -374,21 +367,33 @@ $(document).ready(function () {
 <li>Type the name of the package under “Packages (separate multiple with space or comma):” In this case, type <code>tidyverese</code></li>
 <li>Click <code>Install</code></li>
 </ol></li>
+<li><strong>Easy way</strong>: In the menu bar of RStudio:
+<ol style="list-style-type: lower-alpha">
+<li>Click on <code>Tools</code> and <code>Install Packages...</code></li>
+<li>Type the name of the package under “Packages (separate multiple with space or comma):” In this case, type <code>tidyverese</code></li>
+<li>Click <code>Install</code></li>
+</ol></li>
 <li><strong>Slightly harder way</strong>: An alternative way to install a package is by typing <code>install.packages(&quot;tidyverse&quot;)</code> in the Console pane of RStudio and hitting enter. Note you must include the quotation marks.</li>
 </ol>
-<p>Much like an app on your phone, you only have to install a package once. However, if you want to update an already installed package to a newer version, you need to re-install it by repeating the above steps.</p>
 </div>
+<p>If you want to update an already installed package to a newer version, you need to re-install it by repeating the above steps.</p>
 </div>
 <div id="bioconductor" class="section level2">
 <h2>2. Bioconductor</h2>
-<p>Some packages</p>
+<p>Bioconductor is a repository for R packages that concern computational biology or bioinformatics. To install the <code>phyloseq</code> package from Bioconductor, type the following in the Console of RStudio:</p>
+<pre class="r"><code>if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
+    install.packages(&quot;BiocManager&quot;)
+BiocManager::install(&quot;knitr&quot;)</code></pre>
 </div>
 <div id="github" class="section level2">
 <h2>3. Github</h2>
-<p>Some packages</p>
+<p>Some packages are not hosted on CRAN or Bioconductor, but are instead stored in Github repositories. Sometimes this is because they are very new and have not yet been contributed. To install the <code>dplyr</code> package from Github, type the following in the Console of RStudio:</p>
+<pre class="r"><code>install.packages(&quot;devtools&quot;)
+library(devtools)
+install_github(&quot;hadley/dplyr&quot;)</code></pre>
 <div class="box">
 <h3 id="exercise">EXERCISE</h3>
-<p>Practice what you have just done and install the R package <code>ggplot2</code>.</p>
+<p>Practice what you have just learned and install the R package <code>ggplot2</code>.</p>
 </div>
 </div>
 </div>
@@ -396,17 +401,13 @@ $(document).ready(function () {
 <h1>Loading a package</h1>
 <p>Recall that after you’ve installed a package, you need to “load” it, in other words open it. We do this by using the <code>library()</code> command. For example, to load the <code>tidyverse</code> package, run the following code in the Console pane. What do we mean by “run the following code”? Either type or copy &amp; paste the following code into the Console pane and then hit the enter key.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.2.0     ✔ purrr   0.3.2
-## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
-## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
-## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <p>If after running the above code, a blinking cursor returns next to the <code>&gt;</code> “prompt” sign, it means you were successful and the <code>tidyverse</code> package is now loaded and ready to use. If however, you get a red “error message” that reads…</p>
 <pre><code>Error in library(tidyverse) : there is no package called ‘tidyverse’</code></pre>
 <p>it means that you didn’t successfully install it. In that case, go back to the previous subsection and trying install it again.</p>
+<div class="box">
+<h3 id="exercise-1">EXERCISE</h3>
+<p>Confirm that you successfully installed the packages <code>ggplot2</code>, <code>dplyr</code> and <code>knitr</code> by loading them.</p>
+</div>
 <div id="package-use" class="section level3">
 <h3>Package use</h3>
 <p>One extremely common mistake new R users make when wanting to use particular packages is they forget to “load” them first by using the <code>library()</code> command we just saw. Remember: you have to load each package you want to use every time you start RStudio. If you don’t first “load” a package, but attempt to use one of its features, you’ll see an error message similar to:</p>
@@ -432,6 +433,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

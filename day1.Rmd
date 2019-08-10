@@ -24,9 +24,8 @@ Download the data for the spreadsheet exercise [here](https://ndownloader.figsha
 *  Install the <b>tidyverse</b> and <b>ggplot2</b> packages.
  
 ## 3. [R basics](./03-rbasics.html)
-(~45 minutes)
+(~60 minutes)
 
-*  Define the following terms as they relate to R: object, assign, call, function, arguments, options.   
 *  Assign values to objects in R.   
 *  Learn how to name objects   
 *  Use comments to inform script.   
@@ -36,7 +35,21 @@ Download the data for the spreadsheet exercise [here](https://ndownloader.figsha
 *  Subset and extract values from vectors.   
 *  Analyze vectors with missing data.
 
-## 4. [
+## 4. [Starting with data](./04-dataframes.html)
+(~60 minutes)
 
-## 5. [Manipulating data with tidyr](./05-tidyr.html)
+*  Load external data into R with the `read.csv()` function.
+*  Describe what an R data frame is.
+*  Learn the properties of a factor and how to reorder them.
+*  Subset values from data frames.
+
+## 5. [Conditional statements and loops](./05-ifelsefor.html)
+(~15 minutes)
+
+Objectives
+
+## 6. [Manipulating data with tidyr](./06-tidyr.html)
 (~90 minutes)
+
+Objectives
+
