@@ -1,0 +1,251 @@
+---
+title: "Starting with data"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+<div class="boxobj">
+<strong>Learning Objectives</strong>
+
+*  Load external data into R with the `read.csv()` function.
+*  Describe what an R data frame is.
+*  Learn the properties of a factor and how to reorder them.
+*  Subset values from data frames.
+</div>
+
+---
+
+# Download the data
+
+Make a new RStudio Project and create a `data` directory in your RStudio Project. Then use the `download.file()` function in the R console:
+```{r, eval = FALSE}
+download.file("https://raw.githubusercontent.com/alanaschick/Rbootcamp2019/master/data/Ecoli_metadata.csv", "data/Ecoli_metadata.csv")
+```
+
+If the above method doesn't work, you can download the file directly from dropbox using [this link](https://www.dropbox.com/s/gt05aqpmohd9un6/Ecoli_metadata.csv?dl=0). Remember to put this file in a directory that makes sense (ex. in your RStudio Projext directory in a `data` directory). 
+
+<br>
+
+# Importing data into R
+
+Spreadsheet data is often saved in one of the following formats:
+
+* A *Comma Separated Values* `.csv` file. You can think of a `.csv` file as a bare-bones spreadsheet where:    
+    * Each line in the file corresponds to one row of data/one observation.  
+    * Values for each line are separated with commas. In other words, the values of different variables are separated by commas.  
+    * The first line is often, but not always, a header row indicating the names of the columns/variables.  
+* An Excel `.xlsx` file. This format is based on Microsoft’s proprietary Excel software. As opposed to a bare-bones `.csv` files, `.xlsx` Excel files sometimes contain a lot of meta-data, or put more simply, data about the data. Some examples of spreadsheet meta-data include the use of bold and italic fonts, colored cells, different column widths, and formula macros.  
+* A Google Sheets file, which is a “cloud” or online-based way to work with a spreadsheet. Google Sheets allows you to download your data in both comma separated values `.csv` and Excel `.xlsx` formats however: go to the Google Sheets menu bar -> File -> Download as -> Select “Microsoft Excel” or “Comma-separated values.”
+
+There are several ways to import data into R. Here, we will use the tools every R installation comes with (ie. "base R") to import a comma-delimited file containing some data. We will need to load the file using a function called `read.csv()`.
+
+<div class="box">
+### EXERCISE
+Before using the `read.csv()` function, use R's help feature to answer the following questions:
+
+1. What is the default parameter for ‘header’ in the read.csv() function?
+2. What argument would you have to change to read a file that was delimited by semicolons (;) rather than commas?
+3. What argument would you have to change to read file in which numbers used commas for decimal separation (i.e. 1,00)?
+4. What argument would you have to change to read in only the first 10,000 rows of a very large file?
+</div>
+
+<!-- Solutions -->
+<!-- 1. The read.csv() function has the argument ‘header’ set to TRUE by default, this means the function always assumes the first row is header information, (i.e. column names) -->
+<!-- 2. The read.csv() function has the argument ‘sep’ set to “,”. This means the function assumes commas are used as delimiters, as you would expect. Changing this parameter (e.g. sep=";") would now interpret semicolons as delimiters. -->
+<!-- 3. Although it is not listed in the read.csv() usage, read.csv() is a “version” of the function read.table() and accepts all its arguments. If you set dec="," you could change the decimal operator. -->
+<!-- 4. You can set nrow to a numeric value (e.g. nrow=10000) to choose how many rows of a file you read in. This may be useful for very large files where not all the data is needed to test some data cleaning steps you are applying. -->
+
+Now let's read in some data. We're going to study a population of *Escherichia coli* (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate, which the ancestral *E. coli* cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points revealed that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations in one of twelve populations. The dataset is stored as a comma separated value (CSV) file. This metadata describes information on the Ara-3 clones and the columns represent:
+
+Column | Description                                            
+----| ------------------------------
+sample   | clone name
+generation | generation when sample frozen
+clade   | based on a parsimony tree
+strain | ancestral strain
+cit | citrate-using mutant status
+run  | sequence read archive sample ID
+genome_size  | size in Mbp
+
+Read in the metadata file:
+```{r}
+metadata <- read.csv("data/Ecoli_metadata.csv")
+```
+
+This statement doesn’t produce any output because assignment doesn’t display anything. If we want to check that our data has been loaded, we can print the variable’s value: `metadata`.
+
+This will output the entire dataset. If we only want to see the top 6 lines of the file to ensure it has been loaded, use the `head()` function:
+```{r}
+head(metadata)
+```
+
+<br>
+
+# What are data frames?
+
+A data frame is the standard way in R to store tabular data. It can also be thought of as a collection of vectors, all of which have the same length. Each vector represents a column and each vector can be a different data type (ex. characters, integers). 
+
+The `str()` function is useful to insepct the data types of the columns.
+```{r}
+str(metadata)
+```
+<div class="box">
+### EXERCISE
+Create a data frame using the `data.frame()` function:
+```{r}
+# Create the data frame
+BMI <- data.frame(gender = c("male", "male", "female"), height = c(152, 171.5, 165), weight = c(81, 93, 78), age = c(42, 36, 26))
+# Pring the data frame
+BMI
+```
+Try the following functions on the <b>BMI</b> data frame:
+
+* `dim()`
+* `nrow()`
+* `ncol()`
+* `summary()`
+* `rownames()`
+* `colnames()`
+
+What information does each of these functions tell you? 
+</div>
+
+## Saving or "writing" a data frame
+We can save a data frame to a csv file using the `write.csv()` function. For example, to save the BMI data to bmi.csv:
+```{r}
+write.csv(BMI, file = "data/bmi.csv")
+```
+
+Ensure that you have successfully saved this csv file, then feel free to delete it.
+
+<br>
+
+# What are factors?
+
+Factors are the final major data structure we will introduce. Factors can be thought of as vectors which are specialized for categorical data. Given R’s specialization for statistics, this make sense since categorial and continuous variables usually have different treatments. Sometimes you may want to have data treated as a factor, but in other cases, this may be undesirable.
+
+Factors are stored as integers, and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
+
+```{r}
+str(metadata)
+```
+
+Here we can see which columns/variables are factors. When we read in a file, any column that contains text is automatically assumed to be a factor. Once created, factors can only contain a pre-defined set values, known as levels. By default, R always sorts levels in alphabetical order.
+
+For instance, we see that `cit` is a Factor w/ 3 levels, `"minus"`, `"plus"` and `"unknown"`.
+
+## The $ sign
+
+To isolate a column or variable of a data frame, we use the **$** operator. This applies to any type of variable. For example:
+```{r}
+metadata$sample
+metadata$genome_size
+```
+
+To determine the number of levels of any factor, use the `nlevels()` function:
+```{r}
+nlevels(metadata$run)
+nlevels(metadata$clade)
+nlevels(metadata$strain)
+```
+
+Let's extract the `cit` column of the metadata to a new object, so we don't end up modifying our original data frame.
+```{r}
+cit <- metadata$cit
+cit
+str(cit)
+```
+
+For the sake of efficiency, R stores the content of a factor as a vector of integers, which an integer is assigned to each of the possible levels. Recall levels are assigned in alphabetical order. In this case, the first item in our `cit` object is `unknown`, which happens to be the 3rd level of our factor, ordered alphabeticaly.
+
+## Plotting and ordering factors
+
+One of the most common uses for factors will be when you plot categorical values. For example, suppose we want to know how many of our clones had citrate-using mutant status? We could generate a plot:
+
+```{r}
+plot(cit)
+```
+
+This isn’t a particularly pretty example of a plot. But it can be a useful way to get acquainted with your data.
+
+To reorder the levels of a factor:
+```{r}
+cit <- factor(cit, levels = c("unknown", "plus", "minus"))
+cit
+plot(cit)
+```
+
+# Subsetting data frames
+
+Subsetting data frames is similar to subsetting vectors with one major difference: date frames are two-dimensional. Therefore, to select a specific value we will use the `[]` notation again, but we will specify more than one value.
+
+<div class="box">
+### EXERCISE
+Try the following indices on the metadata data frame:
+
+* `metadata[1,1]`
+* `metadata[4,2]`
+* `metadata[2,]`
+* `metadata[1:4,1]`
+* `metadata[,2]`
+* `metadata$run`
+* `metadata[metadata$cit == "plus",]`
+
+What information does the last line tell you? 
+</div>
+
+You can assign a subset of your data frame to a new object. For example, to create a new data frame of only observations from cit- samples:
+```{r}
+cit_minus <- metadata[metadata$cit == "plus",]
+cit_minus
+```
+
+<br>
+
+# Other data types
+
+So far, we have looked at three data types: <b>vectors</b>, <b>data frames</b>, and <b>factors</b>. Here we will briefly cover <b>matrices</b> and <b>lists</b>. These two are not as useful but you may come across them. Later on in the workshop we will discuss <b>tibbles</b>, the tidyverse equivalent of the data frame.
+
+## Matrices
+
+A matrix is a two-dimensional rectangular dataset. It can be created by using a vector input to the matrix function.
+
+```{r}
+m <- matrix( c("a","a","b","c","b","a"), nrow = 2, ncol = 3, byrow = TRUE)
+m
+```
+
+To output the dimensions of a matrix, use the `dim()` function.
+```{r}
+dim(m) 
+```
+R will list the number of rows first and the number of columns second. To list only the number of rows or the number of columns, use the `nrow()` and `ncol()`. The `length()` function will output the total number of elements.
+```{r}
+nrow(m)
+ncol(m)
+length(m)
+```
+
+## Lists
+
+A list is an R-object which can contain many different types of elements inside it like vectors, functions, and even another list.
+
+```{r}
+# Create a list
+list1 <- list(c(2,5,3),21.3, BMI)
+list1
+```
+
+<br>
+
+# Importing data from Excel
+
+Excel is one of the most common formats, so we need to discuss how to make these files play nicely with R. The simplest way to import data from Excel is to <b>save your Excel file in .csv format</b>. You can then import into R right away. Sometimes you may not be able to do this (imagine you have data in 300 Excel files, are you going to open and export all of them?).
+
+One common R package (a set of code with features you can download and add to your R installation) is the <b>readxl</b> package which can open and import Excel files.
+

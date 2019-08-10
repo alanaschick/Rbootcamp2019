@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Manipulating data with tidyr</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R Bootcamp for Biologists 2019</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="ion ion-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="ion ion-wand"></span>
+     
+    Instructors
+  </a>
+</li>
+<li>
+  <a href="Schedule.html">
+    <span class="ion ion-calendar"></span>
+     
+    Schedule
+  </a>
+</li>
+<li>
+  <a href="Session0.html">
+    <span class="ion ion-settings"></span>
+     
+    Preworkshop
+  </a>
+</li>
+<li>
+  <a href="day1.html">Day 1</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a>
+    <span class=" favicon"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Manipulating data with tidyr</h1>
+
+</div>
+
+
+<hr />
+<div class="boxobj">
+<p><strong>Learning Objectives</strong></p>
+<ul>
+<li>Fill in learning objectives<br />
+</li>
+</ul>
+</div>
+<hr />
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.2.0     ✔ purrr   0.3.2
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>metadata &lt;- read.csv(&quot;data/Ecoli_metadata.csv&quot;)</code></pre>
+<div id="first-section" class="section level1">
+<h1>First section</h1>
+</div>
+<div id="tibbles" class="section level1">
+<h1>Tibbles</h1>
+<p>Tibbles are a modern take on data frames. They keep the features that have stood the test of time and drop the features that used to be convenient but are now frustrating (ie. converting character vectors to factors).</p>
+<div id="creating" class="section level2">
+<h2>Creating</h2>
+<p>You can create a tibble using the <code>tibble()</code> function:</p>
+<pre class="r"><code>t &lt;- tibble(x=1:3, y= list(1:5, 1:10, 1:20))
+t</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##       x y         
+##   &lt;int&gt; &lt;list&gt;    
+## 1     1 &lt;int [5]&gt; 
+## 2     2 &lt;int [10]&gt;
+## 3     3 &lt;int [20]&gt;</code></pre>
+<pre class="r"><code>dim(t)</code></pre>
+<pre><code>## [1] 3 2</code></pre>
+</div>
+<div id="reading-in-tibbles" class="section level2">
+<h2>Reading in tibbles</h2>
+<p>Tibbles can be read into R using the <code>read_csv()</code> function. Note that the <code>read_csv()</code> function is different than the <code>read.csv()</code> function. Among other things, <code>read_csv()</code> will store the data as a tibble and <code>read.csv()</code> will store the data as a data frame.</p>
+</div>
+<div id="data-frames-versus-tibbles" class="section level2">
+<h2>Data frames versus tibbles</h2>
+<p>For some applications, we will need to use data frames and for others tibbles. You will find that some older functions don’t work on tibbles. We can easily convert between them using <code>as.data.frame()</code> or <code>as_tibble()</code>:</p>
+<pre class="r"><code>metadata_tib &lt;- as_tibble(metadata)
+metadata_tib</code></pre>
+<pre><code>## # A tibble: 30 x 7
+##    sample   generation clade   strain cit     run       genome_size
+##    &lt;fct&gt;         &lt;int&gt; &lt;fct&gt;   &lt;fct&gt;  &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;
+##  1 REL606            0 N/A     REL606 unknown &quot;&quot;               4.62
+##  2 REL1166A       2000 unknown REL606 unknown SRR098028        4.63
+##  3 ZDB409         5000 unknown REL606 unknown SRR098281        4.6 
+##  4 ZDB429        10000 UC      REL606 unknown SRR098282        4.59
+##  5 ZDB446        15000 UC      REL606 unknown SRR098283        4.66
+##  6 ZDB458        20000 (C1,C2) REL606 unknown SRR098284        4.63
+##  7 ZDB464*       20000 (C1,C2) REL606 unknown SRR098285        4.62
+##  8 ZDB467        20000 (C1,C2) REL606 unknown SRR098286        4.61
+##  9 ZDB477        25000 C1      REL606 unknown SRR098287        4.65
+## 10 ZDB483        25000 C3      REL606 unknown SRR098288        4.59
+## # … with 20 more rows</code></pre>
+<pre class="r"><code>metadata_df &lt;- as.data.frame(metadata_tib)
+head(metadata_df)</code></pre>
+<pre><code>##     sample generation   clade strain     cit       run genome_size
+## 1   REL606          0     N/A REL606 unknown                  4.62
+## 2 REL1166A       2000 unknown REL606 unknown SRR098028        4.63
+## 3   ZDB409       5000 unknown REL606 unknown SRR098281        4.60
+## 4   ZDB429      10000      UC REL606 unknown SRR098282        4.59
+## 5   ZDB446      15000      UC REL606 unknown SRR098283        4.66
+## 6   ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63</code></pre>
+</div>
+</div>
+<div id="exploring-tibbles" class="section level1">
+<h1>Exploring tibbles</h1>
+<p>We can explore the contents of a tibble in several ways. We can view the first ten rows of a tibble as above, which tells us lots of information about the column types and the number of rows. We can also use:</p>
+<pre class="r"><code>glimpse(metadata_tib)</code></pre>
+<pre><code>## Observations: 30
+## Variables: 7
+## $ sample      &lt;fct&gt; REL606, REL1166A, ZDB409, ZDB429, ZDB446, ZDB458, ZD…
+## $ generation  &lt;int&gt; 0, 2000, 5000, 10000, 15000, 20000, 20000, 20000, 25…
+## $ clade       &lt;fct&gt; &quot;N/A&quot;, &quot;unknown&quot;, &quot;unknown&quot;, &quot;UC&quot;, &quot;UC&quot;, &quot;(C1,C2)&quot;, …
+## $ strain      &lt;fct&gt; REL606, REL606, REL606, REL606, REL606, REL606, REL6…
+## $ cit         &lt;fct&gt; unknown, unknown, unknown, unknown, unknown, unknown…
+## $ run         &lt;fct&gt; , SRR098028, SRR098281, SRR098282, SRR098283, SRR098…
+## $ genome_size &lt;dbl&gt; 4.62, 4.63, 4.60, 4.59, 4.66, 4.63, 4.62, 4.61, 4.65…</code></pre>
+<p>We can return a vector containing the values of a variable (column) using the $ sign:</p>
+<pre class="r"><code>metadata_tib$generation</code></pre>
+<pre><code>##  [1]     0  2000  5000 10000 15000 20000 20000 20000 25000 25000 30000
+## [12] 30000 31500 31500 31500 32000 32000 32500 32500 33000 33000 33000
+## [23] 34000 34000 36000 36000 38000 38000 40000 40000</code></pre>
+<p>We can also use the subsetting operator [] directly on tibbles. A tibble is two dimensional, so we must pass two arguments to the [] operator; the first indicates the row(s) we require and the second indicates the column(s). To return the value in row 10, column 1:</p>
+<pre class="r"><code>metadata_tib[10,1]</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   sample
+##   &lt;fct&gt; 
+## 1 ZDB483</code></pre>
+<p>Similarly, to return the values in rows 25 to 30, and columns 1 to 3:</p>
+<pre class="r{}"><code>metadata_tib[25:30, 1:3]</code></pre>
+<p>If we leave an index blank, this acts as a wildcard and matches all of the rows or columns:</p>
+<pre class="r"><code>metadata_tib[22,]</code></pre>
+<pre><code>## # A tibble: 1 x 7
+##   sample generation clade strain cit   run       genome_size
+##   &lt;fct&gt;       &lt;int&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;           &lt;dbl&gt;
+## 1 CZB154      33000 Cit+  REL606 plus  SRR098026        4.76</code></pre>
+<pre class="r"><code>metadata_tib[,1:3]</code></pre>
+<pre><code>## # A tibble: 30 x 3
+##    sample   generation clade  
+##    &lt;fct&gt;         &lt;int&gt; &lt;fct&gt;  
+##  1 REL606            0 N/A    
+##  2 REL1166A       2000 unknown
+##  3 ZDB409         5000 unknown
+##  4 ZDB429        10000 UC     
+##  5 ZDB446        15000 UC     
+##  6 ZDB458        20000 (C1,C2)
+##  7 ZDB464*       20000 (C1,C2)
+##  8 ZDB467        20000 (C1,C2)
+##  9 ZDB477        25000 C1     
+## 10 ZDB483        25000 C3     
+## # … with 20 more rows</code></pre>
+<p>You can also refer to columns by name with quotation marks:</p>
+<pre class="r"><code>metadata_tib[,&quot;sample&quot;]</code></pre>
+<pre><code>## # A tibble: 30 x 1
+##    sample  
+##    &lt;fct&gt;   
+##  1 REL606  
+##  2 REL1166A
+##  3 ZDB409  
+##  4 ZDB429  
+##  5 ZDB446  
+##  6 ZDB458  
+##  7 ZDB464* 
+##  8 ZDB467  
+##  9 ZDB477  
+## 10 ZDB483  
+## # … with 20 more rows</code></pre>
+<p>Note that subsetting a tibble returns another tibble. In contrast, using the $ sign to extract a variable returns a vector:</p>
+<pre class="r"><code>metadata_tib$sample</code></pre>
+<pre><code>##  [1] REL606   REL1166A ZDB409   ZDB429   ZDB446   ZDB458   ZDB464* 
+##  [8] ZDB467   ZDB477   ZDB483   ZDB16    ZDB357   ZDB199*  ZDB200  
+## [15] ZDB564   ZDB30*   ZDB172   ZDB158   ZDB143   CZB199   CZB152  
+## [22] CZB154   ZDB83    ZDB87    ZDB96    ZDB99    ZDB107   ZDB111  
+## [29] REL10979 REL10988
+## 30 Levels: CZB152 CZB154 CZB199 REL10979 REL10988 REL1166A ... ZDB99</code></pre>
+<p>For more information on tibbles see the <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">tibbles vignette</a>.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

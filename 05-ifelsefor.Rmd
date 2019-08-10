@@ -1,0 +1,80 @@
+---
+title: "Conditional statements and loops"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+<div class="boxobj">
+<strong>Learning Objectives</strong>
+
+*  Fill in learning objectives   
+</div>
+
+---
+
+# Conditional statements
+
+Decision making is an important part of programming. This can be achieved in R programming using conditional statements such as `if` and `if/else`.
+
+## if
+
+The syntax of an <b>if</b> statement is:
+```{r, eval = FALSE}
+if (test_expression) {
+  do_this
+}
+
+x <- 5
+if (x > 0) {
+  print("positive number")
+}
+```
+
+## if/else
+
+The syntax of an <b>if/else</b> statement is:
+```{r, eval = FALSE}
+if (test_expression) {
+  do_this
+} else {
+  do_that
+}
+```
+The else part is optional and is only evaluated if test_expression is FALSE. It is important that the `else` word be in the same line as the closing brace of the `if` statement.
+
+```  {r}
+x <- 1
+if (x > 0){
+  print("positive number")
+} else {
+  print("negative number")
+}
+```
+
+Exercise: write a simple if else statement to chck if 5 is an odd number and if it is print "I am odd", otherwise print "I am even".
+
+# Loops
+
+Conceptually, a loop is a way to repeat a sequence of instructions under certain conditions. They allow you to automate parts of your code that are in need of repetition.
+
+The easiest and most frequently used loop in R is a <b>for</b> loop. Here is a demonstration of using loops.
+
+```{r}
+year <- c(2015,2016,2017,2018)
+
+for(i in 1:length(year)) {
+  print(year[i])
+}
+
+for(i in 1:length(year)) {
+  print(paste0("the year is ",year[i]))
+}
+```
+
+Exercises
+
