@@ -331,48 +331,70 @@ $(document).ready(function () {
 <div class="boxobj">
 <p><strong>Learning Objectives</strong></p>
 <ul>
-<li>Fill in learning objectives<br />
-</li>
+<li>Describe what a tibble is and how it differs from a data frame.</li>
+<li>Describe what the <code>dplyr</code> package in R is used for.</li>
+<li>Apply common <code>dplyr</code> functions to manipulate data in R.</li>
+<li>Employ the ‘pipe’ operator to link together a sequence of functions.</li>
+<li>Employ the ‘mutate’ function to apply other chosen functions to existing columns and create new columns of data.</li>
+<li>Employ the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.</li>
 </ul>
 </div>
 <hr />
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.2.0     ✔ purrr   0.3.2
-## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
-## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
-## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>metadata &lt;- read.csv(&quot;data/Ecoli_metadata.csv&quot;)</code></pre>
-<div id="first-section" class="section level1">
-<h1>First section</h1>
-</div>
+<p><img src="figures/tidyverse.png" /> <br> The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures. These packages include:</p>
+<ul>
+<li><code>dplyr</code> for data manipulation</li>
+<li><code>tibble</code> for data organizing</li>
+<li><code>ggplot2</code> for data visualization</li>
+<li><code>tidyr</code> for <em>tidy</em>-ing your data</li>
+<li><code>readr</code> for reading data into R</li>
+</ul>
+<p>When we installed the <code>tidyverse</code> package, we installed all of the above packages. This means that all of the specialized functions of these packages are available to use.</p>
+<p><br></p>
 <div id="tibbles" class="section level1">
 <h1>Tibbles</h1>
 <p>Tibbles are a modern take on data frames. They keep the features that have stood the test of time and drop the features that used to be convenient but are now frustrating (ie. converting character vectors to factors).</p>
-<div id="creating" class="section level2">
-<h2>Creating</h2>
+<div id="create-a-tibble" class="section level2">
+<h2>Create a tibble</h2>
 <p>You can create a tibble using the <code>tibble()</code> function:</p>
-<pre class="r"><code>t &lt;- tibble(x=1:3, y= list(1:5, 1:10, 1:20))
-t</code></pre>
-<pre><code>## # A tibble: 3 x 2
-##       x y         
-##   &lt;int&gt; &lt;list&gt;    
-## 1     1 &lt;int [5]&gt; 
-## 2     2 &lt;int [10]&gt;
-## 3     3 &lt;int [20]&gt;</code></pre>
-<pre class="r"><code>dim(t)</code></pre>
-<pre><code>## [1] 3 2</code></pre>
+<pre class="r"><code># Create
+friends_data &lt;- tibble(
+  name = c(&quot;Nicolas&quot;, &quot;Thierry&quot;, &quot;Bernard&quot;, &quot;Jerome&quot;),
+  age = c(27, 25, 29, 26),
+  height = c(180, 170, 185, 169),
+  married = c(TRUE, FALSE, TRUE, TRUE)
+)
+# Print
+friends_data</code></pre>
+<pre><code>## # A tibble: 4 x 4
+##   name      age height married
+##   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt;  
+## 1 Nicolas    27    180 TRUE   
+## 2 Thierry    25    170 FALSE  
+## 3 Bernard    29    185 TRUE   
+## 4 Jerome     26    169 TRUE</code></pre>
 </div>
 <div id="reading-in-tibbles" class="section level2">
 <h2>Reading in tibbles</h2>
-<p>Tibbles can be read into R using the <code>read_csv()</code> function. Note that the <code>read_csv()</code> function is different than the <code>read.csv()</code> function. Among other things, <code>read_csv()</code> will store the data as a tibble and <code>read.csv()</code> will store the data as a data frame.</p>
+<p>Tibbles can be read into R using the <code>read_csv()</code> function. Note that the <code>read_csv()</code> function is different than the <code>read.csv()</code> function. The major difference is that <code>read_csv()</code> will store the data as a tibble and <code>read.csv()</code> will store the data as a data frame.</p>
+<div class="box">
+<h3 id="exercise">EXERCISE</h3>
+<p>Use the <code>read_csv()</code> function to read in the <code>Ecoli_metadata.csv</code> file. Assign the data to an object called <code>metadata2</code> to avoid writing over the object <code>metadata</code>.</p>
+<p>How is it different that the <code>metadata</code>object?</p>
+</div>
+<!-- Solution -->
+<!-- metadata2 <- read_csv("data/Ecoli_metadata.csv") -->
 </div>
 <div id="data-frames-versus-tibbles" class="section level2">
 <h2>Data frames versus tibbles</h2>
-<p>For some applications, we will need to use data frames and for others tibbles. You will find that some older functions don’t work on tibbles. We can easily convert between them using <code>as.data.frame()</code> or <code>as_tibble()</code>:</p>
+<p>For some applications, you will need to use data frames and for others tibbles. You will find that some older functions don’t work on tibbles. They can be easily converted using the functions <code>as.data.frame()</code> or <code>as_tibble()</code>:</p>
+<pre class="r"><code>head(metadata)</code></pre>
+<pre><code>##     sample generation   clade strain     cit       run genome_size
+## 1   REL606          0     N/A REL606 unknown                  4.62
+## 2 REL1166A       2000 unknown REL606 unknown SRR098028        4.63
+## 3   ZDB409       5000 unknown REL606 unknown SRR098281        4.60
+## 4   ZDB429      10000      UC REL606 unknown SRR098282        4.59
+## 5   ZDB446      15000      UC REL606 unknown SRR098283        4.66
+## 6   ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63</code></pre>
 <pre class="r"><code>metadata_tib &lt;- as_tibble(metadata)
 metadata_tib</code></pre>
 <pre><code>## # A tibble: 30 x 7
@@ -398,11 +420,13 @@ head(metadata_df)</code></pre>
 ## 4   ZDB429      10000      UC REL606 unknown SRR098282        4.59
 ## 5   ZDB446      15000      UC REL606 unknown SRR098283        4.66
 ## 6   ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63</code></pre>
+<p>As you will see in the following sections, many of the useful data frame functions are the same for tibbles.</p>
+<p><br></p>
 </div>
 </div>
 <div id="exploring-tibbles" class="section level1">
 <h1>Exploring tibbles</h1>
-<p>We can explore the contents of a tibble in several ways. We can view the first ten rows of a tibble as above, which tells us lots of information about the column types and the number of rows. We can also use:</p>
+<p>We can explore the contents of a tibble in several ways. By typing the name of the tibble in the console, we can view the first ten rows of a tibble as above, which tells us lots of information about the column types and the number of rows. We can also use the <code>glimpse()</code> function:</p>
 <pre class="r"><code>glimpse(metadata_tib)</code></pre>
 <pre><code>## Observations: 30
 ## Variables: 7
@@ -413,12 +437,12 @@ head(metadata_df)</code></pre>
 ## $ cit         &lt;fct&gt; unknown, unknown, unknown, unknown, unknown, unknown…
 ## $ run         &lt;fct&gt; , SRR098028, SRR098281, SRR098282, SRR098283, SRR098…
 ## $ genome_size &lt;dbl&gt; 4.62, 4.63, 4.60, 4.59, 4.66, 4.63, 4.62, 4.61, 4.65…</code></pre>
-<p>We can return a vector containing the values of a variable (column) using the $ sign:</p>
+<p>As with data frames, we can return a vector containing the values of a variable (column) using the $ sign:</p>
 <pre class="r"><code>metadata_tib$generation</code></pre>
 <pre><code>##  [1]     0  2000  5000 10000 15000 20000 20000 20000 25000 25000 30000
 ## [12] 30000 31500 31500 31500 32000 32000 32500 32500 33000 33000 33000
 ## [23] 34000 34000 36000 36000 38000 38000 40000 40000</code></pre>
-<p>We can also use the subsetting operator [] directly on tibbles. A tibble is two dimensional, so we must pass two arguments to the [] operator; the first indicates the row(s) we require and the second indicates the column(s). To return the value in row 10, column 1:</p>
+<p>Again, similar to data frames, we can use the subsetting operator [] directly on tibbles. A tibble is two-dimensional, so we must pass two arguments to the [] operator; the first indicates the row(s) we require and the second indicates the column(s). To return the value in row 10, column 1:</p>
 <pre class="r"><code>metadata_tib[10,1]</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   sample
@@ -463,7 +487,7 @@ head(metadata_df)</code></pre>
 ##  9 ZDB477  
 ## 10 ZDB483  
 ## # … with 20 more rows</code></pre>
-<p>Note that subsetting a tibble returns another tibble. In contrast, using the $ sign to extract a variable returns a vector:</p>
+<p>Note that subsetting a tibble using the [] method returns another tibble. In contrast, using the $ sign to extract a variable returns a vector:</p>
 <pre class="r"><code>metadata_tib$sample</code></pre>
 <pre><code>##  [1] REL606   REL1166A ZDB409   ZDB429   ZDB446   ZDB458   ZDB464* 
 ##  [8] ZDB467   ZDB477   ZDB483   ZDB16    ZDB357   ZDB199*  ZDB200  
@@ -472,6 +496,424 @@ head(metadata_df)</code></pre>
 ## [29] REL10979 REL10988
 ## 30 Levels: CZB152 CZB154 CZB199 REL10979 REL10988 REL1166A ... ZDB99</code></pre>
 <p>For more information on tibbles see the <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">tibbles vignette</a>.</p>
+<p><br></p>
+</div>
+<div id="tidy-data" class="section level1">
+<h1>Tidy data</h1>
+<p>Tudy data is data that’s easy to work with: it’s easy to manage (with dplyr), visualize (with ggplot2) and model (with R’s hundreds of modeling packages). Most importantly, tidy data is data where <strong>each column is a variable</strong> and <strong>each row is an observation</strong>.</p>
+<p>Arranging your data in this way makes it easier to work with because you have a consistent way of referring to variables (as column names) and observations (as row indices). When use tidy data and tidy tools, you spend less time worrying about how to feed the output from one function into the input of another, and more time answering your questions about the data.</p>
+<p>To tidy messy data, you first identify the variables in your dataset, then use the tools provided by <code>tidyr</code> to move them into columns. <code>tidyr</code> provides three main functions for tidying your messy data:</p>
+<ul>
+<li><code>gather()</code></li>
+<li><code>separate()</code></li>
+<li><code>spread()</code></li>
+</ul>
+<div id="gather" class="section level2">
+<h2><code>gather()</code></h2>
+<div class="figure">
+<img src="figures/tidyr-gather.png" />
+
+</div>
+<p><br> The <code>gather()</code> function takes multiple columns, and gathers them into key-value pairs: it makes “wide” data longer. Here’s an example. In this experiment we’ve given three people two different drugs and recorded their heart rate:</p>
+<pre class="r"><code>messy &lt;- data.frame(
+  name = c(&quot;Wilbur&quot;, &quot;Petunia&quot;, &quot;Gregory&quot;),
+  a = c(67, 80, 64),
+  b = c(56, 90, 50)
+)
+messy</code></pre>
+<pre><code>##      name  a  b
+## 1  Wilbur 67 56
+## 2 Petunia 80 90
+## 3 Gregory 64 50</code></pre>
+<p>We have three variables (name, drug and heartrate), but only name is currently in a column. We use <code>gather()</code> to gather the a and b columns into key-value pairs of drug and heartrate:</p>
+<pre class="r"><code>messy %&gt;%
+  gather(drug, heartrate, a:b)</code></pre>
+<pre><code>##      name drug heartrate
+## 1  Wilbur    a        67
+## 2 Petunia    a        80
+## 3 Gregory    a        64
+## 4  Wilbur    b        56
+## 5 Petunia    b        90
+## 6 Gregory    b        50</code></pre>
+<p>Now each column is a variable and each row is an observation - tidy! Note: more about the “pipe” operator later.</p>
+</div>
+<div id="separate" class="section level2">
+<h2><code>separate()</code></h2>
+<div class="figure">
+<img src="figures/tidyr-separate.png" />
+
+</div>
+<p><br> Sometimes two variables are clumped together in one column. separate() allows you to tease them apart. We have some measurements of how much time people spend on their phones, measured at two locations (work and home), at two times. Each person has been randomly assigned to either treatment or control.</p>
+<pre class="r"><code>messy</code></pre>
+<pre><code>##   id       trt    work.T1   home.T1   work.T2    home.T2
+## 1  1 treatment 0.08513597 0.6158293 0.1135090 0.05190332
+## 2  2   control 0.22543662 0.4296715 0.5959253 0.26417767
+## 3  3   control 0.27453052 0.6516557 0.3580500 0.39879073
+## 4  4 treatment 0.27230507 0.5677378 0.4288094 0.83613414</code></pre>
+<p>To tidy this data, we first use gather() to turn columns work.T1, home.T1, work.T2 and home.T2 into a key-value pair of key and time:</p>
+<pre class="r"><code>tidier &lt;- messy %&gt;%
+  gather(key, time, -id, -trt)
+tidier</code></pre>
+<pre><code>##    id       trt     key       time
+## 1   1 treatment work.T1 0.08513597
+## 2   2   control work.T1 0.22543662
+## 3   3   control work.T1 0.27453052
+## 4   4 treatment work.T1 0.27230507
+## 5   1 treatment home.T1 0.61582931
+## 6   2   control home.T1 0.42967153
+## 7   3   control home.T1 0.65165567
+## 8   4 treatment home.T1 0.56773775
+## 9   1 treatment work.T2 0.11350898
+## 10  2   control work.T2 0.59592531
+## 11  3   control work.T2 0.35804998
+## 12  4 treatment work.T2 0.42880942
+## 13  1 treatment home.T2 0.05190332
+## 14  2   control home.T2 0.26417767
+## 15  3   control home.T2 0.39879073
+## 16  4 treatment home.T2 0.83613414</code></pre>
+<p>Next we use separate() to split the key into location and time, using a regular expression to describe the character that separates them:</p>
+<pre class="r"><code>tidy &lt;- tidier %&gt;%
+  separate(key, into = c(&quot;location&quot;, &quot;timepoint&quot;), sep = &quot;\\.&quot;)
+tidy</code></pre>
+<pre><code>##    id       trt location timepoint       time
+## 1   1 treatment     work        T1 0.08513597
+## 2   2   control     work        T1 0.22543662
+## 3   3   control     work        T1 0.27453052
+## 4   4 treatment     work        T1 0.27230507
+## 5   1 treatment     home        T1 0.61582931
+## 6   2   control     home        T1 0.42967153
+## 7   3   control     home        T1 0.65165567
+## 8   4 treatment     home        T1 0.56773775
+## 9   1 treatment     work        T2 0.11350898
+## 10  2   control     work        T2 0.59592531
+## 11  3   control     work        T2 0.35804998
+## 12  4 treatment     work        T2 0.42880942
+## 13  1 treatment     home        T2 0.05190332
+## 14  2   control     home        T2 0.26417767
+## 15  3   control     home        T2 0.39879073
+## 16  4 treatment     home        T2 0.83613414</code></pre>
+</div>
+<div id="spread" class="section level2">
+<h2><code>spread()</code></h2>
+<div class="figure">
+<img src="figures/tidyr-spread.png" />
+
+</div>
+<p><br> The function <code>spread()</code> does the reverse of <code>gather()</code>. It takes two columns and spreads them into multiple columns. It produces “wide” data from “long” data. Typically you will want your data in a wide form so you likely won’t use this much. See the documentation for more information.</p>
+<p><br></p>
+</div>
+</div>
+<div id="what-is-dplyr" class="section level1">
+<h1>What is dplyr?</h1>
+<p>The package <code>dplyr</code> is a package that tries to provide easy tools for the most common data manipulation tasks. It is built to work directly with tibbles. The thinking behind it was largely inspired by the package <code>plyr</code> which has been in use for some time but suffered from being slow in some cases. <code>dplyr</code> addresses this by porting much of the computation to C++. An additional feature is the ability to work with data stored directly in an external database. The benefits of doing this are that the data can be managed natively in a relational database, queries can be conducted on that database, and only the results of the query returned.</p>
+<p>This addresses a common problem with R in that all operations are conducted in memory and thus the amount of data you can work with is limited by available memory. The database connections essentially remove that limitation in that you can have a database of many 100s GB, conduct queries on it directly and pull back just what you need for analysis in R.</p>
+<p><br></p>
+</div>
+<div id="selecting-columns-and-filtering-rows" class="section level1">
+<h1>Selecting columns and filtering rows</h1>
+<p>We’re going to learn some of the most common <code>dplyr</code> functions: <code>select()</code>, <code>filter()</code>, <code>mutate()</code>, <code>group_by()</code>, and <code>summarize()</code>. To select columns of a data frame, use <code>select()</code>. The first argument to this function is the data frame (tibble), and the subsequent arguments are the columns to keep.</p>
+<pre class="r"><code>select(metadata, sample, clade, cit, genome_size)</code></pre>
+<pre><code>##      sample   clade     cit genome_size
+## 1    REL606     N/A unknown        4.62
+## 2  REL1166A unknown unknown        4.63
+## 3    ZDB409 unknown unknown        4.60
+## 4    ZDB429      UC unknown        4.59
+## 5    ZDB446      UC unknown        4.66
+## 6    ZDB458 (C1,C2) unknown        4.63
+## 7   ZDB464* (C1,C2) unknown        4.62
+## 8    ZDB467 (C1,C2) unknown        4.61
+## 9    ZDB477      C1 unknown        4.65
+## 10   ZDB483      C3 unknown        4.59
+## 11    ZDB16      C1 unknown        4.61
+## 12   ZDB357      C2 unknown        4.62
+## 13  ZDB199*      C1   minus        4.62
+## 14   ZDB200      C2   minus        4.63
+## 15   ZDB564    Cit+    plus        4.74
+## 16   ZDB30*      C3   minus        4.61
+## 17   ZDB172    Cit+    plus        4.77
+## 18   ZDB158      C2   minus        4.63
+## 19   ZDB143    Cit+    plus        4.79
+## 20   CZB199      C1   minus        4.59
+## 21   CZB152    Cit+    plus        4.80
+## 22   CZB154    Cit+    plus        4.76
+## 23    ZDB83    Cit+   minus        4.60
+## 24    ZDB87      C2    plus        4.75
+## 25    ZDB96    Cit+    plus        4.74
+## 26    ZDB99      C1   minus        4.61
+## 27   ZDB107    Cit+    plus        4.79
+## 28   ZDB111      C2   minus        4.62
+## 29 REL10979    Cit+    plus        4.78
+## 30 REL10988      C2   minus        4.62</code></pre>
+<p>To choose rows, use filter():</p>
+<pre class="r"><code>filter(metadata, cit == &quot;plus&quot;)</code></pre>
+<pre><code>##     sample generation clade strain  cit       run genome_size
+## 1   ZDB564      31500  Cit+ REL606 plus SRR098289        4.74
+## 2   ZDB172      32000  Cit+ REL606 plus SRR098042        4.77
+## 3   ZDB143      32500  Cit+ REL606 plus SRR098040        4.79
+## 4   CZB152      33000  Cit+ REL606 plus SRR097977        4.80
+## 5   CZB154      33000  Cit+ REL606 plus SRR098026        4.76
+## 6    ZDB87      34000    C2 REL606 plus SRR098035        4.75
+## 7    ZDB96      36000  Cit+ REL606 plus SRR098036        4.74
+## 8   ZDB107      38000  Cit+ REL606 plus SRR098038        4.79
+## 9 REL10979      40000  Cit+ REL606 plus SRR098029        4.78</code></pre>
+<pre class="r"><code>filter(metadata, cit != &quot;plus&quot;)</code></pre>
+<pre><code>##      sample generation   clade strain     cit       run genome_size
+## 1    REL606          0     N/A REL606 unknown                  4.62
+## 2  REL1166A       2000 unknown REL606 unknown SRR098028        4.63
+## 3    ZDB409       5000 unknown REL606 unknown SRR098281        4.60
+## 4    ZDB429      10000      UC REL606 unknown SRR098282        4.59
+## 5    ZDB446      15000      UC REL606 unknown SRR098283        4.66
+## 6    ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63
+## 7   ZDB464*      20000 (C1,C2) REL606 unknown SRR098285        4.62
+## 8    ZDB467      20000 (C1,C2) REL606 unknown SRR098286        4.61
+## 9    ZDB477      25000      C1 REL606 unknown SRR098287        4.65
+## 10   ZDB483      25000      C3 REL606 unknown SRR098288        4.59
+## 11    ZDB16      30000      C1 REL606 unknown SRR098031        4.61
+## 12   ZDB357      30000      C2 REL606 unknown SRR098280        4.62
+## 13  ZDB199*      31500      C1 REL606   minus SRR098044        4.62
+## 14   ZDB200      31500      C2 REL606   minus SRR098279        4.63
+## 15   ZDB30*      32000      C3 REL606   minus SRR098032        4.61
+## 16   ZDB158      32500      C2 REL606   minus SRR098041        4.63
+## 17   CZB199      33000      C1 REL606   minus SRR098027        4.59
+## 18    ZDB83      34000    Cit+ REL606   minus SRR098034        4.60
+## 19    ZDB99      36000      C1 REL606   minus SRR098037        4.61
+## 20   ZDB111      38000      C2 REL606   minus SRR098039        4.62
+## 21 REL10988      40000      C2 REL606   minus SRR098030        4.62</code></pre>
+<p><br></p>
+</div>
+<div id="pipes" class="section level1">
+<h1>Pipes</h1>
+<p>But what if you wanted to <code>select</code> and <code>filter</code>? There are three ways to do this: use intermediate steps, nested functions, or pipes. With the intermediate steps, you essentially create a temporary data frame and use that as input to the next function. This can clutter up your workspace with lots of objects. You can also nest functions (i.e. one function inside of another). This is handy, but can be difficult to read if too many functions are nested as the process from inside out. The last option, pipes, are a fairly recent addition to R. Pipes let you take the output of one function and send it directly to the next, which is useful when you need to many things to the same data set. Pipes in R look like <code>%&gt;%</code> and are made available via the <code>magrittr</code> package installed as part of tidyverse. If you’re familiar with the Unix shell, you may already have used pipes to pass the output from one command to the next. The concept is the same, except the shell uses the <code>|</code> character rather than R’s pipe operator <code>%&gt;%</code>.</p>
+<p>The pipe operator can be tedious to type. In Rstudio pressing <code>Ctrl + Shift + M</code> under Windows / Linux will insert the pipe operator. On the mac, use <code>⌘ + Shift + M</code>.</p>
+<pre class="r"><code>metadata %&gt;%
+  filter(cit == &quot;plus&quot;) %&gt;%
+  select(sample, generation, clade, cit)</code></pre>
+<pre><code>##     sample generation clade  cit
+## 1   ZDB564      31500  Cit+ plus
+## 2   ZDB172      32000  Cit+ plus
+## 3   ZDB143      32500  Cit+ plus
+## 4   CZB152      33000  Cit+ plus
+## 5   CZB154      33000  Cit+ plus
+## 6    ZDB87      34000    C2 plus
+## 7    ZDB96      36000  Cit+ plus
+## 8   ZDB107      38000  Cit+ plus
+## 9 REL10979      40000  Cit+ plus</code></pre>
+<p>In the above we use the pipe to send the data set first through <code>filter</code>, to keep rows where cit was equal to ‘plus’, and then through <code>select</code> to keep the sample and generation and clade columns. When the data frame is being passed to the <code>filter()</code> and <code>select()</code> functions through a pipe, we don’t need to include it as an argument to these functions anymore. Note that the order of operations here matters - try reversing the <code>filter()</code> and <code>select()</code> commands - why doesn’t that work?</p>
+<p>This is the same as the nested version:</p>
+<pre class="r"><code>select(filter(metadata, cit == &quot;plus&quot;), sample, generation, clade)</code></pre>
+<pre><code>##     sample generation clade
+## 1   ZDB564      31500  Cit+
+## 2   ZDB172      32000  Cit+
+## 3   ZDB143      32500  Cit+
+## 4   CZB152      33000  Cit+
+## 5   CZB154      33000  Cit+
+## 6    ZDB87      34000    C2
+## 7    ZDB96      36000  Cit+
+## 8   ZDB107      38000  Cit+
+## 9 REL10979      40000  Cit+</code></pre>
+<p>If we wanted to create a new object with this smaller version of the data we could do so by assigning it a new name:</p>
+<pre class="r"><code>Ecoli_citplus &lt;- metadata %&gt;%
+  filter(cit == &quot;plus&quot;) %&gt;%
+  select(sample, generation, clade)
+
+Ecoli_citplus</code></pre>
+<pre><code>##     sample generation clade
+## 1   ZDB564      31500  Cit+
+## 2   ZDB172      32000  Cit+
+## 3   ZDB143      32500  Cit+
+## 4   CZB152      33000  Cit+
+## 5   CZB154      33000  Cit+
+## 6    ZDB87      34000    C2
+## 7    ZDB96      36000  Cit+
+## 8   ZDB107      38000  Cit+
+## 9 REL10979      40000  Cit+</code></pre>
+<p>We can think of the <code>filter()</code> and <code>select()</code> functions as verbs in the sentence; they do things to the data flowing through the pipeline.</p>
+<div class="box">
+<h3 id="exercise-1">EXERCISE</h3>
+<p>Using pipes, subset <code>metadata</code> to include rows where the clade is ‘Cit+’ and keep only the columns <code>sample</code>, <code>cit</code>, and <code>genome_size</code>.<br />
+How many rows are in that tibble?<br />
+HINT: You can use the <code>nrow()</code> function to find out how many rows are in a tibble.</p>
+</div>
+</div>
+<div id="mutate" class="section level1">
+<h1>Mutate</h1>
+<p>Frequently you’ll want to create new columns based on the values in existing columns, for example to do unit conversions or find the ratio of values in two columns. For this we’ll use <code>mutate()</code>.</p>
+<p>To create a new column of genome size in bp:</p>
+<pre class="r"><code>metadata %&gt;%
+  mutate(genome_bp = genome_size *1e6)</code></pre>
+<pre><code>##      sample generation   clade strain     cit       run genome_size
+## 1    REL606          0     N/A REL606 unknown                  4.62
+## 2  REL1166A       2000 unknown REL606 unknown SRR098028        4.63
+## 3    ZDB409       5000 unknown REL606 unknown SRR098281        4.60
+## 4    ZDB429      10000      UC REL606 unknown SRR098282        4.59
+## 5    ZDB446      15000      UC REL606 unknown SRR098283        4.66
+## 6    ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63
+## 7   ZDB464*      20000 (C1,C2) REL606 unknown SRR098285        4.62
+## 8    ZDB467      20000 (C1,C2) REL606 unknown SRR098286        4.61
+## 9    ZDB477      25000      C1 REL606 unknown SRR098287        4.65
+## 10   ZDB483      25000      C3 REL606 unknown SRR098288        4.59
+## 11    ZDB16      30000      C1 REL606 unknown SRR098031        4.61
+## 12   ZDB357      30000      C2 REL606 unknown SRR098280        4.62
+## 13  ZDB199*      31500      C1 REL606   minus SRR098044        4.62
+## 14   ZDB200      31500      C2 REL606   minus SRR098279        4.63
+## 15   ZDB564      31500    Cit+ REL606    plus SRR098289        4.74
+## 16   ZDB30*      32000      C3 REL606   minus SRR098032        4.61
+## 17   ZDB172      32000    Cit+ REL606    plus SRR098042        4.77
+## 18   ZDB158      32500      C2 REL606   minus SRR098041        4.63
+## 19   ZDB143      32500    Cit+ REL606    plus SRR098040        4.79
+## 20   CZB199      33000      C1 REL606   minus SRR098027        4.59
+## 21   CZB152      33000    Cit+ REL606    plus SRR097977        4.80
+## 22   CZB154      33000    Cit+ REL606    plus SRR098026        4.76
+## 23    ZDB83      34000    Cit+ REL606   minus SRR098034        4.60
+## 24    ZDB87      34000      C2 REL606    plus SRR098035        4.75
+## 25    ZDB96      36000    Cit+ REL606    plus SRR098036        4.74
+## 26    ZDB99      36000      C1 REL606   minus SRR098037        4.61
+## 27   ZDB107      38000    Cit+ REL606    plus SRR098038        4.79
+## 28   ZDB111      38000      C2 REL606   minus SRR098039        4.62
+## 29 REL10979      40000    Cit+ REL606    plus SRR098029        4.78
+## 30 REL10988      40000      C2 REL606   minus SRR098030        4.62
+##    genome_bp
+## 1    4620000
+## 2    4630000
+## 3    4600000
+## 4    4590000
+## 5    4660000
+## 6    4630000
+## 7    4620000
+## 8    4610000
+## 9    4650000
+## 10   4590000
+## 11   4610000
+## 12   4620000
+## 13   4620000
+## 14   4630000
+## 15   4740000
+## 16   4610000
+## 17   4770000
+## 18   4630000
+## 19   4790000
+## 20   4590000
+## 21   4800000
+## 22   4760000
+## 23   4600000
+## 24   4750000
+## 25   4740000
+## 26   4610000
+## 27   4790000
+## 28   4620000
+## 29   4780000
+## 30   4620000</code></pre>
+<p><br></p>
+</div>
+<div id="split-apply-combine-data-analysis-and-the-summarize-function" class="section level1">
+<h1>Split-apply-combine data analysis and the summarize() function</h1>
+<p>Many data analysis tasks can be approached using the “split-apply-combine” paradigm: split the data into groups, apply some analysis to each group, and then combine the results. <code>dplyr</code> makes this very easy through the use of the <code>group_by()</code> function, which splits the data into groups. When the data is grouped in this way <code>summarize()</code> can be used to collapse each group into a single-row summary. <code>summarize()</code> does this by applying an aggregating or summary function to each group. For example, if we wanted to group by citrate-using mutant status and find the number of rows of data for each status, we would do:</p>
+<pre class="r"><code>metadata %&gt;%
+  group_by(cit) %&gt;%
+  summarize(n())</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   cit     `n()`
+##   &lt;fct&gt;   &lt;int&gt;
+## 1 minus       9
+## 2 plus        9
+## 3 unknown    12</code></pre>
+<p>Here the summary function used was <code>n()</code> to find the count for each group. We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package we can use built-in functions like <code>mean</code>, <code>median</code>, <code>min</code>, and <code>max</code>. By default, all R functions operating on vectors that contains missing data will return <code>NA</code>. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the <code>mean</code>, the easiest way to ignore <code>NA</code> (the missing data) is to use <code>na.rm=TRUE</code> (rm stands for remove).</p>
+<p>So to view mean <code>genome_size</code> by mutant status:</p>
+<pre class="r"><code>metadata %&gt;%
+  group_by(cit) %&gt;%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE))</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   cit     mean_size
+##   &lt;fct&gt;       &lt;dbl&gt;
+## 1 minus        4.61
+## 2 plus         4.77
+## 3 unknown      4.62</code></pre>
+<p>You can group by multiple columns too:</p>
+<pre class="r"><code>metadata %&gt;%
+  group_by(cit, clade) %&gt;%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE))</code></pre>
+<pre><code>## # A tibble: 13 x 3
+## # Groups:   cit [3]
+##    cit     clade   mean_size
+##    &lt;fct&gt;   &lt;fct&gt;       &lt;dbl&gt;
+##  1 minus   C1           4.61
+##  2 minus   C2           4.62
+##  3 minus   C3           4.61
+##  4 minus   Cit+         4.6 
+##  5 plus    C2           4.75
+##  6 plus    Cit+         4.77
+##  7 unknown (C1,C2)      4.62
+##  8 unknown C1           4.63
+##  9 unknown C2           4.62
+## 10 unknown C3           4.59
+## 11 unknown N/A          4.62
+## 12 unknown UC           4.62
+## 13 unknown unknown      4.62</code></pre>
+<p>Looks like for one of these clones, the clade is missing. We could then discard those rows using filter():</p>
+<pre class="r"><code>metadata %&gt;%
+  group_by(cit, clade) %&gt;%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE)) %&gt;% 
+  filter(!is.na(clade))</code></pre>
+<pre><code>## # A tibble: 13 x 3
+## # Groups:   cit [3]
+##    cit     clade   mean_size
+##    &lt;fct&gt;   &lt;fct&gt;       &lt;dbl&gt;
+##  1 minus   C1           4.61
+##  2 minus   C2           4.62
+##  3 minus   C3           4.61
+##  4 minus   Cit+         4.6 
+##  5 plus    C2           4.75
+##  6 plus    Cit+         4.77
+##  7 unknown (C1,C2)      4.62
+##  8 unknown C1           4.63
+##  9 unknown C2           4.62
+## 10 unknown C3           4.59
+## 11 unknown N/A          4.62
+## 12 unknown UC           4.62
+## 13 unknown unknown      4.62</code></pre>
+<p>You can also summarize multiple variables at the same time:</p>
+<pre class="r"><code>metadata %&gt;%
+  group_by(cit, clade) %&gt;%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE),
+            min_generation = min(generation))</code></pre>
+<pre><code>## # A tibble: 13 x 4
+## # Groups:   cit [3]
+##    cit     clade   mean_size min_generation
+##    &lt;fct&gt;   &lt;fct&gt;       &lt;dbl&gt;          &lt;int&gt;
+##  1 minus   C1           4.61          31500
+##  2 minus   C2           4.62          31500
+##  3 minus   C3           4.61          32000
+##  4 minus   Cit+         4.6           34000
+##  5 plus    C2           4.75          34000
+##  6 plus    Cit+         4.77          31500
+##  7 unknown (C1,C2)      4.62          20000
+##  8 unknown C1           4.63          25000
+##  9 unknown C2           4.62          30000
+## 10 unknown C3           4.59          25000
+## 11 unknown N/A          4.62              0
+## 12 unknown UC           4.62          10000
+## 13 unknown unknown      4.62           2000</code></pre>
+<p>For an efficient (and printable) summary of the tidyr and dplyr functions, see this <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Handy dplyr cheatsheet</a>.</p>
+<div class="box">
+<h3 id="exercise-2">EXERCISE</h3>
+<p>Create a tibble containing each unique clade (removing the samples with unknown clades) and the rank of it’s mean genome size. (note that ranking genome size will not sort the table; the row order will be unchanged. You can use the <code>arrange()</code> function to sort the table).</p>
+<p>There are several functions for ranking observations, which handle tied values differently. For this exercise it doesn’t matter which function you choose. Use the help options to find a ranking function.</p>
+</div>
+<!-- Solution -->
+<!-- ```{r} -->
+<!-- metadata %>%  -->
+<!--   group_by(clade) %>%  -->
+<!--   summarize(means = mean(genome_size)) %>%  -->
+<!--   mutate(rank(means)) -->
+<!-- ``` -->
+</div>
+<div id="other-great-resources" class="section level1">
+<h1>Other great resources</h1>
+<ul>
+<li><a href="https://suzan.rbind.io/categories/tutorial/">Data Wrangling tutorial</a> - an excellent four part tutorial covering selecting data, filtering data, summarising and transforming your data.</li>
+<li><a href="http://r4ds.had.co.nz/">R for Data Science</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/">Data wrangling with R and RStudio</a> - 55 minute webinar from RStudio</li>
+</ul>
 </div>
 
 

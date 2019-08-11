@@ -331,43 +331,73 @@ $(document).ready(function () {
 <div class="boxobj">
 <p><strong>Learning Objectives</strong></p>
 <ul>
-<li>Fill in learning objectives<br />
-</li>
+<li>Write an if…else statement.</li>
+<li>Write a for loop to modify a data frame.</li>
 </ul>
 </div>
 <hr />
 <div id="conditional-statements" class="section level1">
 <h1>Conditional statements</h1>
-<p>Decision making is an important part of programming. This can be achieved in R programming using conditional statements such as <code>if</code> and <code>if/else</code>.</p>
+<p>Decision making is an important part of programming. This can be achieved in R programming using conditional statements such as <code>if</code> and <code>if...else</code>.</p>
 <div id="if" class="section level2">
 <h2>if</h2>
 <p>The syntax of an <b>if</b> statement is:</p>
 <pre class="r"><code>if (test_expression) {
   do_this
-}
-
-x &lt;- 5
+}</code></pre>
+<pre class="r"><code>x &lt;- 5
 if (x &gt; 0) {
   print(&quot;positive number&quot;)
 }</code></pre>
+<pre><code>## [1] &quot;positive number&quot;</code></pre>
 </div>
 <div id="ifelse" class="section level2">
-<h2>if/else</h2>
-<p>The syntax of an <b>if/else</b> statement is:</p>
+<h2>if…else</h2>
+<p>The syntax of an <b>if…else</b> statement is:</p>
 <pre class="r"><code>if (test_expression) {
   do_this
 } else {
-  do_that
+    do_that
 }</code></pre>
 <p>The else part is optional and is only evaluated if test_expression is FALSE. It is important that the <code>else</code> word be in the same line as the closing brace of the <code>if</code> statement.</p>
 <pre class="r"><code>x &lt;- 1
 if (x &gt; 0){
   print(&quot;positive number&quot;)
 } else {
-  print(&quot;negative number&quot;)
+    print(&quot;negative number&quot;)
 }</code></pre>
 <pre><code>## [1] &quot;positive number&quot;</code></pre>
-<p>Exercise: write a simple if else statement to chck if 5 is an odd number and if it is print “I am odd”, otherwise print “I am even”.</p>
+</div>
+<div id="nested-ifelse-statements" class="section level2">
+<h2>Nested if…else statements</h2>
+<p>You can have more than two test expressions:</p>
+<pre class="r"><code>if (test_expression1) { 
+  statement1
+} else if (test_expression2) {
+    statement2
+} else {
+      statement4
+}</code></pre>
+<pre class="r"><code>x &lt;- 0
+if (x &lt; 0) {
+   print(&quot;negative number&quot;)
+} else if (x &gt; 0) {
+   print(&quot;positive number&quot;)
+} else {
+   print(&quot;zero&quot;)
+}  </code></pre>
+<pre><code>## [1] &quot;zero&quot;</code></pre>
+<div class="box">
+<h3 id="exercise">EXERCISE</h3>
+<p>Exercise: write a simple if…else statement to check if 5 is an odd number and if it is print “I am odd”, otherwise print “I am even”.</p>
+</div>
+<!-- Solution -->
+<!-- x <- 5 -->
+<!-- if ((x %% 2) != 0) { -->
+<!--   print("I am odd") -->
+<!-- } else { -->
+<!--   print("I am even") -->
+<!-- } -->
 </div>
 </div>
 <div id="loops" class="section level1">
@@ -390,7 +420,21 @@ for(i in 1:length(year)) {
 ## [1] &quot;the year is 2016&quot;
 ## [1] &quot;the year is 2017&quot;
 ## [1] &quot;the year is 2018&quot;</code></pre>
-<p>Exercises</p>
+<div class="box">
+<h3 id="exercise-1">EXERCISE</h3>
+<p><strong>Challenging.</strong> Using the <em>E. coli</em> metadata from the last section, write a for loop containing an if…else statement to change the genome size into categorical variable.</p>
+<p>Do this by translating the following sentence into R: for every element in the genome_size variable, if the genome size is greater than the mean, change it to “large”, otherwise, change it to “small”.</p>
+</div>
+<!-- # First make a copy of the data frame -->
+<!-- md2 <- metadata -->
+<!-- mm <- mean(md2$genome_size) -->
+<!-- for (i in 1:length(md2$genome_size)) { -->
+<!--   if (md2[i,7] > mm) { -->
+<!--     md2[i,7] <- "large" -->
+<!--   } else { -->
+<!--     md2[i,7] <- "small" -->
+<!--   } -->
+<!-- }   -->
 </div>
 
 

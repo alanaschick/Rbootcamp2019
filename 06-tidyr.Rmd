@@ -5,6 +5,8 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+metadata <- read.csv("data/Ecoli_metadata.csv")
 ```
 
 ---
@@ -12,56 +14,91 @@ knitr::opts_chunk$set(echo = TRUE)
 <div class="boxobj">
 <strong>Learning Objectives</strong>
 
-*  Fill in learning objectives   
+*  Describe what a tibble is and how it differs from a data frame.
+*  Describe what the `dplyr` package in R is used for.
+*  Apply common `dplyr` functions to manipulate data in R.
+*  Employ the ‘pipe’ operator to link together a sequence of functions.
+*  Employ the ‘mutate’ function to apply other chosen functions to existing columns and create new columns of data.
+*  Employ the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.
+
 </div>
 
 ---
 
-```{r}
-library(tidyverse)
-metadata <- read.csv("data/Ecoli_metadata.csv")
-```
+![](./figures/tidyverse.png)
+<br>
+The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures. These packages include:
 
-# First section
+* `dplyr` for data manipulation
+* `tibble` for data organizing
+* `ggplot2` for data visualization
+* `tidyr` for *tidy*-ing your data
+* `readr` for reading data into R
+
+When we installed the `tidyverse` package, we installed all of the above packages. This means that all of the specialized functions of these packages are available to use. 
+
+<br>
 
 # Tibbles
+
 Tibbles are a modern take on data frames. They keep the features that have stood the test of time and drop the features that used to be convenient but are now frustrating (ie. converting character vectors to factors).
 
-## Creating
+## Create a tibble
 You can create a tibble using the `tibble()` function:
 
 ```{r}
-t <- tibble(x=1:3, y= list(1:5, 1:10, 1:20))
-t
-dim(t)
+# Create
+friends_data <- tibble(
+  name = c("Nicolas", "Thierry", "Bernard", "Jerome"),
+  age = c(27, 25, 29, 26),
+  height = c(180, 170, 185, 169),
+  married = c(TRUE, FALSE, TRUE, TRUE)
+)
+# Print
+friends_data
 ```
 
 ## Reading in tibbles
 
-Tibbles can be read into R using the `read_csv()` function. Note that the `read_csv()` function is different than the `read.csv()` function. Among other things, `read_csv()` will store the data as a tibble and `read.csv()` will store the data as a data frame.
+Tibbles can be read into R using the `read_csv()` function. Note that the `read_csv()` function is different than the `read.csv()` function. The major difference is that `read_csv()` will store the data as a tibble and `read.csv()` will store the data as a data frame.
+
+<div class = "box">
+### EXERCISE
+Use the `read_csv()` function to read in the `Ecoli_metadata.csv` file. Assign the data to an object called `metadata2` to avoid writing over the object `metadata`. 
+
+How is it different that the `metadata`object?
+</div>
+
+<!-- Solution -->
+<!-- metadata2 <- read_csv("data/Ecoli_metadata.csv") -->
 
 ## Data frames versus tibbles
 
-For some applications, we will need to use data frames and for others tibbles. You will find that some older functions don't work on tibbles. We can easily convert between them using `as.data.frame()` or `as_tibble()`:
+For some applications, you will need to use data frames and for others tibbles. You will find that some older functions don't work on tibbles. They can be easily converted using the functions `as.data.frame()` or `as_tibble()`:
 ```{r}
+head(metadata)
 metadata_tib <- as_tibble(metadata)
 metadata_tib
 metadata_df <- as.data.frame(metadata_tib)
 head(metadata_df)
 ```
 
+As you will see in the following sections, many of the useful data frame functions are the same for tibbles.
+
+<br>
+
 # Exploring tibbles
 
-We can explore the contents of a tibble in several ways. We can view the first ten rows of a tibble as above, which tells us lots of information about the column types and the number of rows. We can also use:
+We can explore the contents of a tibble in several ways. By typing the name of the tibble in the console, we can view the first ten rows of a tibble as above, which tells us lots of information about the column types and the number of rows. We can also use the `glimpse()` function:
 ```{r}
 glimpse(metadata_tib)
 ```
 
-We can return a vector containing the values of a variable (column) using the $ sign:
+As with data frames, we can return a vector containing the values of a variable (column) using the $ sign:
 ```{r}
 metadata_tib$generation
 ```
-We can also use the subsetting operator [] directly on tibbles. A tibble is two dimensional, so we must pass two arguments to the [] operator; the first indicates the row(s) we require and the second indicates the column(s). To return the value in row 10, column 1:
+Again, similar to data frames, we can use the subsetting operator [] directly on tibbles. A tibble is two-dimensional, so we must pass two arguments to the [] operator; the first indicates the row(s) we require and the second indicates the column(s). To return the value in row 10, column 1:
 ```{r}
 metadata_tib[10,1]
 ```
@@ -78,14 +115,239 @@ You can also refer to columns by name with quotation marks:
 ```{r}
 metadata_tib[,"sample"]
 ```
-Note that subsetting a tibble returns another tibble. In contrast, using the $ sign to extract a variable returns a vector:
+Note that subsetting a tibble using the [] method returns another tibble. In contrast, using the $ sign to extract a variable returns a vector:
 ```{r}
 metadata_tib$sample
 ```
 
 For more information on tibbles see the [tibbles vignette](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html).
 
+<br>
+
+# Tidy data
+
+Tudy data is data that's easy to work with: it's easy to manage (with dplyr), visualize (with ggplot2) and model (with R's hundreds of modeling packages). Most importantly, tidy data is data where **each column is a variable** and **each row is an observation**. 
+
+Arranging your data in this way makes it easier to work with because you have a consistent way of referring to variables (as column names) and observations (as row indices). When use tidy data and tidy tools, you spend less time worrying about how to feed the output from one function into the input of another, and more time answering your questions about the data.
+
+To tidy messy data, you first identify the variables in your dataset, then use the tools provided by `tidyr` to move them into columns. `tidyr` provides three main functions for tidying your messy data: 
+
+* `gather()`
+* `separate()`
+* `spread()`
+
+## `gather()`
+
+![](./figures/tidyr-gather.png)
+
+<br>
+The `gather()` function takes multiple columns, and gathers them into key-value pairs: it makes “wide” data longer. Here's an example. In this experiment we’ve given three people two different drugs and recorded their heart rate:
+
+```{r}
+messy <- data.frame(
+  name = c("Wilbur", "Petunia", "Gregory"),
+  a = c(67, 80, 64),
+  b = c(56, 90, 50)
+)
+messy
+```
+We have three variables (name, drug and heartrate), but only name is currently in a column. We use `gather()` to gather the a and b columns into key-value pairs of drug and heartrate:
+```{r}
+messy %>%
+  gather(drug, heartrate, a:b)
+```
+Now each column is a variable and each row is an observation - tidy! Note: more about the "pipe" operator later.
+
+## `separate()`
+
+![](./figures/tidyr-separate.png)
+
+<br>
+Sometimes two variables are clumped together in one column. separate() allows you to tease them apart. We have some measurements of how much time people spend on their phones, measured at two locations (work and home), at two times. Each person has been randomly assigned to either treatment or control.
+
+```{r, echo = FALSE}
+set.seed(10)
+messy <- data.frame(
+  id = 1:4,
+  trt = sample(rep(c('control', 'treatment'), each = 2)),
+  work.T1 = runif(4),
+  home.T1 = runif(4),
+  work.T2 = runif(4),
+  home.T2 = runif(4)
+)
+```
+```{r}
+messy
+```
+To tidy this data, we first use gather() to turn columns work.T1, home.T1, work.T2 and home.T2 into a key-value pair of key and time:
+
+```{r}
+tidier <- messy %>%
+  gather(key, time, -id, -trt)
+tidier
+```
+Next we use separate() to split the key into location and time, using a regular expression to describe the character that separates them:
+```{r}
+tidy <- tidier %>%
+  separate(key, into = c("location", "timepoint"), sep = "\\.")
+tidy
+```
+
+## `spread()`
+
+![](./figures/tidyr-spread.png)
+
+<br>
+The function `spread()` does the reverse of `gather()`. It takes two columns and spreads them into multiple columns. It produces "wide" data from "long" data. Typically you will want your data in a wide form so you likely won't use this much. See the documentation for more information.
+
+<br>
+
+# What is dplyr?
+
+The package `dplyr` is a package that tries to provide easy tools for the most common data manipulation tasks. It is built to work directly with tibbles. The thinking behind it was largely inspired by the package `plyr` which has been in use for some time but suffered from being slow in some cases. `dplyr` addresses this by porting much of the computation to C++. An additional feature is the ability to work with data stored directly in an external database. The benefits of doing this are that the data can be managed natively in a relational database, queries can be conducted on that database, and only the results of the query returned.
+
+This addresses a common problem with R in that all operations are conducted in memory and thus the amount of data you can work with is limited by available memory. The database connections essentially remove that limitation in that you can have a database of many 100s GB, conduct queries on it directly and pull back just what you need for analysis in R.
+
+<br>
+
+# Selecting columns and filtering rows
+
+We’re going to learn some of the most common `dplyr` functions: `select()`, `filter()`, `mutate()`,  `group_by()`, and `summarize()`. To select columns of a data frame, use `select()`. The first argument to this function is the data frame (tibble), and the subsequent arguments are the columns to keep.
+
+```{r}
+select(metadata, sample, clade, cit, genome_size)
+```
+
+To choose rows, use filter():
+
+```{r}
+filter(metadata, cit == "plus")
+filter(metadata, cit != "plus")
+```
+
+<br>
+
+# Pipes
+
+But what if you wanted to `select` and `filter`? There are three ways to do this: use intermediate steps, nested functions, or pipes. With the intermediate steps, you essentially create a temporary data frame and use that as input to the next function. This can clutter up your workspace with lots of objects. You can also nest functions (i.e. one function inside of another). This is handy, but can be difficult to read if too many functions are nested as the process from inside out. The last option, pipes, are a fairly recent addition to R. Pipes let you take the output of one function and send it directly to the next, which is useful when you need to many things to the same data set. Pipes in R look like `%>%` and are made available via the `magrittr` package installed as part of tidyverse. If you’re familiar with the Unix shell, you may already have used pipes to pass the output from one command to the next. The concept is the same, except the shell uses the `|` character rather than R’s pipe operator `%>%`.
+
+The pipe operator can be tedious to type. In Rstudio pressing `Ctrl + Shift + M` under Windows / Linux will insert the pipe operator. On the mac, use `⌘ + Shift + M`.
+
+```{r}
+metadata %>%
+  filter(cit == "plus") %>%
+  select(sample, generation, clade, cit)
+```
+
+In the above we use the pipe to send the data set first through `filter`, to keep rows where cit was equal to ‘plus’, and then through `select` to keep the sample and generation and clade columns. When the data frame is being passed to the `filter()` and `select()` functions through a pipe, we don’t need to include it as an argument to these functions anymore. Note that the order of operations here matters - try reversing the `filter()` and `select()` commands - why doesn't that work?
+
+This is the same as the nested version:
+```{r}
+select(filter(metadata, cit == "plus"), sample, generation, clade)
+```
+
+If we wanted to create a new object with this smaller version of the data we could do so by assigning it a new name:
+
+```{r}
+Ecoli_citplus <- metadata %>%
+  filter(cit == "plus") %>%
+  select(sample, generation, clade)
+
+Ecoli_citplus
+```
+
+We can think of the `filter()` and `select()` functions as verbs in the sentence; they do things to the data flowing through the pipeline.
+
+<div class="box">
+
+### EXERCISE
+
+Using pipes, subset `metadata` to include rows where the clade is ‘Cit+’ and keep only the columns `sample`, `cit`, and `genome_size`.  
+How many rows are in that tibble?  
+HINT: You can use the `nrow()` function to find out how many rows are in a tibble.  
+
+</div>
+
+# Mutate
+
+Frequently you’ll want to create new columns based on the values in existing columns, for example to do unit conversions or find the ratio of values in two columns. For this we’ll use `mutate()`.
+
+To create a new column of genome size in bp:
+
+```{r}
+metadata %>%
+  mutate(genome_bp = genome_size *1e6)
+```
+
+<br>
+
+# Split-apply-combine data analysis and the summarize() function
+
+Many data analysis tasks can be approached using the “split-apply-combine” paradigm: split the data into groups, apply some analysis to each group, and then combine the results. `dplyr` makes this very easy through the use of the `group_by()` function, which splits the data into groups. When the data is grouped in this way `summarize()` can be used to collapse each group into a single-row summary. `summarize()` does this by applying an aggregating or summary function to each group. For example, if we wanted to group by citrate-using mutant status and find the number of rows of data for each status, we would do:
+
+```{r}
+metadata %>%
+  group_by(cit) %>%
+  summarize(n())
+```
+
+Here the summary function used was `n()` to find the count for each group. We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package we can use built-in functions like `mean`, `median`, `min`, and `max`. By default, all R functions operating on vectors that contains missing data will return `NA`. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the `mean`, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (rm stands for remove).
+
+So to view mean `genome_size` by mutant status:
+
+```{r}
+metadata %>%
+  group_by(cit) %>%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE))
+```
+
+You can group by multiple columns too:
+
+```{r}
+metadata %>%
+  group_by(cit, clade) %>%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE))
+```
+
+Looks like for one of these clones, the clade is missing. We could then discard those rows using filter():
+
+```{r}
+metadata %>%
+  group_by(cit, clade) %>%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE)) %>% 
+  filter(!is.na(clade))
+```
+
+You can also summarize multiple variables at the same time:
+```{r}
+metadata %>%
+  group_by(cit, clade) %>%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE),
+            min_generation = min(generation))
+```
+
+For an efficient (and printable) summary of the tidyr and dplyr functions, see this [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+
+<div class = "box">
+### EXERCISE
+
+Create a tibble containing each unique clade (removing the samples with unknown clades) and the rank of it's mean genome size. (note that ranking genome size will not sort the table; the row order will be unchanged. You can use the `arrange()` function to sort the table).
+
+There are several functions for ranking observations, which handle tied values differently. For this exercise it doesn’t matter which function you choose. Use the help options to find a ranking function.
+
+</div>
+
+<!-- Solution -->
+<!-- ```{r} -->
+<!-- metadata %>%  -->
+<!--   group_by(clade) %>%  -->
+<!--   summarize(means = mean(genome_size)) %>%  -->
+<!--   mutate(rank(means)) -->
+<!-- ``` -->
 
 
-
+# Other great resources
+* [Data Wrangling tutorial](https://suzan.rbind.io/categories/tutorial/) - an excellent four part tutorial covering selecting data, filtering data, summarising and transforming your data.
+* [R for Data Science](http://r4ds.had.co.nz/)
+* [Data wrangling with R and RStudio](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/) - 55 minute webinar from RStudio
 

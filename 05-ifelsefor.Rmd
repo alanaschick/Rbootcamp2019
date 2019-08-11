@@ -12,14 +12,15 @@ knitr::opts_chunk$set(echo = TRUE)
 <div class="boxobj">
 <strong>Learning Objectives</strong>
 
-*  Fill in learning objectives   
+*  Write an if...else statement.
+*  Write a for loop to modify a data frame.
 </div>
 
 ---
 
 # Conditional statements
 
-Decision making is an important part of programming. This can be achieved in R programming using conditional statements such as `if` and `if/else`.
+Decision making is an important part of programming. This can be achieved in R programming using conditional statements such as `if` and `if...else`.
 
 ## if
 
@@ -28,21 +29,22 @@ The syntax of an <b>if</b> statement is:
 if (test_expression) {
   do_this
 }
-
+```
+```{r}
 x <- 5
 if (x > 0) {
   print("positive number")
 }
 ```
 
-## if/else
+## if...else
 
-The syntax of an <b>if/else</b> statement is:
+The syntax of an <b>if...else</b> statement is:
 ```{r, eval = FALSE}
 if (test_expression) {
   do_this
 } else {
-  do_that
+    do_that
 }
 ```
 The else part is optional and is only evaluated if test_expression is FALSE. It is important that the `else` word be in the same line as the closing brace of the `if` statement.
@@ -52,11 +54,45 @@ x <- 1
 if (x > 0){
   print("positive number")
 } else {
-  print("negative number")
+    print("negative number")
 }
 ```
 
-Exercise: write a simple if else statement to chck if 5 is an odd number and if it is print "I am odd", otherwise print "I am even".
+## Nested if...else statements
+
+You can have more than two test expressions:
+```{r, eval = FALSE}
+if (test_expression1) { 
+  statement1
+} else if (test_expression2) {
+    statement2
+} else {
+      statement4
+}
+```
+```{r}
+x <- 0
+if (x < 0) {
+   print("negative number")
+} else if (x > 0) {
+   print("positive number")
+} else {
+   print("zero")
+}  
+```
+
+<div class="box">
+### EXERCISE
+Exercise: write a simple if...else statement to check if 5 is an odd number and if it is print "I am odd", otherwise print "I am even".
+</div>
+
+<!-- Solution -->
+<!-- x <- 5 -->
+<!-- if ((x %% 2) != 0) { -->
+<!--   print("I am odd") -->
+<!-- } else { -->
+<!--   print("I am even") -->
+<!-- } -->
 
 # Loops
 
@@ -76,5 +112,22 @@ for(i in 1:length(year)) {
 }
 ```
 
-Exercises
+<div class="box">
+### EXERCISE
+**Challenging.** Using the *E. coli* metadata from the last section, write a for loop containing an if...else statement to change the genome size into categorical variable. 
+
+Do this by translating the following sentence into R: for every element in the genome_size variable, if the genome size is greater than the mean, change it to "large", otherwise, change it to "small".
+</div>
+
+<!-- # First make a copy of the data frame -->
+<!-- md2 <- metadata -->
+<!-- mm <- mean(md2$genome_size) -->
+<!-- for (i in 1:length(md2$genome_size)) { -->
+<!--   if (md2[i,7] > mm) { -->
+<!--     md2[i,7] <- "large" -->
+<!--   } else { -->
+<!--     md2[i,7] <- "small" -->
+<!--   } -->
+<!-- }   -->
+  
 
