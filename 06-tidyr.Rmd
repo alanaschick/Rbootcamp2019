@@ -1,5 +1,5 @@
 ---
-title: "Manipulating data with tidyr"
+title: "Manipulating data with the tidyverse"
 output: html_document
 ---
 
