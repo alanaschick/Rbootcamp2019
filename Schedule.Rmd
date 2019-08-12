@@ -33,6 +33,9 @@ Schedule |
 <br>
 
 ## <b>August 12: [Day 1](./day1.html) (9:00 - 15:00, HSC G382) </b>
+
+*Subject to change, depending how things go
+
 Schedule |                                            
 -------| ----------------------------------
 09:00  | 1. Spreadsheets
@@ -42,7 +45,7 @@ Schedule |
 11:00  | 4. Starting with data
 12:00  | 5. Conditional statements and loops
 12:30  | Lunch break
-13:30  | 6. Manipulating data with tidyr
+13:30  | 6. Manipulating data in the tidyverse
 15:00  | Finish
 
 <br>
