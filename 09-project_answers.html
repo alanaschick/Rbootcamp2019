@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Project answers</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R Bootcamp for Biologists 2019</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="ion ion-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="ion ion-wand"></span>
+     
+    Instructors
+  </a>
+</li>
+<li>
+  <a href="Schedule.html">
+    <span class="ion ion-calendar"></span>
+     
+    Schedule
+  </a>
+</li>
+<li>
+  <a href="Session0.html">
+    <span class="ion ion-settings"></span>
+     
+    Preworkshop
+  </a>
+</li>
+<li>
+  <a href="day1.html">Day 1</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a>
+    <span class=" favicon"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Project answers</h1>
+
+</div>
+
+
+<div id="task-1-data-import-and-examination" class="section level1">
+<h1>Task 1: Data import and examination</h1>
+<p>Load the tidyverse package using the <code>library()</code> function:</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ────────────</code></pre>
+<pre><code>## ✔ ggplot2 3.2.0     ✔ purrr   0.3.2
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ─────────────────────
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div id="how-many-rows-and-columns-are-there" class="section level2">
+<h2>1. How many rows and columns are there?</h2>
+<pre class="r"><code>raw &lt;- read_tsv(&quot;data/Brauer2008_DataSet1.tds&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_double(),
+##   GID = col_character(),
+##   YORF = col_character(),
+##   NAME = col_character()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre class="r"><code>glimpse(raw)</code></pre>
+<pre><code>## Observations: 5,537
+## Variables: 40
+## $ GID     &lt;chr&gt; &quot;GENE1331X&quot;, &quot;GENE4924X&quot;, &quot;GENE4690X&quot;, &quot;GENE1177X&quot;, &quot;GEN…
+## $ YORF    &lt;chr&gt; &quot;A_06_P5820&quot;, &quot;A_06_P5866&quot;, &quot;A_06_P1834&quot;, &quot;A_06_P4928&quot;, …
+## $ NAME    &lt;chr&gt; &quot;SFB2       || ER to Golgi transport || molecular functi…
+## $ GWEIGHT &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ G0.05   &lt;dbl&gt; -0.24, 0.28, -0.02, -0.33, 0.05, -0.69, -0.55, -0.75, -0…
+## $ G0.1    &lt;dbl&gt; -0.13, 0.13, -0.27, -0.41, 0.02, -0.03, -0.30, -0.12, -0…
+## $ G0.15   &lt;dbl&gt; -0.21, -0.40, -0.27, -0.24, 0.40, 0.23, -0.12, -0.07, 0.…
+## $ G0.2    &lt;dbl&gt; -0.15, -0.48, -0.02, -0.03, 0.34, 0.20, -0.03, 0.02, 0.0…
+## $ G0.25   &lt;dbl&gt; -0.05, -0.11, 0.24, -0.03, -0.13, 0.00, -0.16, -0.32, 0.…
+## $ G0.3    &lt;dbl&gt; -0.05, 0.17, 0.25, 0.00, -0.14, -0.27, -0.11, -0.41, -0.…
+## $ N0.05   &lt;dbl&gt; 0.20, 0.31, 0.23, 0.20, -0.35, 0.17, 0.04, 0.11, 0.30, 0…
+## $ N0.1    &lt;dbl&gt; 0.24, 0.00, 0.06, -0.25, -0.09, -0.40, 0.00, -0.16, 0.07…
+## $ N0.15   &lt;dbl&gt; -0.20, -0.63, -0.66, -0.49, -0.08, -0.54, -0.63, -0.26, …
+## $ N0.2    &lt;dbl&gt; -0.42, -0.44, -0.40, -0.49, -0.58, -1.19, -0.51, -0.42, …
+## $ N0.25   &lt;dbl&gt; -0.14, -0.26, -0.46, -0.43, -0.14, -0.42, -0.37, 0.18, 0…
+## $ N0.3    &lt;dbl&gt; 0.09, 0.21, -0.43, -0.26, -0.12, 1.89, -0.24, 0.13, 0.13…
+## $ P0.05   &lt;dbl&gt; -0.26, -0.09, 0.18, 0.05, -0.16, -0.32, -0.35, -0.19, -0…
+## $ P0.1    &lt;dbl&gt; -0.20, -0.04, 0.22, 0.04, 0.18, -0.06, -0.32, -0.25, -0.…
+## $ P0.15   &lt;dbl&gt; -0.22, -0.10, 0.33, 0.03, 0.21, -0.62, -0.39, -0.25, -0.…
+## $ P0.2    &lt;dbl&gt; -0.31, 0.15, 0.34, -0.04, 0.08, -0.50, -0.60, -0.47, -0.…
+## $ P0.25   &lt;dbl&gt; 0.04, 0.20, 0.13, 0.08, 0.23, -0.37, -0.29, -0.24, -0.23…
+## $ P0.3    &lt;dbl&gt; 0.34, 0.63, 0.44, 0.21, -0.29, NA, -0.25, -0.49, -0.38, …
+## $ S0.05   &lt;dbl&gt; -0.51, 0.53, 1.29, 0.41, -0.70, NA, -0.14, 0.09, -0.35, …
+## $ S0.1    &lt;dbl&gt; -0.12, 0.15, -0.32, -0.43, 0.05, -0.20, -0.50, 0.13, -0.…
+## $ S0.15   &lt;dbl&gt; 0.09, -0.01, -0.47, -0.21, 0.10, -0.09, -0.19, 0.15, 0.1…
+## $ S0.2    &lt;dbl&gt; 0.09, 0.12, -0.50, -0.33, -0.07, 0.06, -0.13, -0.02, -0.…
+## $ S0.25   &lt;dbl&gt; 0.20, -0.15, -0.42, -0.05, -0.10, -0.19, -0.01, 0.24, 0.…
+## $ S0.3    &lt;dbl&gt; 0.08, 0.32, -0.33, -0.24, -0.32, -0.14, -0.04, -0.08, 0.…
+## $ L0.05   &lt;dbl&gt; 0.18, 0.16, -0.30, -0.27, -0.59, -0.17, -0.02, -0.11, 0.…
+## $ L0.1    &lt;dbl&gt; 0.18, 0.09, 0.02, -0.28, -0.13, -0.07, -0.05, -0.01, -0.…
+## $ L0.15   &lt;dbl&gt; 0.13, 0.02, -0.07, -0.05, 0.00, 0.25, 0.27, 0.15, 0.17, …
+## $ L0.2    &lt;dbl&gt; 0.20, 0.04, -0.05, 0.02, -0.11, -0.21, 0.24, 0.15, 0.07,…
+## $ L0.25   &lt;dbl&gt; 0.17, 0.03, -0.13, 0.00, 0.04, 0.12, 0.05, 0.00, 0.10, 0…
+## $ L0.3    &lt;dbl&gt; 0.11, 0.01, -0.04, 0.08, 0.01, -0.11, 0.19, 0.03, 0.11, …
+## $ U0.05   &lt;dbl&gt; -0.06, -1.02, -0.91, -0.53, -0.45, NA, 0.07, -0.40, 0.01…
+## $ U0.1    &lt;dbl&gt; -0.26, -0.91, -0.94, -0.51, -0.09, -0.65, -0.31, -0.02, …
+## $ U0.15   &lt;dbl&gt; -0.05, -0.59, -0.42, -0.26, -0.13, 0.09, -0.08, 0.26, 0.…
+## $ U0.2    &lt;dbl&gt; -0.28, -0.61, -0.36, 0.05, 0.02, 0.06, 0.12, 0.31, 0.20,…
+## $ U0.25   &lt;dbl&gt; -0.19, -0.17, -0.49, -0.14, -0.09, -0.07, 0.05, 0.14, 0.…
+## $ U0.3    &lt;dbl&gt; 0.09, 0.18, -0.47, -0.01, -0.03, -0.10, 0.06, 0.11, 0.10…</code></pre>
+<pre class="r"><code>dim(raw)</code></pre>
+<pre><code>## [1] 5537   40</code></pre>
+<p>There are 5537 rows and 40 columns.</p>
+</div>
+<div id="what-do-the-rows-and-columns-represent" class="section level2">
+<h2>2. What do the rows and columns represent?</h2>
+<p>Rows are genes and columns are a mix of different variables including gene names and expression values.</p>
+</div>
+<div id="on-first-glimpse-do-the-column-datatypes-look-correct" class="section level2">
+<h2>3. On first glimpse do the column datatypes look correct?</h2>
+<p>Yes, it seems that <code>readr</code> had guessed correctly on what the values should be.</p>
+</div>
+<div id="what-about-column-names" class="section level2">
+<h2>4. What about column names?</h2>
+<p>The columns that have the gene expression values don’t look right. Something is up with that period in there.</p>
+</div>
+<div id="is-this-data-tidy-why-or-why-not" class="section level2">
+<h2>5. Is this data tidy? Why or why not?</h2>
+<p>It’s not. Each observation does not form a row and each variable does not form a column.</p>
+<p><br></p>
+</div>
+</div>
+<div id="task-2-data-tidying" class="section level1">
+<h1>Task 2: Data Tidying</h1>
+<div id="which-column-contains-multiple-variables-split-it-up-so-each-column-represents-a-single-variable." class="section level2">
+<h2>1. Which column contains multiple variables? Split it up so each column represents a single variable.</h2>
+<p>We need to tell <code>separate()</code> to split on the <code>||</code> character using the <code>sep</code> argument. However, the <code>|</code> character is actually a special character for something called regular expressions, which we don’t need to worry about right now. That’s why we need to use the double backslash, which “escapes” the <code>|</code> character and tells <code>separate()</code> to interpret it like a normal character. If we used <code>sep = &quot;||&quot;</code> this would give us the wrong result.</p>
+<pre class="r"><code>head(raw)</code></pre>
+<pre><code>## # A tibble: 6 x 40
+##   GID   YORF  NAME  GWEIGHT G0.05  G0.1 G0.15  G0.2 G0.25  G0.3 N0.05  N0.1
+##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 GENE… A_06… SFB2…       1 -0.24 -0.13 -0.21 -0.15 -0.05 -0.05  0.2   0.24
+## 2 GENE… A_06… || b…       1  0.28  0.13 -0.4  -0.48 -0.11  0.17  0.31  0   
+## 3 GENE… A_06… QRI7…       1 -0.02 -0.27 -0.27 -0.02  0.24  0.25  0.23  0.06
+## 4 GENE… A_06… CFT2…       1 -0.33 -0.41 -0.24 -0.03 -0.03  0     0.2  -0.25
+## 5 GENE… A_06… SSO2…       1  0.05  0.02  0.4   0.34 -0.13 -0.14 -0.35 -0.09
+## 6 GENE… A_06… PSP2…       1 -0.69 -0.03  0.23  0.2   0    -0.27  0.17 -0.4 
+## # … with 28 more variables: N0.15 &lt;dbl&gt;, N0.2 &lt;dbl&gt;, N0.25 &lt;dbl&gt;,
+## #   N0.3 &lt;dbl&gt;, P0.05 &lt;dbl&gt;, P0.1 &lt;dbl&gt;, P0.15 &lt;dbl&gt;, P0.2 &lt;dbl&gt;,
+## #   P0.25 &lt;dbl&gt;, P0.3 &lt;dbl&gt;, S0.05 &lt;dbl&gt;, S0.1 &lt;dbl&gt;, S0.15 &lt;dbl&gt;,
+## #   S0.2 &lt;dbl&gt;, S0.25 &lt;dbl&gt;, S0.3 &lt;dbl&gt;, L0.05 &lt;dbl&gt;, L0.1 &lt;dbl&gt;,
+## #   L0.15 &lt;dbl&gt;, L0.2 &lt;dbl&gt;, L0.25 &lt;dbl&gt;, L0.3 &lt;dbl&gt;, U0.05 &lt;dbl&gt;,
+## #   U0.1 &lt;dbl&gt;, U0.15 &lt;dbl&gt;, U0.2 &lt;dbl&gt;, U0.25 &lt;dbl&gt;, U0.3 &lt;dbl&gt;</code></pre>
+<pre class="r"><code>raw %&gt;% 
+  separate(NAME, c(&quot;gene_name&quot;, &quot;BP&quot;, &quot;MP&quot;, &quot;gene_id&quot;, &quot;number&quot;), sep = &quot;\\|\\|&quot;) </code></pre>
+<pre><code>## # A tibble: 5,537 x 44
+##    GID   YORF  gene_name BP    MP    gene_id number GWEIGHT G0.05  G0.1
+##    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 GENE… A_06… &quot;SFB2   … &quot; ER… &quot; mo… &quot; YNL0… &quot; 108…       1 -0.24 -0.13
+##  2 GENE… A_06… &quot;&quot;        &quot; bi… &quot; mo… &quot; YNL0… &quot; 108…       1  0.28  0.13
+##  3 GENE… A_06… &quot;QRI7   … &quot; pr… &quot; me… &quot; YDL1… &quot; 108…       1 -0.02 -0.27
+##  4 GENE… A_06… &quot;CFT2   … &quot; mR… &quot; RN… &quot; YLR1… &quot; 108…       1 -0.33 -0.41
+##  5 GENE… A_06… &quot;SSO2   … &quot; ve… &quot; t-… &quot; YMR1… &quot; 108…       1  0.05  0.02
+##  6 GENE… A_06… &quot;PSP2   … &quot; bi… &quot; mo… &quot; YML0… &quot; 108…       1 -0.69 -0.03
+##  7 GENE… A_06… &quot;RIB2   … &quot; ri… &quot; ps… &quot; YOL0… &quot; 108…       1 -0.55 -0.3 
+##  8 GENE… A_06… &quot;VMA13  … &quot; va… &quot; hy… &quot; YPR0… &quot; 108…       1 -0.75 -0.12
+##  9 GENE… A_06… &quot;EDC3   … &quot; de… &quot; mo… &quot; YEL0… &quot; 108…       1 -0.24 -0.22
+## 10 GENE… A_06… &quot;VPS5   … &quot; pr… &quot; pr… &quot; YOR0… &quot; 108…       1 -0.16 -0.38
+## # … with 5,527 more rows, and 34 more variables: G0.15 &lt;dbl&gt;, G0.2 &lt;dbl&gt;,
+## #   G0.25 &lt;dbl&gt;, G0.3 &lt;dbl&gt;, N0.05 &lt;dbl&gt;, N0.1 &lt;dbl&gt;, N0.15 &lt;dbl&gt;,
+## #   N0.2 &lt;dbl&gt;, N0.25 &lt;dbl&gt;, N0.3 &lt;dbl&gt;, P0.05 &lt;dbl&gt;, P0.1 &lt;dbl&gt;,
+## #   P0.15 &lt;dbl&gt;, P0.2 &lt;dbl&gt;, P0.25 &lt;dbl&gt;, P0.3 &lt;dbl&gt;, S0.05 &lt;dbl&gt;,
+## #   S0.1 &lt;dbl&gt;, S0.15 &lt;dbl&gt;, S0.2 &lt;dbl&gt;, S0.25 &lt;dbl&gt;, S0.3 &lt;dbl&gt;,
+## #   L0.05 &lt;dbl&gt;, L0.1 &lt;dbl&gt;, L0.15 &lt;dbl&gt;, L0.2 &lt;dbl&gt;, L0.25 &lt;dbl&gt;,
+## #   L0.3 &lt;dbl&gt;, U0.05 &lt;dbl&gt;, U0.1 &lt;dbl&gt;, U0.15 &lt;dbl&gt;, U0.2 &lt;dbl&gt;,
+## #   U0.25 &lt;dbl&gt;, U0.3 &lt;dbl&gt;</code></pre>
+</div>
+<div id="the-gweight-gid-and-yorf-columns-we-also-wont-need-so-you-can-get-rid-of-those." class="section level2">
+<h2>2. The <code>GWEIGHT</code>, <code>GID</code>, and <code>YORF</code> columns we also won’t need so you can get rid of those.</h2>
+<p>That’s easy with <code>select()</code>.</p>
+<pre class="r"><code>raw %&gt;% 
+  separate(NAME, c(&quot;gene_name&quot;, &quot;BP&quot;, &quot;MP&quot;, &quot;gene_id&quot;, &quot;number&quot;), sep = &quot;\\|\\|&quot;) %&gt;% 
+  select(-GWEIGHT, -GID, -YORF)</code></pre>
+<pre><code>## # A tibble: 5,537 x 41
+##    gene_name BP    MP    gene_id number G0.05  G0.1 G0.15  G0.2 G0.25  G0.3
+##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 &quot;SFB2   … &quot; ER… &quot; mo… &quot; YNL0… &quot; 108… -0.24 -0.13 -0.21 -0.15 -0.05 -0.05
+##  2 &quot;&quot;        &quot; bi… &quot; mo… &quot; YNL0… &quot; 108…  0.28  0.13 -0.4  -0.48 -0.11  0.17
+##  3 &quot;QRI7   … &quot; pr… &quot; me… &quot; YDL1… &quot; 108… -0.02 -0.27 -0.27 -0.02  0.24  0.25
+##  4 &quot;CFT2   … &quot; mR… &quot; RN… &quot; YLR1… &quot; 108… -0.33 -0.41 -0.24 -0.03 -0.03  0   
+##  5 &quot;SSO2   … &quot; ve… &quot; t-… &quot; YMR1… &quot; 108…  0.05  0.02  0.4   0.34 -0.13 -0.14
+##  6 &quot;PSP2   … &quot; bi… &quot; mo… &quot; YML0… &quot; 108… -0.69 -0.03  0.23  0.2   0    -0.27
+##  7 &quot;RIB2   … &quot; ri… &quot; ps… &quot; YOL0… &quot; 108… -0.55 -0.3  -0.12 -0.03 -0.16 -0.11
+##  8 &quot;VMA13  … &quot; va… &quot; hy… &quot; YPR0… &quot; 108… -0.75 -0.12 -0.07  0.02 -0.32 -0.41
+##  9 &quot;EDC3   … &quot; de… &quot; mo… &quot; YEL0… &quot; 108… -0.24 -0.22  0.14  0.06  0    -0.13
+## 10 &quot;VPS5   … &quot; pr… &quot; pr… &quot; YOR0… &quot; 108… -0.16 -0.38  0.05  0.14 -0.04 -0.01
+## # … with 5,527 more rows, and 30 more variables: N0.05 &lt;dbl&gt;, N0.1 &lt;dbl&gt;,
+## #   N0.15 &lt;dbl&gt;, N0.2 &lt;dbl&gt;, N0.25 &lt;dbl&gt;, N0.3 &lt;dbl&gt;, P0.05 &lt;dbl&gt;,
+## #   P0.1 &lt;dbl&gt;, P0.15 &lt;dbl&gt;, P0.2 &lt;dbl&gt;, P0.25 &lt;dbl&gt;, P0.3 &lt;dbl&gt;,
+## #   S0.05 &lt;dbl&gt;, S0.1 &lt;dbl&gt;, S0.15 &lt;dbl&gt;, S0.2 &lt;dbl&gt;, S0.25 &lt;dbl&gt;,
+## #   S0.3 &lt;dbl&gt;, L0.05 &lt;dbl&gt;, L0.1 &lt;dbl&gt;, L0.15 &lt;dbl&gt;, L0.2 &lt;dbl&gt;,
+## #   L0.25 &lt;dbl&gt;, L0.3 &lt;dbl&gt;, U0.05 &lt;dbl&gt;, U0.1 &lt;dbl&gt;, U0.15 &lt;dbl&gt;,
+## #   U0.2 &lt;dbl&gt;, U0.25 &lt;dbl&gt;, U0.3 &lt;dbl&gt;</code></pre>
+</div>
+<div id="whats-wrong-with-the-column-names-how-can-you-fix-that" class="section level2">
+<h2>3. What’s wrong with the column names? How can you fix that?</h2>
+<p>They’re variables not names and tidy data principles tell us that each variable should be a column. And these are not just not just 1 variable - both nutrient and growth rate are present. We can fix this with <code>gather()</code>.</p>
+<pre class="r"><code>raw %&gt;% 
+  separate(NAME, c(&quot;gene_name&quot;, &quot;BP&quot;, &quot;MP&quot;, &quot;gene_id&quot;, &quot;number&quot;), sep = &quot;\\|\\|&quot;) %&gt;% 
+  select(-GWEIGHT, -GID, -YORF) %&gt;% 
+  gather(variable, expression, G0.05:U0.3 )</code></pre>
+<pre><code>## # A tibble: 199,332 x 7
+##    gene_name  BP          MP             gene_id number variable expression
+##    &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;
+##  1 &quot;SFB2    … &quot; ER to Go… &quot; molecular f… &quot; YNL0… &quot; 108… G0.05         -0.24
+##  2 &quot;&quot;         &quot; biologic… &quot; molecular f… &quot; YNL0… &quot; 108… G0.05          0.28
+##  3 &quot;QRI7    … &quot; proteoly… &quot; metalloendo… &quot; YDL1… &quot; 108… G0.05         -0.02
+##  4 &quot;CFT2    … &quot; mRNA pol… &quot; RNA binding… &quot; YLR1… &quot; 108… G0.05         -0.33
+##  5 &quot;SSO2    … &quot; vesicle … &quot; t-SNARE act… &quot; YMR1… &quot; 108… G0.05          0.05
+##  6 &quot;PSP2    … &quot; biologic… &quot; molecular f… &quot; YML0… &quot; 108… G0.05         -0.69
+##  7 &quot;RIB2    … &quot; riboflav… &quot; pseudouridy… &quot; YOL0… &quot; 108… G0.05         -0.55
+##  8 &quot;VMA13   … &quot; vacuolar… &quot; hydrogen-tr… &quot; YPR0… &quot; 108… G0.05         -0.75
+##  9 &quot;EDC3    … &quot; deadenyl… &quot; molecular f… &quot; YEL0… &quot; 108… G0.05         -0.24
+## 10 &quot;VPS5    … &quot; protein … &quot; protein tra… &quot; YOR0… &quot; 108… G0.05         -0.16
+## # … with 199,322 more rows</code></pre>
+</div>
+<div id="check-again-do-you-have-any-columns-that-have-multipe-variables-be-sure-to-fix-any-before-you-move-on." class="section level2">
+<h2>4. Check again: do you have any columns that have multipe variables? Be sure to fix any before you move on.</h2>
+<p>Why yes, it seems that our <code>variable</code> column is comprised of both nutrient and growth rate. We’ll have to use <code>separate()</code> again. The trick here is how to specify the correct place to split the variable. We want the first letter in one column (nutrient) and the the remaining part in a second column (growth_rate). If you read the help for the <code>separate()</code> function you’ll see that if you provide a number to the <code>sep</code> argument it will split at this position. This works great for us. There are other ways to split this variable, however, these require a bit more knowledge of regular expressions. And always go with the simplist soluion you can find.</p>
+<pre class="r"><code>clean = raw %&gt;% 
+  separate(NAME, c(&quot;gene_name&quot;, &quot;BP&quot;, &quot;MP&quot;, &quot;gene_id&quot;, &quot;number&quot;), sep = &quot;\\|\\|&quot;) %&gt;% 
+  select(-GWEIGHT, -GID, -YORF) %&gt;% 
+  gather(variable, expression, G0.05:U0.3 ) %&gt;% 
+  separate(variable, c(&quot;nutrient&quot;, &quot;growth_rate&quot;), sep = 1)</code></pre>
+<pre class="r"><code>head(clean$BP)</code></pre>
+<pre><code>## [1] &quot; ER to Golgi transport &quot;        &quot; biological process unknown &quot;  
+## [3] &quot; proteolysis and peptidolysis &quot; &quot; mRNA polyadenylylation* &quot;     
+## [5] &quot; vesicle fusion* &quot;              &quot; biological process unknown &quot;</code></pre>
+<p><strong>Bonus</strong></p>
+<pre class="r"><code>clean = raw %&gt;% 
+  separate(NAME, c(&quot;gene_name&quot;, &quot;BP&quot;, &quot;MP&quot;, &quot;gene_id&quot;, &quot;number&quot;), sep = &quot;\\|\\|&quot;) %&gt;% 
+  select(-GWEIGHT, -GID, -YORF) %&gt;% 
+  gather(variable, expression, G0.05:U0.3 ) %&gt;% 
+  separate(variable, c(&quot;nutrient&quot;, &quot;growth_rate&quot;), sep = 1, convert = TRUE) %&gt;% 
+  mutate_at(vars(gene_name:gene_id), str_trim)
+head(clean)</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##   gene_name BP       MP      gene_id number nutrient growth_rate expression
+##   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+## 1 SFB2      ER to G… molecu… YNL049C &quot; 108… G               0.05      -0.24
+## 2 &quot;&quot;        biologi… molecu… YNL095C &quot; 108… G               0.05       0.28
+## 3 QRI7      proteol… metall… YDL104C &quot; 108… G               0.05      -0.02
+## 4 CFT2      mRNA po… RNA bi… YLR115W &quot; 108… G               0.05      -0.33
+## 5 SSO2      vesicle… t-SNAR… YMR183C &quot; 108… G               0.05       0.05
+## 6 PSP2      biologi… molecu… YML017W &quot; 108… G               0.05      -0.69</code></pre>
+</div>
+</div>
+<div id="task-3-plots" class="section level1">
+<h1>Task 3: Plots</h1>
+<div id="filter-your-now-cleaned-data-to-contain-only-the-gene-leu1." class="section level2">
+<h2>1. Filter your now cleaned data to contain only the gene LEU1.</h2>
+<pre class="r"><code>clean %&gt;% 
+  filter(gene_name == &quot;LEU1&quot;) </code></pre>
+<pre><code>## # A tibble: 36 x 8
+##    gene_name BP      MP      gene_id number nutrient growth_rate expression
+##    &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+##  1 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.05      -1.12
+##  2 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.1       -0.77
+##  3 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.15      -0.67
+##  4 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.2       -0.59
+##  5 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.25      -0.2 
+##  6 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.3        0.03
+##  7 LEU1      leucin… 3-isop… YGL009C &quot; 108… N               0.05      -0.76
+##  8 LEU1      leucin… 3-isop… YGL009C &quot; 108… N               0.1       -1.17
+##  9 LEU1      leucin… 3-isop… YGL009C &quot; 108… N               0.15      -1.2 
+## 10 LEU1      leucin… 3-isop… YGL009C &quot; 108… N               0.2       -1.02
+## # … with 26 more rows</code></pre>
+</div>
+<div id="make-a-plot-of-the-expression-of-this-gene-at-various-growth-rates.-use-colour-to-distinguish-the-different-nutrients." class="section level2">
+<h2>2. Make a plot of the expression of this gene at various growth rates. Use colour to distinguish the different nutrients.</h2>
+<pre class="r"><code>clean %&gt;% 
+  filter(gene_name == &quot;LEU1&quot;) %&gt;% 
+  ggplot(aes(x = growth_rate, y = expression)) +
+    geom_line(aes(colour = nutrient)) </code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="what-are-some-conclusions-you-can-make-from-this-data" class="section level2">
+<h2>3. What are some conclusions you can make from this data?</h2>
+<ul>
+<li>When leucine is limiting the expression of LEU1 is higher than when any of the other nutrients are limiting.</li>
+<li>As growth rate increase the expresison of LEU1 decreases but only in leucine limiting conditions. In all other conditions it increases as growth rate increases.</li>
+</ul>
+</div>
+<div id="what-biological-process-is-leu1-classified-as" class="section level2">
+<h2>4. What biological process is LEU1 classified as?</h2>
+<p>leucine biosynthesis</p>
+</div>
+<div id="filter-your-cleaned-data-for-all-genes-that-are-in-the-same-biological-process-as-leu1." class="section level2">
+<h2>5. Filter your cleaned data for all genes that are in the same biological process as LEU1.</h2>
+<pre class="r"><code>clean %&gt;% 
+  filter(BP == &quot;leucine biosynthesis&quot;)</code></pre>
+<pre><code>## # A tibble: 144 x 8
+##    gene_name BP      MP      gene_id number nutrient growth_rate expression
+##    &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+##  1 LEU9      leucin… 2-isop… YOR108W &quot; 108… G               0.05      -0.08
+##  2 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.05      -1.12
+##  3 LEU2      leucin… 3-isop… YCL018W &quot; 108… G               0.05      -0.59
+##  4 LEU4      leucin… 2-isop… YNL104C &quot; 108… G               0.05       2.61
+##  5 LEU9      leucin… 2-isop… YOR108W &quot; 108… G               0.1       -0.07
+##  6 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.1       -0.77
+##  7 LEU2      leucin… 3-isop… YCL018W &quot; 108… G               0.1       -0.71
+##  8 LEU4      leucin… 2-isop… YNL104C &quot; 108… G               0.1        1.53
+##  9 LEU9      leucin… 2-isop… YOR108W &quot; 108… G               0.15      -0.66
+## 10 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.15      -0.67
+## # … with 134 more rows</code></pre>
+</div>
+<div id="make-a-plot-of-these-genes-the-same-as-you-had-for-leu1-but-faceted-by-gene." class="section level2">
+<h2>6. Make a plot of these genes, the same as you had for LEU1 but faceted by gene.</h2>
+<pre class="r"><code>clean %&gt;% 
+  filter(BP == &quot;leucine biosynthesis&quot;) %&gt;% 
+  ggplot(aes(x = growth_rate, y = expression)) +
+    geom_line(aes(colour = nutrient)) +
+    facet_wrap(~gene_name)</code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="do-any-of-the-other-genes-follow-the-same-pattern-as-leu1" class="section level2">
+<h2>7. Do any of the other genes follow the same pattern as LEU1?</h2>
+<p>LEU2 seems to but the expression difference in leucine limiting conditions is not quite so high.</p>
+</div>
+<div id="make-it-pretty" class="section level2">
+<h2>8. Make it pretty</h2>
+<pre class="r"><code>clean %&gt;% 
+  filter(BP == &quot;leucine biosynthesis&quot;) %&gt;% 
+  ggplot(aes(x = growth_rate, y = expression, colour = nutrient)) +
+    geom_line() +
+    geom_point() +
+    facet_wrap(~gene_name) +
+    scale_color_brewer(&quot;Nutrient&quot;, palette = &quot;Accent&quot;) +
+    theme_bw() +
+    labs(x = &quot;Growth Rate&quot;, y = &quot;Expression (log2)&quot;) +
+    theme(strip.background = element_blank())</code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="bonus-changing-nutrient-names" class="section level2">
+<h2>Bonus: Changing nutrient names</h2>
+<pre class="r"><code>nutrient_key = c(
+  G = &quot;Glucose&quot;,
+  N = &quot;Ammonium&quot;,
+  P = &quot;Phosphate&quot;,
+  S = &quot;Sulfate&quot;,
+  U = &quot;Uracil&quot;,
+  L = &quot;Leucine&quot;
+)
+nutrient_key[&quot;P&quot;]</code></pre>
+<pre><code>##           P 
+## &quot;Phosphate&quot;</code></pre>
+<pre class="r"><code>clean %&gt;% 
+  mutate(nutrient_names = nutrient_key[nutrient]) %&gt;% 
+    filter(BP == &quot;leucine biosynthesis&quot;) %&gt;% 
+    ggplot(aes(x = growth_rate, y = expression, colour = nutrient_names)) +
+    geom_line() +
+    geom_point() +
+    facet_wrap(~gene_name) +
+    scale_color_brewer(&quot;Nutrient&quot;, palette = &quot;Accent&quot;) +
+    theme_bw() +
+    labs(x = &quot;Growth Rate&quot;, y = &quot;Expression (log2)&quot;) +
+    theme(strip.background = element_blank())</code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+</div>
+<div id="task-4-heatmaps" class="section level1">
+<h1>Task 4: Heatmaps</h1>
+<div id="start-by-installing-the-pheatmap-package-from-cran.-have-a-look-at-the-help-page-for-the-pheatamp-function.-which-argument-specifies-the-data-what-format-does-it-need" class="section level2">
+<h2>1. Start by installing the <code>pheatmap</code> package from CRAN. Have a look at the help page for the <code>pheatamp()</code> function. Which argument specifies the data? What format does it need?</h2>
+<pre class="r"><code>#install.packages(&quot;pheatmap&quot;)
+library(pheatmap)
+?pheatmap</code></pre>
+<p>Looks like <code>pheatmap()</code> needs a numeric matix given with the <code>mat</code> arguments, which is the first and only required arugment.</p>
+</div>
+<div id="using-what-you-learned-from-the-help-function-get-the-gene-expression-data-into-a-format-that-pheatmap-can-use.-think-about-what-you-want-your-heatmap-to-look-like---what-are-the-columns-and-rows" class="section level2">
+<h2>2. Using what you learned from the help function get the gene expression data into a format that <code>pheatmap()</code> can use. Think about what you want your heatmap to look like - what are the columns and rows?</h2>
+<p>Here we’re going to go back to our pre-tidied data. This doesn’t negate the work we did to tidy it nor does it mean the the data is now ‘dirty’ or bad somehow. Tidy data is standardized but many R tools still don’t work with data in this format and so we must adapt.</p>
+<pre class="r"><code>head(raw)</code></pre>
+<pre><code>## # A tibble: 6 x 40
+##   GID   YORF  NAME  GWEIGHT G0.05  G0.1 G0.15  G0.2 G0.25  G0.3 N0.05  N0.1
+##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 GENE… A_06… SFB2…       1 -0.24 -0.13 -0.21 -0.15 -0.05 -0.05  0.2   0.24
+## 2 GENE… A_06… || b…       1  0.28  0.13 -0.4  -0.48 -0.11  0.17  0.31  0   
+## 3 GENE… A_06… QRI7…       1 -0.02 -0.27 -0.27 -0.02  0.24  0.25  0.23  0.06
+## 4 GENE… A_06… CFT2…       1 -0.33 -0.41 -0.24 -0.03 -0.03  0     0.2  -0.25
+## 5 GENE… A_06… SSO2…       1  0.05  0.02  0.4   0.34 -0.13 -0.14 -0.35 -0.09
+## 6 GENE… A_06… PSP2…       1 -0.69 -0.03  0.23  0.2   0    -0.27  0.17 -0.4 
+## # … with 28 more variables: N0.15 &lt;dbl&gt;, N0.2 &lt;dbl&gt;, N0.25 &lt;dbl&gt;,
+## #   N0.3 &lt;dbl&gt;, P0.05 &lt;dbl&gt;, P0.1 &lt;dbl&gt;, P0.15 &lt;dbl&gt;, P0.2 &lt;dbl&gt;,
+## #   P0.25 &lt;dbl&gt;, P0.3 &lt;dbl&gt;, S0.05 &lt;dbl&gt;, S0.1 &lt;dbl&gt;, S0.15 &lt;dbl&gt;,
+## #   S0.2 &lt;dbl&gt;, S0.25 &lt;dbl&gt;, S0.3 &lt;dbl&gt;, L0.05 &lt;dbl&gt;, L0.1 &lt;dbl&gt;,
+## #   L0.15 &lt;dbl&gt;, L0.2 &lt;dbl&gt;, L0.25 &lt;dbl&gt;, L0.3 &lt;dbl&gt;, U0.05 &lt;dbl&gt;,
+## #   U0.1 &lt;dbl&gt;, U0.15 &lt;dbl&gt;, U0.2 &lt;dbl&gt;, U0.25 &lt;dbl&gt;, U0.3 &lt;dbl&gt;</code></pre>
+<pre class="r"><code>hm_mat = raw %&gt;% 
+  select(-GID, -YORF, -NAME, -GWEIGHT) %&gt;% 
+  as.matrix()
+
+class(hm_mat)</code></pre>
+<pre><code>## [1] &quot;matrix&quot;</code></pre>
+<pre class="r"><code>typeof(hm_mat)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+</div>
+<div id="once-youve-got-data-in-the-correct-format-start-by-making-a-simple-heatmap-with-default-parameters.-do-you-like-it-is-there-anything-wrong-with-it-what-would-change-from-a-data-interpretation-perspective-what-about-from-aethetics-perspective" class="section level2">
+<h2>3. Once you’ve got data in the correct format start by making a simple heatmap with default parameters. Do you like it? Is there anything wrong with it? What would change from a data interpretation perspective? What about from aethetics perspective?</h2>
+<pre class="r"><code>pheatmap(hm_mat)</code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Overall this actually looks pretty good. Because these data have already been normalized and scaled we don’t need to do much here but there are few tweaks that may help. * The default is to order both the rows and columns, however, because this is a timecourse experiment we may not want to order the columns. In fact if we look at the raw data we see that the columns are already ordered by time.<br />
+* The colours are better than the typical red/green (which you should NEVER use, BTW) but still leave something to be desired. This could be changed in a final version of the plot. Note that we have a diverging colour scale with values ranging from -6 to +6. This is becuase these data are mean-centred. Blue (negative) values are below the mean for that gene and red values (positive) are above the mean for that gene. Yellow is the mean expression for that gene. Mean-centering is a handy way to show fold-changes, but should always be displayed with a diverging colour scale.</p>
+<pre class="r"><code>library(RColorBrewer)
+pheatmap(hm_mat, 
+         cluster_cols = FALSE, 
+         color = colorRampPalette(rev(brewer.pal(n = 7, name = &quot;RdBu&quot;)))(100),
+         breaks = seq(-5, 5, length.out = 101)
+)</code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

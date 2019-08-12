@@ -1,0 +1,102 @@
+---
+title: "Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+The data we're going to work with comes from a yeast microarray experiment [(Brauer, 2008)](http://www.molbiolcell.org/content/19/1/352.abstract) where the authors measured gene expression in 36 chemostat cultures where growth was limited by one of six nutrients (glucose, ammonium, sulfate, phosphate, uracil, or leucine) at 6 different growth rates.   
+
+The R world is full of niche tools designed for a specific problem or data type.  This is particularly true for Bioconductor and genomics analysis.  RNA-seq is a good example where all data import, analysis, and even plotting is done with custom packages and functions designed for gene expression data. Analysis of microbiome data with phyloseq is another example.  Now this is not a bad thing and can enable simple, rapid analysis.  Yet the point of learning a programming language like R is so you can take back control of your analysis and put the tools to work for your specific problem.  
+
+For this project we're going to take some genomic data and pull it out of the context that it's usually analyzed in.  Bioconductor has a plethora of tools for analyzing microarray data and the `limma` package is by far the most comprehensive and useful.  However, for our project we're going to take microarray data that has already been processed and instead use it with data analysis tools that we've been learning.  
+
+The take-away from this project to make the tools work for you instead of you working for them.  Data, genomic or not, is still data and we can use the tools available to us in R to gain valuable insights.
+
+<br>
+
+# Task 0: Download the data
+
+You can find the data for download from dropbox [here](https://www.dropbox.com/s/z0c72rmzaqfr6ma/Brauer2008_DataSet1.csv?dl=0).
+
+<br>
+
+# Task 1: Data import and examination
+
+The first task of almost all analysis is to get the data into R and spend a little time understanding it's structure.  Although you may be tempted to rush into an analysis it pays to take a bit of time to understand what you are working with and do some cleaning before you dive in too deep.  This is important help you avoid costly mistakes and wasted time downstream.  
+
+The data file you'll be using is `Brauer2008_DataSet1.tds` and although it is pre-processed it will still need some work to get it ready to use.
+
+Your goal is get the data loaded into R and answer the following questions:
+
+1. How many rows and columns are there?
+2. What do the rows and columns represent?
+3. On first glimpse do the column datatypes look correct?
+4. What about column names? 
+5. Is this data tidy?  Why or why not?  
+
+As you look through the data start thinking about what steps you'll need to get it into a workable state.  
+
+<br>
+
+# Task 2: Data Tidying
+
+Never underestimate the amount of time and effort it will take to tame a wild dataset into something usable.  Even if someone has already processed and "cleaned" the data before you (such as our current dataset) it is likely that you will need to spend some time fiddling with it for your particular needs (or for a particular function you want to use).  
+
+You've learned about the tidy data concepts, now it's time to put them into practice. The first and most important step is decide what, if any tidying needs to be done. Recall that:
+
+- Each variable forms a column.
+- Each observation forms a row.
+- Each type of observational unit forms a table.
+
+Questions to answer:
+
+1. Which column contains multiple variables?  Split it up so each column represents a single variable.
+2. The `GWEIGHT`, `GID`, and `YORF` columns we also won't need so you can get rid of those.
+3. What's wrong with the column names?  How can you fix that?
+4. Check again: do you have any columns that have multiple variables?  Be sure to fix any before you move on.
+
+Try to code all the cleaning steps as a single pipeline. Remember the `separate()` and `gather()` functions from the tidyr package.
+
+**Bonus:** Your cleaning steps may have left some variables with extra white space at the end.  Using `dplyr::mutate_at()` and a certain function from the `stringr` package see if you can clean these up.
+
+<br>
+
+# Task 3: Plots
+
+Whew! Alright, that's done, but now you might asking why spend all that time cleaning up the data.  Hopefully you should be able to answer that question by now but moving on to making some plots will help make it even more clear.
+
+In a typical analysis you wouldn't necessarily know which gene(s) to start looking at and would want to start with some more exploratory analysis.  However, to practice our plotting and analysis let's focus on a few pre-picked genes and pathways.
+
+1. Filter your now cleaned data to contain only the gene LEU1.
+2. Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients.
+3. What are some conclusions you can make from this data?
+4. What biological process is LEU1 classified as?
+5. Filter your cleaned data for all genes that are in the same biological process as LEU!.
+6. Make a plot of these genes, the same as you had for LEU1 but faceted by gene.
+7. Do any of the other genes follow the same pattern as LEU1?  
+8. Customize your plot a bit by changing the colour palette to one of the RColorBrewer palettes.  Explore some of the other themes available (`theme_bw()` is particularly nice).  Fix the x-axis and y-axis labels so they look nicer. 
+
+**Bonus:** To increase readability of the plot it can helpful to change those nutrients from letters to full words.  Although there are ways to do this directly in ggplot the easiest is to change it in the original data.  
+
+<br>
+
+# Task 4: Heatmap
+
+Heatmaps are quite popular but generally useless visualisations used frequently in the genomic sciences.  They can show a large amount of information in a small space, however, this very feature often renders them useless in terms of interpretability.  Yet, for some applications they can be useful and let's face it, your supervisor propbably wants one so it's a good skill to have.
+
+Heatmaps are very straight forward to make with ggplot using `geom_tile()` however, one of the more useful features of heatmap is the row and column ordering usually done with hierarchical clustering.  This is non-trivial (but not impossible) to implement with ggplot so instead we're going to look at a package specifically designed for these types of heatmaps. There are as many heatmap packages for R as there are heatmaps and you may end up using different packages for different purposes.  However, the `pheatmap` package has a nice balance of features, speed, and ease of use and is the one we'll work with today, although you are free to look at others for your own needs.
+
+To this point much of your training has focused on the concepts of tidy data analysis, which are very powerful and you will come to rely on for much of your work.  However, for genomics and other bioinformatics analysis you will often find yourself having to go between the *tidyverse* and other custom formats and datatypes specific to another package or the more traditional R datatypes, particularly the matrix format.  In addition to learning how to make a nice heatmap the other main goal of this task is to help you become familar with moving back and forth between different data structures.  
+
+Questions to answer:
+
+1. Start by installing the `pheatmap` package from CRAN.  Have a look at the help page for the `pheatmap()` function.  Which argument specifies the data?  What format does it need?
+2. Using what you learned from the help function get the gene expression data into a format that `pheatmap()` can use.  Think about what you want your heatmap to look like - what are the columns and rows?
+3.  Once you've got data in the correct format start by making a simple heatmap with default parameters.  Do you like it?  Is there anything wrong with it?  What would change from a data interpretation perspective?  What about from aethetics perspective?
+
+
