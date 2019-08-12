@@ -16,6 +16,8 @@ navbar:
       icon: ion-settings
     - text: "Day 1"
       href: day1.html
+    - text: "Day 2"
+      href: day2.html
 #    - text: "Project"
 #      href: project.html
 #      icon: ion-analytics

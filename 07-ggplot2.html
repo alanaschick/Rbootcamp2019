@@ -305,6 +305,9 @@ $(document).ready(function () {
 <li>
   <a href="day1.html">Day 1</a>
 </li>
+<li>
+  <a href="day2.html">Day 2</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -331,10 +334,10 @@ $(document).ready(function () {
 <div class="boxobj">
 <p><strong>Learning Objectives</strong></p>
 <ul>
-<li>Produce scatterplots and barplots using ggplot2.</li>
+<li>Produce scatterplots, barplots, histograms, and boxplots using ggplot2.</li>
 <li>Describe what faceting is and apply faceting in ggplot.</li>
 <li>Modify the aesthetics of an existing ggplot plot (including axis labels and color).</li>
-<li>Build complex and customized plots from data in a data frame.</li>
+<li>Build customized plots from data in a data frame.</li>
 <li>Be wowed by the power of R and compelled to keep using it after this workshop.</li>
 </ul>
 </div>
@@ -628,7 +631,7 @@ coverage_plot
 <h1>Histograms</h1>
 <p>Sometimes it can be useful to plot a single variable at a time. Usually this is for exploratory purposes - to get a feel for a variable. To do this, use the <code>geom_histogram()</code> function. For example, to look at the distribution of Qualities:</p>
 <pre class="r"><code>ggplot(data = variants, aes(QUAL)) +
-  geom_histogram(col = &quot;blue&quot;)</code></pre>
+  geom_histogram()</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="07-ggplot2_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>R is giving us a warning. We can choose to ignore this if we are able to see what we want in the plot. Otherwise, we can change the <code>binwidth</code> by using the binwidth argument:</p>
@@ -639,13 +642,12 @@ coverage_plot
 <h3 id="exercise-4">EXERCISE</h3>
 <p>Create a plot that shows the distribution of Read Depth (DP) for each sample separately.</p>
 </div>
-<div id="solution" class="section level3">
-<h3>Solution</h3>
-<pre class="r"><code>ggplot(data = variants, aes(DP)) +
-  geom_histogram(binwidth = 2) +
-  facet_grid(sample_id ~ .)</code></pre>
-<p><img src="07-ggplot2_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-</div>
+<!-- ### Solution -->
+<!-- ```{r} -->
+<!-- ggplot(data = variants, aes(DP)) + -->
+<!--   geom_histogram(binwidth = 2) + -->
+<!--   facet_grid(sample_id ~ .) -->
+<!-- ``` -->
 </div>
 <div id="boxplots" class="section level1">
 <h1>Boxplots</h1>
@@ -672,7 +674,7 @@ coverage_plot
 <p>To create a boxplot, use the <code>geom_boxplot()</code> function:</p>
 <pre class="r"><code>ggplot(data = variants, aes(x = sample_id, y = DP)) + 
   geom_boxplot()</code></pre>
-<p><img src="07-ggplot2_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="07-ggplot2_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 </div>
 </div>
 <div id="themes" class="section level1">

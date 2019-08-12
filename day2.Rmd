@@ -1,0 +1,29 @@
+---
+title: "Workshop - Day 2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+August 13, 2019 
+
+## 6. [Tidyverse (cont)](./06-tidyr.html)
+(~30 minutes)
+
+*  Describe what the `dplyr` package in R is used for.
+*  Apply common `dplyr` functions to manipulate data in R.
+*  Employ the ‘pipe’ operator to link together a sequence of functions.
+*  Employ the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.
+
+## 7. [Data visualization with ggplot2](./07-ggplot2.html)
+(~60 minutes)
+
+* Produce scatterplots, barplots, histograms, and boxplots using ggplot2.
+* Describe what faceting is and apply faceting in ggplot.
+* Modify the aesthetics of an existing ggplot plot (including axis labels and color).
+* Build customized plots from data in a data frame.
+* Be wowed by the power of R and compelled to keep using it after this workshop.
+
+## 8. [Project](./08-project.html)

@@ -223,6 +223,14 @@ To choose rows, use filter():
 
 ```{r}
 filter(metadata, cit == "plus")
+```
+
+### Exercise
+
+
+### Solution
+```{r}
+
 filter(metadata, cit != "plus")
 ```
 
@@ -240,7 +248,12 @@ metadata %>%
   select(sample, generation, clade, cit)
 ```
 
-In the above we use the pipe to send the data set first through `filter`, to keep rows where cit was equal to ‘plus’, and then through `select` to keep the sample and generation and clade columns. When the data frame is being passed to the `filter()` and `select()` functions through a pipe, we don’t need to include it as an argument to these functions anymore. Note that the order of operations here matters - try reversing the `filter()` and `select()` commands - why doesn't that work?
+In the above we use the pipe to send the data set first through `filter`, to keep rows where cit was equal to ‘plus’, and then through `select` to keep the sample and generation and clade columns. When the data frame is being passed to the `filter()` and `select()` functions through a pipe, we don’t need to include it as an argument to these functions anymore. 
+
+### Exercise
+Does the order matter? Why or why not?
+
+Note that the order of operations here matters - try reversing the `filter()` and `select()` commands - why doesn't that work?
 
 This is the same as the nested version:
 ```{r}
@@ -284,7 +297,7 @@ metadata %>%
 
 # Split-apply-combine data analysis and the summarize() function
 
-Many data analysis tasks can be approached using the “split-apply-combine” paradigm: split the data into groups, apply some analysis to each group, and then combine the results. `dplyr` makes this very easy through the use of the `group_by()` function, which splits the data into groups. When the data is grouped in this way `summarize()` can be used to collapse each group into a single-row summary. `summarize()` does this by applying an aggregating or summary function to each group. For example, if we wanted to group by citrate-using mutant status and find the number of rows of data for each status, we would do:
+Many data analysis tasks can be approached using the “split-apply-combine” paradigm: split the data into groups, apply some analysis to each group, and then combine the results. `dplyr` makes this very easy through the use of the `group_by()` function, which splits the data into groups. When the data is grouped in this way `summarize()` can be used to collapse each group into a single-row summary. `summarize()` does this by applying an aggregation or summary function to each group. For example, if we wanted to group by citrate-using mutant status and find the number of rows of data for each status, we would do:
 
 ```{r}
 metadata %>%
@@ -294,6 +307,7 @@ metadata %>%
 
 Here the summary function used was `n()` to find the count for each group. We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package we can use built-in functions like `mean`, `median`, `min`, and `max`. By default, all R functions operating on vectors that contains missing data will return `NA`. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the `mean`, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (rm stands for remove).
 
+### Make this an exercise!
 So to view mean `genome_size` by mutant status:
 
 ```{r}
@@ -327,7 +341,7 @@ metadata %>%
             min_generation = min(generation))
 ```
 
-For an efficient (and printable) summary of the tidyr and dplyr functions, see this [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+For a summary of the tidyr and dplyr functions, see this [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
 
 <div class = "box">
 ### EXERCISE

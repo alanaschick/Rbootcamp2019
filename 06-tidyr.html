@@ -305,6 +305,9 @@ $(document).ready(function () {
 <li>
   <a href="day1.html">Day 1</a>
 </li>
+<li>
+  <a href="day2.html">Day 2</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -657,6 +660,11 @@ tidy</code></pre>
 ## 7    ZDB96      36000  Cit+ REL606 plus SRR098036        4.74
 ## 8   ZDB107      38000  Cit+ REL606 plus SRR098038        4.79
 ## 9 REL10979      40000  Cit+ REL606 plus SRR098029        4.78</code></pre>
+<div id="exercise-1" class="section level3">
+<h3>Exercise</h3>
+</div>
+<div id="solution" class="section level3">
+<h3>Solution</h3>
 <pre class="r"><code>filter(metadata, cit != &quot;plus&quot;)</code></pre>
 <pre><code>##      sample generation   clade strain     cit       run genome_size
 ## 1    REL606          0     N/A REL606 unknown                  4.62
@@ -682,6 +690,7 @@ tidy</code></pre>
 ## 21 REL10988      40000      C2 REL606   minus SRR098030        4.62</code></pre>
 <p><br></p>
 </div>
+</div>
 <div id="pipes" class="section level1">
 <h1>Pipes</h1>
 <p>But what if you wanted to <code>select</code> and <code>filter</code>? There are three ways to do this: use intermediate steps, nested functions, or pipes. With the intermediate steps, you essentially create a temporary data frame and use that as input to the next function. This can clutter up your workspace with lots of objects. You can also nest functions (i.e. one function inside of another). This is handy, but can be difficult to read if too many functions are nested as the process from inside out. The last option, pipes, are a fairly recent addition to R. Pipes let you take the output of one function and send it directly to the next, which is useful when you need to many things to the same data set. Pipes in R look like <code>%&gt;%</code> and are made available via the <code>magrittr</code> package installed as part of tidyverse. If you’re familiar with the Unix shell, you may already have used pipes to pass the output from one command to the next. The concept is the same, except the shell uses the <code>|</code> character rather than R’s pipe operator <code>%&gt;%</code>.</p>
@@ -699,7 +708,11 @@ tidy</code></pre>
 ## 7    ZDB96      36000  Cit+ plus
 ## 8   ZDB107      38000  Cit+ plus
 ## 9 REL10979      40000  Cit+ plus</code></pre>
-<p>In the above we use the pipe to send the data set first through <code>filter</code>, to keep rows where cit was equal to ‘plus’, and then through <code>select</code> to keep the sample and generation and clade columns. When the data frame is being passed to the <code>filter()</code> and <code>select()</code> functions through a pipe, we don’t need to include it as an argument to these functions anymore. Note that the order of operations here matters - try reversing the <code>filter()</code> and <code>select()</code> commands - why doesn’t that work?</p>
+<p>In the above we use the pipe to send the data set first through <code>filter</code>, to keep rows where cit was equal to ‘plus’, and then through <code>select</code> to keep the sample and generation and clade columns. When the data frame is being passed to the <code>filter()</code> and <code>select()</code> functions through a pipe, we don’t need to include it as an argument to these functions anymore.</p>
+<div id="exercise-2" class="section level3">
+<h3>Exercise</h3>
+<p>Does the order matter? Why or why not?</p>
+<p>Note that the order of operations here matters - try reversing the <code>filter()</code> and <code>select()</code> commands - why doesn’t that work?</p>
 <p>This is the same as the nested version:</p>
 <pre class="r"><code>select(filter(metadata, cit == &quot;plus&quot;), sample, generation, clade)</code></pre>
 <pre><code>##     sample generation clade
@@ -730,10 +743,11 @@ Ecoli_citplus</code></pre>
 ## 9 REL10979      40000  Cit+</code></pre>
 <p>We can think of the <code>filter()</code> and <code>select()</code> functions as verbs in the sentence; they do things to the data flowing through the pipeline.</p>
 <div class="box">
-<h3 id="exercise-1">EXERCISE</h3>
+<h3 id="exercise-3">EXERCISE</h3>
 <p>Using pipes, subset <code>metadata</code> to include rows where the clade is ‘Cit+’ and keep only the columns <code>sample</code>, <code>cit</code>, and <code>genome_size</code>.<br />
 How many rows are in that tibble?<br />
 HINT: You can use the <code>nrow()</code> function to find out how many rows are in a tibble.</p>
+</div>
 </div>
 </div>
 <div id="mutate" class="section level1">
@@ -808,7 +822,7 @@ HINT: You can use the <code>nrow()</code> function to find out how many rows are
 </div>
 <div id="split-apply-combine-data-analysis-and-the-summarize-function" class="section level1">
 <h1>Split-apply-combine data analysis and the summarize() function</h1>
-<p>Many data analysis tasks can be approached using the “split-apply-combine” paradigm: split the data into groups, apply some analysis to each group, and then combine the results. <code>dplyr</code> makes this very easy through the use of the <code>group_by()</code> function, which splits the data into groups. When the data is grouped in this way <code>summarize()</code> can be used to collapse each group into a single-row summary. <code>summarize()</code> does this by applying an aggregating or summary function to each group. For example, if we wanted to group by citrate-using mutant status and find the number of rows of data for each status, we would do:</p>
+<p>Many data analysis tasks can be approached using the “split-apply-combine” paradigm: split the data into groups, apply some analysis to each group, and then combine the results. <code>dplyr</code> makes this very easy through the use of the <code>group_by()</code> function, which splits the data into groups. When the data is grouped in this way <code>summarize()</code> can be used to collapse each group into a single-row summary. <code>summarize()</code> does this by applying an aggregation or summary function to each group. For example, if we wanted to group by citrate-using mutant status and find the number of rows of data for each status, we would do:</p>
 <pre class="r"><code>metadata %&gt;%
   group_by(cit) %&gt;%
   summarize(n())</code></pre>
@@ -819,6 +833,8 @@ HINT: You can use the <code>nrow()</code> function to find out how many rows are
 ## 2 plus        9
 ## 3 unknown    12</code></pre>
 <p>Here the summary function used was <code>n()</code> to find the count for each group. We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package we can use built-in functions like <code>mean</code>, <code>median</code>, <code>min</code>, and <code>max</code>. By default, all R functions operating on vectors that contains missing data will return <code>NA</code>. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the <code>mean</code>, the easiest way to ignore <code>NA</code> (the missing data) is to use <code>na.rm=TRUE</code> (rm stands for remove).</p>
+<div id="make-this-an-exercise" class="section level3">
+<h3>Make this an exercise!</h3>
 <p>So to view mean <code>genome_size</code> by mutant status:</p>
 <pre class="r"><code>metadata %&gt;%
   group_by(cit) %&gt;%
@@ -894,9 +910,9 @@ HINT: You can use the <code>nrow()</code> function to find out how many rows are
 ## 11 unknown N/A          4.62              0
 ## 12 unknown UC           4.62          10000
 ## 13 unknown unknown      4.62           2000</code></pre>
-<p>For an efficient (and printable) summary of the tidyr and dplyr functions, see this <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Handy dplyr cheatsheet</a>.</p>
+<p>For a summary of the tidyr and dplyr functions, see this <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Handy dplyr cheatsheet</a>.</p>
 <div class="box">
-<h3 id="exercise-2">EXERCISE</h3>
+<h3 id="exercise-4">EXERCISE</h3>
 <p>Create a tibble containing each unique clade (removing the samples with unknown clades) and the rank of it’s mean genome size. (note that ranking genome size will not sort the table; the row order will be unchanged. You can use the <code>arrange()</code> function to sort the table).</p>
 <p>There are several functions for ranking observations, which handle tied values differently. For this exercise it doesn’t matter which function you choose. Use the help options to find a ranking function.</p>
 </div>
@@ -907,6 +923,7 @@ HINT: You can use the <code>nrow()</code> function to find out how many rows are
 <!--   summarize(means = mean(genome_size)) %>%  -->
 <!--   mutate(rank(means)) -->
 <!-- ``` -->
+</div>
 </div>
 <div id="other-great-resources" class="section level1">
 <h1>Other great resources</h1>

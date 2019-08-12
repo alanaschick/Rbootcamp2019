@@ -43,15 +43,24 @@ Schedule |
 09:45  | 3. R basics
 10:45  | Break
 11:00  | 4. Starting with data
-12:00  | 5. Conditional statements and loops
-12:30  | Lunch break
-13:30  | 6. Manipulating data in the tidyverse
+12:15  | Lunch break
+13:15  | 5. Conditional statements and loops
+13:45  | 6. Manipulating data in the tidyverse
 15:00  | Finish
 
 <br>
 
-## <b>August 13: Day 2 (9:00 - 15:00, HSC G743)</b>
-Project Day - Schedule TBA
+## <b>August 13: [Day 2](./day2.html) (9:00 - 15:00, HSC G743)</b>
+
+Schedule |                                            
+-------| ----------------------------------
+09:00  | 6. Tidyverse (cont)
+09:30  | 7. Data visualization with ggplot2
+10:30  | Break
+10:45  | 8. Project 
+12:00  | Lunch break
+13:00  | 8. Project (cont)
+15:00  | Finish
 
 <br>
 
