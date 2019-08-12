@@ -60,6 +60,16 @@ Before using the `read.csv()` function, use R's help feature to answer the follo
 <!-- 3. Although it is not listed in the read.csv() usage, read.csv() is a “version” of the function read.table() and accepts all its arguments. If you set dec="," you could change the decimal operator. -->
 <!-- 4. You can set nrow to a numeric value (e.g. nrow=10000) to choose how many rows of a file you read in. This may be useful for very large files where not all the data is needed to test some data cleaning steps you are applying. -->
 
+### Sidenote: Importing data from Excel
+
+Excel is one of the most common formats, so we need to discuss how to make these files play nicely with R. The simplest way to import data from Excel is to <b>save your Excel file in .csv format</b>. You can then import into R right away. Sometimes you may not be able to do this (imagine you have data in 300 Excel files, are you going to open and export all of them?).
+
+One common R package (a set of code with features you can download and add to your R installation) is the <b>readxl</b> package which can open and import Excel files.
+
+<br>
+
+# Import data
+
 Now let's read in some data. We're going to study a population of *Escherichia coli* (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate, which the ancestral *E. coli* cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points revealed that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations in one of twelve populations. The dataset is stored as a comma separated value (CSV) file. This metadata describes information on the Ara-3 clones and the columns represent:
 
 Column | Description                                            
@@ -241,11 +251,6 @@ list1 <- list(c(2,5,3),21.3, BMI)
 list1
 ```
 
-<br>
 
-# Importing data from Excel
 
-Excel is one of the most common formats, so we need to discuss how to make these files play nicely with R. The simplest way to import data from Excel is to <b>save your Excel file in .csv format</b>. You can then import into R right away. Sometimes you may not be able to do this (imagine you have data in 300 Excel files, are you going to open and export all of them?).
-
-One common R package (a set of code with features you can download and add to your R installation) is the <b>readxl</b> package which can open and import Excel files.
 

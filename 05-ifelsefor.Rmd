@@ -83,7 +83,7 @@ if (x < 0) {
 
 <div class="box">
 ### EXERCISE
-Exercise: write a simple if...else statement to check if 5 is an odd number and if it is print "I am odd", otherwise print "I am even".
+Write a simple if...else statement to check if 5 is an odd number and if it is print "I am odd", otherwise print "I am even".
 </div>
 
 <!-- Solution -->
@@ -114,9 +114,9 @@ for(i in 1:length(year)) {
 
 <div class="box">
 ### EXERCISE
-**Challenging.** Using the *E. coli* metadata from the last section, write a for loop containing an if...else statement to change the genome size into categorical variable. 
+**Challenging.** Using the *E. coli* metadata from the last section, write a `for` loop containing an `if...else` statement to change the genome size into categorical variable with two levels: large and small. 
 
-Do this by translating the following sentence into R: for every element in the genome_size variable, if the genome size is greater than the mean, change it to "large", otherwise, change it to "small".
+Do this by translating the following sentence into R code: for every element in the genome_size variable, if the genome size is greater than the mean, change it to "large", otherwise, change it to "small".
 </div>
 
 <!-- # First make a copy of the data frame -->
