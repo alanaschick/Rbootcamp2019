@@ -181,7 +181,7 @@ It’s good practice to put the non-optional arguments (like the number you’re
 
 <div class="box">
 ### EXERCISE
-Compute the golden ratio. One approximation of the golden ratio can be found by taking the sum of 1 and the square root of 5, and dividing by 2. Compute the golden ratio to 3 digits of precision using the `sqrt()` and `round()` functions. Hint: you can place one function inside of another.
+Compute the golden ratio in a single line of code. One approximation of the golden ratio can be found by taking the sum of 1 and the square root of 5, and dividing by 2. Compute the golden ratio to 3 digits of precision using the `sqrt()` and `round()` functions. Hint: you can place one function inside of another.
 </div>
 
 <!-- round((1 + sqrt(5))/2, digits = 3) -->
@@ -342,7 +342,7 @@ weight_g[weight_g < 30 | weight_g > 50]
 weight_g[weight_g >= 30 & weight_g == 21]
 ```
 
-Here, `<` stands for “less than”, `>` for “greater than”, `>=` for “greater than or equal to”, and `==` for “equal to”. The double equal sign `==` is a test for numerical equality between the left and right hand sides, and should not be confused with the single = sign, which performs variable assignment (similar to `<-`).
+Here, `<` stands for “less than”, `>` for “greater than”, `>=` for “greater than or equal to”, and `==` for “equal to”. The double equal sign `==` is a test for numerical equality between the left and right hand sides, and should not be confused with the single `=` sign, which performs variable assignment (similar to `<-`).
 
 Operator | Description                                            
 ----| ------------------------------
@@ -422,8 +422,6 @@ heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65,
 heights_no_na <- heights[!is.na(heights)] 
 # or
 heights_no_na <- na.omit(heights)
-# or
-heights_no_na <- heights[complete.cases(heights)]
 
 # 2.
 median(heights, na.rm = TRUE)

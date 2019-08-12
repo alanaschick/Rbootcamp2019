@@ -99,7 +99,7 @@ knitr::include_graphics(here("figures", "spreadsheet2.png"))
 
 **What is the problem with this?**
 
-Solution: Columns for variables and rows for observations, cells for data (values)
+Solution: Columns for variables and rows for observations, cells for data (values).
 
 
 <div class="box">
@@ -112,7 +112,7 @@ We're going to look at a dataset that comes from observations of a small mammal 
 3) You can see that the data for 2013 and 2014 is located on different tabs. Two field assistants conducted the surveys, one in 2013 and one in 2014, and they both kept track of the data in their own way. Now you’re the person in charge of this project and you want to be able to start analyzing the data.   
 4) With the person next to you, take about ten minutes to identify what is wrong with this spreadsheet. Also discuss the steps you would need to take to clean up the 2013 and 2014 tabs, and to put them all together in one spreadsheet.  
 
-**Important** Do not forget the first piece of advice: to create a new file (or tab) for the cleaned data, never modify your original (raw) data.
+**Important**: Do not forget the first piece of advice: to create a new file (or tab) for the cleaned data, never modify your original (raw) data.
 
 After you go through this exercise, we’ll discuss as a group what was wrong with this data and how you would fix it.
 </div>

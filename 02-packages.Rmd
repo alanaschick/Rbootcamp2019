@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ---
 
-# What are R packages
+# What are R packages?
 This section is from [Modern Dive, section 2.3](https://moderndive.com/2-getting-started.html#).
 
 R packages extend the functionality of R by providing additional functions, data, and documentation for specific tasks. They are written by a world-wide community of R users and can be downloaded for free from the internet. A good analogy for R packages is they are like apps you can download onto a mobile phone.
@@ -65,7 +65,7 @@ If you want to update an already installed package to a newer version, you need 
 
 ## 2. Bioconductor
 
-Bioconductor is a repository for R packages that concern computational biology or bioinformatics. To install the `phyloseq` package from Bioconductor, type the following in the Console of RStudio:
+Bioconductor is a repository for R packages that concern computational biology or bioinformatics. To install the `knitr` package from Bioconductor, type the following in the Console of RStudio:
 
 ```{r, eval = FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE))
