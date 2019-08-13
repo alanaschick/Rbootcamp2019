@@ -660,36 +660,18 @@ tidy</code></pre>
 ## 7    ZDB96      36000  Cit+ REL606 plus SRR098036        4.74
 ## 8   ZDB107      38000  Cit+ REL606 plus SRR098038        4.79
 ## 9 REL10979      40000  Cit+ REL606 plus SRR098029        4.78</code></pre>
-<div id="exercise-1" class="section level3">
-<h3>Exercise</h3>
+<div class="box">
+<h3 id="exercise-1">EXERCISE</h3>
+<ol style="list-style-type: decimal">
+<li>Keep only the rows that are <b>not</b> cit = plus.</li>
+<li>Keep only the rows for samples taken in the first 30000 generations.</li>
+</ol>
 </div>
-<div id="solution" class="section level3">
-<h3>Solution</h3>
-<pre class="r"><code>filter(metadata, cit != &quot;plus&quot;)</code></pre>
-<pre><code>##      sample generation   clade strain     cit       run genome_size
-## 1    REL606          0     N/A REL606 unknown                  4.62
-## 2  REL1166A       2000 unknown REL606 unknown SRR098028        4.63
-## 3    ZDB409       5000 unknown REL606 unknown SRR098281        4.60
-## 4    ZDB429      10000      UC REL606 unknown SRR098282        4.59
-## 5    ZDB446      15000      UC REL606 unknown SRR098283        4.66
-## 6    ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63
-## 7   ZDB464*      20000 (C1,C2) REL606 unknown SRR098285        4.62
-## 8    ZDB467      20000 (C1,C2) REL606 unknown SRR098286        4.61
-## 9    ZDB477      25000      C1 REL606 unknown SRR098287        4.65
-## 10   ZDB483      25000      C3 REL606 unknown SRR098288        4.59
-## 11    ZDB16      30000      C1 REL606 unknown SRR098031        4.61
-## 12   ZDB357      30000      C2 REL606 unknown SRR098280        4.62
-## 13  ZDB199*      31500      C1 REL606   minus SRR098044        4.62
-## 14   ZDB200      31500      C2 REL606   minus SRR098279        4.63
-## 15   ZDB30*      32000      C3 REL606   minus SRR098032        4.61
-## 16   ZDB158      32500      C2 REL606   minus SRR098041        4.63
-## 17   CZB199      33000      C1 REL606   minus SRR098027        4.59
-## 18    ZDB83      34000    Cit+ REL606   minus SRR098034        4.60
-## 19    ZDB99      36000      C1 REL606   minus SRR098037        4.61
-## 20   ZDB111      38000      C2 REL606   minus SRR098039        4.62
-## 21 REL10988      40000      C2 REL606   minus SRR098030        4.62</code></pre>
-<p><br></p>
-</div>
+<!-- ### Solution -->
+<!-- ```{r} -->
+<!-- filter(metadata, cit != "plus") -->
+<!-- filter(metadata, generation <= 30000) -->
+<!-- ``` -->
 </div>
 <div id="pipes" class="section level1">
 <h1>Pipes</h1>
@@ -709,11 +691,12 @@ tidy</code></pre>
 ## 8   ZDB107      38000  Cit+ plus
 ## 9 REL10979      40000  Cit+ plus</code></pre>
 <p>In the above we use the pipe to send the data set first through <code>filter</code>, to keep rows where cit was equal to ‘plus’, and then through <code>select</code> to keep the sample and generation and clade columns. When the data frame is being passed to the <code>filter()</code> and <code>select()</code> functions through a pipe, we don’t need to include it as an argument to these functions anymore.</p>
-<div id="exercise-2" class="section level3">
-<h3>Exercise</h3>
-<p>Does the order matter? Why or why not?</p>
-<p>Note that the order of operations here matters - try reversing the <code>filter()</code> and <code>select()</code> commands - why doesn’t that work?</p>
-<p>This is the same as the nested version:</p>
+<div class="box">
+<h3 id="exercise-2">EXERCISE</h3>
+<p>Does the order of <code>filter()</code> and <code>select()</code> above matter? Why or why not?</p>
+<p>Answer to yourself or to a neighbour and then confirm your answer by trying it both ways.</p>
+</div>
+<p>Note that the above is the same as the nested version:</p>
 <pre class="r"><code>select(filter(metadata, cit == &quot;plus&quot;), sample, generation, clade)</code></pre>
 <pre><code>##     sample generation clade
 ## 1   ZDB564      31500  Cit+
@@ -745,10 +728,14 @@ Ecoli_citplus</code></pre>
 <div class="box">
 <h3 id="exercise-3">EXERCISE</h3>
 <p>Using pipes, subset <code>metadata</code> to include rows where the clade is ‘Cit+’ and keep only the columns <code>sample</code>, <code>cit</code>, and <code>genome_size</code>.<br />
-How many rows are in that tibble?<br />
-HINT: You can use the <code>nrow()</code> function to find out how many rows are in a tibble.</p>
+How many rows are in that tibble?</p>
 </div>
-</div>
+<!-- ### Solution -->
+<!-- ```{r} -->
+<!-- metadata %>% -->
+<!--   filter(clade == "Cit+") %>% -->
+<!--   select(sample, cit, genome_size) -->
+<!-- ``` -->
 </div>
 <div id="mutate" class="section level1">
 <h1>Mutate</h1>
@@ -818,7 +805,15 @@ HINT: You can use the <code>nrow()</code> function to find out how many rows are
 ## 28   4620000
 ## 29   4780000
 ## 30   4620000</code></pre>
-<p><br></p>
+<div class="box">
+<h3 id="exercise-4">EXERCISE</h3>
+<p>Use the <code>mutate()</code> function to mutate generation into a fraction from 0 to 1.</p>
+</div>
+<!-- ## SOLUTION -->
+<!-- ```{r} -->
+<!-- metadata %>% -->
+<!--   mutate(generation = generation/max(generation)) -->
+<!-- ``` -->
 </div>
 <div id="split-apply-combine-data-analysis-and-the-summarize-function" class="section level1">
 <h1>Split-apply-combine data analysis and the summarize() function</h1>
@@ -833,18 +828,16 @@ HINT: You can use the <code>nrow()</code> function to find out how many rows are
 ## 2 plus        9
 ## 3 unknown    12</code></pre>
 <p>Here the summary function used was <code>n()</code> to find the count for each group. We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package we can use built-in functions like <code>mean</code>, <code>median</code>, <code>min</code>, and <code>max</code>. By default, all R functions operating on vectors that contains missing data will return <code>NA</code>. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the <code>mean</code>, the easiest way to ignore <code>NA</code> (the missing data) is to use <code>na.rm=TRUE</code> (rm stands for remove).</p>
-<div id="make-this-an-exercise" class="section level3">
-<h3>Make this an exercise!</h3>
-<p>So to view mean <code>genome_size</code> by mutant status:</p>
-<pre class="r"><code>metadata %&gt;%
-  group_by(cit) %&gt;%
-  summarize(mean_size = mean(genome_size, na.rm = TRUE))</code></pre>
-<pre><code>## # A tibble: 3 x 2
-##   cit     mean_size
-##   &lt;fct&gt;       &lt;dbl&gt;
-## 1 minus        4.61
-## 2 plus         4.77
-## 3 unknown      4.62</code></pre>
+<div class="box">
+<h3 id="exercise-5">EXERCISE</h3>
+<p>Use the <code>group_by()</code> and <code>summarize()</code> to view mean <code>genome_size</code> by mutant status (ie. cit).</p>
+</div>
+<!-- ### SOLUTION -->
+<!-- ```{r} -->
+<!-- metadata %>% -->
+<!--   group_by(cit) %>% -->
+<!--   summarize(mean_size = mean(genome_size, na.rm = TRUE)) -->
+<!-- ``` -->
 <p>You can group by multiple columns too:</p>
 <pre class="r"><code>metadata %&gt;%
   group_by(cit, clade) %&gt;%
@@ -912,7 +905,7 @@ HINT: You can use the <code>nrow()</code> function to find out how many rows are
 ## 13 unknown unknown      4.62           2000</code></pre>
 <p>For a summary of the tidyr and dplyr functions, see this <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Handy dplyr cheatsheet</a>.</p>
 <div class="box">
-<h3 id="exercise-4">EXERCISE</h3>
+<h3 id="exercise-6">EXERCISE</h3>
 <p>Create a tibble containing each unique clade (removing the samples with unknown clades) and the rank of it’s mean genome size. (note that ranking genome size will not sort the table; the row order will be unchanged. You can use the <code>arrange()</code> function to sort the table).</p>
 <p>There are several functions for ranking observations, which handle tied values differently. For this exercise it doesn’t matter which function you choose. Use the help options to find a ranking function.</p>
 </div>
@@ -923,7 +916,6 @@ HINT: You can use the <code>nrow()</code> function to find out how many rows are
 <!--   summarize(means = mean(genome_size)) %>%  -->
 <!--   mutate(rank(means)) -->
 <!-- ``` -->
-</div>
 </div>
 <div id="other-great-resources" class="section level1">
 <h1>Other great resources</h1>

@@ -225,16 +225,17 @@ To choose rows, use filter():
 filter(metadata, cit == "plus")
 ```
 
-### Exercise
+<div class = "box">
+### EXERCISE
+1. Keep only the rows that are <b>not</b> cit = plus.
+2. Keep only the rows for samples taken in the first 30000 generations.
+</div>
 
-
-### Solution
-```{r}
-
-filter(metadata, cit != "plus")
-```
-
-<br>
+<!-- ### Solution -->
+<!-- ```{r} -->
+<!-- filter(metadata, cit != "plus") -->
+<!-- filter(metadata, generation <= 30000) -->
+<!-- ``` -->
 
 # Pipes
 
@@ -250,12 +251,14 @@ metadata %>%
 
 In the above we use the pipe to send the data set first through `filter`, to keep rows where cit was equal to ‘plus’, and then through `select` to keep the sample and generation and clade columns. When the data frame is being passed to the `filter()` and `select()` functions through a pipe, we don’t need to include it as an argument to these functions anymore. 
 
-### Exercise
-Does the order matter? Why or why not?
+<div class = "box">
+### EXERCISE
+Does the order of `filter()` and `select()` above matter? Why or why not?
 
-Note that the order of operations here matters - try reversing the `filter()` and `select()` commands - why doesn't that work?
+Answer to yourself or to a neighbour and then confirm your answer by trying it both ways.
+</div>
 
-This is the same as the nested version:
+Note that the above is the same as the nested version:
 ```{r}
 select(filter(metadata, cit == "plus"), sample, generation, clade)
 ```
@@ -273,14 +276,18 @@ Ecoli_citplus
 We can think of the `filter()` and `select()` functions as verbs in the sentence; they do things to the data flowing through the pipeline.
 
 <div class="box">
-
 ### EXERCISE
 
 Using pipes, subset `metadata` to include rows where the clade is ‘Cit+’ and keep only the columns `sample`, `cit`, and `genome_size`.  
 How many rows are in that tibble?  
-HINT: You can use the `nrow()` function to find out how many rows are in a tibble.  
-
 </div>
+
+<!-- ### Solution -->
+<!-- ```{r} -->
+<!-- metadata %>% -->
+<!--   filter(clade == "Cit+") %>% -->
+<!--   select(sample, cit, genome_size) -->
+<!-- ``` -->
 
 # Mutate
 
@@ -293,7 +300,16 @@ metadata %>%
   mutate(genome_bp = genome_size *1e6)
 ```
 
-<br>
+<div class = "box">
+### EXERCISE
+Use the `mutate()` function to mutate generation into a fraction from 0 to 1.
+</div>
+
+<!-- ## SOLUTION -->
+<!-- ```{r} -->
+<!-- metadata %>% -->
+<!--   mutate(generation = generation/max(generation)) -->
+<!-- ``` -->
 
 # Split-apply-combine data analysis and the summarize() function
 
@@ -307,14 +323,17 @@ metadata %>%
 
 Here the summary function used was `n()` to find the count for each group. We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package we can use built-in functions like `mean`, `median`, `min`, and `max`. By default, all R functions operating on vectors that contains missing data will return `NA`. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the `mean`, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (rm stands for remove).
 
-### Make this an exercise!
-So to view mean `genome_size` by mutant status:
+<div class= "box">
+### EXERCISE
+Use the `group_by()` and `summarize()` to view mean `genome_size` by mutant status (ie. cit).
+</div>
 
-```{r}
-metadata %>%
-  group_by(cit) %>%
-  summarize(mean_size = mean(genome_size, na.rm = TRUE))
-```
+<!-- ### SOLUTION -->
+<!-- ```{r} -->
+<!-- metadata %>% -->
+<!--   group_by(cit) %>% -->
+<!--   summarize(mean_size = mean(genome_size, na.rm = TRUE)) -->
+<!-- ``` -->
 
 You can group by multiple columns too:
 
