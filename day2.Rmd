@@ -27,3 +27,8 @@ August 13, 2019
 * Be wowed by the power of R and compelled to keep using it after this workshop.
 
 ## 8. [Project](./08-project.html)
+
+* Task 1: Data import and examination
+* Task 2: Data Tidying
+* Task 3: Plots
+* Task 4: Heatmap
