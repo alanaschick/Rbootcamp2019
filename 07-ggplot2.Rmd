@@ -6,6 +6,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+variants <- read.csv("data/combined_tidy_vcf.csv")
 ```
 
 ---
@@ -24,14 +25,29 @@ library(tidyverse)
 
 ## Data
 
-This section uses data from a long term evolution experiment published in 2016: Tempo and mode of genome evolution in a 50,000-generation experiment by [Tenaillon et al](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988878/).
+This section uses a different data set from the same experiment - the LTEE (long-term evolution experiment). This data was pulished in: Tempo and mode of genome evolution in a 50,000-generation experiment [Tenaillon et al 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988878/).
 
-```{r}
-variants <- read.csv("data/combined_tidy_vcf.csv")
-head(variants)
+There are two ways to download this data file:
+
+1. Use the `download.file()` function to download the data from the following address:
+
+```{r, eval = FALSE}
+download.file("https://raw.githubusercontent.com/alanaschick/Rbootcamp2019/master/data/combined_tidy_vcf.csv", "data/combined_tidy_vcf.csv")
 ```
 
-Investigate the structure of the data frame using the `str()` function:
+2. Download the data onto your computer from [this]( ) dropbox link and move it into the `data` directory of your RStudio project.
+
+<div class = "box">
+### EXERCISE
+Read the data into R. Call this data `variants`. Ensure that you have read the data in by calling `head(variants)`.
+</div>
+
+<!-- ### SOLUTION -->
+<!-- ```{r} -->
+<!-- variants <- read.csv("data/combined_tidy_vcf.csv") -->
+<!-- ``` -->
+
+You can further investigate the structure of the data frame using the `str()` function:
 ```{r}
 str(variants)
 ```
@@ -54,7 +70,6 @@ IMF | maximum fraction of reads supporting an indel
 DP | the depth per allele by sample and coverage
 MQ  | mapping quality
 Indiv | name of file
-
 </div>
 
 # Plotting with ggplot2
@@ -75,18 +90,18 @@ To build a ggplot, we will use the following basic template that can be used for
 ```{r, eval = FALSE}
 ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
 ```
-Use the `ggplot()` function and bind the plot to a specific data frame using the `data` argument:
+1. Specify which data set to use for the plot using the `data` argument:
 ```{r, eval = FALSE}
 ggplot(data = variants)
 ```
-Define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc:
+2. Define a "mapping" (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc:
 ```{r, eval = FALSE}
 ggplot(data = variants, aes(x = POS, y = DP))
 ```
-Add ‘geoms’ – graphical representations of the data in the plot (points, lines, bars). `ggplot2` offers many different geoms; we will use some common ones today, including:
+3. Add "geoms" – graphical representations of the data in the plot (points, lines, bars). `ggplot2` offers many different geoms; we will use some common ones today, including:
 
 * `geom_point()` for scatter plots, dot plots, etc.
-* `geom_boxplot()` for, well, boxplots!
+* `geom_boxplot()` for boxplots.
 * `geom_histogram()` for histograms.
 * `geom_barplot()` for barplots.
 * `geom_line()` for trend lines, time series, etc. 
@@ -109,6 +124,7 @@ coverage_plot +
 ```
 
 Notes:
+
 * Anything you put in the `ggplot()` function can be seen by any geom layers that you add (i.e., these are universal plot settings). This includes the x- and y-axis mapping you set up in `aes()`.
 * You can also specify mappings for a given geom independently of the mappings defined globally in the `ggplot()` function.
 * The `+` sign used to add new layers must be placed at the end of the line containing the previous layer. If, instead, the `+` sign is added at the beginning of the line containing the new layer, `ggplot2` will not add the new layer and will return an error message.
@@ -134,6 +150,16 @@ We will follow these metrics to create and evaluate figures:
 4. Draw graphical elements clearly, minimizing clutter  
 </div>
 
+<div class = "box">
+### EXERCISE
+Create a scatter plot (using the `geom_point()` function for quality (`QUAL`) versus coverage depth (`DP`).
+</div>
+
+<!-- ### SOLUTION -->
+<!-- ```{r} -->
+<!-- ggplot(data = variants, aes(x = QUAL, y = DP)) +  -->
+<!--   geom_point() -->
+<!-- ``` -->
 
 # Building plots iteratively
 
@@ -183,14 +209,14 @@ ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
 
 <div class = "box">
 ### EXERCISE
-Use what you just learned to create a scatter plot of mapping quality (`MQ`) over position (`POS`) with the samples showing in different colors. Make sure to give your plot relevant axis labels.
+Create a scatter plot of mapping quality (`MQ`) over position (`POS`) with the samples showing in different colors. Make sure to give your plot relevant axis labels.
 </div>
 
 <!-- Solution -->
 <!-- ```{r} -->
-<!-- ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) +  -->
-<!--   geom_point() +  -->
-<!--   labs(x = "Base Pair Position",  -->
+<!-- ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) + -->
+<!--   geom_point() + -->
+<!--   labs(x = "Base Pair Position", -->
 <!--        y = "Mapping Quality (MQ)") -->
 <!-- ``` -->
  
@@ -206,7 +232,7 @@ ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) +
  facet_grid(. ~ sample_id)
 ```
 
-This looks ok, but it would be easier to read if the plot facets were stacked vertically rather than horizontally. The `facet_grid` geometry allows you to explicitly specify how you want your plots to be arranged via formula notation (`rows ~ columns`; a `.` can be used as a placeholder that indicates only one row or column).
+This looks ok, but it would be easier to read if the plot facets were stacked vertically rather than horizontally. The `facet_grid` geometry allows you to explicitly specify how you want your plots to be arranged via formula notation (`rows ~ columns`); a `.` can be used as a placeholder that indicates only one row or column).
 
 ```{r}
 ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) + 
@@ -235,9 +261,9 @@ Use what you just learned to create a scatter plot of PHRED scaled quality (`QUA
 
 <!-- ### SOLUTION -->
 <!-- ```{r} -->
-<!-- ggplot(data = variants, aes(x = POS, y = QUAL, color = sample_id)) +  -->
-<!--   geom_point() +  -->
-<!--   labs(x = "Base Pair Position",  -->
+<!-- ggplot(data = variants, aes(x = POS, y = QUAL, color = sample_id)) + -->
+<!--   geom_point() + -->
+<!--   labs(x = "Base Pair Position", -->
 <!--        y = "PHRED-sacled Quality (QUAL)") + -->
 <!--   facet_grid(sample_id ~ .) -->
 <!-- ``` -->
@@ -281,7 +307,9 @@ ggplot(data = variants, aes(QUAL)) +
 ```
 <div class = "box">
 ### EXERCISE
-Create a plot that shows the distribution of Read Depth (DP) for each sample separately. 
+Create a plot that shows the distribution of Read Depth (DP) for each sample separately.
+
+<b>Bonus challenge.</b> Create this plot for only two of the three samples IDs - the two with many fewer variants. 
 </div>
 
 <!-- ### Solution -->
@@ -291,6 +319,14 @@ Create a plot that shows the distribution of Read Depth (DP) for each sample sep
 <!--   facet_grid(sample_id ~ .) -->
 <!-- ``` -->
 
+<!-- ### Bonus solution -->
+<!-- ```{r} -->
+<!-- # subset the data -->
+<!-- two <- filter(variants, sample_id != "SRR2584866") -->
+<!-- ggplot(data = two, aes(DP)) + -->
+<!--   geom_histogram(binwidth = 2) + -->
+<!--   facet_grid(sample_id ~ .) -->
+<!-- ``` -->
 
 # Boxplots
 
@@ -322,23 +358,24 @@ ggplot(data = variants, aes(x = sample_id, y = DP)) +
   geom_boxplot()
 ```
 
+<div class = "box">
+### EXERCISE
+1. Change the colour of each box in the above plot to match the sample_id colours in the plots above. 
+2. Log transform the y-axis.
 
+<b>Bonus challenge:</b> Change the name of the legend to "Sample ID".
+</div>
+
+<!-- ### SOLUTION -->
+<!-- ```{r} -->
+<!-- ggplot(data = variants, aes(x = sample_id, y = log(DP), color = sample_id)) + -->
+<!--   geom_boxplot() -->
+<!-- ``` -->
 
 # Themes
 
 In addition to `theme_bw()`, which changes the plot background to white, `ggplot2` comes with several other themes which can be useful to quickly change the look of your visualization. The complete list of themes is available at https://ggplot2.tidyverse.org/reference/ggtheme.html. `theme_minimal()` and `theme_light()` are popular, and `theme_void()` can be useful as a starting point to create a new hand-crafted theme.
 
 The `ggthemes` package provides a wide variety of options (including an Excel 2003 theme). The `ggplot2` [extensions website](https://www.ggplot2-exts.org) provides a list of packages that extend the capabilities of `ggplot2`, including additional themes.
-
-<div class = "box">
-### EXERCISE
-With all of this information in hand, please take another five minutes to either improve one of the plots generated in this exercise or create a beautiful graph of your own. Here are some ideas:
-* See if you can change the size or shape of the plotting symbol.
-* Can you find a way to change the name of the legend? What about its labels?
-* Try using a different color palette (see http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).
-</div>
-
-
-
 
 

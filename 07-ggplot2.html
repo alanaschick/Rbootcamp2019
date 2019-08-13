@@ -344,45 +344,24 @@ $(document).ready(function () {
 <hr />
 <div id="data" class="section level2">
 <h2>Data</h2>
-<p>This section uses data from a long term evolution experiment published in 2016: Tempo and mode of genome evolution in a 50,000-generation experiment by <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988878/">Tenaillon et al</a>.</p>
-<pre class="r"><code>variants &lt;- read.csv(&quot;data/combined_tidy_vcf.csv&quot;)
-head(variants)</code></pre>
-<pre><code>##    sample_id      CHROM    POS ID      REF       ALT QUAL FILTER INDEL IDV
-## 1 SRR2584863 CP000819.1   9972 NA        T         G   91     NA FALSE  NA
-## 2 SRR2584863 CP000819.1 263235 NA        G         T   85     NA FALSE  NA
-## 3 SRR2584863 CP000819.1 281923 NA        G         T  217     NA FALSE  NA
-## 4 SRR2584863 CP000819.1 433359 NA CTTTTTTT CTTTTTTTT   64     NA  TRUE  12
-## 5 SRR2584863 CP000819.1 473901 NA     CCGC    CCGCGC  228     NA  TRUE   9
-## 6 SRR2584863 CP000819.1 648692 NA        C         T  210     NA FALSE  NA
-##   IMF DP       VDB RPB MQB BQB     MQSB       SGB     MQ0F ICB HOB AC AN
-## 1  NA  4 0.0257451  NA  NA  NA       NA -0.556411 0.000000  NA  NA  1  1
-## 2  NA  6 0.0961330   1   1   1       NA -0.590765 0.166667  NA  NA  1  1
-## 3  NA 10 0.7740830  NA  NA  NA 0.974597 -0.662043 0.000000  NA  NA  1  1
-## 4 1.0 12 0.4777040  NA  NA  NA 1.000000 -0.676189 0.000000  NA  NA  1  1
-## 5 0.9 10 0.6595050  NA  NA  NA 0.916482 -0.662043 0.000000  NA  NA  1  1
-## 6  NA 10 0.2680140  NA  NA  NA 0.916482 -0.670168 0.000000  NA  NA  1  1
-##       DP4 MQ
-## 1 0,0,0,4 60
-## 2 0,1,0,5 33
-## 3 0,0,4,5 60
-## 4 0,1,3,8 60
-## 5 1,0,2,7 60
-## 6 0,0,7,3 60
-##                                                                Indiv gt_PL
-## 1 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 121,0
-## 2 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 112,0
-## 3 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 247,0
-## 4 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam  91,0
-## 5 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 255,0
-## 6 /home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam 240,0
-##   gt_GT gt_GT_alleles
-## 1     1             G
-## 2     1             T
-## 3     1             T
-## 4     1     CTTTTTTTT
-## 5     1        CCGCGC
-## 6     1             T</code></pre>
-<p>Investigate the structure of the data frame using the <code>str()</code> function:</p>
+<p>This section uses a different data set from the same experiment - the LTEE (long-term evolution experiment). This data was pulished in: Tempo and mode of genome evolution in a 50,000-generation experiment <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988878/">Tenaillon et al 2016</a>.</p>
+<p>There are two ways to download this data file:</p>
+<ol style="list-style-type: decimal">
+<li>Use the <code>download.file()</code> function to download the data from the following address:</li>
+</ol>
+<pre class="r"><code>download.file(&quot;https://raw.githubusercontent.com/alanaschick/Rbootcamp2019/master/data/combined_tidy_vcf.csv&quot;, &quot;data/combined_tidy_vcf.csv&quot;)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Download the data onto your computer from <a href="">this</a> dropbox link and move it into the <code>data</code> directory of your RStudio project.</li>
+</ol>
+<div class="box">
+<h3 id="exercise">EXERCISE</h3>
+<p>Read the data into R. Call this data <code>variants</code>. Ensure that you have read the data in by calling <code>head(variants)</code>.</p>
+</div>
+<!-- ### SOLUTION -->
+<!-- ```{r} -->
+<!-- variants <- read.csv("data/combined_tidy_vcf.csv") -->
+<!-- ``` -->
+<p>You can further investigate the structure of the data frame using the <code>str()</code> function:</p>
 <pre class="r"><code>str(variants)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    801 obs. of  29 variables:
 ##  $ sample_id    : Factor w/ 3 levels &quot;SRR2584863&quot;,&quot;SRR2584866&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
@@ -415,7 +394,7 @@ head(variants)</code></pre>
 ##  $ gt_GT        : int  1 1 1 1 1 1 1 1 1 1 ...
 ##  $ gt_GT_alleles: Factor w/ 57 levels &quot;A&quot;,&quot;AC&quot;,&quot;ACAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAG&quot;,..: 31 46 46 29 25 46 1 1 4 15 ...</code></pre>
 <div class="box">
-<h3 id="exercise">EXERCISE</h3>
+<h3 id="exercise-1">EXERCISE</h3>
 <p>Take a few minutes to familiarize yourself with this dataset. There are a lot of variables (how many?), so only worry about the ones listed below.</p>
 <table style="width:71%;">
 <colgroup>
@@ -490,14 +469,20 @@ head(variants)</code></pre>
 <p>Graphics are built step by step by adding new elements. Adding layers in this fashion allows for extensive flexibility and customization of plots.</p>
 <p>To build a ggplot, we will use the following basic template that can be used for different types of plots:</p>
 <pre class="r"><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) +  &lt;GEOM_FUNCTION&gt;()</code></pre>
-<p>Use the <code>ggplot()</code> function and bind the plot to a specific data frame using the <code>data</code> argument:</p>
+<ol style="list-style-type: decimal">
+<li>Specify which data set to use for the plot using the <code>data</code> argument:</li>
+</ol>
 <pre class="r"><code>ggplot(data = variants)</code></pre>
-<p>Define a mapping (using the aesthetic (<code>aes</code>) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc:</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Define a “mapping” (using the aesthetic (<code>aes</code>) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc:</li>
+</ol>
 <pre class="r"><code>ggplot(data = variants, aes(x = POS, y = DP))</code></pre>
-<p>Add ‘geoms’ – graphical representations of the data in the plot (points, lines, bars). <code>ggplot2</code> offers many different geoms; we will use some common ones today, including:</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Add “geoms” – graphical representations of the data in the plot (points, lines, bars). <code>ggplot2</code> offers many different geoms; we will use some common ones today, including:</li>
+</ol>
 <ul>
 <li><code>geom_point()</code> for scatter plots, dot plots, etc.</li>
-<li><code>geom_boxplot()</code> for, well, boxplots!</li>
+<li><code>geom_boxplot()</code> for boxplots.</li>
 <li><code>geom_histogram()</code> for histograms.</li>
 <li><code>geom_barplot()</code> for barplots.</li>
 <li><code>geom_line()</code> for trend lines, time series, etc.</li>
@@ -513,7 +498,12 @@ coverage_plot &lt;- ggplot(data = variants, aes(x = POS, y = DP))
 # Draw the plot
 coverage_plot + 
     geom_point()</code></pre>
-<p>Notes: * Anything you put in the <code>ggplot()</code> function can be seen by any geom layers that you add (i.e., these are universal plot settings). This includes the x- and y-axis mapping you set up in <code>aes()</code>. * You can also specify mappings for a given geom independently of the mappings defined globally in the <code>ggplot()</code> function. * The <code>+</code> sign used to add new layers must be placed at the end of the line containing the previous layer. If, instead, the <code>+</code> sign is added at the beginning of the line containing the new layer, <code>ggplot2</code> will not add the new layer and will return an error message.</p>
+<p>Notes:</p>
+<ul>
+<li>Anything you put in the <code>ggplot()</code> function can be seen by any geom layers that you add (i.e., these are universal plot settings). This includes the x- and y-axis mapping you set up in <code>aes()</code>.</li>
+<li>You can also specify mappings for a given geom independently of the mappings defined globally in the <code>ggplot()</code> function.</li>
+<li>The <code>+</code> sign used to add new layers must be placed at the end of the line containing the previous layer. If, instead, the <code>+</code> sign is added at the beginning of the line containing the new layer, <code>ggplot2</code> will not add the new layer and will return an error message.</li>
+</ul>
 <pre class="r"><code># This is the correct syntax for adding layers
 coverage_plot +
   geom_point()
@@ -530,6 +520,15 @@ coverage_plot
 3. Represent magnitudes honestly<br />
 4. Draw graphical elements clearly, minimizing clutter</p>
 </div>
+<div class="box">
+<h3 id="exercise-2">EXERCISE</h3>
+<p>Create a scatter plot (using the <code>geom_point()</code> function for quality (<code>QUAL</code>) versus coverage depth (<code>DP</code>).</p>
+</div>
+<!-- ### SOLUTION -->
+<!-- ```{r} -->
+<!-- ggplot(data = variants, aes(x = QUAL, y = DP)) +  -->
+<!--   geom_point() -->
+<!-- ``` -->
 </div>
 <div id="building-plots-iteratively" class="section level1">
 <h1>Building plots iteratively</h1>
@@ -560,14 +559,14 @@ coverage_plot
        y = &quot;Read Depth (DP)&quot;)</code></pre>
 <p><img src="07-ggplot2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <div class="box">
-<h3 id="exercise-1">EXERCISE</h3>
-<p>Use what you just learned to create a scatter plot of mapping quality (<code>MQ</code>) over position (<code>POS</code>) with the samples showing in different colors. Make sure to give your plot relevant axis labels.</p>
+<h3 id="exercise-3">EXERCISE</h3>
+<p>Create a scatter plot of mapping quality (<code>MQ</code>) over position (<code>POS</code>) with the samples showing in different colors. Make sure to give your plot relevant axis labels.</p>
 </div>
 <!-- Solution -->
 <!-- ```{r} -->
-<!-- ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) +  -->
-<!--   geom_point() +  -->
-<!--   labs(x = "Base Pair Position",  -->
+<!-- ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) + -->
+<!--   geom_point() + -->
+<!--   labs(x = "Base Pair Position", -->
 <!--        y = "Mapping Quality (MQ)") -->
 <!-- ``` -->
 </div>
@@ -580,7 +579,7 @@ coverage_plot
       y = &quot;Mapping Quality (MQ)&quot;) + 
  facet_grid(. ~ sample_id)</code></pre>
 <p><img src="07-ggplot2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<p>This looks ok, but it would be easier to read if the plot facets were stacked vertically rather than horizontally. The <code>facet_grid</code> geometry allows you to explicitly specify how you want your plots to be arranged via formula notation (<code>rows ~ columns</code>; a <code>.</code> can be used as a placeholder that indicates only one row or column).</p>
+<p>This looks ok, but it would be easier to read if the plot facets were stacked vertically rather than horizontally. The <code>facet_grid</code> geometry allows you to explicitly specify how you want your plots to be arranged via formula notation (<code>rows ~ columns</code>); a <code>.</code> can be used as a placeholder that indicates only one row or column).</p>
 <pre class="r"><code>ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) + 
  geom_point() + 
  labs(x = &quot;Base Pair Position&quot;, 
@@ -597,14 +596,14 @@ coverage_plot
   theme(panel.grid = element_blank())</code></pre>
 <p><img src="07-ggplot2_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <div class="box">
-<h3 id="exercise-2">EXERCISE</h3>
+<h3 id="exercise-4">EXERCISE</h3>
 <p>Use what you just learned to create a scatter plot of PHRED scaled quality (<code>QUAL</code>) over position (<code>POS</code>) with the samples showing in different colors. Make sure to give your plot relevant axis labels.</p>
 </div>
 <!-- ### SOLUTION -->
 <!-- ```{r} -->
-<!-- ggplot(data = variants, aes(x = POS, y = QUAL, color = sample_id)) +  -->
-<!--   geom_point() +  -->
-<!--   labs(x = "Base Pair Position",  -->
+<!-- ggplot(data = variants, aes(x = POS, y = QUAL, color = sample_id)) + -->
+<!--   geom_point() + -->
+<!--   labs(x = "Base Pair Position", -->
 <!--        y = "PHRED-sacled Quality (QUAL)") + -->
 <!--   facet_grid(sample_id ~ .) -->
 <!-- ``` -->
@@ -617,7 +616,7 @@ coverage_plot
   facet_grid(sample_id ~ .)</code></pre>
 <p><img src="07-ggplot2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <div class="box">
-<h3 id="exercise-3">EXERCISE</h3>
+<h3 id="exercise-5">EXERCISE</h3>
 <p>Since we already have the sample_id labels on the individual plot facets, we don’t need the legend. Use the help file for <code>geom_bar</code> and any other online resources you want to use to remove the legend from the plot.</p>
 </div>
 <!-- ### SOLUTION -->
@@ -639,12 +638,21 @@ coverage_plot
   geom_histogram(binwidth = 5)</code></pre>
 <img src="07-ggplot2_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 <div class="box">
-<h3 id="exercise-4">EXERCISE</h3>
+<h3 id="exercise-6">EXERCISE</h3>
 <p>Create a plot that shows the distribution of Read Depth (DP) for each sample separately.</p>
+<p><b>Bonus challenge.</b> Create this plot for only two of the three samples IDs - the two with many fewer variants.</p>
 </div>
 <!-- ### Solution -->
 <!-- ```{r} -->
 <!-- ggplot(data = variants, aes(DP)) + -->
+<!--   geom_histogram(binwidth = 2) + -->
+<!--   facet_grid(sample_id ~ .) -->
+<!-- ``` -->
+<!-- ### Bonus solution -->
+<!-- ```{r} -->
+<!-- # subset the data -->
+<!-- two <- filter(variants, sample_id != "SRR2584866") -->
+<!-- ggplot(data = two, aes(DP)) + -->
 <!--   geom_histogram(binwidth = 2) + -->
 <!--   facet_grid(sample_id ~ .) -->
 <!-- ``` -->
@@ -675,16 +683,25 @@ coverage_plot
 <pre class="r"><code>ggplot(data = variants, aes(x = sample_id, y = DP)) + 
   geom_boxplot()</code></pre>
 <p><img src="07-ggplot2_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="box">
+<h3 id="exercise-7">EXERCISE</h3>
+<ol style="list-style-type: decimal">
+<li>Change the colour of each box in the above plot to match the sample_id colours in the plots above.</li>
+<li>Log transform the y-axis.</li>
+</ol>
+<p><b>Bonus challenge:</b> Change the name of the legend to “Sample ID”.</p>
+</div>
+<!-- ### SOLUTION -->
+<!-- ```{r} -->
+<!-- ggplot(data = variants, aes(x = sample_id, y = log(DP), color = sample_id)) + -->
+<!--   geom_boxplot() -->
+<!-- ``` -->
 </div>
 </div>
 <div id="themes" class="section level1">
 <h1>Themes</h1>
 <p>In addition to <code>theme_bw()</code>, which changes the plot background to white, <code>ggplot2</code> comes with several other themes which can be useful to quickly change the look of your visualization. The complete list of themes is available at <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="uri">https://ggplot2.tidyverse.org/reference/ggtheme.html</a>. <code>theme_minimal()</code> and <code>theme_light()</code> are popular, and <code>theme_void()</code> can be useful as a starting point to create a new hand-crafted theme.</p>
 <p>The <code>ggthemes</code> package provides a wide variety of options (including an Excel 2003 theme). The <code>ggplot2</code> <a href="https://www.ggplot2-exts.org">extensions website</a> provides a list of packages that extend the capabilities of <code>ggplot2</code>, including additional themes.</p>
-<div class="box">
-<h3 id="exercise-5">EXERCISE</h3>
-<p>With all of this information in hand, please take another five minutes to either improve one of the plots generated in this exercise or create a beautiful graph of your own. Here are some ideas: * See if you can change the size or shape of the plotting symbol. * Can you find a way to change the name of the legend? What about its labels? * Try using a different color palette (see <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/" class="uri">http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/</a>).</p>
-</div>
 </div>
 
 
