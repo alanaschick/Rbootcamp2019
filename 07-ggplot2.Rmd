@@ -35,7 +35,7 @@ There are two ways to download this data file:
 download.file("https://raw.githubusercontent.com/alanaschick/Rbootcamp2019/master/data/combined_tidy_vcf.csv", "data/combined_tidy_vcf.csv")
 ```
 
-2. Download the data onto your computer from [this]( ) dropbox link and move it into the `data` directory of your RStudio project.
+2. Download the data onto your computer from [this](https://www.dropbox.com/s/1z7qrbke9l6o6ee/combined_tidy_vcf.csv?dl=0) dropbox link and move it into the `data` directory of your RStudio project.
 
 <div class = "box">
 ### EXERCISE
