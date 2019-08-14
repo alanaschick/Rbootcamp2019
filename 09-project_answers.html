@@ -536,75 +536,119 @@ head(clean)</code></pre>
 ## 4 CFT2      mRNA po… RNA bi… YLR115W &quot; 108… G               0.05      -0.33
 ## 5 SSO2      vesicle… t-SNAR… YMR183C &quot; 108… G               0.05       0.05
 ## 6 PSP2      biologi… molecu… YML017W &quot; 108… G               0.05      -0.69</code></pre>
-<!-- # Task 3: Plots -->
-<!-- ## 1. Filter your now cleaned data to contain only the gene LEU1. -->
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(gene_name == "LEU1")  -->
-<!-- ``` -->
-<!-- ## 2. Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients. -->
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(gene_name == "LEU1") %>%  -->
-<!--   ggplot(aes(x = growth_rate, y = expression)) + -->
-<!--     geom_line(aes(colour = nutrient))  -->
-<!-- ``` -->
-<!-- ## 3. What are some conclusions you can make from this data? -->
-<!--  - When leucine is limiting the expression of LEU1 is higher than when any of the other nutrients are limiting. -->
-<!--  - As growth rate increase the expresison of LEU1 decreases but only in leucine limiting conditions.  In all other conditions it increases as growth rate increases. -->
-<!-- ## 4. What biological process is LEU1 classified as? -->
-<!-- leucine biosynthesis -->
-<!-- ## 5. Filter your cleaned data for all genes that are in the same biological process as LEU1. -->
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(BP == "leucine biosynthesis") -->
-<!-- ``` -->
-<!-- ## 6. Make a plot of these genes, the same as you had for LEU1 but faceted by gene. -->
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(BP == "leucine biosynthesis") %>%  -->
-<!--   ggplot(aes(x = growth_rate, y = expression)) + -->
-<!--     geom_line(aes(colour = nutrient)) + -->
-<!--     facet_wrap(~gene_name) -->
-<!-- ``` -->
-<!-- ## 7. Do any of the other genes follow the same pattern as LEU1?   -->
-<!-- LEU2 seems to but the expression difference in leucine limiting conditions is not quite so high. -->
-<!-- ## 8. Make it pretty -->
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(BP == "leucine biosynthesis") %>%  -->
-<!--   ggplot(aes(x = growth_rate, y = expression, colour = nutrient)) + -->
-<!--     geom_line() + -->
-<!--     geom_point() + -->
-<!--     facet_wrap(~gene_name) + -->
-<!--     scale_color_brewer("Nutrient", palette = "Accent") + -->
-<!--     theme_bw() + -->
-<!--     labs(x = "Growth Rate", y = "Expression (log2)") + -->
-<!--     theme(strip.background = element_blank()) -->
-<!-- ``` -->
-<!-- ## Bonus: Changing nutrient names -->
-<!-- ```{r} -->
-<!-- nutrient_key = c( -->
-<!--   G = "Glucose", -->
-<!--   N = "Ammonium", -->
-<!--   P = "Phosphate", -->
-<!--   S = "Sulfate", -->
-<!--   U = "Uracil", -->
-<!--   L = "Leucine" -->
-<!-- ) -->
-<!-- nutrient_key["P"] -->
-<!-- clean %>%  -->
-<!--   mutate(nutrient_names = nutrient_key[nutrient]) %>%  -->
-<!--     filter(BP == "leucine biosynthesis") %>%  -->
-<!--     ggplot(aes(x = growth_rate, y = expression, colour = nutrient_names)) + -->
-<!--     geom_line() + -->
-<!--     geom_point() + -->
-<!--     facet_wrap(~gene_name) + -->
-<!--     scale_color_brewer("Nutrient", palette = "Accent") + -->
-<!--     theme_bw() + -->
-<!--     labs(x = "Growth Rate", y = "Expression (log2)") + -->
-<!--     theme(strip.background = element_blank()) -->
-<!-- ``` -->
+</div>
+</div>
+<div id="task-3-plots" class="section level1">
+<h1>Task 3: Plots</h1>
+<div id="filter-your-now-cleaned-data-to-contain-only-the-gene-leu1." class="section level2">
+<h2>1. Filter your now cleaned data to contain only the gene LEU1.</h2>
+<pre class="r"><code>clean %&gt;%
+  filter(gene_name == &quot;LEU1&quot;)</code></pre>
+<pre><code>## # A tibble: 36 x 8
+##    gene_name BP      MP      gene_id number nutrient growth_rate expression
+##    &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+##  1 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.05      -1.12
+##  2 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.1       -0.77
+##  3 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.15      -0.67
+##  4 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.2       -0.59
+##  5 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.25      -0.2 
+##  6 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.3        0.03
+##  7 LEU1      leucin… 3-isop… YGL009C &quot; 108… N               0.05      -0.76
+##  8 LEU1      leucin… 3-isop… YGL009C &quot; 108… N               0.1       -1.17
+##  9 LEU1      leucin… 3-isop… YGL009C &quot; 108… N               0.15      -1.2 
+## 10 LEU1      leucin… 3-isop… YGL009C &quot; 108… N               0.2       -1.02
+## # … with 26 more rows</code></pre>
+</div>
+<div id="make-a-plot-of-the-expression-of-this-gene-at-various-growth-rates.-use-colour-to-distinguish-the-different-nutrients." class="section level2">
+<h2>2. Make a plot of the expression of this gene at various growth rates. Use colour to distinguish the different nutrients.</h2>
+<pre class="r"><code>clean %&gt;%
+  filter(gene_name == &quot;LEU1&quot;) %&gt;%
+  ggplot(aes(x = growth_rate, y = expression)) +
+    geom_line(aes(colour = nutrient))</code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="what-are-some-conclusions-you-can-make-from-this-data" class="section level2">
+<h2>3. What are some conclusions you can make from this data?</h2>
+<ul>
+<li>When leucine is limiting the expression of LEU1 is higher than when any of the other nutrients are limiting.</li>
+<li>As growth rate increase the expresison of LEU1 decreases but only in leucine limiting conditions. In all other conditions it increases as growth rate increases.</li>
+</ul>
+</div>
+<div id="what-biological-process-is-leu1-classified-as" class="section level2">
+<h2>4. What biological process is LEU1 classified as?</h2>
+<p>leucine biosynthesis</p>
+</div>
+<div id="filter-your-cleaned-data-for-all-genes-that-are-in-the-same-biological-process-as-leu1." class="section level2">
+<h2>5. Filter your cleaned data for all genes that are in the same biological process as LEU1.</h2>
+<pre class="r"><code>clean %&gt;%
+  filter(BP == &quot;leucine biosynthesis&quot;)</code></pre>
+<pre><code>## # A tibble: 144 x 8
+##    gene_name BP      MP      gene_id number nutrient growth_rate expression
+##    &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+##  1 LEU9      leucin… 2-isop… YOR108W &quot; 108… G               0.05      -0.08
+##  2 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.05      -1.12
+##  3 LEU2      leucin… 3-isop… YCL018W &quot; 108… G               0.05      -0.59
+##  4 LEU4      leucin… 2-isop… YNL104C &quot; 108… G               0.05       2.61
+##  5 LEU9      leucin… 2-isop… YOR108W &quot; 108… G               0.1       -0.07
+##  6 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.1       -0.77
+##  7 LEU2      leucin… 3-isop… YCL018W &quot; 108… G               0.1       -0.71
+##  8 LEU4      leucin… 2-isop… YNL104C &quot; 108… G               0.1        1.53
+##  9 LEU9      leucin… 2-isop… YOR108W &quot; 108… G               0.15      -0.66
+## 10 LEU1      leucin… 3-isop… YGL009C &quot; 108… G               0.15      -0.67
+## # … with 134 more rows</code></pre>
+</div>
+<div id="make-a-plot-of-these-genes-the-same-as-you-had-for-leu1-but-faceted-by-gene." class="section level2">
+<h2>6. Make a plot of these genes, the same as you had for LEU1 but faceted by gene.</h2>
+<pre class="r"><code>clean %&gt;%
+  filter(BP == &quot;leucine biosynthesis&quot;) %&gt;%
+  ggplot(aes(x = growth_rate, y = expression)) +
+    geom_line(aes(colour = nutrient)) +
+    facet_wrap(~gene_name)</code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="do-any-of-the-other-genes-follow-the-same-pattern-as-leu1" class="section level2">
+<h2>7. Do any of the other genes follow the same pattern as LEU1?</h2>
+<p>LEU2 seems to but the expression difference in leucine limiting conditions is not quite so high.</p>
+</div>
+<div id="make-it-pretty" class="section level2">
+<h2>8. Make it pretty</h2>
+<pre class="r"><code>clean %&gt;%
+  filter(BP == &quot;leucine biosynthesis&quot;) %&gt;%
+  ggplot(aes(x = growth_rate, y = expression, colour = nutrient)) +
+    geom_line() +
+    geom_point() +
+    facet_wrap(~gene_name) +
+    scale_color_brewer(&quot;Nutrient&quot;, palette = &quot;Accent&quot;) +
+    theme_bw() +
+    labs(x = &quot;Growth Rate&quot;, y = &quot;Expression (log2)&quot;) +
+    theme(strip.background = element_blank())</code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="bonus-changing-nutrient-names" class="section level2">
+<h2>Bonus: Changing nutrient names</h2>
+<pre class="r"><code>nutrient_key = c(
+  G = &quot;Glucose&quot;,
+  N = &quot;Ammonium&quot;,
+  P = &quot;Phosphate&quot;,
+  S = &quot;Sulfate&quot;,
+  U = &quot;Uracil&quot;,
+  L = &quot;Leucine&quot;
+)
+nutrient_key[&quot;P&quot;]</code></pre>
+<pre><code>##           P 
+## &quot;Phosphate&quot;</code></pre>
+<pre class="r"><code>clean %&gt;%
+  mutate(nutrient_names = nutrient_key[nutrient]) %&gt;%
+    filter(BP == &quot;leucine biosynthesis&quot;) %&gt;%
+    ggplot(aes(x = growth_rate, y = expression, colour = nutrient_names)) +
+    geom_line() +
+    geom_point() +
+    facet_wrap(~gene_name) +
+    scale_color_brewer(&quot;Nutrient&quot;, palette = &quot;Accent&quot;) +
+    theme_bw() +
+    labs(x = &quot;Growth Rate&quot;, y = &quot;Expression (log2)&quot;) +
+    theme(strip.background = element_blank())</code></pre>
+<p><img src="09-project_answers_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <!-- # Task 4: Heatmaps -->
 <!-- ## 1. Start by installing the `pheatmap` package from CRAN.  Have a look at the help page for the `pheatamp()` function.  Which argument specifies the data?  What format does it need?  -->
 <!-- ```{r} -->

@@ -104,92 +104,92 @@ clean = raw %>%
 head(clean)
 ```
 
-<!-- # Task 3: Plots -->
+# Task 3: Plots
 
 
-<!-- ## 1. Filter your now cleaned data to contain only the gene LEU1. -->
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(gene_name == "LEU1")  -->
-<!-- ``` -->
+## 1. Filter your now cleaned data to contain only the gene LEU1.
+```{r}
+clean %>%
+  filter(gene_name == "LEU1")
+```
 
-<!-- ## 2. Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients. -->
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(gene_name == "LEU1") %>%  -->
-<!--   ggplot(aes(x = growth_rate, y = expression)) + -->
-<!--     geom_line(aes(colour = nutrient))  -->
-<!-- ``` -->
+## 2. Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients.
+```{r}
+clean %>%
+  filter(gene_name == "LEU1") %>%
+  ggplot(aes(x = growth_rate, y = expression)) +
+    geom_line(aes(colour = nutrient))
+```
 
-<!-- ## 3. What are some conclusions you can make from this data? -->
-<!--  - When leucine is limiting the expression of LEU1 is higher than when any of the other nutrients are limiting. -->
-<!--  - As growth rate increase the expresison of LEU1 decreases but only in leucine limiting conditions.  In all other conditions it increases as growth rate increases. -->
-
-
-<!-- ## 4. What biological process is LEU1 classified as? -->
-<!-- leucine biosynthesis -->
-
-<!-- ## 5. Filter your cleaned data for all genes that are in the same biological process as LEU1. -->
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(BP == "leucine biosynthesis") -->
-<!-- ``` -->
-
-<!-- ## 6. Make a plot of these genes, the same as you had for LEU1 but faceted by gene. -->
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(BP == "leucine biosynthesis") %>%  -->
-<!--   ggplot(aes(x = growth_rate, y = expression)) + -->
-<!--     geom_line(aes(colour = nutrient)) + -->
-<!--     facet_wrap(~gene_name) -->
-<!-- ``` -->
-
-<!-- ## 7. Do any of the other genes follow the same pattern as LEU1?   -->
-
-<!-- LEU2 seems to but the expression difference in leucine limiting conditions is not quite so high. -->
+## 3. What are some conclusions you can make from this data?
+ - When leucine is limiting the expression of LEU1 is higher than when any of the other nutrients are limiting.
+ - As growth rate increase the expresison of LEU1 decreases but only in leucine limiting conditions.  In all other conditions it increases as growth rate increases.
 
 
-<!-- ## 8. Make it pretty -->
+## 4. What biological process is LEU1 classified as?
+leucine biosynthesis
 
-<!-- ```{r} -->
-<!-- clean %>%  -->
-<!--   filter(BP == "leucine biosynthesis") %>%  -->
-<!--   ggplot(aes(x = growth_rate, y = expression, colour = nutrient)) + -->
-<!--     geom_line() + -->
-<!--     geom_point() + -->
-<!--     facet_wrap(~gene_name) + -->
-<!--     scale_color_brewer("Nutrient", palette = "Accent") + -->
-<!--     theme_bw() + -->
-<!--     labs(x = "Growth Rate", y = "Expression (log2)") + -->
-<!--     theme(strip.background = element_blank()) -->
-<!-- ``` -->
+## 5. Filter your cleaned data for all genes that are in the same biological process as LEU1.
+```{r}
+clean %>%
+  filter(BP == "leucine biosynthesis")
+```
 
-<!-- ## Bonus: Changing nutrient names -->
+## 6. Make a plot of these genes, the same as you had for LEU1 but faceted by gene.
+```{r}
+clean %>%
+  filter(BP == "leucine biosynthesis") %>%
+  ggplot(aes(x = growth_rate, y = expression)) +
+    geom_line(aes(colour = nutrient)) +
+    facet_wrap(~gene_name)
+```
 
-<!-- ```{r} -->
-<!-- nutrient_key = c( -->
-<!--   G = "Glucose", -->
-<!--   N = "Ammonium", -->
-<!--   P = "Phosphate", -->
-<!--   S = "Sulfate", -->
-<!--   U = "Uracil", -->
-<!--   L = "Leucine" -->
-<!-- ) -->
-<!-- nutrient_key["P"] -->
+## 7. Do any of the other genes follow the same pattern as LEU1?
 
-<!-- clean %>%  -->
-<!--   mutate(nutrient_names = nutrient_key[nutrient]) %>%  -->
-<!--     filter(BP == "leucine biosynthesis") %>%  -->
-<!--     ggplot(aes(x = growth_rate, y = expression, colour = nutrient_names)) + -->
-<!--     geom_line() + -->
-<!--     geom_point() + -->
-<!--     facet_wrap(~gene_name) + -->
-<!--     scale_color_brewer("Nutrient", palette = "Accent") + -->
-<!--     theme_bw() + -->
-<!--     labs(x = "Growth Rate", y = "Expression (log2)") + -->
-<!--     theme(strip.background = element_blank()) -->
+LEU2 seems to but the expression difference in leucine limiting conditions is not quite so high.
 
-<!-- ``` -->
+
+## 8. Make it pretty
+
+```{r}
+clean %>%
+  filter(BP == "leucine biosynthesis") %>%
+  ggplot(aes(x = growth_rate, y = expression, colour = nutrient)) +
+    geom_line() +
+    geom_point() +
+    facet_wrap(~gene_name) +
+    scale_color_brewer("Nutrient", palette = "Accent") +
+    theme_bw() +
+    labs(x = "Growth Rate", y = "Expression (log2)") +
+    theme(strip.background = element_blank())
+```
+
+## Bonus: Changing nutrient names
+
+```{r}
+nutrient_key = c(
+  G = "Glucose",
+  N = "Ammonium",
+  P = "Phosphate",
+  S = "Sulfate",
+  U = "Uracil",
+  L = "Leucine"
+)
+nutrient_key["P"]
+
+clean %>%
+  mutate(nutrient_names = nutrient_key[nutrient]) %>%
+    filter(BP == "leucine biosynthesis") %>%
+    ggplot(aes(x = growth_rate, y = expression, colour = nutrient_names)) +
+    geom_line() +
+    geom_point() +
+    facet_wrap(~gene_name) +
+    scale_color_brewer("Nutrient", palette = "Accent") +
+    theme_bw() +
+    labs(x = "Growth Rate", y = "Expression (log2)") +
+    theme(strip.background = element_blank())
+
+```
 
 
 <!-- # Task 4: Heatmaps -->
