@@ -1,0 +1,26 @@
+---
+title: "Workshop - Day 3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+August 14, 2019 
+
+## 8. [Project (cont)](./08-project.html)
+
+* Task 1: Data import and examination
+* Task 2: Data Tidying
+* Task 3: Plots
+* Task 4: Heatmap
+
+## 9. [Bonus project](./10-bonusproject.html)
+
+* Produce plot from raw data
+* Statistics in R
+
+## 10. [Survey](https://www.surveymonkey.com/r/XDP5NK2)
+
+* Please complete this before you leave!

@@ -379,6 +379,7 @@ There are several functions for ranking observations, which handle tied values d
 <!--   mutate(rank(means)) -->
 <!-- ``` -->
 
+## Ungroup function
 
 # Other great resources
 * [Data Wrangling tutorial](https://suzan.rbind.io/categories/tutorial/) - an excellent four part tutorial covering selecting data, filtering data, summarising and transforming your data.

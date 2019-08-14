@@ -64,7 +64,16 @@ Schedule |
 
 <br>
 
-## <b>August 14: Day 3 (9:00 - 15:00, HSC G382)</b>
-Project Day - Schedule TBA
+## <b>August 14: [Day 3](./day3.html) (9:00 - 15:00, HSC G382)</b>
+
+Schedule |                                            
+-------| ----------------------------------
+09:00  | 8. Project (cont)
+10:30  | Break
+10:45  | 8. Project (cont)
+12:00  | Lunch break
+13:00  | 9. Open discussion
+13:00  | 9. Bonus project (optional)
+15:00  | Finish
 
 
