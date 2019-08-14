@@ -14,6 +14,8 @@ This data set comes from a short-term evolution experiment investigating adaptat
 
 You can find the data set [here](https://www.dropbox.com/s/fflcupr2erl4f36/pa_clinical_distance.csv?dl=0) and you can read more about the experimental setup [here](https://doi.org/10.1073/pnas.1721270115).
 
+<br>
+
 # Task 1 - Plot
 
 Use this data set to produce the plot below.
@@ -24,6 +26,8 @@ data <- read.csv("data/pa_clinical_distance.csv")
 ggplot(data, aes(x = type, y = log10(dist))) + geom_point() +
   facet_grid(.~env)
 ```
+
+<br>
 
 # Task 2 - Fancy plot
 
@@ -57,6 +61,9 @@ Your plot need not be identical, but should plot the same data with the same plo
 * remove the legend
 * add black bars to signify means
 * change axes labels
+* jitter points
+
+<br>
 
 # Task 3 - Stats
 
