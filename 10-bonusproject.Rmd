@@ -5,6 +5,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 # Introduction
@@ -17,13 +18,47 @@ You can find the data set [here](https://www.dropbox.com/s/fflcupr2erl4f36/pa_cl
 
 Use this data set to produce the plot below.
 
-![](./figures/might_need.png)
+```{r, echo = FALSE}
+data <- read.csv("data/pa_clinical_distance.csv")
 
-Your plot need not be identical, but should plot the same data with the same plot features (such as treatment names, facets, no legend, etc.).
+ggplot(data, aes(x = type, y = log10(dist))) + geom_point() +
+  facet_grid(.~env)
+```
 
-Remember that there is often more than one way to do something in R, so if what you're trying isn't working, no need to feel attached to that strategy.
+# Task 2 - Fancy plot
 
-# Task 2 - Stats
+Modify your plot so that is looks like this:
+
+<br>
+
+```{r, echo = FALSE}
+env_key <- c("6scfm" = "SCFM", "7min" = "MIN", "8scfm_mucin" = "SCFM + mucin", "9min_mucin" = "MIN + mucin")
+data <- data %>%
+  mutate(env_name = env_key[env])
+data$env_name <- factor(data$env_name, levels = c("SCFM", "MIN","SCFM + mucin", "MIN + mucin"))
+
+
+ggplot(data, aes(type, log10(dist), colour = type)) +
+	geom_jitter(size = 2, show.legend = F, width = 0.1) +
+	facet_grid(~env_name) +
+	ylab("log(distance)") +
+	scale_x_discrete(labels = c("Epidemic", "Non")) + 
+	scale_colour_manual(values = c("orange", "blue")) +
+	ggtitle("Comparison of clinical and evolved isolates") +
+	stat_summary(geom = "errorbar", fun.y = mean, width = 0.5, colour = "black", aes(ymax =..y.., ymin =..y..)) +
+	xlab("Strain type")
+```
+
+Your plot need not be identical, but should plot the same data with the same plot features, including:
+
+* changing the treatment names
+* changing the order of the env variable
+* change the colours
+* remove the legend
+* add black bars to signify means
+* change axes labels
+
+# Task 3 - Stats
 
 The pattern in the plot above should be fairly clear, but we still need to 'do stats' on it. Use R to create a linear model with distance as the response variable and treatment and strain type as the explanatory variables. Use this model to answer the following questions:
 
