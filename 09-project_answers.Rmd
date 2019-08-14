@@ -7,6 +7,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<br>
+
 # Task 1: Data import and examination
 
 Load the tidyverse package using the `library()` function:
@@ -104,8 +106,9 @@ clean = raw %>%
 head(clean)
 ```
 
-# Task 3: Plots
+<br>
 
+# Task 3: Plots
 
 ## 1. Filter your now cleaned data to contain only the gene LEU1.
 ```{r}
@@ -191,52 +194,51 @@ clean %>%
 
 ```
 
+<br>
 
-<!-- # Task 4: Heatmaps -->
+# Task 4: Heatmaps
 
-<!-- ## 1. Start by installing the `pheatmap` package from CRAN.  Have a look at the help page for the `pheatamp()` function.  Which argument specifies the data?  What format does it need?  -->
+## 1. Start by installing the `pheatmap` package from CRAN.  Have a look at the help page for the `pheatamp()` function.  Which argument specifies the data?  What format does it need?
 
-<!-- ```{r} -->
-<!-- #install.packages("pheatmap") -->
-<!-- library(pheatmap) -->
-<!-- ?pheatmap -->
-<!-- ``` -->
+```{r}
+#install.packages("pheatmap")
+library(pheatmap)
+?pheatmap
+```
 
-<!-- Looks like `pheatmap()` needs a numeric matix given with the `mat` arguments, which is the first and only required arugment. -->
+Looks like `pheatmap()` needs a numeric matix given with the `mat` arguments, which is the first and only required arugment.
 
-<!-- ## 2. Using what you learned from the help function get the gene expression data into a format that `pheatmap()` can use.  Think about what you want your heatmap to look like - what are the columns and rows? -->
+## 2. Using what you learned from the help function get the gene expression data into a format that `pheatmap()` can use.  Think about what you want your heatmap to look like - what are the columns and rows?
 
-<!-- Here we're going to go back to our pre-tidied data.  This doesn't negate the work we did to tidy it nor does it mean the the data is now 'dirty' or bad somehow.  Tidy data is standardized but many R tools still don't work with data in this format and so we must adapt. -->
-<!-- ```{r} -->
-<!-- head(raw) -->
-<!-- hm_mat = raw %>%  -->
-<!--   select(-GID, -YORF, -NAME, -GWEIGHT) %>%  -->
-<!--   as.matrix() -->
+Here we're going to go back to our pre-tidied data.  This doesn't negate the work we did to tidy it nor does it mean the the data is now 'dirty' or bad somehow.  Tidy data is standardized but many R tools still don't work with data in this format and so we must adapt.
+```{r}
+head(raw)
+hm_mat = raw %>%
+  select(-GID, -YORF, -NAME, -GWEIGHT) %>%
+  as.matrix()
 
-<!-- class(hm_mat) -->
-<!-- typeof(hm_mat) -->
-<!-- ``` -->
+class(hm_mat)
+typeof(hm_mat)
+```
 
-<!-- ## 3. Once you've got data in the correct format start by making a simple heatmap with default parameters.  Do you like it?  Is there anything wrong with it?  What would change from a data interpretation perspective?  What about from aethetics perspective? -->
+## 3. Once you've got data in the correct format start by making a simple heatmap with default parameters.  Do you like it?  Is there anything wrong with it?  What would change from a data interpretation perspective?  What about from aethetics perspective?
 
-<!-- ```{r} -->
-<!-- pheatmap(hm_mat) -->
-<!-- ``` -->
+```{r}
+pheatmap(hm_mat)
+```
 
-<!-- Overall this actually looks pretty good.  Because these data have already been normalized and scaled we don't need to do much here but there are few tweaks that may help.  -->
-<!-- * The default is to order both the rows and columns, however, because this is a timecourse experiment we may not want to order the columns.  In fact if we look at the raw data we see that the columns are already ordered by time.   -->
-<!-- * The colours are better than the typical red/green (which you should NEVER use, BTW) but still leave something to be desired.  This could be changed in a final version of the plot.  Note that we have a diverging colour scale with values ranging from -6 to +6.  This is becuase these data are mean-centred.  Blue (negative) values are below the mean for that gene and red values (positive) are above the mean for that gene.  Yellow is the mean expression for that gene.  Mean-centering is a handy way to show fold-changes, but should always be displayed with a diverging colour scale. -->
-<!-- ```{r} -->
-<!-- ``` -->
+Overall this actually looks pretty good.  Because these data have already been normalized and scaled we don't need to do much here but there are few tweaks that may help.
 
-<!-- ```{r} -->
-<!-- library(RColorBrewer) -->
-<!-- pheatmap(hm_mat,  -->
-<!--          cluster_cols = FALSE,  -->
-<!--          color = colorRampPalette(rev(brewer.pal(n = 7, name = "RdBu")))(100), -->
-<!--          breaks = seq(-5, 5, length.out = 101) -->
-<!-- ) -->
-<!-- ``` -->
+* The default is to order both the rows and columns, however, because this is a timecourse experiment we may not want to order the columns.  In fact if we look at the raw data we see that the columns are already ordered by time.
+* The colours are better than the typical red/green (which you should NEVER use, BTW) but still leave something to be desired.  This could be changed in a final version of the plot.  Note that we have a diverging colour scale with values ranging from -6 to +6.  This is becuase these data are mean-centred.  Blue (negative) values are below the mean for that gene and red values (positive) are above the mean for that gene.  Yellow is the mean expression for that gene.  Mean-centering is a handy way to show fold-changes, but should always be displayed with a diverging colour scale.
+```{r}
+```
 
-
-
+```{r}
+library(RColorBrewer)
+pheatmap(hm_mat,
+         cluster_cols = FALSE,
+         color = colorRampPalette(rev(brewer.pal(n = 7, name = "RdBu")))(100),
+         breaks = seq(-5, 5, length.out = 101)
+)
+```
