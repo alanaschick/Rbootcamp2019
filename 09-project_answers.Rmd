@@ -104,139 +104,139 @@ clean = raw %>%
 head(clean)
 ```
 
-# Task 3: Plots
+<!-- # Task 3: Plots -->
 
 
-## 1. Filter your now cleaned data to contain only the gene LEU1.
-```{r}
-clean %>% 
-  filter(gene_name == "LEU1") 
-```
+<!-- ## 1. Filter your now cleaned data to contain only the gene LEU1. -->
+<!-- ```{r} -->
+<!-- clean %>%  -->
+<!--   filter(gene_name == "LEU1")  -->
+<!-- ``` -->
 
-## 2. Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients.
-```{r}
-clean %>% 
-  filter(gene_name == "LEU1") %>% 
-  ggplot(aes(x = growth_rate, y = expression)) +
-    geom_line(aes(colour = nutrient)) 
-```
+<!-- ## 2. Make a plot of the expression of this gene at various growth rates.  Use colour to distinguish the different nutrients. -->
+<!-- ```{r} -->
+<!-- clean %>%  -->
+<!--   filter(gene_name == "LEU1") %>%  -->
+<!--   ggplot(aes(x = growth_rate, y = expression)) + -->
+<!--     geom_line(aes(colour = nutrient))  -->
+<!-- ``` -->
 
-## 3. What are some conclusions you can make from this data?
- - When leucine is limiting the expression of LEU1 is higher than when any of the other nutrients are limiting.
- - As growth rate increase the expresison of LEU1 decreases but only in leucine limiting conditions.  In all other conditions it increases as growth rate increases.
-
-
-## 4. What biological process is LEU1 classified as?
-leucine biosynthesis
-
-## 5. Filter your cleaned data for all genes that are in the same biological process as LEU1.
-```{r}
-clean %>% 
-  filter(BP == "leucine biosynthesis")
-```
-
-## 6. Make a plot of these genes, the same as you had for LEU1 but faceted by gene.
-```{r}
-clean %>% 
-  filter(BP == "leucine biosynthesis") %>% 
-  ggplot(aes(x = growth_rate, y = expression)) +
-    geom_line(aes(colour = nutrient)) +
-    facet_wrap(~gene_name)
-```
-
-## 7. Do any of the other genes follow the same pattern as LEU1?  
-
-LEU2 seems to but the expression difference in leucine limiting conditions is not quite so high.
+<!-- ## 3. What are some conclusions you can make from this data? -->
+<!--  - When leucine is limiting the expression of LEU1 is higher than when any of the other nutrients are limiting. -->
+<!--  - As growth rate increase the expresison of LEU1 decreases but only in leucine limiting conditions.  In all other conditions it increases as growth rate increases. -->
 
 
-## 8. Make it pretty
+<!-- ## 4. What biological process is LEU1 classified as? -->
+<!-- leucine biosynthesis -->
 
-```{r}
-clean %>% 
-  filter(BP == "leucine biosynthesis") %>% 
-  ggplot(aes(x = growth_rate, y = expression, colour = nutrient)) +
-    geom_line() +
-    geom_point() +
-    facet_wrap(~gene_name) +
-    scale_color_brewer("Nutrient", palette = "Accent") +
-    theme_bw() +
-    labs(x = "Growth Rate", y = "Expression (log2)") +
-    theme(strip.background = element_blank())
-```
+<!-- ## 5. Filter your cleaned data for all genes that are in the same biological process as LEU1. -->
+<!-- ```{r} -->
+<!-- clean %>%  -->
+<!--   filter(BP == "leucine biosynthesis") -->
+<!-- ``` -->
 
-## Bonus: Changing nutrient names
+<!-- ## 6. Make a plot of these genes, the same as you had for LEU1 but faceted by gene. -->
+<!-- ```{r} -->
+<!-- clean %>%  -->
+<!--   filter(BP == "leucine biosynthesis") %>%  -->
+<!--   ggplot(aes(x = growth_rate, y = expression)) + -->
+<!--     geom_line(aes(colour = nutrient)) + -->
+<!--     facet_wrap(~gene_name) -->
+<!-- ``` -->
 
-```{r}
-nutrient_key = c(
-  G = "Glucose",
-  N = "Ammonium",
-  P = "Phosphate",
-  S = "Sulfate",
-  U = "Uracil",
-  L = "Leucine"
-)
-nutrient_key["P"]
+<!-- ## 7. Do any of the other genes follow the same pattern as LEU1?   -->
 
-clean %>% 
-  mutate(nutrient_names = nutrient_key[nutrient]) %>% 
-    filter(BP == "leucine biosynthesis") %>% 
-    ggplot(aes(x = growth_rate, y = expression, colour = nutrient_names)) +
-    geom_line() +
-    geom_point() +
-    facet_wrap(~gene_name) +
-    scale_color_brewer("Nutrient", palette = "Accent") +
-    theme_bw() +
-    labs(x = "Growth Rate", y = "Expression (log2)") +
-    theme(strip.background = element_blank())
-
-```
+<!-- LEU2 seems to but the expression difference in leucine limiting conditions is not quite so high. -->
 
 
-# Task 4: Heatmaps
+<!-- ## 8. Make it pretty -->
 
-## 1. Start by installing the `pheatmap` package from CRAN.  Have a look at the help page for the `pheatamp()` function.  Which argument specifies the data?  What format does it need? 
+<!-- ```{r} -->
+<!-- clean %>%  -->
+<!--   filter(BP == "leucine biosynthesis") %>%  -->
+<!--   ggplot(aes(x = growth_rate, y = expression, colour = nutrient)) + -->
+<!--     geom_line() + -->
+<!--     geom_point() + -->
+<!--     facet_wrap(~gene_name) + -->
+<!--     scale_color_brewer("Nutrient", palette = "Accent") + -->
+<!--     theme_bw() + -->
+<!--     labs(x = "Growth Rate", y = "Expression (log2)") + -->
+<!--     theme(strip.background = element_blank()) -->
+<!-- ``` -->
 
-```{r}
-#install.packages("pheatmap")
-library(pheatmap)
-?pheatmap
-```
+<!-- ## Bonus: Changing nutrient names -->
 
-Looks like `pheatmap()` needs a numeric matix given with the `mat` arguments, which is the first and only required arugment.
+<!-- ```{r} -->
+<!-- nutrient_key = c( -->
+<!--   G = "Glucose", -->
+<!--   N = "Ammonium", -->
+<!--   P = "Phosphate", -->
+<!--   S = "Sulfate", -->
+<!--   U = "Uracil", -->
+<!--   L = "Leucine" -->
+<!-- ) -->
+<!-- nutrient_key["P"] -->
 
-## 2. Using what you learned from the help function get the gene expression data into a format that `pheatmap()` can use.  Think about what you want your heatmap to look like - what are the columns and rows?
+<!-- clean %>%  -->
+<!--   mutate(nutrient_names = nutrient_key[nutrient]) %>%  -->
+<!--     filter(BP == "leucine biosynthesis") %>%  -->
+<!--     ggplot(aes(x = growth_rate, y = expression, colour = nutrient_names)) + -->
+<!--     geom_line() + -->
+<!--     geom_point() + -->
+<!--     facet_wrap(~gene_name) + -->
+<!--     scale_color_brewer("Nutrient", palette = "Accent") + -->
+<!--     theme_bw() + -->
+<!--     labs(x = "Growth Rate", y = "Expression (log2)") + -->
+<!--     theme(strip.background = element_blank()) -->
 
-Here we're going to go back to our pre-tidied data.  This doesn't negate the work we did to tidy it nor does it mean the the data is now 'dirty' or bad somehow.  Tidy data is standardized but many R tools still don't work with data in this format and so we must adapt.
-```{r}
-head(raw)
-hm_mat = raw %>% 
-  select(-GID, -YORF, -NAME, -GWEIGHT) %>% 
-  as.matrix()
+<!-- ``` -->
 
-class(hm_mat)
-typeof(hm_mat)
-```
 
-## 3. Once you've got data in the correct format start by making a simple heatmap with default parameters.  Do you like it?  Is there anything wrong with it?  What would change from a data interpretation perspective?  What about from aethetics perspective?
+<!-- # Task 4: Heatmaps -->
 
-```{r}
-pheatmap(hm_mat)
-```
+<!-- ## 1. Start by installing the `pheatmap` package from CRAN.  Have a look at the help page for the `pheatamp()` function.  Which argument specifies the data?  What format does it need?  -->
 
-Overall this actually looks pretty good.  Because these data have already been normalized and scaled we don't need to do much here but there are few tweaks that may help. 
-* The default is to order both the rows and columns, however, because this is a timecourse experiment we may not want to order the columns.  In fact if we look at the raw data we see that the columns are already ordered by time.  
-* The colours are better than the typical red/green (which you should NEVER use, BTW) but still leave something to be desired.  This could be changed in a final version of the plot.  Note that we have a diverging colour scale with values ranging from -6 to +6.  This is becuase these data are mean-centred.  Blue (negative) values are below the mean for that gene and red values (positive) are above the mean for that gene.  Yellow is the mean expression for that gene.  Mean-centering is a handy way to show fold-changes, but should always be displayed with a diverging colour scale.
-```{r}
-```
+<!-- ```{r} -->
+<!-- #install.packages("pheatmap") -->
+<!-- library(pheatmap) -->
+<!-- ?pheatmap -->
+<!-- ``` -->
 
-```{r}
-library(RColorBrewer)
-pheatmap(hm_mat, 
-         cluster_cols = FALSE, 
-         color = colorRampPalette(rev(brewer.pal(n = 7, name = "RdBu")))(100),
-         breaks = seq(-5, 5, length.out = 101)
-)
-```
+<!-- Looks like `pheatmap()` needs a numeric matix given with the `mat` arguments, which is the first and only required arugment. -->
+
+<!-- ## 2. Using what you learned from the help function get the gene expression data into a format that `pheatmap()` can use.  Think about what you want your heatmap to look like - what are the columns and rows? -->
+
+<!-- Here we're going to go back to our pre-tidied data.  This doesn't negate the work we did to tidy it nor does it mean the the data is now 'dirty' or bad somehow.  Tidy data is standardized but many R tools still don't work with data in this format and so we must adapt. -->
+<!-- ```{r} -->
+<!-- head(raw) -->
+<!-- hm_mat = raw %>%  -->
+<!--   select(-GID, -YORF, -NAME, -GWEIGHT) %>%  -->
+<!--   as.matrix() -->
+
+<!-- class(hm_mat) -->
+<!-- typeof(hm_mat) -->
+<!-- ``` -->
+
+<!-- ## 3. Once you've got data in the correct format start by making a simple heatmap with default parameters.  Do you like it?  Is there anything wrong with it?  What would change from a data interpretation perspective?  What about from aethetics perspective? -->
+
+<!-- ```{r} -->
+<!-- pheatmap(hm_mat) -->
+<!-- ``` -->
+
+<!-- Overall this actually looks pretty good.  Because these data have already been normalized and scaled we don't need to do much here but there are few tweaks that may help.  -->
+<!-- * The default is to order both the rows and columns, however, because this is a timecourse experiment we may not want to order the columns.  In fact if we look at the raw data we see that the columns are already ordered by time.   -->
+<!-- * The colours are better than the typical red/green (which you should NEVER use, BTW) but still leave something to be desired.  This could be changed in a final version of the plot.  Note that we have a diverging colour scale with values ranging from -6 to +6.  This is becuase these data are mean-centred.  Blue (negative) values are below the mean for that gene and red values (positive) are above the mean for that gene.  Yellow is the mean expression for that gene.  Mean-centering is a handy way to show fold-changes, but should always be displayed with a diverging colour scale. -->
+<!-- ```{r} -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- library(RColorBrewer) -->
+<!-- pheatmap(hm_mat,  -->
+<!--          cluster_cols = FALSE,  -->
+<!--          color = colorRampPalette(rev(brewer.pal(n = 7, name = "RdBu")))(100), -->
+<!--          breaks = seq(-5, 5, length.out = 101) -->
+<!-- ) -->
+<!-- ``` -->
 
 
 
