@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -234,6 +233,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -358,30 +358,27 @@ $(document).ready(function () {
 <li>change axes labels</li>
 <li>jitter points</li>
 </ul>
-<div id="solution" class="section level2">
-<h2>Solution</h2>
-<pre><code>env_key &lt;- c(&quot;6scfm&quot; = &quot;SCFM&quot;, &quot;7min&quot; = &quot;MIN&quot;, &quot;8scfm_mucin&quot; = &quot;SCFM + mucin&quot;, &quot;9min_mucin&quot; = &quot;MIN + mucin&quot;)
-data &lt;- data %&gt;%
-  mutate(env_name = env_key[env])
-data$env_name &lt;- factor(data$env_name, levels = c(&quot;SCFM&quot;, &quot;MIN&quot;,&quot;SCFM + mucin&quot;, &quot;MIN + mucin&quot;))
-
-
-ggplot(data, aes(type, log10(dist), colour = type)) +
-    geom_jitter(size = 2, show.legend = F, width = 0.1) +
-    facet_grid(~env_name) +
-    ylab(&quot;log(distance)&quot;) +
-    scale_x_discrete(labels = c(&quot;Epidemic&quot;, &quot;Non&quot;)) + 
-    scale_colour_manual(values = c(&quot;orange&quot;, &quot;blue&quot;)) +
-    ggtitle(&quot;Comparison of clinical and evolved isolates&quot;) +
-    stat_summary(geom = &quot;errorbar&quot;, fun.y = mean, width = 0.5, colour = &quot;black&quot;, aes(ymax =..y.., ymin =..y..)) +
-    xlab(&quot;Strain type&quot;)</code></pre>
-<p><br></p>
+<!-- ## Solution -->
+<!-- ``` -->
+<!-- env_key <- c("6scfm" = "SCFM", "7min" = "MIN", "8scfm_mucin" = "SCFM + mucin", "9min_mucin" = "MIN + mucin") -->
+<!-- data <- data %>% -->
+<!--   mutate(env_name = env_key[env]) -->
+<!-- data$env_name <- factor(data$env_name, levels = c("SCFM", "MIN","SCFM + mucin", "MIN + mucin")) -->
+<!-- ggplot(data, aes(type, log10(dist), colour = type)) + -->
+<!--    geom_jitter(size = 2, show.legend = F, width = 0.1) + -->
+<!--    facet_grid(~env_name) + -->
+<!--    ylab("log(distance)") + -->
+<!--    scale_x_discrete(labels = c("Epidemic", "Non")) +  -->
+<!--    scale_colour_manual(values = c("orange", "blue")) + -->
+<!--    ggtitle("Comparison of clinical and evolved isolates") + -->
+<!--    stat_summary(geom = "errorbar", fun.y = mean, width = 0.5, colour = "black", aes(ymax =..y.., ymin =..y..)) + -->
+<!--    xlab("Strain type") -->
+<!-- ``` -->
 <!-- # Task 3 - Stats -->
 <!-- The pattern in the plot above should be fairly clear, but we still need to 'do stats' on it. Use R to create a linear model with distance as the response variable and treatment and strain type as the explanatory variables. Use this model to answer the following questions: -->
 <!-- 1. Does treatment have a significant effect?  -->
 <!-- 2. Does strain type have a significant effect? -->
 <!-- 3. Is there a significant interaction between the two variables? -->
-</div>
 </div>
 
 
