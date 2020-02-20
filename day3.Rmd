@@ -16,7 +16,7 @@ August 14, 2019
 * Task 3: Plots
 * Task 4: Heatmap
 
-Answers: You can find an example of a solution to this project [here](./09-project_answers.html). Remember that there is almost always more than one way to do something in R. If your code looks different but works, that's great!
+<!-- Answers: You can find an example of a solution to this project [here](./09-project_answers.html). Remember that there is almost always more than one way to do something in R. If your code looks different but works, that's great! -->
 
 ## 9. [Bonus project](./10-bonusproject.html)
 

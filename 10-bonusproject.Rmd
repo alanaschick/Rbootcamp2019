@@ -62,27 +62,26 @@ Your plot need not be identical, but should plot the same data with the same plo
 * change axes labels
 * jitter points
 
-## Solution
+<!-- ## Solution -->
 
-```
-env_key <- c("6scfm" = "SCFM", "7min" = "MIN", "8scfm_mucin" = "SCFM + mucin", "9min_mucin" = "MIN + mucin")
-data <- data %>%
-  mutate(env_name = env_key[env])
-data$env_name <- factor(data$env_name, levels = c("SCFM", "MIN","SCFM + mucin", "MIN + mucin"))
+<!-- ``` -->
+<!-- env_key <- c("6scfm" = "SCFM", "7min" = "MIN", "8scfm_mucin" = "SCFM + mucin", "9min_mucin" = "MIN + mucin") -->
+<!-- data <- data %>% -->
+<!--   mutate(env_name = env_key[env]) -->
+<!-- data$env_name <- factor(data$env_name, levels = c("SCFM", "MIN","SCFM + mucin", "MIN + mucin")) -->
 
 
-ggplot(data, aes(type, log10(dist), colour = type)) +
-	geom_jitter(size = 2, show.legend = F, width = 0.1) +
-	facet_grid(~env_name) +
-	ylab("log(distance)") +
-	scale_x_discrete(labels = c("Epidemic", "Non")) + 
-	scale_colour_manual(values = c("orange", "blue")) +
-	ggtitle("Comparison of clinical and evolved isolates") +
-	stat_summary(geom = "errorbar", fun.y = mean, width = 0.5, colour = "black", aes(ymax =..y.., ymin =..y..)) +
-	xlab("Strain type")
-```
+<!-- ggplot(data, aes(type, log10(dist), colour = type)) + -->
+<!-- 	geom_jitter(size = 2, show.legend = F, width = 0.1) + -->
+<!-- 	facet_grid(~env_name) + -->
+<!-- 	ylab("log(distance)") + -->
+<!-- 	scale_x_discrete(labels = c("Epidemic", "Non")) +  -->
+<!-- 	scale_colour_manual(values = c("orange", "blue")) + -->
+<!-- 	ggtitle("Comparison of clinical and evolved isolates") + -->
+<!-- 	stat_summary(geom = "errorbar", fun.y = mean, width = 0.5, colour = "black", aes(ymax =..y.., ymin =..y..)) + -->
+<!-- 	xlab("Strain type") -->
+<!-- ``` -->
 
-<br>
 
 <!-- # Task 3 - Stats -->
 
